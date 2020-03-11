@@ -1,0 +1,65 @@
+\documentclass[english]{notes}
+
+\usepackage{./mama}
+\usepackage{blkarray}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+
+\newcommand{\Lie}[1]{\mathcal{L}_{#1}}
+\newcommand{\ipr}[1]{\iota_{#1}}
+
+\newcommand{\fields}{\mathfrak{X}}
+\newcommand{\hamfields}{\fields^{\mathrm{H}}}
+\newcommand{\sympfields}{\fields^{\mathrm{S}}}
+
+\newcommand{\Symp}{\mathrm{Symp}}
+\newcommand{\Diff}{\mathrm{Diff}}
+
+\newcommand{\Cas}{\mathrm{Cas}}
+
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\so}{\mathfrak{so}}
+
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\gl}{\mathfrak{gl}}
+
+\newcommand{\lalg}{\mathfrak g}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\ad}{\operatorname{ad}}
+
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\cork}{\operatorname{cork}}
+\newcommand{\trace}{\operatorname{Tr}}
+
+\newcommand{\pr}{\mathrm{pr}}
+
+\newcommand{\hilbert}{\mathcal{H}}
+\newcommand{\lin}{\mathcal{L}}
+\newcommand{\obs}{\mathcal{O}}
+\newcommand{\braket}[2]{\langle {#1} \,|\, {#2} \rangle}
+\newcommand{\expect}[2]{\langle {#1} \rangle_{#2}}
+\newcommand{\planck}{{\boldsymbol\hslash}}
+
+\newenvironment{issue}{\color{red}}{\color{black}}
+\newcommand{\what}{\textbf{\issue{??}}}
+
+\addbibresource{./bibliography.bib}
+
+\title{Notes on Hamiltonian Mechanics}
+\author{Luigi Angelini, Matteo Capucci,\\Francesco Monzani, Davide Dal Martello}
+
+\begin{document}
+	\maketitle
+
+	\tableofcontents
+
+	\include{background}
+	\include{symplectic_manifolds}
+	\include{hamiltonian_mechanics}
+	\include{poisson_manifolds}
+	\include{integrability}
+	\include{deformation_quantization}
+
+	\nocite{*}
+	\printbibliography[heading=bibintoc]
+\end{document}

@@ -1,0 +1,32 @@
+\section{A primer on Lie groups}
+Recall that a Lie group is just a group object in the category of smooth manifolds, i.e. a group supported on a smooth manifold and whose product and inverse maps are smooth maps. It's interesting to look at smooth actions of the group on another manifold $M$, hence maps
+\begin{eqalign}
+	\rho : G \longto \Diff(M)
+\end{eqalign}
+
+\begin{construction}
+	Any such action induces an action on the fields on $M$ by pushforward:
+	\begin{eqalign}
+		\rho_* : G &\longto \Aut_{\cat{LieAlg}}(\fields(M))\\
+			g &\longmapsto (\rho_g)_*
+	\end{eqalign}
+	We call \textbf{$\rho$-invariant} the fields on $M$ fixed by the latter action, and we designate them with $\fields^\rho(M)$. They form a Lie subalgebra of $\fields(M)$ since if $X,Y \in \fields^\rho(M)$, then for any $g \in G$ we have
+	\begin{eqalign}
+		(\rho_g)_*[X,Y] = [(\rho_g)_*X, (\rho_g)_*Y] = [X,Y].
+	\end{eqalign}
+\end{construction}
+\begin{construction}
+	Moreover, there's a canonical way to associate fields on $G$ to fields on $M$. Indeed, consider any vector field $X \in \fields(G)$. Its flow is a one-parameter group of diffeomorphisms $\phi^X_t : G \to G$, that is, an action of $\R$ onto $G$. Then we can compose this action with $\rho$, to get an action of $\R$ onto $M$:
+	\begin{eqalign}
+		\rho_{\phi^X_-(e)} : \R &\longto \Diff(M)\\
+			t &\longmapsto \rho_{\phi^X_t(e)}
+	\end{eqalign}
+	This is basically a one-parameter group of diffeomorphisms on $M$, so by differentiating its flow we get a field $X^M$ on $M$.
+\end{construction}
+
+We consider its natural \textbf{left action}, given by multiplication on the left:
+\begin{eqalign}
+	L: G &\longto \Diff(G)\\
+	g &\longmapsto (L_g : h \mapsto gh)
+\end{eqalign}
+As diffeomorphisms

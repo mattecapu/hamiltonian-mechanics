@@ -1,0 +1,339 @@
+%
+% MAMA package (MAth MAcros)
+% a semantic package for mathematical symbols and fast latexing
+%
+% by Matteo Capucci <matteo.capucci@gmail.com>
+%
+
+% list environment for properties
+\newlist{named}{description}{3}
+\newcommand{\labelize}[1]{(\emph{#1})}
+\setlist[named]{
+  font=\labelize,
+}
+
+\newenvironment{eqalign}{\begin{equation}\begin{aligned}}{\end{aligned}\end{equation}}
+
+% commutative diagrams
+\tikzset{ampersand replacement=\&}
+\tikzcdset{row sep/normal=3em}
+\tikzcdset{column sep/normal=4em}
+
+\newenvironment{diagram}{\begin{equation}\begin{tikzcd}}{\end{tikzcd}\end{equation}}
+
+\tikzset{
+  relation/.style={
+    draw=none,
+    every to/.append style={
+      edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+  }
+}
+
+% comment on an equation
+\newcommand{\comment}[1]{\qquad\text{#1}}
+
+% disjoint footnotes
+\newcommand{\disjointfootnotemark}[1]{\footnotemark[\getrefnumber{#1}]}
+\newcommand{\disjointfootnotetext}[1]{%
+  \addtocounter{footnote}{1}%
+  \addtocounter{Hfootnote}{1}%
+  \footnotetext{#1}%
+}
+
+% equal with def and question mark labels
+\newcommand{\defeq}{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
+\newcommand{\qeq}{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily ?}}}{=}}}
+\newcommand{\defiff}{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{\iff}}}
+
+% overset without decreasing font size
+\newcommand{\Overset}[2]{%
+  \mathop{#2}\limits^{\vbox to -.1ex{%
+  \kern -1.8ex\hbox{$#1$}\vss}}%
+}
+% underset without decreasing font size
+\newcommand{\Underset}[2]{%
+  \mathop{#2}\limits_{\vbox to .1ex{%
+  \kern -.6ex\hbox{$#1$}\vss}}%
+}
+
+% hyphen for math mode
+\mathchardef\dash="2D
+
+% defined term
+\newcommand{\defining}[1]{\textbf{#1}}
+
+% subject of a thesis
+\renewcommand{\th}[1]{\overset{th}{#1}}
+
+% e costant
+\newcommand{\e}{\mathrm{e}}
+
+% exp
+\renewcommand{\exp}{\operatorname{exp}}
+
+% cotangent
+\newcommand{\cotan}{\operatorname{cotan}}
+
+% argmin
+\newcommand{\argmin}{\operatorname{argmin}}
+
+% 'does not imply' symbol
+\newcommand{\nimplies}{\centernot\implies}
+
+% implications in the opposite direction
+\newcommand{\implied}{\Longleftarrow}
+\newcommand{\nimplied}{\centernot\implied}
+
+% inverses of \to
+\newcommand{\ot}{\leftarrow}
+\newcommand{\from}{\ot}
+
+% long version of \to
+\newcommand{\longto}{\longrightarrow}
+
+% inverse of \mapsto
+\newcommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\longmapsfrom}{\mathrel{\reflectbox{\ensuremath{\longmapsto}}}}
+
+% inclusion
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\inot}{\hookleftarrow}
+
+% surjection
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\fromto}{\onto}
+
+% iso arrows
+\newcommand{\isoto}{\overset{\sim}\to}
+\newcommand{\isolongto}{\overset{\sim}\longto}
+
+% 2-morphisms
+\newcommand{\twoto}{\Rightarrow}
+\newcommand{\isotwoto}{\overset{\sim}\twoto}
+\newcommand{\longtwoto}{\Longrightarrow}
+\newcommand{\isolongtwoto}{\overset{\sim}\longtwoto}
+
+% 'a | b'
+\newcommand{\divides}{\,|\,}
+
+% constant function
+\newcommand{\cost}{\text{cost.}}
+\newcommand{\const}{\text{const.}}
+
+% almost everywhere
+\@ifpackagewith{babel}{italian}{%
+  \newcommand{\almosteverywhereon}[2][\mu]{{\text{${#1}$-q.o. su ${#2}$}}}%
+}{%
+  \newcommand{\almosteverywhereon}[2][\mu]{{\text{${#1}$-a.e. on ${#2}$}}}%
+}
+
+% such that
+\newcommand{\suchthat}{\,|\,}
+
+% placeholder
+\newcommand{\placeholder}{\text{--}}
+
+% numerical sets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% a field
+\newcommand{\K}{\mathbb{K}}
+
+% euclidean space
+\newcommand{\E}{\mathbb{E}}
+
+% sphere
+\renewcommand{\S}{\mathbb{S}}
+
+% torus
+\newcommand{\T}{\mathbb{T}}
+
+% set-theoretic stuff
+\newcommand{\card}[1]{\left|{#1}\right|}
+\newcommand{\parts}[1]{\mathcal{P}\left({#1}\right)}
+\newcommand{\continuum}{\mathfrak{c}}
+
+% sequences
+\newcommand{\seq}[3][\N]{\left\{#2_{#3}\right\}_{#3 \in #1}}
+\newcommand{\subseq}[4][\N]{\left\{#2_{#3_{#4}}\right\}_{#4 \in #1}}
+
+% image of a sequence
+\newcommand{\imseq}[4][\N]{\left\{#3\left(#2_{#4}\right)\right\}_{#4 \in #1}}
+\newcommand{\imsubseq}[5][\N]{\left\{#3\left(#2_{#4_{#5}}\right)\right\}_{#5 \in #1}}
+
+% finite sequence
+\newcommand{\finseq}[3]{\left\{#1_{#2}\right\}_{#2 \leq #3}}
+
+% diameter of a set
+\newcommand{\diam}{\operatorname{diam}}
+
+% vectors
+\newcommand{\vers}[1]{\hat{\vv{#1}}}
+
+\newcommand{\vv}[1]{{\boldsymbol{#1}}}
+
+\newcommand{\ii}{\vers{i}}
+\newcommand{\jj}{\vers{j}}
+\newcommand{\kk}{\vers{k}}
+
+\newcommand{\xx}{\vv{x}}
+\newcommand{\yy}{\vv{y}}
+\newcommand{\zz}{\vv{z}}
+
+% big kernel, cokernel & image
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Imm}{\operatorname{Im}}
+\newcommand{\im}{\operatorname{im}}
+
+% group of inner automorphisms
+\newcommand{\Inn}{\operatorname{Inn}}
+
+% action of a group
+\newcommand{\acts}{\curvearrowright}
+% weak action groupoid
+\newcommand{\wag}{\mathbin{/\mkern-6mu/}}
+
+% linear span
+\newcommand{\Span}{\operatorname{span}}
+
+% direct sum
+\newcommand{\dir}{\oplus}
+\newcommand{\bigdir}{\bigoplus}
+% tensor product
+\newcommand{\tens}[1][]{\otimes_{#1}}
+\newcommand{\bigtens}{\bigotimes}
+
+% differential
+\newcommand{\diff}[1]{\operatorname{d}{#1}}
+% jacobian
+\newcommand{\jac}{\operatorname{\vv{J}}}
+
+% derivatives
+\newcommand{\der}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\pder}[2]{\frac{\partial {#1}}{\partial {#2}}}
+
+% second derivatives
+\newcommand{\sder}[2]{\frac{\mathrm{d}^2{#1}}{\mathrm{d}{#2}^2}}
+\newcommand{\spder}[3]{\frac{\partial^2{#1}}{\partial{#2} \partial {#3}}}
+% second derivative on the same coordinate
+\newcommand{\sdpder}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+
+% big derivatives
+\newcommand{\bigder}[2]{\dfrac{\strut \mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\bigpder}[2]{\dfrac{\strut \partial {#1}}{\partial {#2}}}
+
+% big second derivatives
+\newcommand{\bigsder}[2]{\dfrac{\strut \mathrm{d}^2 {#1}}{\mathrm{d}{#2}^2}}
+\newcommand{\bigspder}[3]{\dfrac{\strut \partial^2 {#1}}{\partial {#2} \partial {#3}}}
+% big second derivative on the same coordinate
+\newcommand{\bigsdpder}[2]{\dfrac{\strut \partial^2 {#1}}{\partial {#2}^2}}
+
+% left/right applied partial derivatives
+\newcommand{\lpartial}{\overset{\leftarrow}\partial}
+\newcommand{\rpartial}{\overset{\rightarrow}\partial}
+
+% complex stuff
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\Res}{\operatorname{Res}}
+
+% real and imaginary parts
+\renewcommand{\Re}[1]{\mathfrak{Re}\left(#1\right)}
+\renewcommand{\Im}[1]{\mathfrak{Im}\left(#1\right)}
+
+% sign function
+\newcommand{\sign}{\operatorname{}{sgn}}
+
+% modes of convergence
+\newcommand{\conv}[1][]{\underset{{#1}}{\longrightarrow}}
+\newcommand{\uniconv}[1][I]{\underset{{#1}}{\rightrightarrows}}
+\newcommand{\punconv}[1][I]{\conv[#1]}
+
+% regularity classes
+\newcommand{\Cn}{\mathcal{C}}
+\newcommand{\Cone}{\Cn^1}
+\newcommand{\Ctwo}{\Cn^2}
+\newcommand{\Cinfty}{\Cn^\infty}
+
+% Lipschitz
+\newcommand{\Lip}{\mathrm{Lip}}
+
+% Lebesgue spaces and spaces of Lebesgue-integrable functions
+\newcommand{\leb}{L}
+\newcommand{\lebint}{\mathcal{L}}
+
+% holomorphic and meromorphic
+\newcommand{\hol}{\mathcal{H}}
+\newcommand{\mer}{\mathcal{M}}
+
+% indicator function
+\newcommand{\ind}{\vv{1}}
+
+% identità
+\newcommand{\identity}{\mathrm{id}}
+\newcommand{\id}{\mathrm{id}}
+
+% topological notions
+\newcommand{\interior}[1]{\mathring{#1}}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\boundary}[1]{\operatorname{Fr}{#1}}
+\newcommand{\adherence}[1]{\operatorname{Ad}{#1}}
+\newcommand{\derived}[1]{\mathcal{D}\left({#1}\right)}
+
+% Alexandrov compactification
+\newcommand{\alexandrov}[1]{\check{#1}}
+
+% interior of a curve
+\newcommand{\inside}[1]{\operatorname{int}\left({#1}\right)}
+
+% homotopy
+\newcommand{\homtop}[1][]{\underset{#1}{\simeq}}
+\newcommand{\nothomtop}[1][]{\underset{#1}{\not\simeq}}
+
+% categories
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Aut}{\operatorname{Aut}}
+
+\newcommand{\incat}[2]{\underset{\cat{#1}}{#2}}
+\newcommand{\toin}[1]{\underset{#1}\to}
+\newcommand{\fromin}[1]{\underset{#1}\ot}
+
+\newcommand{\cat}[1]{\mathsf{#1}}
+
+% big categories
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\FinSet}{\cat{FinSet}}
+
+\newcommand{\Mon}{\cat{Mon}}
+\newcommand{\Grp}{\cat{Grp}}
+\newcommand{\Mod}{\cat{Mod}}
+\newcommand{\Ab}{\cat{Ab}}
+\newcommand{\Rng}{\cat{Rng}}
+\renewcommand{\Vec}{\cat{Vec}}
+\newcommand{\Man}{\cat{Man}}
+\newcommand{\Meas}{\cat{Meas}}
+
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\Hmt}{\cat{Hmt}}
+
+% opposite category
+\newcommand{\op}{\mathsf{op}}
+
+% isomorphism and equivalence symbols
+\newcommand{\iso}[1][]{\overset{#1}{\cong}}
+\newcommand{\equi}{\simeq}
+
+\newcommand{\isoin}[1]{\underset{#1}\iso}
+\newcommand{\isoincat}[2]{\incat{#1}\iso}
+
+\newcommand{\cop}{\amalg}
+
+% colimit
+\newcommand{\colim}{\operatorname*{colim}}
