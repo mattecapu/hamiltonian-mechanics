@@ -16,5 +16,6 @@ People who contributed to the first edition of these notes (a.a. 2018/2019).
 ### Maintainers
 People who kept updated the notes later. To appear in this list, send a pull request and have it approved.
 
-* Andrea Grossutti
+## How to contribute
+For a basic guide, see [here](https://stackoverflow.com/a/4384824/3115520). Please be sure to recompile the project each time you push to the main repo.
 
