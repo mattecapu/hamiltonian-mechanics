@@ -1,35 +1,33 @@
-\chapter{Symplectic geometry}
-\section{Symplectic vector spaces}
-\begin{definition}
-	A \textbf{symplectic form} is a non-degenerate, skew-symmetric bilinear form. A vector space $V$ equipped with a symplectic form on $V$ is called a \textbf{symplectic vector field}.
-\end{definition}
+\documentclass[main.tex]{subfiles}
+\begin{document}
 
-Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
-\begin{eqalign}
-	\tilde\Omega : V &\longto V^*\\
-	v &\longmapsto \Omega(v, -);
-\end{eqalign}
-On the other hand, the theory of inner product spaces and that of symplectic spaces start to diverge very early on:
+\chapter{Symplectic geometry}
+Symplectic and Poisson structures came from the structures observed in analytical mechanics (originated from the need of studying complex dynamical systems in exact fashion, like motions of planets, oscillations of many particles systems, etc.).
+\section{Symplectic forms on vectors spaces}
+\subsection{Skew-symmetric bilinear maps}
+\begin{definition}
+	Let $V$ be an $\R$-vector space with $\dim V=m$. Let $\Omega:V\times V\to\R$ be a bilinear map. $\Omega$ is \textbf{skew-symmetric} iff $\Omega(v,w)=-\Omega(w,v)$ $\forall v,w\in V$.
+\end{definition}
 
 \begin{theorem}
 \label{th:decomp_th}
-	Let $V$ be a finite-dimensional $\R$-vector space. Let $\Omega$ be a skew-symmetric, bilinear map on $V$. Then there exists a basis
+	Let $V$ be a finite-dimensional $\R$-vector space. If $\Omega:V\times V\to\R$ is skew-symmetric then there exists a basis
 	\begin{eqalign}
 		B= \{ u_1, \ldots, u_k, e_1, \ldots, e_n, f_1, \ldots, f_n \}
 	\end{eqalign}
-	such that
+	of $V$ such that
 	\begin{enumerate}
-		\item $\Omega(u_i, v) = 0$ for any $v \in V$ and $i \leq k$,
-		\item $\Omega(e_i, e_j) = \Omega(f_i, f_j) = 0$ for any $i, j \leq n$,
-		\item $\Omega(e_i, f_j) = \delta^i_j$ for any $i, j \leq n$,
+		\item $\Omega(u_i, v) = 0$ $\quad\forall\,v \in V$, $\forall\,i=1,\dots,k$,
+		\item $\Omega(e_i, e_j) = \Omega(f_i, f_j) = 0$  $\quad\forall\,i, j=1,\dots,n$,
+		\item $\Omega(e_i, f_j) = \delta_{ij}$ $\quad\forall\,i, j=1,\dots,n$,
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
 	Let
 	\begin{eqalign}
-		U = \{ u \in V \suchthat \Omega(u,v) = 0\ \forall v \in V\}.
+		U := \{ u \in V \suchthat \Omega(u,v) = 0\ \forall\, v \in V\}.
 	\end{eqalign}
-	This is a non-empty set since $0 \in U$ and it is the kernel of $\tilde\Omega$ hence a linear subspace of $V$. Therefore if we let $u_1, \ldots, u_k$ be a basis for $U$ (letting $k = \dim U$), the first item is proved.
+	This is a vector subspace of $V$. Choosing a basis $u_1, \dots, u_k$ of $U$ (letting $k = \dim U$), the first item is proved.
 
 	We'll now build by induction a decomposition
 	\begin{eqalign}
@@ -38,29 +36,64 @@ On the other hand, the theory of inner product spaces and that of symplectic spa
 	\end{eqalign}
 	Let $W$ be a complement of $U$ (i.e. a subspace of $V$ such that $U \dir W = V$). Unless $k=\dim V$ (in which case the theorem is vacuously proved), $W \neq 0$. Then we can select a non-zero vector $e_1$ from $W$, for which there has to be at least another $f_1 \in W$ such that $\Omega(e_1, f_1) \neq 0$. Otherwise $\Omega(e_1, w) = 0$ for every $w \in W$ implying $\Omega(e_1, v) = 0$ for any $v \in V$, since when $v \in U$ we already know $\Omega(e_1, v) = -\Omega(v, e_1) = 0$ by definition of $U$. But $U \cap V = 0$ and $e_1 \neq 0$ exclude this possibility.
 
-	Thus we choose $e_1, f_1 \in W$ such that, up to rescaling, $\Omega(e_1, f_1) = 1$. Notice, moreover, that the two vectors are linearly independent, else $\Omega$ would be zero on them by skew-symmetry. Thus we can add $e_1$ and $f_1$ to our basis, let $W_1 = \langle e_1, f_1 \rangle$, and if $W_1 = W$ we are done. Conversely, define
+	Thus we choose $e_1, f_1 \in W$ such that, up to rescaling, $\Omega(e_1, f_1) = 1$. Notice, moreover, that the two vectors are linearly independent, else $\Omega$ would be zero on them by skew-symmetry. 
+	Thus we can add $e_1$ and $f_1$ to our basis, let $W_1 = \langle e_1, f_1 \rangle$, and if $W_1 = W$ we are done. Conversely, define
 	\begin{eqalign}
 		W_1^\Omega = \{w \in W \suchthat \Omega(w, w_1) = 0\ \forall w_1 \in W_1\}
 	\end{eqalign}
-	which is a sort of ``$\Omega$-orthogonal space'' of $W_1$ inside $W$. As before, we can select a non-zero $e_2$ from $W_1^\Omega$ for which there must exist a $f_2 \in W_1^\Omega$ such that $\Omega(e_2, f_2) = 1$ up to rescaling, or $e_2$ would fall in $U$ since $U \dir W_1 \dir W_1^\Omega = V$. We understand then our process can go on as long as $W_n \neq W$, giving us a basis which satisfies (2) because each $e_i$ (resp. $f_i$) lives in the ``$\Omega$-orthogonal space'' of the other $e_i$ (resp. $f_i$), and (3) for the same reason plus the fact we make a suitable rescaling at each step.
+	which is a sort of ``$\Omega$-orthogonal space'' of $W_1$ inside $W$. We can easily prove that $W_1\cap W_1^\Omega=\{0\}$: let $v=ae_1+bf_1\in W_1\cap W_1^\Omega$, then $0=\Omega(v,e_1)=-b$ and $0=\Omega(v,f_1)=a$, therefore $v=0$. 
+	Now we will prove that $W=W_1\oplus W_1^\Omega$. Suppose $v\in W$ has $\Omega(v,e_1)=c$, $\Omega(v,f_1)=d$; then $v=(-cf_1+de_1)+(v+cf_1-de_1)$ where $(-cf_1+de_1)\in W_1$ and $(v+cf_1-de_1)\in W_1^\Omega$. 
+	
+	Let's proceed further. As before, we can select a non-zero $e_2$ from $W_1^\Omega$ for which there must exist a $f_2 \in W_1^\Omega$ such that $\Omega(e_2, f_2) = 1$ up to rescaling, or $e_2$ would fall in $U$ since $U \dir W_1 \dir W_1^\Omega = V$. We understand then our process can go on as long as $W_n \neq W$, giving us a basis which satisfies (2) because each $e_i$ (resp. $f_i$) lives in the ``$\Omega$-orthogonal space'' of the other $e_i$ (resp. $f_i$), and (3) for the same reason plus the fact we make a suitable rescaling at each step.
 \end{proof}
-\begin{corollary}
-\label{cor:can_form}
-	The form $\Omega$, with respect to the basis $B$, is represented as the following block matrix
-	\begin{eqalign}
-		\begin{pmatrix}
-			0 & 0 & 0\\
-			0 & 0 & I_n\\
-			0 & -I_n & 0
-		\end{pmatrix}.
-	\end{eqalign}
-\end{corollary}
 
 \begin{remark}
+	\leavevmode
+	\begin{enumerate}
+		\item The above basis $B$ is not unique.
+		\item
+			The form $\Omega$, with respect to the basis $B$, is represented as the following block matrix
+			\begin{eqalign}\label{eqn:can_form}
+			\begin{pmatrix}
+				0_k & 0 & 0\\
+				0 & 0 & I_n\\
+				0 & -I_n & 0
+			\end{pmatrix}.
+			\end{eqalign}
+			(we omit dimensions of other 0 matrices)
+		\item	The subspace $U$ (and in particular its dimension) does not depend on the choice of the basis. It's an invariant of $(V,\Omega)$.
+		\item	Since $k+2n=m$, $n$ is also a numerical invariant of $(V,\Omega)$.
+	\end{enumerate}
+\end{remark}
+
+\subsection{Symplectic vector spaces}
+
+Let $V$ be an $n$-dimensional $\R$-vector space. Let $\Omega:V\times V\to \R$ be a bilinear map. There is an induced linear map $\tilde\Omega:V\to V^*$ defined by $\tilde\Omega(v)(w):=\Omega(v,w)$. In other words, we can say that $\Omega$ is an element of $V^*\otimes V^*\iso\text{Hom}(V\otimes V,\R)\iso\text{Hom}(V,V^*)$. We have 
+\begin{eqalign}
+\ker\tilde\Omega=\{u\in V\suchthat\Omega(u,v)=0\,\forall\,v\in V\}=U
+\end{eqalign}
+
+\begin{definition}
+	A skew-symmetric bilinear map $\Omega$ is a \textbf{symplectic form} if $\tilde\Omega$ is invertible, i.e. $\ker\tilde\Omega=U=\{0\}$. Then $(V,\Omega)$ is called a \textbf{symplectic vector space}.
+\end{definition}
+
+\begin{remark} 
+	Above theorem describes Jordan decomposition for the map $\tilde\Omega:V\mapsto V^*$. Obviously if we consider the complex field, this map can be diagonalized.
+	In addition,  definition of symplectic form requires that Jordan decomposition of $\tilde\Omega$ has no zero-eigenvalue blocks.
+\end{remark}
+
+\begin{remark}
+Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
+\begin{eqalign}
+	\tilde\Omega : V &\longto V^*\\
+	v &\longmapsto \Omega(v, -);
+\end{eqalign}
+On the other hand, the theory of inner product spaces and that of symplectic spaces start to diverge very early on.
+
 	While the decomposition of $V$ we found in the previous proof is highly non-canonical (we made a lot of arbitrary choices!), the dimensions of the decomposition depend solely on $\Omega$. In particular, notice that $\Omega$ is non-degenerate iff $k=0$, hence we see immediately that, in light of Theorem~\ref{th:decomp_th}, \textbf{a symplectic vector space is always even-dimensional}.
 \end{remark}
 
-Corollary~\ref{cor:can_form} prescribes we can always find a ``nice'' basis for $V$ in which $\Omega$ can be represented by a \textbf{symplectic matrix}:
+Equation~\eqref{eqn:can_form} prescribes we can always find a ``nice'' basis for $V$ in which $\Omega$ can be represented by a \textbf{symplectic matrix}:
 \begin{eqalign}
 	\begin{pmatrix}
 		0 & I_n\\
@@ -70,24 +103,52 @@ Corollary~\ref{cor:can_form} prescribes we can always find a ``nice'' basis for 
 Even if, as noted before, the choice of such a basis is far from unique, we'll refer to it as a \emph{canonical} basis.
 
 \begin{definition}
-	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both, it's named \textbf{Lagrangian}.
+	A subspace $W\subset V$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W(u,v) = 0$ $\forall u,v\in W$, the subspace is called \textbf{isotropic}.
+	% and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both, it's named \textbf{Lagrangian}.
 \end{definition}
+
+\begin{example}
+	Let $V=\langle e_1,\dots,e_n,f_1,\dots,f_n\rangle$ where $e_1,\dots,e_n,f_1,\dots,f_n$ is the canonical basis. Then
+	\begin{enumerate}
+		\item	$W=\langle e_{i_1},\dots,e_{i_k},f_{i_1},\dots,f_{i_k}\rangle$ where $k\leq n$, $1\leq i_s\leq n$ and $i_s\neq i_{s'}$ if $s\neq s'$, is a symplectic subspace of V.
+		\item	$W=\langle e_{i_1},\dots,e_{i_k}\rangle$ where $k\leq n$, is a isotropic subspace of V
+	\end{enumerate}
+\end{example}
 
 Thus the decomposition~\eqref{eq:symp_decomp} (when $U = 0$, so $\Omega$ is non-degenerate) is a decomposition of $V$ in minimal symplectic subspaces.
 
 \begin{definition}
-	A \textbf{symplectomorphism} is a linear map $\phi : (V, \Omega) \to (V', \Omega')$ between symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ such that
+	A \textbf{symplectomorphism} of symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ is a linear isomorphism $\phi : V\overset\sim\longmapsto V' $  such that
 	\begin{eqalign}
-		\Omega'(\phi(u), \phi(v)) = \Omega(u,v), \quad \forall u,v \in V,
+		\phi^* \Omega' = \Omega
 	\end{eqalign}
-	or, alternatively, if $\phi^* \Omega' = \Omega$.
+	where $\phi*$ denotes the pull-back (recall $(\phi^* \Omega')(u,v):=\Omega'(\phi(u), \phi(v))$).
+	If such a $\phi$ exists, $(V, \Omega)$ and $(V', \Omega')$ are called \textbf{symplectomorphic}. 
 \end{definition}
 
-Hence, in the case of symplectic vector spaces, Theorem~\ref{th:decomp_th} says that
+This is equivalent of requiring that following diagram commutes:
+\begin{figure}[H]
+\centering
+	\include{figures/diag-symplectomorphic}
+\end{figure}
+\vspace{-1cm}
+
+\begin{remark}
+The requirement that $\phi$ is an isomorphism is not restrictive, since this is a simple consequence of the trivial kernel of $\Omega$.
+\end{remark}
+
+\begin{remark}
+In the case of symplectic vector spaces, Theorem~\ref{th:decomp_th} says that every symplectic vector space of dimension $2n$ is symplectomorphic to $(\R^{2n},\Omega_0)$:
 \begin{eqalign}
 	(V, \Omega) \underset{\cat{Symp}}\iso (\R^{2n},\Omega_0)
 \end{eqalign}
-where $\Omega_0$ is the symplectic matrix when seen from the canonical basis of $\R^{2n}$.
+with $e_1,\dots,e_n,f_1,\dots,f_n$ the canonical basis of $\R^{2n}$ and $\Omega_0(e_i,e_j)=\Omega_0(f_i,f_j)=0$, $\Omega(e_i,f_j)=\delta_{ij}$, $\forall\,i,j=1,\dots,n$.\\
+Notice that for spaces with non-degenerate symmetric form (Riemannian spaces) the situation is different, since in $\R^n$ we can define several metrics that differs only by them signature, i.e. each Riemann space $(V,g)$ is isomorphic to a "canonical" space $(\R,g_0)$ with
+\begin{eqalign}
+g_0=\begin{pmatrix}I_k&0\\0&-I_{n-k}\end{pmatrix}
+\end{eqalign}
+for some value of $k\neq n$. 
+\end{remark}
 
 \section{Symplectic manifolds}
 Endowing the tangent bundle of a manifold with a symplectic structure, we get the differential analogue of a symplectic vector space:
@@ -545,3 +606,5 @@ It's like an usual flow in which vectors, however, change with time (\emph{non-a
 \begin{remark}
 	What can we say about the different symplectic structures a manifold admits? Are they all symplectomorphic? A different yet related question is: \textbf{are there some invariants which can discern between non-equivalent symplectic structures?} Gromov proved a result stating that $\Symp(M, \omega)$ (the group of symplectomorphisms of $(M, \omega)$) is either dense or closed in $\Diff(M)$ (\emph{Gromov's alternative}). In the first case, it would have meant that symplectic topology is undistinguishable from differential topology, yet it was later proved that the second case holds, so that there is interest in studying the symplectic structures of a manifold. However, this no easy task. In fact, Darboux's theorem tells us \textbf{symplectic structures have no local invariants}: to distinguish them you have to look at global data, which is harder to work with. For example, we'll immediately see in the next chapter that a very intuitive cohomology theory fails to classify symplectic structures (while its later extension to Poisson structures partially succeed to do this). An algebraic invariant which accomplish this is called \textbf{Floer cohomology}, and requires more machinery than what we'll see here.
 \end{remark}
+
+\end{document}

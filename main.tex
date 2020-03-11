@@ -1,9 +1,13 @@
 \documentclass[english]{notes}
 
-\usepackage{./mama}
+
 \usepackage{blkarray}
 \usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage{subfiles}%Allows compilation of subfiles.
+\usepackage{./mama}%keep order of mama and subfiles packages
+
+\tikzexternaldisable %Solves compatibility problems. In order to obtain faster speed in compilation try to remove it. 
 
 \newcommand{\Lie}[1]{\mathcal{L}_{#1}}
 \newcommand{\ipr}[1]{\iota_{#1}}
@@ -54,7 +58,7 @@
 	\tableofcontents
 
 	\include{background}
-	\include{symplectic_manifolds}
+	\subfile{symplectic_manifolds}
 	\include{hamiltonian_mechanics}
 	\include{poisson_manifolds}
 	\include{integrability}
