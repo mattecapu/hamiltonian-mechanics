@@ -4,10 +4,13 @@
 \usepackage{blkarray}
 \usepackage{wrapfig}
 \usepackage{graphicx}
-\usepackage{subfiles}%Allows compilation of subfiles.
-\usepackage{./mama}%keep order of mama and subfiles packages
+% allows compilation of subfiles.
+\usepackage{subfiles}
+% keep order of mama and subfiles packages
+\usepackage{./mama}
 
-\tikzexternaldisable %Solves compatibility problems. In order to obtain faster speed in compilation try to remove it. 
+% solves compatibility problems. In order to obtain faster speed in compilation try to remove it. 
+\tikzexternaldisable 
 
 \newcommand{\Lie}[1]{\mathcal{L}_{#1}}
 \newcommand{\ipr}[1]{\iota_{#1}}
@@ -46,8 +49,6 @@
 
 \newenvironment{issue}{\color{red}}{\color{black}}
 \newcommand{\what}{\textbf{\issue{??}}}
-
-\newcommand{\skipline}{\leavevmode\vspace{\baselineskip}} 
 
 \addbibresource{./bibliography.bib}
 
