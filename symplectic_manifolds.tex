@@ -1,6 +1,8 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+%%%%BEGIN LECTURE 1%%%%%
+
 \chapter{Symplectic geometry}
 Symplectic and Poisson structures came from the structures observed in analytical mechanics (originated from the need of studying complex dynamical systems in exact fashion, like motions of planets, oscillations of many particles systems, etc.).
 \section{Symplectic forms on vectors spaces}
@@ -150,15 +152,21 @@ g_0=\begin{pmatrix}I_k&0\\0&-I_{n-k}\end{pmatrix}
 for some value of $k\neq n$. 
 \end{remark}
 
+%%%%END LECTURE 1%%%%%
+%%%%BEGIN LECTURE 2%%%%%
+
 \section{Symplectic manifolds}
-Endowing the tangent bundle of a manifold with a symplectic structure, we get the differential analogue of a symplectic vector space:
+Endowing the tangent bundle of a manifold with a symplectic structure, we get the differential analogue of a symplectic vector space.
 
 \begin{definition}
-	A \textbf{symplectic form} $\omega$ on a smooth manifold $M$ is a non-degenerate\footnotemark, closed, differentiable $2$-form on $M$. A \textbf{symplectic manifold} is a manifold $M$ equipped with a symplectic form on $M$.
-	\footnotetext{In this context, non-degenerate means pointwise non-degenerate.}
+	Let $M$ be a smooth, $m$-dimensional manifold. The 2-form $\omega\in\Omega^2(M)$ is a \textbf{symplectic form}  if $d \omega=0$ (it's closed) and $\omega\vert_p$ is symplectic (on $T^*M$) $\forall p\in M$. A \textbf{symplectic manifold} is a pair $(M,\omega)$ of a smooth manifold $M$ and a symplectic form $\omega$ on it.
 \end{definition}
 
 Therefore at each point $p \in M$ the tangent space $T_pM$ is a symplectic vector space with symplectic form $\omega_p$.
+
+\begin{remark} 
+	If $\omega\in\Omega^2(M)$ is symplectic then $\dim M=2n$.
+\end{remark}
 
 \begin{example}
 \label{ex:eu_sp_sphere}
@@ -168,31 +176,31 @@ Therefore at each point $p \in M$ the tangent space $T_pM$ is a symplectic vecto
 		\begin{eqalign}
 			\omega_0 = \sum_{i=1}^n dx^i \wedge dy^i
 		\end{eqalign}
-		where we call $y^i$ the coordinate $x^{n+i}$. With this definition $\omega_0$ is, pointwise, the form $\Omega_0$ discussed previously. Moreover, it is closed as
+		where $x_1,\dots,x_n,y_1,\dots,y_n$ are linear coordinates on $\R^{2n}$. With this definition $\omega_0$ is, pointwise, the form $\Omega_0$ discussed previously. Moreover, it is closed as
 		\begin{eqalign}
 			d\omega_0 &= \sum_{i=1}^n d(dx^i \wedge dy^i)\\
 			&= \sum_{i=1}^n d^2x^i \wedge y^i - dx^i \wedge d^2y^i = 0
 		\end{eqalign}
-		\item The $2$-sphere is a symplectic manifold. Indeed, consider its immersion in $\R^3$ defined as $S^2 = \{ x \in \R^3 \suchthat \|x\| = 1\}$. Then
+		\item The $2$-sphere is a symplectic manifold. Indeed, consider its immersion in $\R^3$ defined as $S^2 = \{ p \in \R^3 \suchthat \|p\| = \langle p,p\rangle = 1\}$. Then
 		\begin{eqalign}
-			T_xS^2 = \{ v \in \R^3 \suchthat \langle v, x \rangle = 0 \}
+			T_pS^2 = \{ v \in \R^3 \suchthat \langle v, p \rangle = 0 \}=\langle p\rangle^\perp
 		\end{eqalign}
 		can be made into a symplectic vector space by means of
 		\begin{eqalign}
-			\omega_x (u,v) := \langle x, u \times v \rangle, \quad \forall u,v \in T_xS^2.
+			\omega\vert_p (u,v) := \langle p, u \times v \rangle, \quad \forall u,v \in T_pS^2.
 		\end{eqalign}
-		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. Finally, since $\dim S^2 = 2$, the form $\omega$ is necessarily closed.
+		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. $\omega$ is nondegenerate because $\langle p,u\times v\rangle\neq0$ when $u\neq0$ and, for instance, $v=u\times p$. Finally, since $\dim S^2 = 2$, the form $\omega$ is necessarily closed.
 	\end{enumerate}
 \end{example}
 
-Since $\dim T_pM = \dim M$, $M$ inherits the condition on the dimension of $T_pM$: $M$ must be even-dimensional. However this time, even-dimensionality is not a sufficient condition for a manifold to be symplectic. A further necessary condition is given by the following theorem.
+Since $\dim T_pM = \dim M$, $M$ inherits the condition on the dimension of $T_pM$: $M$ must be even-dimensional. However this time, even-dimensionality is not a sufficient condition for a manifold to admit symplectic forms. A further necessary condition is given by the following proposition.
 
-\begin{theorem}
-\label{th:symp_vol_form}
-	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form.
-\end{theorem}
+\begin{proposition}
+\label{prop:symp_vol_form}
+	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form, i.e. $\omega^{\wedge n}\not\equiv 0$ everywhere on $M$.
+\end{proposition}
 \begin{proof}
-	The rank of $\omega^{\wedge n}$ is $2n$, so the claim makes sense. Choose $p \in M$ now, and fix a local frame $E_1, \ldots, E_n, F_1, \ldots, F_n$ around $p$ in such a way that  it is in $p$ a canonical basis as per Theorem~\ref{th:decomp_th}. Then:
+	The rank of $\omega^{\wedge n}\in\Omega^{2n}(M)$ is $2n$, so the claim makes sense. Choose $p \in M$ now, and fix a local frame $E_1, \ldots, E_n, F_1, \ldots, F_n$ around $p$ in such a way that  it is in $p$ a canonical basis as per Theorem~\ref{th:decomp_th}. Then:
 	\begin{eqalign}
 		\omega^{\wedge n}_p (E_1\vert_p, \ldots, E_n\vert_p, F_1\vert_p, \ldots, F_n\vert_p) &= \omega_p(E_1\vert_p, F_1\vert_p) \cdot \ldots \cdot \omega_p(E_n\vert_p, F_n\vert_p) = 1
 	\end{eqalign}
@@ -202,7 +210,7 @@ Since $\dim T_pM = \dim M$, $M$ inherits the condition on the dimension of $T_pM
 	If $M$ is symplectic, it is orientable.
 \end{corollary}
 
-The obvious remark is then that non-orientable manifolds can't be symplectic even in the even-dimensional case; e.g. the projective plane does not admit a symplectic structure.
+The obvious remark is then that non-orientable manifolds can't be symplectic even in the even-dimensional case; e.g. Möbius strip and the projective plane do not admit a symplectic structure.
 
 Other obstructions are given by topology. For example
 
@@ -210,26 +218,39 @@ Other obstructions are given by topology. For example
 	The $2$-sphere is the only sphere admitting a symplectic structure.
 \end{theorem}
 \begin{proof}
-	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_dr(S^{2n}) = 0$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
+	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_dr(S^{2n}) =\{ 0 \}$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
 	\begin{eqalign}
-		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} d\eta = \int_{\partial S^{2n}} \eta = 0
+		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} d(\eta\wedge\omega^{\wedge (n-1)}) = \int_{\partial S^{2n}} \eta\wedge\omega^{\wedge (n-1)} = 0
 	\end{eqalign}
-	Then, by Theorem~\ref{th:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
+	Then, by Proposition~\ref{prop:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
 \end{proof}
 
 \begin{remark}
 	Notice \textbf{the proof can be generalized to any compact manifold with vanishing second cohomology}. Moreover, it shows a symplectic form cannot be exact on a compact manifold.
 \end{remark}
 
-\begin{definition}
-	A submanifold $N$ of a symplectic manifold $(M, \omega)$ is a \textbf{symplectic submanifold} if $(N, \omega\vert_N)$ is symplectic.
-\end{definition}
-\begin{definition}
-	A smooth map $\phi : M \to N$, where $M$ and $N$ are symplectic manifolds with symplectic forms $\omega$ and $\eta$ respectively, is called a \textbf{symplectomorphism} if it is an embedding and
+%\begin{definition}
+%	A submanifold $N$ of a symplectic manifold $(M, \omega)$ is a \textbf{symplectic submanifold} if $(N, omega\vert_N)$ is symplectic.
+%\end{definition}
+%\begin{definition}
+%	A smooth map $\phi : M \to N$, where $M$ and $N$ are symplectic manifolds with symplectic forms $\omega$ and $\eta$ respectively, is called a \textbf{symplectomorphism} if it is an embedding and
+%	\begin{eqalign}
+%		\phi^* \eta = \omega
+%	\end{eqalign}
+%\end{definition}
+
+\begin{definition} 
+	Let $(M_1,\omega_1)$ and $(M_2, \omega_2)$ be two symplectic manifolds of the same dimension. A diffeomorphism $\phi:M_1\to M_2$ is called a \textbf{symplectomorphism} if
 	\begin{eqalign}
-		\phi^* \eta = \omega
+		\phi^* \omega_2 = \omega_1
 	\end{eqalign}
 \end{definition}
+
+\begin{remark}
+	If $N$ is a submanifold of a symplectic manifold $(M,\omega)$ and $(N, \omega\vert_{N})$ is symplectic then $N$ is a \textbf{symplectic submanifold} of $M$. In particular a symplectomorphism $\phi:M\to N$ is an embedding.
+\end{remark}
+
+%%%%END LECTURE 2%%%%%
 
 \begin{remark}
 \label{rmk:inverse_ipr}
