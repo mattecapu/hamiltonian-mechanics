@@ -95,13 +95,13 @@
 % images & plots
 \RequirePackage{tikz}
 
-\usetikzlibrary{external}
-\tikzexternalize[prefix=figures/cache/]
+% \usetikzlibrary{external}
+%\tikzexternalize[prefix=figures/cache/]
 
 \usetikzlibrary{cd, arrows}
 
-\AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
-\AtEndEnvironment{tikzcd}{\tikzexternalenable}
+%\AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+%\AtEndEnvironment{tikzcd}{\tikzexternalenable}
 
 % finer numbering for equations
 \numberwithin{equation}{section}
