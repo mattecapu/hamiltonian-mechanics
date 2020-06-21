@@ -199,19 +199,19 @@ The construction of the symplectic structure exploits a particular, naturally de
 \begin{construction}
 	Let $\pi : T^*X \to X$ be the bundle projection. Notice that a differential $1$-form on $T^*X$ is a function $T^*X \to T^*T^*X$ (with the additional condition of being compatible with the fibers, more on this later) which is exactly the type of function $d\pi^*$ is. If we unpack its definition from Construction~\ref{const:global_diff_and_dual}, we get
 	\begin{eqalign}
-		d\pi^* : T^*X &\longto T^*T^*X\\
+		\pi^* : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto (\pi^{-1}(x),\, \xi \circ d\pi_{\pi^{-1}(x)})
 	\end{eqalign}
-	So the definition fails. We already knew this: we remarked that $dF^*$ is well-defined if and only if $F$ is a diffeomorphism, which is certainly not the case for $\pi$. On the other hand, we can try to fix this pathology by finding another way to choose a ``canonical'' element from $\pi^{-1}(x)$ in the mapping expression of $d\pi^*(x, \xi)$. Indeed, since $\pi$ is surjective, that's the only obstruction! And we clearly see that those $\pi^{-1}(x)$ can be unambiguously resolved by simply using the argument of the sought function. So we define the mapping
+	So the definition fails. We already knew this: we remarked that $F^*$ is well-defined if and only if $F$ is a diffeomorphism, which is certainly not the case for $\pi$. On the other hand, we can try to fix this pathology by finding another way to choose a ``canonical'' element from $\pi^{-1}(x)$ in the mapping expression of $\pi^*(x, \xi)$. Indeed, since $\pi$ is surjective, that's the only obstruction! And we clearly see that those $\pi^{-1}(x)$ can be unambiguously resolved by simply using the argument of the sought function. So we define the mapping
 	\begin{eqalign}
 		\alpha : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto ((x, \xi), \xi \circ d\pi_{(x, \xi)})
 	\end{eqalign}
 	or, using the fiberwise duals (Construction~\ref{const:dual_diff_at_P}):
 	\begin{eqalign}
-		\alpha(x, \xi) = d\pi^*_{(x, \xi)} \xi.
+		\alpha(x, \xi) = \pi^*_{(x, \xi)} \xi.
 	\end{eqalign}
-	This is clearly well-defined as the domain of $d\pi^*_{(x,\xi)}$ is precisely $T^*_{(x,\xi)} T^*X$. The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
+	This is clearly well-defined as the domain of $\pi^*_{(x,\xi)}$ is precisely $T^*_{(x,\xi)} T^*X$. The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
 \end{construction}
 
 The name \emph{tautological} comes from the following property: for every $\mu \in \Omega^1(X)$,
@@ -266,7 +266,7 @@ The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 
 \begin{theorem}
 \label{th:canonicity_of_taut}
-	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}$ the dual morphism induced by $F^{-1}$. Then $\mathcal F^* \beta = \alpha$.
+	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}=(F^{-1})^*$ the dual morphism induced by $F^{-1}$. Then $\mathcal F^* \beta = \alpha$.
 	\begin{diagram}
 	\label{diag:liouville}
 		T^*X_1 \arrow{d}{\pi_1} \arrow{r}{\mathcal F} \& T^*X_2 \arrow{d}{\pi_2}\\
@@ -274,18 +274,18 @@ The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 	\end{diagram}
 \end{theorem}
 \begin{proof}
-	For each $(x, \xi) \in T^*X_2$,
+	For each $(x, \xi) \in T^*X_1$,
 	\begin{eqalign}
-		\mathcal{F}(x, \xi) = (F(x), d(F^{-1})^*_{(x,\xi)}\xi),
+		\mathcal{F}(x, \xi) = (F(x), (F^{-1})^*_{F(x)}\xi),
 	\end{eqalign}
 	so that
 	\begin{eqalign}
-		(\mathcal F^* \beta)_{(x, \xi)} &= \beta_{\mathcal{F}(x, \xi)} \circ d{\mathcal F}_{(x, \xi)}\\
-		&=  d(F^{-1})^*_{(x,\xi)} \xi \circ d(\pi_2)_{\mathcal F(x,\xi)} \circ d(d(F^{-1})^*)_{(x, \xi)}\\
-		&= \xi \circ d(F^{-1})_{(x,\xi)} \circ d(\pi_2 \circ d(F^{-1})^*)_{(x, \xi)} \comment{by chain rule}\\
-		&= \xi \circ d(F^{-1})_{(x,\xi)} \circ d(F \circ \pi_1)_{(x, \xi)} \comment{by Diagram~\ref{diag:liouville}}\\
-		&= \xi \circ d(\pi_1)_{(x, \xi)}\\
-		&= d(\pi_1)^*_{(x, \xi)} \xi = \alpha_{(x,\xi)};
+		(\mathcal F^* \beta)_{(x, \xi)} &= \beta_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
+		&= ((\pi_2)^*_{\mathcal F(x,\xi)} (F^{-1})^*_{F(x)}\xi) \circ d\mathcal F_{(x, \xi)}\\
+		&= \xi \circ d(F^{-1})_{F(x)} \circ d(\pi_2)_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
+		&= \xi \circ d(F^{-1} \circ \pi_2 \circ \mathcal F)_{(x, \xi)} \comment{by chain rule}\\
+		&= \xi \circ d(\pi_1)_{(x,\xi)} \comment{by Diagram~\ref{diag:liouville}}\\
+		&= (\pi_1)^*_{(x, \xi)} \xi = \alpha_{(x,\xi)};
 	\end{eqalign}
 	which amounts to the thesis.
 \end{proof}
