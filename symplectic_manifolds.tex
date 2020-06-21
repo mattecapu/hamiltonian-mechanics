@@ -124,7 +124,7 @@ Therefore at each point $p \in M$ the tangent space $T_pM$ is a symplectic vecto
 		\begin{eqalign}
 			\omega_x (u,v) := \langle x, u \times v \rangle, \quad \forall u,v \in T_xS^2.
 		\end{eqalign}
-		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. Finally, since $\dim S^2 = 2$, the form $\omega$ is necessarily closed.
+		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. Finally, since $\dim S^2 = 2$ and $d\omega$ is a 3-form, the form $\omega$ is necessarily closed.
 	\end{enumerate}
 \end{example}
 
@@ -132,7 +132,7 @@ Since $\dim T_pM = \dim M$, $M$ inherits the condition on the dimension of $T_pM
 
 \begin{theorem}
 \label{th:symp_vol_form}
-	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form.
+	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form, i.e. $(\omega^{\wedge n})_p \neq 0$ for any $p \in M$.
 \end{theorem}
 \begin{proof}
 	The rank of $\omega^{\wedge n}$ is $2n$, so the claim makes sense. Choose $p \in M$ now, and fix a local frame $E_1, \ldots, E_n, F_1, \ldots, F_n$ around $p$ in such a way that  it is in $p$ a canonical basis as per Theorem~\ref{th:decomp_th}. Then:
@@ -153,11 +153,11 @@ Other obstructions are given by topology. For example
 	The $2$-sphere is the only sphere admitting a symplectic structure.
 \end{theorem}
 \begin{proof}
-	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_dr(S^{2n}) = 0$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
+	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_{dR}(S^{2n}) = 0$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones (i.e.  $H^i_{dR}(S^d) \neq 0$ iff $i \in \{0, d\}$, $H^0_{dR}(S^{d}) = H^{d}_{dR}(S^{d}) = \R$) and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
 	\begin{eqalign}
-		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} d\eta = \int_{\partial S^{2n}} \eta = 0
+		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} (d\eta)^{\wedge n} = \int_{S^{2n}} d(\eta \wedge (d\eta)^{\wedge (n-1)}) = \int_{\partial S^{2n}} \eta \wedge (d\eta)^{\wedge (n-1)} = 0
 	\end{eqalign}
-	Then, by Theorem~\ref{th:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
+	since $n$-spheres have no boundaries. Then, by Theorem~\ref{th:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
 \end{proof}
 
 \begin{remark}
@@ -168,7 +168,7 @@ Other obstructions are given by topology. For example
 	A submanifold $N$ of a symplectic manifold $(M, \omega)$ is a \textbf{symplectic submanifold} if $(N, \omega\vert_N)$ is symplectic.
 \end{definition}
 \begin{definition}
-	A smooth map $\phi : M \to N$, where $M$ and $N$ are symplectic manifolds with symplectic forms $\omega$ and $\eta$ respectively, is called a \textbf{symplectomorphism} if it is an embedding and
+	A diffeomorphism $\phi : M \to N$, where $(M, \omega)$ and $(N, \eta)$ are symplectic manifolds, is called a \textbf{symplectomorphism} if
 	\begin{eqalign}
 		\phi^* \eta = \omega
 	\end{eqalign}
