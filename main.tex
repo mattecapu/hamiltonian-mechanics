@@ -1,9 +1,13 @@
 \documentclass[english]{notes}
 
-\usepackage{./mama}
 \usepackage{blkarray}
 \usepackage{wrapfig}
 \usepackage{graphicx}
+
+% allows compilation of subfiles.
+\usepackage{subfiles}
+% keep order of mama and subfiles packages
+\usepackage{./mama}
 
 \newcommand{\Lie}[1]{\mathcal{L}_{#1}}
 \newcommand{\ipr}[1]{\iota_{#1}}
@@ -53,12 +57,12 @@
 
 	\tableofcontents
 
-	\include{background}
-	\include{symplectic_manifolds}
-	\include{hamiltonian_mechanics}
-	\include{poisson_manifolds}
-	\include{integrability}
-	\include{deformation_quantization}
+	\subfile{background}
+	\subfile{symplectic_manifolds}
+	\subfile{hamiltonian_mechanics}
+	\subfile{poisson_manifolds}
+	\subfile{integrability}
+	\subfile{deformation_quantization}
 
 	\nocite{*}
 	\printbibliography[heading=bibintoc]

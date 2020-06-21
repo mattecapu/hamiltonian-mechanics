@@ -1,3 +1,6 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
 \chapter{Symplectic geometry}
 \section{Symplectic vector spaces}
 \begin{definition}
@@ -6,6 +9,7 @@
 
 Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
 \begin{eqalign}
+\label{eq:iso_induc_sym_form}
 	\tilde\Omega : V &\longto V^*\\
 	v &\longmapsto \Omega(v, -);
 \end{eqalign}
@@ -17,7 +21,7 @@ On the other hand, the theory of inner product spaces and that of symplectic spa
 	\begin{eqalign}
 		B= \{ u_1, \ldots, u_k, e_1, \ldots, e_n, f_1, \ldots, f_n \}
 	\end{eqalign}
-	such that
+	of $V$ such that
 	\begin{enumerate}
 		\item $\Omega(u_i, v) = 0$ for any $v \in V$ and $i \leq k$,
 		\item $\Omega(e_i, e_j) = \Omega(f_i, f_j) = 0$ for any $i, j \leq n$,
@@ -29,7 +33,7 @@ On the other hand, the theory of inner product spaces and that of symplectic spa
 	\begin{eqalign}
 		U = \{ u \in V \suchthat \Omega(u,v) = 0\ \forall v \in V\}.
 	\end{eqalign}
-	This is a non-empty set since $0 \in U$ and it is the kernel of $\tilde\Omega$ hence a linear subspace of $V$. Therefore if we let $u_1, \ldots, u_k$ be a basis for $U$ (letting $k = \dim U$), the first item is proved.
+	This is a non-empty set since $0 \in U$ and it is the kernel of $\tilde\Omega$ defined in eq.~\eqref{eq:iso_induc_sym_form}, hence it is a linear subspace of $V$. Therefore if we let $u_1, \ldots, u_k$ be a basis for $U$ (letting $k = \dim U$), the first item is proved.
 
 	We'll now build by induction a decomposition
 	\begin{eqalign}
@@ -73,14 +77,14 @@ Even if, as noted before, the choice of such a basis is far from unique, we'll r
 	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both, it's named \textbf{Lagrangian}.
 \end{definition}
 
-Thus the decomposition~\eqref{eq:symp_decomp} (when $U = 0$, so $\Omega$ is non-degenerate) is a decomposition of $V$ in minimal symplectic subspaces.
+Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. 
 
 \begin{definition}
 	A \textbf{symplectomorphism} is a linear map $\phi : (V, \Omega) \to (V', \Omega')$ between symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ such that
 	\begin{eqalign}
 		\Omega'(\phi(u), \phi(v)) = \Omega(u,v), \quad \forall u,v \in V,
 	\end{eqalign}
-	or, alternatively, if $\phi^* \Omega' = \Omega$.
+	or, alternatively, if $\phi^* \Omega' = \Omega$. Two symplectic vector spaces with a symplectomorphism between them are said \textbf{symplectomorphic} and denoted by $(V, \Omega) \underset{\cat{Symp}}\iso (V', \Omega')$.
 \end{definition}
 
 Hence, in the case of symplectic vector spaces, Theorem~\ref{th:decomp_th} says that
@@ -120,7 +124,7 @@ Therefore at each point $p \in M$ the tangent space $T_pM$ is a symplectic vecto
 		\begin{eqalign}
 			\omega_x (u,v) := \langle x, u \times v \rangle, \quad \forall u,v \in T_xS^2.
 		\end{eqalign}
-		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. Finally, since $\dim S^2 = 2$, the form $\omega$ is necessarily closed.
+		which trivially defines a differential form $\omega \in \Omega^2(S^2)$. Finally, since $\dim S^2 = 2$ and $d\omega$ is a 3-form, the form $\omega$ is necessarily closed.
 	\end{enumerate}
 \end{example}
 
@@ -128,7 +132,7 @@ Since $\dim T_pM = \dim M$, $M$ inherits the condition on the dimension of $T_pM
 
 \begin{theorem}
 \label{th:symp_vol_form}
-	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form.
+	Let $(M, \omega)$ be a symplectic manifold, with $\dim M = 2n$. Then the $n$-th exterior power of $\omega$ is a volume form, i.e. $(\omega^{\wedge n})_p \neq 0$ for any $p \in M$.
 \end{theorem}
 \begin{proof}
 	The rank of $\omega^{\wedge n}$ is $2n$, so the claim makes sense. Choose $p \in M$ now, and fix a local frame $E_1, \ldots, E_n, F_1, \ldots, F_n$ around $p$ in such a way that  it is in $p$ a canonical basis as per Theorem~\ref{th:decomp_th}. Then:
@@ -149,11 +153,11 @@ Other obstructions are given by topology. For example
 	The $2$-sphere is the only sphere admitting a symplectic structure.
 \end{theorem}
 \begin{proof}
-	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_dr(S^{2n}) = 0$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
+	In Example~\ref{ex:eu_sp_sphere} we exhibited a symplectic structure for $S^2$, so only we need to prove any $S^{2n}$ with $n \geq 2$ does not admit one. Let $\omega \in \Omega^2(S^{2n})$ be a closed form. Recall $H^2_{dR}(S^{2n}) = 0$, as the only non-vanishing homologies (hence cohomologies by de Rham's Theorem) are the bottom and the top ones (i.e.  $H^i_{dR}(S^d) \neq 0$ iff $i \in \{0, d\}$, $H^0_{dR}(S^{d}) = H^{d}_{dR}(S^{d}) = \R$) and we assumed $n > 1$. By definition of cohomology, this means all closed $2$-forms are automatically exact, implying there exists an $\eta \in \Omega^1(S^{2n})$ such that $d\eta = \omega$. Hence, using Corollary~\ref{cor:ext_power_is_exact} and Stokes' Theorem:
 	\begin{eqalign}
-		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} d\eta = \int_{\partial S^{2n}} \eta = 0
+		\int_{S^{2n}} \omega^{\wedge n} = \int_{S^{2n}} (d\eta)^{\wedge n} = \int_{S^{2n}} d(\eta \wedge (d\eta)^{\wedge (n-1)}) = \int_{\partial S^{2n}} \eta \wedge (d\eta)^{\wedge (n-1)} = 0
 	\end{eqalign}
-	Then, by Theorem~\ref{th:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
+	since $n$-spheres have no boundaries. Then, by Theorem~\ref{th:symp_vol_form}, it must be $\omega = 0$ thus not symplectic.
 \end{proof}
 
 \begin{remark}
@@ -164,7 +168,7 @@ Other obstructions are given by topology. For example
 	A submanifold $N$ of a symplectic manifold $(M, \omega)$ is a \textbf{symplectic submanifold} if $(N, \omega\vert_N)$ is symplectic.
 \end{definition}
 \begin{definition}
-	A smooth map $\phi : M \to N$, where $M$ and $N$ are symplectic manifolds with symplectic forms $\omega$ and $\eta$ respectively, is called a \textbf{symplectomorphism} if it is an embedding and
+	A diffeomorphism $\phi : M \to N$, where $(M, \omega)$ and $(N, \eta)$ are symplectic manifolds, is called a \textbf{symplectomorphism} if
 	\begin{eqalign}
 		\phi^* \eta = \omega
 	\end{eqalign}
@@ -545,3 +549,5 @@ It's like an usual flow in which vectors, however, change with time (\emph{non-a
 \begin{remark}
 	What can we say about the different symplectic structures a manifold admits? Are they all symplectomorphic? A different yet related question is: \textbf{are there some invariants which can discern between non-equivalent symplectic structures?} Gromov proved a result stating that $\Symp(M, \omega)$ (the group of symplectomorphisms of $(M, \omega)$) is either dense or closed in $\Diff(M)$ (\emph{Gromov's alternative}). In the first case, it would have meant that symplectic topology is undistinguishable from differential topology, yet it was later proved that the second case holds, so that there is interest in studying the symplectic structures of a manifold. However, this no easy task. In fact, Darboux's theorem tells us \textbf{symplectic structures have no local invariants}: to distinguish them you have to look at global data, which is harder to work with. For example, we'll immediately see in the next chapter that a very intuitive cohomology theory fails to classify symplectic structures (while its later extension to Poisson structures partially succeed to do this). An algebraic invariant which accomplish this is called \textbf{Floer cohomology}, and requires more machinery than what we'll see here.
 \end{remark}
+
+\end{document}
