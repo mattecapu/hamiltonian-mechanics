@@ -9,6 +9,7 @@
 
 Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
 \begin{eqalign}
+\label{eq:iso_induc_sym_form}
 	\tilde\Omega : V &\longto V^*\\
 	v &\longmapsto \Omega(v, -);
 \end{eqalign}
@@ -20,7 +21,7 @@ On the other hand, the theory of inner product spaces and that of symplectic spa
 	\begin{eqalign}
 		B= \{ u_1, \ldots, u_k, e_1, \ldots, e_n, f_1, \ldots, f_n \}
 	\end{eqalign}
-	such that
+	of $V$ such that
 	\begin{enumerate}
 		\item $\Omega(u_i, v) = 0$ for any $v \in V$ and $i \leq k$,
 		\item $\Omega(e_i, e_j) = \Omega(f_i, f_j) = 0$ for any $i, j \leq n$,
@@ -32,7 +33,7 @@ On the other hand, the theory of inner product spaces and that of symplectic spa
 	\begin{eqalign}
 		U = \{ u \in V \suchthat \Omega(u,v) = 0\ \forall v \in V\}.
 	\end{eqalign}
-	This is a non-empty set since $0 \in U$ and it is the kernel of $\tilde\Omega$ hence a linear subspace of $V$. Therefore if we let $u_1, \ldots, u_k$ be a basis for $U$ (letting $k = \dim U$), the first item is proved.
+	This is a non-empty set since $0 \in U$ and it is the kernel of $\tilde\Omega$ defined in eq.~\eqref{eq:iso_induc_sym_form}, hence it is a linear subspace of $V$. Therefore if we let $u_1, \ldots, u_k$ be a basis for $U$ (letting $k = \dim U$), the first item is proved.
 
 	We'll now build by induction a decomposition
 	\begin{eqalign}
@@ -76,14 +77,14 @@ Even if, as noted before, the choice of such a basis is far from unique, we'll r
 	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both, it's named \textbf{Lagrangian}.
 \end{definition}
 
-Thus the decomposition~\eqref{eq:symp_decomp} (when $U = 0$, so $\Omega$ is non-degenerate) is a decomposition of $V$ in minimal symplectic subspaces.
+Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. 
 
 \begin{definition}
 	A \textbf{symplectomorphism} is a linear map $\phi : (V, \Omega) \to (V', \Omega')$ between symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ such that
 	\begin{eqalign}
 		\Omega'(\phi(u), \phi(v)) = \Omega(u,v), \quad \forall u,v \in V,
 	\end{eqalign}
-	or, alternatively, if $\phi^* \Omega' = \Omega$.
+	or, alternatively, if $\phi^* \Omega' = \Omega$. Two symplectic vector spaces with a symplectomorphism between them are said \textbf{symplectomorphic} and denoted by $(V, \Omega) \underset{\cat{Symp}}\iso (V', \Omega')$.
 \end{definition}
 
 Hence, in the case of symplectic vector spaces, Theorem~\ref{th:decomp_th} says that
