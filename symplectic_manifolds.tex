@@ -467,45 +467,68 @@ where $\pi_0$ is the bundle morphism, $\phi$ is the diffeomorphism we ask for in
 	Let $(M, \omega_t = (1-t)\omega_0+t\omega_1)$ be a symplectic \textbf{compact} manifold for each $t \in [0,1]$, and $\overline{\omega_0} = \overline{\omega_1} \in H^2_{dR}(M)$. Then there exists $\rho: M \times \R \to M$ such that $\rho_t : (M, \omega_t) \isoto (M,\omega_0)$ is a symplectomorphism for all $t \in [0,1]$.
 \end{theorem}
 
-The idea is that if you have a ``flowing'' symplectic structure, you can compensate by a ``flowing'' change of coordinates. This is given by a one-parameter group of diffeomorphisms, hence by the flow of a vector field on $M$. In this vein, the theorem is basically equivalent to the following:
+In other words this theorem states that we cannot deform the symplectic structure of a compact manifold without changing its cohomology class. The idea is that if you have a ``flowing'' symplectic structure, you can compensate by a ``flowing'' change of coordinates. This is given by a one-parameter group of diffeomorphisms, hence by the flow of a vector field on $M$. In this vein, the theorem is basically equivalent to the following:
 
 \begin{lemma}[Moser's trick]
 	Under the assumptions of Moser's First Theorem, there exists $V_t \in \fields(M)$ depending smoothly on $t$ and such that
 	\begin{eqalign}
+	\label{eq:Moser_trick}
 		\Lie{V_t}\omega_t+\der{\omega_t}{t}=0.
 	\end{eqalign}
 \end{lemma}
 \begin{proof}
-	Notice that $\der{}{t} \omega_t = \omega_1-\omega_0$, and since $\omega_1$ and $\omega_0$ are cohomologous, their difference is cohomologous to $\overline 0 \in H^2_{dR}(M)$. This means that $\omega_1 -\omega_0 = d\mu$ for some $\mu \in \Omega^1(M)$. Moreover, by Cartan's magic formula
+	Notice that $\der{}{t} \omega_t = \omega_1-\omega_0$, and since $\omega_1$ and $\omega_0$ are cohomologous, their difference is cohomologous to $\overline 0 \in H^2_{dR}(M)$. This means that $\omega_1 -\omega_0 = d\mu$ for some $\mu \in \Omega^1(M)$. Moreover, by Cartan's magic formula\footnotemark
 	\begin{eqalign}
 		\Lie{V_t}\omega_t = d \ipr{V_t}\omega_t + \cancel{\ipr{V_t}d\omega_t}.
 	\end{eqalign}
-	Hence the equation we want to prove has been reduced to
+	since $\omega_t$ is closed. Hence the equation we want to prove has been reduced to
 	\begin{eqalign}
 		d(\ipr{V_t}\omega_t + \mu) = 0
 	\end{eqalign}
-	which of course holds in particular if $\ipr{V_t}\omega_t = -\mu$ (\textbf{Moser's equation}), i.e. when
+	which of course holds in particular if $\ipr{V_t}\omega_t = -\mu$ (\textbf{Moser's equation}). Since form $\omega_t$ is non-degenerate, it induces an isomorphism $\omega_t^\# : TM \to T^*M$, $V \mapsto \iota_V\omega_t$, and the Moser's equation can be rewritten as $\omega_t^\#(V_t) = - \mu$. Then its unique solution is given by
 	\begin{eqalign}
-		V_t = -\omega_t^{-1}(\mu).
+		V_t = (\omega_t^\#)^{-1}(-\mu).
 	\end{eqalign}
 \end{proof}
+\footnotetext{We have to be careful about the meaning of the parameter $t$. Given a $t$-dependent vector field $V_t$, we define its $t$-dependent flow $\rho_{t_1,t_2} : M \to M$ by
+\begin{eqalign}
+	\der{}{\epsilon} \rho_{t, t+\epsilon}(p)\vert_{\epsilon=0} = V_t (p)
+\end{eqalign}
+We have $\rho_{t_1, t_2} \circ \rho_{t_0, t_1} = \rho_{t_0, t_2}$ and $\rho_{t,t} = \id$. If $\rho_t := \rho_{0,t}$ then $\rho_{t_1, t_2} = \rho_{t_2} \circ \rho_{t_1}^{-1}$ and 
+\begin{eqalign}
+\label{eq:ODE_flow_non_autonomous}
+	V_t(p) = \der{}{\epsilon} \rho_{t+\epsilon} \circ \rho_t^{-1}(p)\vert_{\epsilon=0}.
+\end{eqalign} 
+It's like an usual flow in which vectors, however, change with time (\emph{non-autonomous flow}), so at time $t$ the curve has tangent vector $V_t$. For comparison, this is the equation in the \emph{autonomous} (i.e. the field doesn't vary with time) case:
+\begin{eqalign}
+\label{eq:ODE_flow_autonomous}
+	V(p) = \der{}{\epsilon} \rho_\epsilon (p) \vert_{\epsilon=0} .
+\end{eqalign}
+Notice that in our case $\rho_t : M \to M$ satisfies the ODE eq.~\eqref{eq:ODE_flow_non_autonomous}, which is slightly more complicated than the usual eq.~\eqref{eq:ODE_flow_autonomous} because in the first case there is no group flow: $\rho_{t+s} \neq \rho_t \circ \rho_s$. Nevertheless eq.~\eqref{eq:ODE_flow_non_autonomous} is an ODE with local solution (and two local solutions coincide in the intersection of their domains). Compactness of $M$ is used to have existence over $t \in [0, 1]$. In the non-compact case the flow might run off the edge of $M$ before reaching $t=1$. 
+
+We define Lie derivative along the $t$-dependent vector field $V_t$ as
+\begin{eqalign}
+	\Lie{V_t}\alpha = \der{}{\epsilon}\rho_{t,t+\epsilon}^*\alpha\vert_{\epsilon=0} = (\rho_t^*)^{-1} \der{}{\epsilon}(\rho_{t+\epsilon}^*\alpha)\vert_{\epsilon=0}
+\end{eqalign}
+i.e.
+\begin{eqalign}
+\label{eq:t_depend_Lie_derivative}
+	\varphi_t^*(\Lie{V_t}\alpha) = \der{}{\epsilon}(\varphi_{t+\epsilon}^*\alpha)\vert_{\epsilon=0} = \der{}{t}\varphi_t^*\alpha
+\end{eqalign}
+One can prove that Cartan's magic formula holds also in this case.} 
 
 \begin{proof}[Proof of Moser's Theorem (\ref{th:first_moser_th})]
-	Let $\rho_t$ be a flow as claimed. Then if $V_t$ is the vector field associated to it (i.e. its derivative\footnotemark), we can write
+	Let $V_t$ be the vector field satisfying eq.~\eqref{eq:Moser_trick}. Using compactness of $M$ we can obtain the flow $\rho_t$ associated to $V_t$, i.e. the solution of eq.~\eqref{eq:ODE_flow_non_autonomous}. We can write, introducing a $t$ dependence in eq.~\eqref{eq:t_depend_Lie_derivative}, 
 	\begin{eqalign}
 	\label{eq:der_of_flowing_symp}
 		\der{}{t}(\rho_t^*\omega_t) = \rho_t^*\left(\Lie{V_t}\omega_t + \der{\omega_t}{t}\right).
 	\end{eqalign}
-	Then we see that, as $M$ is compact, we could reverse the argument and get all of $\rho_t$ by integration of $V_t$, which is given to us by Moser's trick.
+	and using eq.~\eqref{eq:Moser_trick} we obtain
+	\begin{eqalign}
+		\der{}{t}(\rho_t^*\omega_t)=0
+	\end{eqalign}
+	i.e. $\rho_t^*\omega_t = \rho_0^*\omega_0 = \omega_0$. 
 \end{proof}
-\footnotetext{We have to be careful about the meaning of the parameter $t$! There are two different ``times'' to consider in a similar flow, indeed, $\rho_t$ satisfies the following ODE:
-\begin{eqalign}
-	V_t = \der{}{s} (\rho_s\rho_t^{-1})\vert_{s=t}
-\end{eqalign}
-It's like an usual flow in which vectors, however, change with time (\emph{non-autonomous flow}), so at time $t$ the curve has tangent vector $V_t$. For comparison, this is the equation in the \emph{autonomous} (i.e. the field doesn't vary with time) case:
-\begin{eqalign}
-	V = \der{}{s} \rho_s \vert_{s=0}.
-\end{eqalign}}
 
 \begin{remark}
 	Moser's Theorem can be proved also in the more general case where $\omega_t$ is a continuous curve inside a single cohomology class, that is
