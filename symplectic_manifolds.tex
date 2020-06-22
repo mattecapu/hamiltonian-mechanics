@@ -518,7 +518,7 @@ i.e.
 One can prove that Cartan's magic formula holds also in this case.} 
 
 \begin{proof}[Proof of Moser's Theorem (\ref{th:first_moser_th})]
-	Let $V_t$ be the vector field satisfying eq.~\eqref{eq:Moser_trick}. Using compactness of $M$ we can obtain the flow $\rho_t$ associated to $V_t$, i.e. the solution of eq.~\eqref{eq:ODE_flow_non_autonomous}. We can write, introducing a $t$ dependence in eq.~\eqref{eq:t_depend_Lie_derivative}, 
+	Let $V_t$ be a vector field satisfying eq.~\eqref{eq:Moser_trick}. Using compactness of $M$ we can obtain the flow $\rho_t$ associated to $V_t$, i.e. the solution of eq.~\eqref{eq:ODE_flow_non_autonomous}. We can write, introducing a $t$-dependence in eq.~\eqref{eq:t_depend_Lie_derivative}, 
 	\begin{eqalign}
 	\label{eq:der_of_flowing_symp}
 		\der{}{t}(\rho_t^*\omega_t) = \rho_t^*\left(\Lie{V_t}\omega_t + \der{\omega_t}{t}\right).
@@ -543,7 +543,7 @@ One can prove that Cartan's magic formula holds also in this case.}
 	\begin{eqalign}
 		\omega_0\vert_p = \omega_1\vert_p, \quad \forall p \in X
 	\end{eqalign}
-	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: U_0 \isoto U_1$, which on $X$ restricts to the identity, such that the following diagram commutes:
+	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: (U_0, \omega_0) \isoto (U_1, \omega_1)$, which on $X$ restricts to the identity, such that the following diagram commutes:
 	\begin{diagram}
 		(U_0, \omega_0) \arrow{rr}{\phi} \& \& (U_1, \omega_1)\\
 		\& X \arrow[hookrightarrow]{ul}{\iota_0} \arrow[hookrightarrow, swap]{ur}{\iota_1}
