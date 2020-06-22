@@ -189,6 +189,16 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		\{ f, g \} = \omega(X_f, X_g).
 	\end{eqalign}
 \end{definition}
+
+Notice $\omega(X_f, X_g) = (\ipr{X_f}\omega)(X_g) = \langle df, X_g \rangle = X_g (f)$, hence $\{ f, g \} = X_g(f) = - X_f(g)$.
+
+\begin{definition}
+	A \textbf{Poisson algebra} $(\mathcal P, \{-,-\})$ is a commutative associative algebra $\mathcal P$ equipped with an additional Lie algebra structure $\{-,-\}$ which satisfy a Leibniz rule relative to the algebra product:
+	\begin{eqalign}
+		\{f, gh\} = \{f,g\}h + g\{f,h\}, \quad \forall f,g,h \in \mathcal P.
+	\end{eqalign}
+\end{definition}
+
 \begin{theorem}
 	For all $f,g,h \in \Cinfty(M)$, the Poisson brackets satisfy the following properties:
 	\begin{enumerate}
@@ -213,6 +223,13 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		for all $f,g,h \in \Cinfty(M)$.
 	\end{enumerate}
 \end{theorem}
+\begin{proof}
+Direct computation.
+\end{proof}
+
+\begin{corollary}
+	The Poisson brackets puts a Poisson algebra structure on $\Cinfty(M)$, i.e. $(\Cinfty(M), \{ - , -\})$ is a Poisson algebra
+\end{corollary}
 
 \begin{theorem}
 \label{th:comm_is_ham}
@@ -224,7 +241,7 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 \begin{proof}
 	Fix an atlas, we'll verify $\ipr{[U,V]} \omega = -d(\omega(U,V))$ using coordinates computation. We'll use of the following facts (the order reflects where they are used in the computation):
 	\begin{enumerate}
-		\item The Lie derivative of a tensor is found by successively saturating the involved indices (one for the derivative + all the indices of the tensor) with the vector field we are differentiating along, so in particular for a $1$-form, it is
+		\item The Lie derivative of a tensor is found by successively saturating the involved indices\footnotemark (one for the derivative + all the indices of the tensor) with the vector field we are differentiating along, so in particular for a $1$-form, it is
 		\begin{eqalign}
 			\Lie{U} \eta = \left[ U^\mu (\partial_\mu \eta_\beta) + (\partial_\beta U^\mu) \eta_\mu \right] dx^\beta;
 		\end{eqalign}
@@ -238,6 +255,16 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 			d\ipr{U}\omega = d\ipr{V}\omega = 0.
 		\end{eqalign}
 	\end{enumerate}
+	\footnotetext{The Lie derivative of a $k$-form $\omega$ is given by the extension of the Leibniz rule
+	\begin{eqalign}
+		\Lie{U}(\langle \omega, \partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle) = \langle \Lie{U}\omega, \partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle + \langle \omega, \Lie{U}\partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle + \dots + \langle \omega, \partial_{\alpha_1}, \dots, \Lie{U}\partial_{\alpha_k} \rangle
+	\end{eqalign}
+	i.e.
+	\begin{eqalign}
+		(\Lie{U}\omega)(\partial_{\alpha_1}, \dots, \partial_{\alpha_k}) & = U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) - \omega([U, \partial_{\alpha_1}], \dots \partial_{\alpha_k}) - \dots - \omega(\partial_{\alpha_1}, \dots , [U, \partial_{\alpha_k}]) \\
+		& = U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) + (\partial_{\alpha_1} U^{\alpha_1})\omega(\partial_{\alpha_1}, \dots \partial_{\alpha_k}) + \dots + (\partial_{\alpha_k} U^{\alpha_k})\omega(\partial_{\alpha_1}, \dots , \partial_{\alpha_k}) 
+	\end{eqalign}
+	}
 
 	Together with the above facts, two algebraic tricks are used:
 
@@ -278,15 +305,12 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		(\Cinfty(M), \{-,-\}) &\longto (\fields^{\text{Ham}}(M), [-,-])\\
 		f &\longmapsto X_f
 	\end{eqalign}
-	is an \textbf{anti}morphism of Lie algebras, surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
-\end{corollary}
-
-\begin{definition}
-	A \textbf{Poisson algebra} $(\mathcal P, \{-,-\})$ is a commutative associative algebra $\mathcal P$ equipped with an additional Lie algebra structure $\{-,-\}$ which satisfy a Leibniz rule relative to the algebra product:
+	is an \textbf{anti}morphism of Lie algebras, since
 	\begin{eqalign}
-		\{f, gh\} = \{f,g\}h + g\{f,h\}, \quad \forall f,g,h \in \mathcal P.
+		X_{\{f,g\}} = - [X_f, X_g]
 	\end{eqalign}
-\end{definition}
+	Such morphism is surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
+\end{corollary}
 
 The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
 
