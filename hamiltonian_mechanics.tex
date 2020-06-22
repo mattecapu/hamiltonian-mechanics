@@ -10,11 +10,12 @@ In this chapter, we'll study how a symplectic structure may be used to produce a
 	\begin{eqalign}
 		\ipr{X_h} \omega = dh
 	\end{eqalign}
-	or equivalently
+	or equivalently\footnotemark
 	\begin{eqalign}
 		X_h = \omega^{-1}(dh).
 	\end{eqalign}
 \end{definition}
+\footnotetext{Again, with $\omega^{-1}$ we mean the inverse of the isomorphism $\omega^\# : TM \isoto T^*M, X \mapsto \ipr{X}\omega$.}
 
 \begin{definition}
 	A vector field $X \in \fields(M)$ is \textbf{Hamiltonian} iff there exists a function $h \in \Cinfty(M)$ such that
@@ -45,14 +46,6 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	Moreover, $\omega^{-1}$ carries the $\R$-module structure downstairs: indeed, the linear combination of Hamiltonian (resp. symplectic) fields is still Hamiltonian (resp. symplectic). \textbf{This means the obstructions for a symplectic vector field to be an Hamiltonian one are encoded by the same cohomology data for differential forms}, i.e. the module $H^1_{dR}(M)$. If one wonders wheter this could be extended to a whole cohomology theory, the answer is \emph{yes}, although we'll need to wait the more general context of Poisson manifolds. The ``symplectic cohomology'' we'll get, however, will be canonically isomorphic to de Rham cohomology, as the first cohomology witnesses. As remarked in the previous chapter, this means that this flavor of cohomology is not enough to discern symplectic structures on $M$.
 \end{remark}
 
-\begin{example}
-	Let $M = T^2$ with symplectic form $\omega = d\theta_1 \wedge d\theta_2$. The chosen coordinates represent angle variables around two closed circles around the torus, (for simplicity, we can think of them to be around the ``principal'' directions of the torus). Consider the fields $X_1 = \partial_{\theta^1}$ and $X_2 = -\partial_{\theta^2}$: they are symplectic but not Hamiltonian. Indeed, $\Lie{X_i} \omega = 0$ for both $i=1,2$ but
-	\begin{eqalign}
-		\ipr{X_i} \omega = d\theta^{3-i}
-	\end{eqalign}
-	which is \textbf{not} exact since $\theta^i$ can't be defined globally: they are only defined locally (at most on the whole torus with two independent\footnote{Non-homotopic, non-contractible loops which wind once.} circles removed). Anyway, $d\theta^i$ does define a differential $1$-form on the whole space (intuitively, since differentiating eliminates the $2\pi$ jump discontinuity which prevents a global definition). Actually this is the whole point of the first cohomology group: $\overline{d\theta_1}, \overline{d\theta_2}$ generate $H^1_{dR}(T^2)$ which is, indeed, $\R \times \R$.
-\end{example}
-
 \begin{remark}
 \label{rmk:omega_is_const_on_symp_fields}
 	An equivalent condition for a vector field to be symplectic can be obtained through Cartan's formula. In fact,
@@ -65,6 +58,19 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	\end{eqalign}
 \end{remark}
 
+\begin{example}
+	Let $M = T^2$ with symplectic form $\omega = d\theta_1 \wedge d\theta_2$. The chosen coordinates represent angle variables around two closed circles around the torus, (for simplicity, we can think of them to be around the ``principal'' directions of the torus). Consider the fields $X_1 = \partial_{\theta_1}$ and $X_2 = -\partial_{\theta_2}$: they are symplectic but not Hamiltonian. Indeed, $\Lie{X_i} \omega = 0$ for both $i=1,2$ but
+	\begin{eqalign}
+		\ipr{X_1} \omega = d\theta_{2}
+		\qquad \text{and} \qquad
+		\ipr{X_2} \omega = d\theta_{1}
+	\end{eqalign}
+	which is \textbf{not} exact since $\theta_i$ can't be defined globally\footnote{Variables $\theta_1$ and $\theta_2$ are multivalued on $T^2 = \R^2/(2\pi\Z)^2$, for instance $(0,\theta_2) = (2\pi, \theta_2)$. We cannot restrict these coordinates to $[0, 2\pi)$ to define a cohomology otherwise they would be discontinuous, for instance $\theta_1$ would have a discontinuity at $(0, \theta_2)$.}: they are only defined locally (at most on the whole torus with two independent\footnote{Non-homotopic, non-contractible loops which wind once.} circles removed). Anyway, $d\theta_i$ does define a differential $1$-form on the whole space (intuitively, since differentiating eliminates the $2\pi$ jump discontinuity which prevents a global definition). Actually this is the whole point of the first cohomology group: $\overline{d\theta_1}, \overline{d\theta_2}$ generate $H^1_{dR}(T^2)$ which is, indeed, $\R \times \R$:
+	\begin{eqalign}
+		H^1_{dR}(T^2) = \langle \overline{d\theta_1}, \overline{d\theta_2} \rangle \iso \R \times \R .
+	\end{eqalign}
+\end{example}
+
 \begin{theorem}
 \label{th:flow_of_symp_field}
 	The $1$-parameter group of diffeomorphisms $\phi_t : M \isoto M$ associated to a symplectic vector field $X$ preserves the symplectic structure:
@@ -75,20 +81,23 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	This means that \textbf{the group is actually a group of symplectomorphisms}.
 \end{theorem}
 \begin{proof}
-	Follows from Equation~\ref{eq:der_of_flowing_symp} and Remark~\ref{rmk:omega_is_const_on_symp_fields}.
+	Follows from Equation~\ref{eq:t_depend_Lie_derivative} and Remark~\ref{rmk:omega_is_const_on_symp_fields}. Indeed let $\phi_t : M \to M$ be associated to $X_h = \omega^{-1}(dh)$. Then 
+	\begin{eqalign}
+		\der{}{t}(\phi_t^*(\omega))=\phi_t^* \Lie{X_h}\omega = \phi_t^* (d\ipr{X_h}\omega + \ipr{X}\cancel{d\omega}) = \phi_t^*(\cancel{d^2 h}) = 0 .
+	\end{eqalign}
 \end{proof}
 
 \begin{example}
 \label{ex:sphere_with_height_ham}
-	Let $M=S^2$ with the symplectic structure given by the mixed product. Consider the immersion given by cylindrical coordinates
+	Let $M=S^2$ with the symplectic structure given by the mixed product introduced in Example~\ref{ex:eu_sp_sphere}. Consider the immersion given by cylindrical coordinates
 	\begin{eqalign}
 		\iota : S^2 &\longto \R^3\\
 		(\theta,h) &\longmapsto (\sqrt{1-h^2} \cos \theta,\, \sqrt{1-h^2}\sin \theta,\, h).
 	\end{eqalign}
-	Then
+	Then $T\iota(S^2)$ is described by
 	\begin{eqalign}
-		\iota_*(\partial_\theta) &= \partial_\theta x \partial_x + \partial_\theta y \partial_y + \partial_\theta z \partial_z = -y \partial_x + x\partial_y\\[2ex]
-		\iota_*(\partial_h) &= \partial_h x \partial_x + \partial_h y \partial_y \partial_h z \partial_z = \frac{z}{1-z^2}
+		\iota_*(\partial_\theta) &= \pder{x}{\theta} \pder{}{x} + \pder{y}{\theta} \pder{}{y} + \pder{z}{\theta} \pder{}{z} = -y \partial_x + x\partial_y\\[2ex]
+		\iota_*(\partial_h) &= \pder{x}{h} \pder{}{x} + \pder{y}{h} \pder{}{y} + \pder{z}{h} \pder{}{z} = - \frac{xz}{1-z^2}\partial_x - \frac{yz}{1-z^2}\partial_y + \partial_z
 	\end{eqalign}
 	where in the second computation we made the substitution $\cos \theta = x/\sqrt{1-z^2}$ and $\sin \theta = y/\sqrt{1-z^2}$. We use these to compute the symplectic form in coordinates. In truth, we already know
 	\begin{eqalign}
@@ -112,7 +121,7 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 \begin{proof}
 	We check $X_h(h)$, the derivative of $h$ along the field $X_h$:
 	\begin{eqalign}
-		X_h(h) = dh(X_h) = \ipr{X_h} dh = \ipr{X_h} \ipr{X_h} \omega = 0.
+		\Lie{X_h}h = X_h(h) = dh(X_h) = \ipr{X_h} dh = \ipr{X_h} \ipr{X_h} \omega = 0.
 	\end{eqalign}
 \end{proof}
 \begin{corollary}
@@ -155,11 +164,16 @@ We'd like now to justify our mathematical definitions in terms of the properties
 	where $\phi_t : M \to M$ is the flow of $X_h$. Notice, again, this must be true for any choice of $h$, so that by the same computation we did to prove Theorem~\ref{th:flow_of_symp_field}, it implies $d\omega = 0$.
 \end{construction}
 
-Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent the configuration space of a mechanical system, and let $\omega = -d\alpha = dx^j \wedge d\xi_j$ be the canonical symplectic structure on $M$. Fix a function $h \in \Cinfty(T^*X)$. Then its Hamiltonian vector field is obtained by applying the graded Leibniz rule for the interior product:
+Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent the configuration space of a mechanical system, and let $\omega = -d\alpha = dx^j \wedge d\xi_j$ be the canonical symplectic structure on $M$. Fix a function $h \in \Cinfty(T^*X)$. Then its Hamiltonian vector field is obtained by applying the graded Leibniz rule for the interior product\footnotemark:
 \begin{eqalign}
-	X_h = \pder{h}{\xi_j} \partial_{x^j} - \pder{h}{x^j}\partial_{\xi^j}
+	X_h = \pder{h}{\xi_j} \partial_{x^j} - \pder{h}{x^j}\partial_{\xi_j}
 \end{eqalign}
 \textbf{which corresponds very naturally to the vector field we got from Newton's equations}. Indeed, they're the same up to rescaling by a factor $1/m$. Somehow, this ``trick'' to lower Newton's equations to the first-order, when taken seriously and globally on the configuration space, gives us the symplectic structure of $T^* X$.
+\footnotetext{Explicitly:
+\begin{eqalign}
+	\ipr{X_h}\omega &= (dx^j \wedge d\xi_j) \left(\pder{h}{\xi_i} \partial_{x^i} - \pder{h}{x^i}\partial_{\xi_i}, -\right) = dx^j\left(\pder{h}{\xi_i} \partial_{x^i}\right) d\xi_j - d\xi_j\left(- \pder{h}{x^i}\partial_{\xi_i}\right)dx^j\\
+	& = \pder{h}{x^j}dx^j + \pder{h}{\xi_j} d\xi_j = dh.
+\end{eqalign}}
 
 \section{Poisson brackets}
 We've seen in the previous sections that the dynamics on a symplectic manifold comes, in the first place, from a function $h \in \Cinfty(M)$. Moreover, in the physical interpretation of a symplectic manifold we can also imagine the smooth functions on $M$ to represent observables of the system, i.e. quantities we can measure at any given state $p \in M$. Then we might try to find a way to study not only the dynamics of the system, but also the dynamics of the observables themselves.
