@@ -304,7 +304,7 @@ With the same coordinates we used before, $\omega$ is
 	\omega &= -d\alpha\\
 	&= - d(\xi_j dx^j)\\
 	&= - \cancelto{0}{\frac{\partial \xi_j}{\partial x^i}} dx^i \wedge dx^j - \cancelto{\delta^i_j}{\frac{\partial \xi_j}{\partial \xi_i}} d\xi_i \wedge dx^j\\
-	&= dx^j \wedge d\xi_j
+	&= dx^i \wedge d\xi_i
 \end{eqalign}
 
 \section{Symplectomorphisms and Lagrangian manifolds}
@@ -333,18 +333,18 @@ These submanifolds are closely related to symplectomorphisms. A first hint comes
 	Let $M = T^*X$ for a smooth manifold $X$, along with its canonical symplectic structure. Prove the graph of $\alpha \in \Omega^1(X)$ defines a Lagrangian submanifold of $M$ if and only if $\alpha$ is closed, that is $d\alpha =0$.
 \end{exercise}
 \begin{proof}
-	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. For the isotropy condition, a quick computation gives
+	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. If we consider the inclusion $\iota : X \simeq \Gamma_\alpha X \into M$ whose differential respect to $X$ and $M$ local coordinates is 
 	\begin{eqalign}
 		d\iota = \begin{pmatrix}
-			\delta^i_j & 0\\
-			\partial_j \alpha_i & 0
+			\delta^i_j \\
+			\partial_j \alpha^i
 		\end{pmatrix}
 	\end{eqalign}
 	from which
 	\begin{eqalign}
-		\iota^* \omega &= \sum_{j=1}^n \iota^* dx^j \wedge \iota^* d\xi^j = \sum_{j=1}^n \delta^i_j dx^j \wedge (\partial_j \alpha_i) dx^j = -d\alpha
+		\iota^* \omega &= (dx^i \wedge d\xi_i) \circ d\iota = dx^i \wedge (\partial_j \alpha_i) dx^j = (\partial_j \alpha_i) dx^i \wedge dx^j = - d (\alpha_i dx^i) = - d\alpha
 	\end{eqalign}
-	giving the claim.
+	then the claim follows immediately.
 \end{proof}
 
 Consider now two symplectic manifolds $(M_1,\omega_1)$ and $(M_2, \omega_2)$, with the same dimension $\dim M_1 = \dim M_2$. We can endow $M_1 \times M_2$ with two different symplectic structures
