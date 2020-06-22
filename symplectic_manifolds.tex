@@ -333,7 +333,7 @@ These submanifolds are closely related to symplectomorphisms. A first hint comes
 	Let $M = T^*X$ for a smooth manifold $X$, along with its canonical symplectic structure. Prove the graph of $\alpha \in \Omega^1(X)$ defines a Lagrangian submanifold of $M$ if and only if $\alpha$ is closed, that is $d\alpha =0$.
 \end{exercise}
 \begin{proof}
-	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. If we consider the inclusion $\iota : X \simeq \Gamma_\alpha X \into M$ whose differential respect to $X$ and $M$ local coordinates is 
+	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. If we consider the inclusion $\iota : X \iso \Gamma_\alpha X \into M$ whose differential respect to $X$ and $M$ local coordinates is 
 	\begin{eqalign}
 		d\iota = \begin{pmatrix}
 			\delta^i_j \\
@@ -370,7 +370,7 @@ where $\pr_.$ denote a projection map onto $M_.$.
 	\begin{eqalign}
 		\iota^*\omega_- = \iota^*\pr_1^* \omega_1 - \iota^*\pr_2^* \omega_2 = (\pr_1 \circ \iota)^* \omega_1 - (\pr_2 \circ \iota)^* \omega_2
 	\end{eqalign}
-	Since\footnote{With abuse of notation, we call $\iota$ both the inclusions $\Gamma_\phi \into M_1 \times M_2$ and $M_1 \into M_1 \times M_2$ where in the second case the isomorphism $M_1 \simeq \Gamma_\phi$ is used. } $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
+	Since\footnote{With abuse of notation, we call $\iota$ both the inclusions $\Gamma_\phi \into M_1 \times M_2$ and $M_1 \into M_1 \times M_2$ where in the second case the isomorphism $M_1 \iso \Gamma_\phi$ is used. } $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
 	\begin{eqalign}
 		\iota^*\omega_- = \id^*\omega_1 - \phi^*\omega_2
 	\end{eqalign}
@@ -587,7 +587,7 @@ One can prove that Cartan's magic formula holds also in this case.}
 	\end{diagram}
 \end{theorem}
 \begin{proof}
-	The form $\omega$ induces a nondegenerate pairing $T_xM/T_xX\times T_xX \to \R$, $(\overline v, u) \mapsto \omega\vert_x(v,u)$ which gives an identification $NX \simeq T^*X$ when $X$ is Lagrangian. Then the claim is proved by applying Moser's Relative Theorem to a tubular neighbourhood of $\iota (X)$ identified with a tubular neighbourhood of $X$ in $NX \simeq T^*X$, indeed $\omega\vert_{\iota(X)} = \omega_0\vert_{\iota_0(x)}=0$.
+	The form $\omega$ induces a nondegenerate pairing $T_xM/T_xX\times T_xX \to \R$, $(\overline v, u) \mapsto \omega\vert_x(v,u)$ which gives an identification $NX \iso T^*X$ when $X$ is Lagrangian. Then the claim is proved by applying Moser's Relative Theorem to a tubular neighbourhood of $\iota (X)$ identified with a tubular neighbourhood of $X$ in $NX \iso T^*X$, indeed $\omega\vert_{\iota(X)} = \omega_0\vert_{\iota_0(x)}=0$.
 \end{proof}
 
 \end{document}
