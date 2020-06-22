@@ -342,7 +342,7 @@ These submanifolds are closely related to symplectomorphisms. A first hint comes
 	\end{eqalign}
 	from which
 	\begin{eqalign}
-		\iota^* \omega &= (dx^i \wedge d\xi_i) \circ d\iota = dx^i \wedge (\partial_j \alpha_i) dx^j = (\partial_j \alpha_i) dx^i \wedge dx^j = - d (\alpha_i dx^i) = - d\alpha
+		\iota^* \omega &= (dx^i \wedge d\xi_i) \circ d\iota = dx^i \wedge (\partial_j \alpha_i) dx^j = - (\partial_j \alpha_i) dx^j \wedge dx^i = - d (\alpha_i dx^i) = - d\alpha
 	\end{eqalign}
 	then the claim follows immediately.
 \end{proof}
@@ -440,9 +440,11 @@ We'll now pursue a local description of symplectic manifolds. For this section, 
 	defined pointwise on $X$.
 \end{definition}
 
+Any section $\sigma: X \to NX$ of $NX$ can be interpreted as a deformation of $X$. Then, the zero section $\sigma_0: x \mapsto 0$ is $X$ itself, i.e. $\iota_0 : X \into NX$ with $\iota_0 (X) = \sigma_0 (X)$.
+
 \begin{definition}
 	A \textbf{tubular neighbourhood} of $X$ is an open neighbourhood $U$ of $\iota(X)$ in $M$ diffeomorphic to a convex\footnotemark\ neighbourhood $U_0 \subseteq NX$ of the zero section of the normal bundle.
-	\footnotetext{In a vector space, a subset is convex if any convex combination of elements of the subset is still in the subset.}
+	\footnotetext{In a vector space, a subset is convex if any convex combination of elements of the subset is still in the subset. In a vector bundle a neighbourhood is convex if its intersection with each fiber is convex.}
 \end{definition}
 
 The convexity condition means that $U_0 \cap N_xX$ has to be convex as a subset of the vector space $N_x X$.
@@ -454,7 +456,7 @@ Hence the situation is the following:
 \end{diagram}
 where $\pi_0$ is the bundle morphism, $\phi$ is the diffeomorphism we ask for in the definition and $\pi$ arises from commutativity of the diagram.
 
-\paragraph{Topological properties of tubular neighbourhoods.} The choice of properties of a tubular neighbourhood is tuned as to make it a very useful tool to probe the de Rham cohomology of $X$. From \ref{par:ind_maps_on_de_rham} we know two spaces have the same cohomology when they are homotopically equivalent. Indeed, notice $\pi\iota = \id_X$ already. On the other hand we clearly don't have $\iota\pi = \id_U$. However, $\iota\pi$ is still homotopic to the identity, thanks to the convexity condition on $U_0$. In fact $U_0$ is just a fattening of $X$ and diffeomorphic to $U$, so that $U$ contracts to $X$ as well. In this way $\id \homtop \iota\pi$. Then $(\iota\pi)^* = \pi^*\iota^* = \id_U^* : H^k_{dR}(U) \to H^k_{dR}(U)$. Hence, \textbf{$\pi^*$ is an isomorphism of de Rham cohomology groups}, which means
+\paragraph{Topological properties of tubular neighbourhoods.} The choice of properties of a tubular neighbourhood is tuned as to make it a very useful tool to probe the de Rham cohomology of $X$. From \ref{par:ind_maps_on_de_rham} we know two spaces have the same cohomology when they are homotopically equivalent. Indeed, notice $\pi \circ \iota = \id_X$ already. On the other hand we clearly don't have $\iota \circ \pi = \id_U$. However, $\iota \circ \pi$ is still homotopic to the identity\footnote{Using the convexity, we can define an interpolating map $f_t : U_0 \to U_0$, $(x,v) \mapsto (x,tv)$, such that $f_0 = \iota_0 \circ \pi_0$ and $f_1 = \id_{U_0}$. Then combining $f_t$ with the diffeomorphism $\phi$ we obtain that $\iota \circ \pi$ is homotopic to $\id_U$.}, thanks to the convexity condition on $U_0$. In fact $U_0$ is just a fattening of $X$ and diffeomorphic to $U$, so that $U$ contracts to $X$ as well. In this way $\id_U \homtop \iota \circ \pi$. Then $(\iota \circ \pi)^* = \pi^* \circ \iota^* = \id_U^* : H^k_{dR}(U) \to H^k_{dR}(U)$ is the identity. Hence, \textbf{$\pi^*$ is an isomorphism of de Rham cohomology groups}, which means
 \begin{eqalign}
 	H^k_{dR}(U) \iso H^k_{dR}(X).
 \end{eqalign}
