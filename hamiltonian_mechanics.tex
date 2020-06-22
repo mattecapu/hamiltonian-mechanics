@@ -152,16 +152,19 @@ We'd like now to justify our mathematical definitions in terms of the properties
 			\ddot x = - \frac1m \bigpder{h}{x}
 		\end{dcases}
 	\end{eqalign}
-	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $T^*_pM \to T_pM$. Geometrically, such a smooth choice of linear maps is encoded by a tensor field $\eta \in \Gamma(TM \tens TM)$, so that $X_h = \eta (dh)$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnotemark\ all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$.
-	\footnotetext{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.}
+	i.e. in matrix representation
+	\begin{eqalign}
+		\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix} = \begin{pmatrix} 0 & 1\\-1 & 0\end{pmatrix}\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh}
+	\end{eqalign}
+	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $\eta^\# : T^*_pM \to T_pM$, so that $X_h = \eta^\# (dh)$. Geometrically, such a smooth choice of linear maps is encoded by the tensor field $\eta \in \Gamma(TM \tens TM)$ associated to $\eta^\#$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnote{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.} all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate\footnote{Which is equivalent to assume the injectivity of $\eta^\#$. In this case we can define $(\eta^\#)^{-1} =: \omega^\# : TM \to T^*M$ and its associated tensor $\omega \in \Gamma(T^*M \tens T^*M)$.}; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$.
 
-	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
+	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes\footnote{We can rewrite $X_h(h) = \langle X_h, dh \rangle = \langle X_h, \omega^\#(\eta^\#(dh)) \rangle = \langle X_h, \omega^\#(X_h) \rangle = \omega(X_h, X_h)$.} $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
 
-	\textbf{The second assumption is to have non-changing laws of physics} (now embodied in $\omega$), which translates mathematically to:
+	\textbf{The second assumption is that laws of physics are time-independent}, which translates mathematically to:
 	\begin{eqalign}
 		\phi_t^*\omega = \omega
 	\end{eqalign}
-	where $\phi_t : M \to M$ is the flow of $X_h$. Notice, again, this must be true for any choice of $h$, so that by the same computation we did to prove Theorem~\ref{th:flow_of_symp_field}, it implies $d\omega = 0$.
+	where $\phi_t : M \to M$ is the flow of $X_h$. Notice, again, this must be true for any choice of $h$, so that by the same computation we did to prove Theorem~\ref{th:flow_of_symp_field}, it implies\footnote{The condition $\phi_t^*\omega = \omega$ is equivalent to $0 = \Lie{X_h}\omega = (d\ipr{X_h} + \ipr{X_h}d)\omega = d(\ipr{X_h}\omega)+\ipr{X_h}d\omega = \cancel{d^2h} + \ipr{X_h}d\omega$. Since this has to hold for any choice of $h$ it implies $d\omega=0$.} $d\omega = 0$.
 \end{construction}
 
 Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent the configuration space of a mechanical system, and let $\omega = -d\alpha = dx^j \wedge d\xi_j$ be the canonical symplectic structure on $M$. Fix a function $h \in \Cinfty(T^*X)$. Then its Hamiltonian vector field is obtained by applying the graded Leibniz rule for the interior product\footnotemark:
