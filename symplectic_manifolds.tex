@@ -543,7 +543,7 @@ One can prove that Cartan's magic formula holds also in this case.}
 	\begin{eqalign}
 		\omega_0\vert_p = \omega_1\vert_p, \quad \forall p \in X
 	\end{eqalign}
-	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: U_0 \isoto U_1$, which on $X$ restricts to the identity, such that
+	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: U_0 \isoto U_1$, which on $X$ restricts to the identity, such that the following diagram commutes:
 	\begin{diagram}
 		(U_0, \omega_0) \arrow{rr}{\phi} \& \& (U_1, \omega_1)\\
 		\& X \arrow[hookrightarrow]{ul}{\iota_0} \arrow[hookrightarrow, swap]{ur}{\iota_1}
@@ -578,5 +578,16 @@ One can prove that Cartan's magic formula holds also in this case.}
 \begin{remark}
 	What can we say about the different symplectic structures a manifold admits? Are they all symplectomorphic? A different yet related question is: \textbf{are there some invariants which can discern between non-equivalent symplectic structures?} Gromov proved a result stating that $\Symp(M, \omega)$ (the group of symplectomorphisms of $(M, \omega)$) is either dense or closed in $\Diff(M)$ (\emph{Gromov's alternative}). In the first case, it would have meant that symplectic topology is undistinguishable from differential topology, yet it was later proved that the second case holds, so that there is interest in studying the symplectic structures of a manifold. However, this no easy task. In fact, Darboux's theorem tells us \textbf{symplectic structures have no local invariants}: to distinguish them you have to look at global data, which is harder to work with. For example, we'll immediately see in the next chapter that a very intuitive cohomology theory fails to classify symplectic structures (while its later extension to Poisson structures partially succeed to do this). An algebraic invariant which accomplish this is called \textbf{Floer cohomology}, and requires more machinery than what we'll see here.
 \end{remark}
+
+\begin{theorem}[Weinstein]
+	Let $(M, \omega)$ be a symplectic manifold, $X$ a compact Lagrangian submanifold, $\omega_0$ the canonical symplectic form on $T^*X$, $\iota_0 : X \into T^*X$ the zero section and $\iota : X \into M$ the closed embedding of $X$ as a submanifold. Then exists $U_0 \supseteq \iota_0(X)$, $U \supseteq \iota(x)$ and a diffeomorphism $\phi : U_0 \isoto U$ such that the folowing diagram commutes:
+	\begin{diagram}
+		(U_0, \omega_0) \arrow{rr}{\phi} \& \& (U, \omega)\\
+		\& X \arrow[hookrightarrow]{ul}{\iota_0} \arrow[hookrightarrow, swap]{ur}{\iota}
+	\end{diagram}
+\end{theorem}
+\begin{proof}
+	The form $\omega$ induces a nondegenerate pairing $T_xM/T_xX\times T_xX \to \R$, $(\overline v, u) \mapsto \omega\vert_x(v,u)$ which gives an identification $NX \simeq T^*X$ when $X$ is Lagrangian. Then the claim is proved by applying Moser's Relative Theorem to a tubular neighbourhood of $\iota (X)$ identified with a tubular neighbourhood of $X$ in $NX \simeq T^*X$.
+\end{proof}
 
 \end{document}
