@@ -303,7 +303,8 @@ With the same coordinates we used before, $\omega$ is
 \begin{eqalign}
 	\omega &= -d\alpha\\
 	&= - d(\xi_j dx^j)\\
-	&= - d\xi_j \wedge dx^j - \xi_j \wedge \cancelto{0}{d^2x^j} = \sum_{j=1}^n d\xi^j \wedge dx^j
+	&= - \cancelto{0}{\frac{\partial \xi_j}{\partial x^i}} dx^i \wedge dx^j - \cancelto{\delta^i_j}{\frac{\partial \xi_j}{\partial \xi_i}} d\xi_i \wedge dx^j\\
+	&= dx^j \wedge d\xi_j
 \end{eqalign}
 
 \section{Symplectomorphisms and Lagrangian manifolds}
