@@ -307,7 +307,7 @@ With the same coordinates we used before, $\omega$ is
 	&= dx^i \wedge d\xi_i
 \end{eqalign}
 
-\section{Symplectomorphisms and Lagrangian manifolds}
+\section{Symplectomorphisms and Lagrangian submanifolds}
 Theorem~\ref{th:canonicity_of_taut} says the pullback $(f^{-1})^* : T^*X_1 \to T^*X_2$ is a symplectomorphism. In particular, when $X=X_1=X_2$, there's a natural morphism of groups,
 \begin{diagram}
 	\Diff(X) \arrow[hookrightarrow]{r} \& \Symp(T^*X, \omega),
@@ -351,7 +351,7 @@ Consider now two symplectic manifolds $(M_1,\omega_1)$ and $(M_2, \omega_2)$, wi
 \begin{eqalign}
 	\omega_\pm = \pr_1^*\omega_1 \pm \pr_2^*\omega_2
 \end{eqalign}
-where $\pr_.$ denote a projection map.
+where $\pr_.$ denote a projection map onto $M_.$.
 
 \begin{theorem}
 \label{th:char_of_symplectomorphism}
@@ -366,11 +366,11 @@ where $\pr_.$ denote a projection map.
 	\begin{eqalign}
 		\dim \Gamma_\phi = \dim M_1 = \frac12 \dim (M_1 \times M_2).
 	\end{eqalign}
-	Moreover, We have
+	Moreover, we have
 	\begin{eqalign}
 		\iota^*\omega_- = \iota^*\pr_1^* \omega_1 - \iota^*\pr_2^* \omega_2 = (\pr_1 \circ \iota)^* \omega_1 - (\pr_2 \circ \iota)^* \omega_2
 	\end{eqalign}
-	Since $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
+	Since\footnote{With abuse of notation, we call $\iota$ both the inclusions $\Gamma_\phi \into M_1 \times M_2$ and $M_1 \into M_1 \times M_2$ where in the second case the isomorphism $M_1 \simeq \Gamma_\phi$ is used. } $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
 	\begin{eqalign}
 		\iota^*\omega_- = \id^*\omega_1 - \phi^*\omega_2
 	\end{eqalign}
@@ -385,7 +385,8 @@ where $\pr_.$ denote a projection map.
 	The theorem \emph{does not} state any Lagrangian submanifold is the graph of a symplectomorphism: it is assumed, a fortiori, that $\phi$ is a diffeomorphism.
 \end{remark}
 
-This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent_bundles}, gives us a systematic way to produce symplectomorphisms of a cotangent space.
+\subsection{Symplectomorphisms $T^*X_1 \to T^*X_2$ and generating functions}
+Theorem \ref{th:char_of_symplectomorphism}, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent_bundles}, gives us a systematic way to produce symplectomorphisms of a cotangent space.
 
 \begin{construction}
 	In the case $M_1 = T^*X_1$ and $M_2 = T^*X_2$, along with their canonical symplectic structure, then
@@ -406,6 +407,7 @@ This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent
 		\item Twist the graph to $\tilde\Gamma_{df} = \{(x,y,d_xf,-d_yf) \suchthat (x,y) \in X_1 \times X_2\}$ (because the only difference between $\omega_+$ and $\omega_-$ is exactly this twist on the second factor) to get a Lagrangian submanifold with respect to $\omega_-$.
 		\item For $\tilde\Gamma_{df}$ to be the graph of a diffeomorphism $\phi : T^*X_1 \isoto T^*X_2$, it needs to satisfy a local condition: it must not be ``vertical'' at any point on the $T^*X_1$-$T^*X_2$ plane, that is, the projection $\pr_1 : \tilde\Gamma_{df} \to T^*X_1$ must have no critical points. This means
 		\begin{eqalign}
+		\label{eq:canonical_transf_from_gen_funcs_invertibility}
 			\det \left( \spder{f}{y^j}{x^i} \right) \neq 0
 		\end{eqalign}
 		If this is satisfied, then $\phi$ sends the first and third component of a point in $\tilde\Gamma_{df}$ to the second and fourth components:
@@ -420,6 +422,7 @@ This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent
 				\eta_i = -\bigpder{f}{y^i}(x,y)
 			\end{cases}
 		\end{eqalign}
+		in such a way that $\tilde\Gamma_{df} = \{(x,y,\xi (x,y),\eta (x,y)) \suchthat (x,y) \in X_1 \times X_2\} = \Gamma_\phi$. Condition eq.~\eqref{eq:canonical_transf_from_gen_funcs_invertibility} ensures the invertibility of eq.~\eqref{eq:canonical_transf_from_gen_funcs} and $\phi$. 
 	\end{enumerate}
 \end{construction}
 
