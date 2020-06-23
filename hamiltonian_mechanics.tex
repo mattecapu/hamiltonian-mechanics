@@ -402,21 +402,21 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 \end{construction}
 
 \begin{definition}
-	An Hamiltonian system $(M, \omega, h)$ is called \textbf{completely integrable} if it possesses $n=\frac12 \dim M$ integrals of motion which are independent and in involution.
+	An Hamiltonian system $(M, \omega, h)$ is called \textbf{completely integrable} (or \textbf{integrable}) if it possesses $n=\frac12 \dim M$ integrals of motion which are independent and in involution.
 \end{definition}
 
 \begin{remark}
-	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds. 
+	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds, i.e. the previous definition is consistent with the definition of completely integrable distribution. 
 \end{remark}
 
 \begin{remark}
-	If $\dim M = 2$ every Hamiltonian system is completely integrable.
+	When $\dim M=2$, every Hamiltonian system whose energy function $h$ is not closed ($dh \neq 0$) is an integrable system (because we need just one function, and we have $h$ already).
 \end{remark}
 
 \section{Arnold--Liouville Theorem}
 \begin{example}[Pendulum]
 \label{ex:pendulum}
-	When $\dim M=2$, every Hamiltonian system whose energy function $h$ is not closed ($dh \neq 0$) is an integrable system (because we need just one function, and we have $h$ already). The configuration space of a simple pendulum is $S^1$, and thus $M = T^*S^1 \iso S^1 \times \R$ is such a $2$-dimensional Hamiltonian system, with Hamiltonian given by the energy function:
+	The configuration space of a simple pendulum is $S^1$, and thus $M = T^*S^1 \iso S^1 \times \R$ is such a $2$-dimensional Hamiltonian system, with Hamiltonian given by the energy function:
 	\begin{eqalign}
 		h(\theta, \xi) = \frac{\xi^2}{2m \ell^2} +m\ell (1-\cos \theta)
 	\end{eqalign}
@@ -578,7 +578,7 @@ We start with some vocabulary:
 	\end{enumerate}
 \end{proof}
 
-\subsection{Applications}
+\section{Applications of Arnold--Liouville Theorem}
 \begin{example}[Simple pendulum]
 	Let's analyze Example~\ref{ex:pendulum} in light of Arnold--Liouville Theorem. Figure~\ref{fig:pendulum_phase_diagram} shows the fibration induced by $h$ on $T^*S^1$. We need to take in consideration that the diagram should actually be wrapped around a cylinder. Hence not only the closed curves near the singular point $(0, 0)$ are compact fibers, but also the ones further away, which look open on the plane but close up on the cylinder. The open fibers are the two halves of the ``doubly punctured'' circle which constitutes the separatrix between the two families of compact fibers.
 
