@@ -12,6 +12,7 @@ In this chapter, we'll study how a symplectic structure may be used to produce a
 	\end{eqalign}
 	or equivalently\footnotemark
 	\begin{eqalign}
+	\label{eq:ass_ham_vec_field}
 		X_h = \omega^{-1}(dh).
 	\end{eqalign}
 \end{definition}
@@ -307,11 +308,14 @@ Direct computation.
 	\end{eqalign}
 	is an \textbf{anti}morphism of Lie algebras, since
 	\begin{eqalign}
+	\label{eq:Lie_alg_struct_Ham_fields}
 		X_{\{f,g\}} = - [X_f, X_g]
 	\end{eqalign}
 	Such morphism is surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
 \end{corollary}
 
+\chapter{Integrable systems}
+\section{Integrals of motion}
 The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, $f(t) = f \circ \phi_t$, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
 
 \begin{theorem}
@@ -327,16 +331,22 @@ The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system unde
 	\end{eqalign}
 \end{proof}
 
-\chapter{Integrable systems}
 \begin{definition}
 	We call \textbf{Hamiltonian system} the data of a symplectic manifold together with a fixed choice of Hamiltonian $h \in \Cinfty(M)$.
 \end{definition}
 
 \begin{definition}
-	Let $(M, \omega, h)$ be an Hamiltonian system. A function $f \in \Cinfty(M)$ such that $\{f,h\} = 0$ is called an \textbf{integral of motion} of the system.
+	Let $(M, \omega, h)$ be an Hamiltonian system. A function $f \in \Cinfty(M)$ such that $\{f,h\} = 0$ is called an \textbf{integral of motion} (or \textbf{constant of motion}) of the system.
 \end{definition}
 
-The great insight of Hamiltonian formalism is that \textbf{integrals of motion are the key to describe explicitly the evolution of a system.} This intuition can be justified by the geometrical treatment we have given so far. Hence this section will be devoted to this purpose, and will culminate with a structural result about Hamiltonian systems, the Arnold--Liouville Theorem.
+The great insight of Hamiltonian formalism is that \textbf{integrals of motion are the key to describe explicitly the evolution of a system.} This intuition can be justified by the geometrical treatment we have given so far. Hence this chapter will be devoted to this purpose, and will culminate with a structural result about Hamiltonian systems, the Arnold--Liouville Theorem.
+
+\begin{definition}
+	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{independent} if
+	\begin{eqalign}
+		\text{$\forall p \in M, df_1\vert_p, \ldots, df_n\vert_p$ are linearly independent over $T^*M$.}
+	\end{eqalign}
+\end{definition}
 
 \begin{definition}
 	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{in involution} or to \textbf{commute} if
@@ -344,6 +354,23 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 		\{f_i, f_j \} = 0, \quad \forall i,j \leq k.
 	\end{eqalign}
 \end{definition}
+
+\begin{lemma}
+\label{lemma:isotropic_dist}
+	A set $f_1, \ldots, f_k$ of functions in involution generates an \textbf{isotropic distribution}, which means at every point $x \in M$ they span a subspace of $T_xM$ depending smoothly on $x$
+	\begin{eqalign}
+		\langle X_{f_1}\vert_x, \ldots, X_{f_k}\vert_x \rangle \underset{\cat{Vec}}\subseteq T_x M
+	\end{eqalign}
+	such that
+	\begin{eqalign}
+		\omega(X, Y) = 0, \quad \forall X,Y \in \langle X_{f_1}, \ldots, X_{f_k} \rangle.
+	\end{eqalign}
+	If $f_1, \ldots, f_k$ are also independent they can be at most $\frac12 \dim M$.
+	In particular, when the functions are independent and $k = \frac12 \dim M$, the distribution is Lagrangian.
+\end{lemma}
+\begin{proof}
+	From the definition of Poisson bracket we see that if $f_1, \ldots, f_k$ are in involution then $\omega(X_{f_i}, X_{f_j}) = 0$, hence the first part of the statement follows immediately. If we assume that  $f_1, \ldots, f_k$ are independent then also the associated vector fields $X_{f_1}, \dots, X_{f_k}$ are independent, therefore we cannot have $k > n$ since in such case $\omega$ would be degenerate.
+\end{proof}
 
 \begin{construction}
 \label{const:level_submanifolds_of_involutions}
@@ -365,31 +392,26 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 	and the $X_{h_i}$ are independent. Moreover, \textbf{this computation also shows $H^{-1}(c)$ is a Lagrangian submanifold of $M$}, since it has dimension $n$ and $\omega$ vanishes on its generators. Then $H$ is said to be a \textbf{Lagrangian fibration}.
 \end{construction}
 
-\begin{definition}
-	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{independent} if
+\begin{construction}
+\label{const:compl_integr_Ham_system}
+	If we introduce the independence of $h_1, \ldots, h_n$ in the previous construction, then the associated vector fields $X_{h_1}, \dots, X_{h_n}$ are independent and the distribution $\mathcal D := \langle X_{h_1}, \dots, X_{h_n} \rangle$ is smooth. Equation eq.~\eqref{eq:Lie_alg_struct_Ham_fields} tells us that 
 	\begin{eqalign}
-		\text{$\forall p \in M, df_1\vert_p, \ldots, df_n\vert_p$ are linearly independent over $T^*M$.}
+		[X_{h_i}, X_{h_j}] = 0, \quad \forall i,j \leq k.
 	\end{eqalign}
-\end{definition}
-
-Construction~\ref{const:level_submanifolds_of_involutions} then shows that:
-
-\begin{lemma}
-\label{lemma:isotropic_dist}
-	A set $f_1, \ldots, f_k$ of functions independent and in involution generates an \textbf{isotropic distribution}, which means at every point $x \in M$ they span a subspace of $T_xM$ depending smoothly on $x$
-	\begin{eqalign}
-		\langle X_{f_1}\vert_x, \ldots, X_{f_k}\vert_x \rangle \underset{\cat{Vec}}\subseteq T_x M
-	\end{eqalign}
-	such that
-	\begin{eqalign}
-		\omega(X, Y) = 0, \quad \forall X,Y \in \langle X_{f_1}, \ldots, X_{f_k} \rangle.
-	\end{eqalign}
-	In particular, when $k = \frac12 \dim M$, the distribution is Lagrangian.
-\end{lemma}
+	and that $[X, Y]$ is an Hamiltonian vector field for each $X, Y \in \mathcal D$. Finally Theorem \ref{lemma:isotropic_dist} tells us that $[X, Y] \in \fields_{\mathcal D}(M)$, since we cannot have $n+1$ independent Hamiltonian vector fields. Hence the smooth distribution $\mathcal D$ is involutive, and thanks to Frobenius theorem\footnote{Theorems 3.7.11 and 3.7.17 \cite{abate2011geometria}} \textbf{the distribution $\langle X_{h_1}, \dots, X_{h_n} \rangle$ is completely integrable and the collection of all maximal integrable submanifolds of $\mathcal D$ constitute a foliation of $M$ into Lagrangian submanifolds}.
+\end{construction}
 
 \begin{definition}
 	An Hamiltonian system $(M, \omega, h)$ is called \textbf{completely integrable} if it possesses $n=\frac12 \dim M$ integrals of motion which are independent and in involution.
 \end{definition}
+
+\begin{remark}
+	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds. 
+\end{remark}
+
+\begin{remark}
+	If $\dim M = 2$ every Hamiltonian system is completely integrable.
+\end{remark}
 
 \section{Arnold--Liouville Theorem}
 \begin{example}[Pendulum]
