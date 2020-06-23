@@ -445,8 +445,22 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		X_{h_i}(h_j) = \omega(X_{h_i}, X_{h_j}) = \{ h_i, h_j \} = 0
 	\end{eqalign}
-	and the $X_{h_i}$ are independent. Moreover, \textbf{this computation also shows $H^{-1}(c)$ is a Lagrangian submanifold of $M$}, since it has dimension $n$ and $\omega$ vanishes on its generators. Then $H$ is said to be a \textbf{Lagrangian fibration}.
+	and the $X_{h_i}$ are independent. Moreover, \textbf{this computation also shows $H^{-1}(c)$ is a Lagrangian submanifold of $M$}, since it has dimension $n$ and $\omega$ vanishes on its generators.
 \end{construction}
+
+\begin{definition}
+	Let $M$ be a symplectic manifold. A \textbf{Lagrangian fibration} is a submersion\footnotemark $H : M \to N$ where all of the fibres are Lagrangian submanifolds.
+\end{definition}
+\footnotetext{A submersion $H : M \to N$ is a smooth function such that $dH$ is pointwise surjective.}
+
+\begin{remark}
+	Let $H : M \to \R^n$ be the application defined in Construction \ref{const:level_submanifolds_of_involutions}, then it is a Lagrangian fibration if it has no singular points, i.e. if $dh_1\vert_p, \ldots dh_n \vert_p$ are linearly independent at each $p \in M$.
+\end{remark}
+
+\begin{remark}
+\label{rem:submersion_to_Lag_fibration} 
+	Let $H : M \to N$ be a submersion, then the set of critical points are given by the vanishing of $\det dH$, hence it is closed. Then whenever $M$ is symplectic and fibres of $H$ are Lagrangian submanifolds of $M$, we can promote $H$ to a Lagrangian fibration by restricting $M$ to the open set of regular points of $H$.
+\end{remark}
 
 \begin{definition}
 	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exist an open neighbourhood $U$ and a diffeomorphism $f^{-1}(U) \isoto U \times F$ which makes the following commute:
@@ -472,7 +486,7 @@ We start with a construction and some vocabulary:
 
 \begin{theorem}[Arnold--Liouville]
 \label{th:arnold_liouville}
-	Let $(M, \omega)$ be a symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a \textbf{Lagrangian fibration}; i.e. its fibers are Lagrangian submanifolds of constant dimension. Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
+	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case as described in Remark \ref{rem:submersion_to_Lag_fibration}.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
 	\begin{enumerate}
 		\item $F^{(p)}$ is diffeomorphic to $\R^{n-k} \times \T^k$ through a diffeomorphism that maps the flows of $X_{h_1}, \ldots, X_{h_n}$ to linear flows on $\R^{n-k} \times \T^k$; i.e. a linear $\R^n$-action on $\R^{n-k} \times \T^k$;
 		\item in a neighbourhood of $F^{(p)}$ the functions $h_1, \ldots, h_n$ can be completed to a system of Darboux coordinates;
