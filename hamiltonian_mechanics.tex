@@ -454,12 +454,12 @@ We start with a construction and some vocabulary:
 \footnotetext{A submersion $H : M \to N$ is a smooth function such that $dH$ is pointwise surjective.}
 
 \begin{remark}
-	Let $H : M \to \R^n$ be the application defined in Construction \ref{const:level_submanifolds_of_involutions}, then it is a Lagrangian fibration if it has no singular points, i.e. if $dh_1\vert_p, \ldots dh_n \vert_p$ are linearly independent at each $p \in M$.
+\label{rem:submersion_to_Lag_fibration} 
+	Let $H : M \to N$ be a submersion, $M$ symplectic, then the set $\operatorname{crit} H$ of critical points of $H$ is given by the vanishing of $\det dH$, hence it is closed. Then if all fibres of regular points of $H$ are Lagrangian submanifolds of $M$, we can promote $H$ to a Lagrangian fibration by restricting $M$ to the open set $M \setminus \operatorname{crit} H$.
 \end{remark}
 
 \begin{remark}
-\label{rem:submersion_to_Lag_fibration} 
-	Let $H : M \to N$ be a submersion, then the set of critical points are given by the vanishing of $\det dH$, hence it is closed. Then whenever $M$ is symplectic and fibres of $H$ are Lagrangian submanifolds of $M$, we can promote $H$ to a Lagrangian fibration by restricting $M$ to the open set of regular points of $H$.
+	Let $H : M \to \R^n$ as in Construction \ref{const:level_submanifolds_of_involutions}, then $H : M \setminus \operatorname{crit} H \to \R^n$ is a Lagrangian fibration.
 \end{remark}
 
 \begin{definition}
@@ -486,20 +486,17 @@ We start with a construction and some vocabulary:
 
 \begin{theorem}[Arnold--Liouville]
 \label{th:arnold_liouville}
-	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case as described in Remark \ref{rem:submersion_to_Lag_fibration}.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
+	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case by removing the set of critical points of $H$ from $M$.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
 	\begin{enumerate}
 		\item $F^{(p)}$ is diffeomorphic to $\R^{n-k} \times \T^k$ through a diffeomorphism that maps the flows of $X_{h_1}, \ldots, X_{h_n}$ to linear flows on $\R^{n-k} \times \T^k$; i.e. a linear $\R^n$-action on $\R^{n-k} \times \T^k$;
 		\item in a neighbourhood of $F^{(p)}$ the functions $h_1, \ldots, h_n$ can be completed to a system of Darboux coordinates;
 		\item the set $M_C$ of points whose fiber is compact is open, and $H\vert_{M_C}$ is a locally trivial Lagrangian fibration with fiber $\T^n$;
 		\item in a neighbourhood of each fiber of $H\vert_{M_C}$ there exists a system of Darboux coordinates formed by $n$ angle variables on $\T^n$ and $n$ integrals of motion called \textbf{action variables} (where the term \emph{action} comes from their physical meaning).
 	\end{enumerate}
-	\footnotetext{Which means that the flow $\phi_t$ is defined for all $t \in \R$, or --- equivalently --- that it is infinitely prolongable. This is always the case when $M$ is compact.}
+	\footnotetext{A flow $\phi_t : M \to M$ is said \textbf{complete} if it is defined for any value of $t \in \R$, or --- equivalently --- that it is infinitely prolongable. This is always the case when $M$ is compact. Nevertheless notice that this requirement is not obvious if we defined the manifold $M$ by removing from it the set of all singular points, as the resulting manifold is open in the initial one.}
 \end{theorem}
 \begin{remark}
 	The statement of \textbf{the theorem is agnostic about the choice of Hamiltonian function}. Indeed, it is not about Hamiltonian manifolds but about symplectic ones with $n$ functions in involution. Basically, this comes from the fact that the choice of $h$ is (from the mathematical point of view) arbitrary, since it comes from the physical situation: the mathematical content of the Hamiltonian formalism is given solely by the set of functions in involution.
-\end{remark}
-\begin{remark}
-	The condition on $H$ is artificial since, following Example~\ref{ex:pendulum}, we can always remove from $M$ the critical points of $H$ and apply the theorem to $M\setminus \operatorname{crit}H$ (such a subset is always open, because it is the preimage of the open set of non-critical values). On this manifold $H$ is a fibration and by Construction~\ref{const:level_submanifolds_of_involutions} its fibers are Lagrangian.
 \end{remark}
 \begin{remark}
 	To state the theorem globally (since any local statement about a symplectic manifold is trivial) we must ask for completeness of the flow. Indeed, to get fibers diffeomorphic to $\R$ and $\T^1$ we need complete flow lines.
