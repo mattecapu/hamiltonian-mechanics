@@ -312,7 +312,7 @@ Direct computation.
 	Such morphism is surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
 \end{corollary}
 
-The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
+The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, $f(t) = f \circ \phi_t$, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
 
 \begin{theorem}
 	Let $f, h \in \Cinfty(M)$. Then the evolution of $f$ on the flow of $X_h$ is given by the bracket with $h$:
@@ -322,7 +322,8 @@ The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system unde
 \end{theorem}
 \begin{proof}
 	\begin{eqalign}
-		\der{f}{t} = X_h(f) = \langle X_h, \ipr{X_f}\omega \rangle = \ipr{X_h}\ipr{X_f}\omega = \omega(X_f, X_h) = \{f,h\}.
+		\der{}{t} (f \circ \phi_t) & = (\Lie{X_h} f) \circ \phi_t = X_h(f) \circ \phi_t = \langle X_h, \ipr{X_f}\omega \rangle \circ \phi_t\\
+		& = (\ipr{X_h}\ipr{X_f}\omega) \circ \phi_t = \omega(X_f, X_h) \circ \phi_t = \{f,h\} \circ \phi_t .
 	\end{eqalign}
 \end{proof}
 
