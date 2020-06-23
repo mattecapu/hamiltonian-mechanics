@@ -321,6 +321,7 @@ The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system unde
 \begin{theorem}
 	Let $f, h \in \Cinfty(M)$. Then the evolution of $f$ on the flow of $X_h$ is given by the bracket with $h$:
 	\begin{eqalign}
+	\label{eq:evolution_f_flow_Xh}
 		\der{f}{t} = \{f, h\}
 	\end{eqalign}
 \end{theorem}
@@ -619,6 +620,82 @@ We start with some vocabulary:
 \begin{exercise}
 	Apply Arnold--Liouville Theorem to the ``updated'' phase space of the spherical pendulum, in particular describe the fibers of the Lagrangian fibration and the locus $M_C$ of the compact ones.
 \end{exercise}
+
+\begin{example}[$2$-species ``predator--prey'' Lotka--Volterra'' system]
+	The \textbf{Lotka--Volterra model} describe predator-prey (or herbivore-plant, or parasitoid-host) dynamics in their simplest case (one predator population, one prey population). It was developed independently by Alfred Lotka and Vito Volterra in the 1920's, and is characterized by oscillations in the population size of both predator and prey, with the peak of the predator's oscillation lagging slightly behind the peak of the prey's oscillation. 
+	
+	The model makes several simplifying assumptions: 
+	\begin{enumerate}
+		\item the prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation.; 
+		\item the growth of predators population depend on the availability of food, the predator population will starve in the absence of the prey population (as opposed to switching to another type of prey) and in this case decreases exponentially; 
+		\item predators can consume infinite quantities of prey; 
+		\item there is no environmental complexity (in other words, both populations are moving randomly through a homogeneous environment).
+	\end{enumerate}
+	
+	Given the following parameters describing the two populations and the interaction of the two species:
+	\begin{enumerate}
+		\item $P$ = number of predators or consumers;
+		\item $p$ = number of prey or biomass of plants;
+		\item $t$ = time;
+		\item $m$ = predator death rate\footnote{Represents the loss rate of the predators due to either natural death or emigration, it leads to an exponential decay in the absence of prey.};
+		\item $a$ = predator growth rate;
+		\item $r$ = growth--death rate of prey (in absence of predators);
+		\item $c$ = predation rate\footnote{Note the similarity to the predator growth rate; however, a different constant is used, as the rate at which the predator population grows is not necessarily equal to the rate at which it consumes the prey};
+	\end{enumerate}
+	then the populations change through time according to the pair of equations:
+	\begin{eqalign}
+	\label{eq:Lotka_Volterra_system}
+		\begin{cases}
+			\der{P}{t} = - mP + aPp\\
+			\der{p}{t} = rp-cPp
+		\end{cases}
+	\end{eqalign}
+	Consider the Hamiltonian system $(M, \omega, h)$ such that\footnote{The form $\omega = \omega_{jk} dx^j \wedge dx^k$ is defined by $(\omega^{-1})^{ij} \omega_{jk} = \delta^i_k$.}
+	\begin{eqalign}
+		M = \R^2_{>0} \qquad \omega^{-1} = Pp \pder{}{P} \wedge \pder{}{p} \qquad h(P,p) = - ap + m\log p - cP + r\log P
+	\end{eqalign}
+	with coordinates $P$, $p$ on $M$. The differential of the Hamiltonian is 
+	\begin{equation}
+		dh = (- cP + r) \frac {dP}{P} + (- ap + m) \frac {dp}{p}
+	\end{equation}
+	We see that using\footnote{For $P$ we have $\dot P = \{P, h\} = \omega(X_P, X_h) = \omega^{-1}(dP, dh)$ which gives the first equation in eq.~\eqref{eq:Lotka_Volterra_system}. Same procedure for $p$ leads to the second equation in eq.~\eqref{eq:Lotka_Volterra_system}.} Equation eq.~\eqref{eq:evolution_f_flow_Xh} the flow of $X_h$ gives the Lotka-Volterra eq.~\eqref{eq:Lotka_Volterra_system}.
+	The only singular point of $dh$ is $\left ( \frac {r}{c}, \frac{m}{a} \right)$, where $X_h$ vanish. 
+	
+	We plot the level sets of $h$\footnote{In the following link one can find the Mathematica code for plot these level set, with the possibility of change the parameters of the theory: \url{https://it.wikitolearn.org/File:Lotka-Volterra.svg}.}:
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\node (image) at (0,0) {\includegraphics[width=.45\textwidth]{figures/Lotka_Volterra.png}};
+		\end{tikzpicture}
+		\caption{The manifold $\R^2_{>0}$, with compact fibers as solid blue lines, the blue point in the middle of the fibers is the equilibrium point. An extra equilibrium point outside the phase space is given by the origin of $\R^2$. Axis describe no prey (exponential decay of $P$) and no predator (exponential growth of $p$) cases.}
+		\label{fig:Lotka_Volterra_diagram}
+	\end{figure}
+	
+	There are some interesting special cases for this model. The first one is given by the case $m=0$, for instance if the predator can sustain its population even if there is no prey (e.g. it eats also vegetables). In such case the level sets of $h$ are:
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\node (image) at (0,0) {\includegraphics[width=.45\textwidth]{figures/Lotka_Volterra_m_0.png}};
+		\end{tikzpicture}
+		\caption{Special case $m=0$. Notice that this plot has some problems. Actually the whole $P$-axis correspond to the level set given by $p=0$. In order to obtain the level set shown in the picture one has to move slightly from the $P$-axis, in order to have a non-zero number of preys. The blue point in the $P$-axis corresponds to the value $\frac{r}{c}$.}
+		\label{fig:SIR_diagram}
+	\end{figure}
+	
+	\noindent
+	It's clear that in this case we have compact fibers provided that $a < 0$, otherwise the number of predators increases monotonically.
+	
+	Moreover, if we set $m=0$ and $a = c$  then Lotka--Volterra system eq.~\eqref{eq:Lotka_Volterra_system} becomes 
+	\begin{eqalign}
+	\label{eq:SIR_model_system}
+		\begin{cases}
+			\der{P}{t} = -aPp\\
+			\der{p}{t} = aPp-rp
+		\end{cases}
+	\end{eqalign}
+	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} to some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model.
+\end{example}
 
 \begin{example}[Kepler's problem on the plane]
 	Consider $M= T^*(\R^2 \setminus \{0\})$ with polar coordinates $r, \theta$ for the points and $p_r, p_\theta$ for covectors. The symplectic form on this manifold is
