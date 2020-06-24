@@ -26,6 +26,15 @@ In this chapter, we'll study how a symplectic structure may be used to produce a
 	The subset of Hamiltonian fields is denoted by $\hamfields(M)$.
 \end{definition}
 
+\begin{remark}
+	Let $\omega^{-1} \in \Gamma(TM \tens TM)$ be the inverse\footnote{The form $\omega^{-1} = (\omega^{-1})^{ij} \partial_i \wedge \partial_j$ is defined by $(\omega^{-1})^{ij} \omega_{jk} = \delta^i_k$ (The Wedge product reflects the skew-symmetry of $\omega^{-1}$).} of $\omega \in \Gamma(T^*M \tens T^*M)$, then
+	\begin{eqalign}
+	\label{eq:inv_sym_form_Ham_fields}
+		\omega(X_f, X_g) = \omega^{-1} (df, dg)
+	\end{eqalign}
+	where $X_f$ and $X_g$ are the Hamiltonian vector fields associated to $f$ and $g$ respectively.
+\end{remark}
+
 Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega$ to be exact}. By analogy then we could conceive the following definition:
 
 \begin{definition}
@@ -190,8 +199,6 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		\{ f, g \} = \omega(X_f, X_g).
 	\end{eqalign}
 \end{definition}
-
-Notice $\omega(X_f, X_g) = (\ipr{X_f}\omega)(X_g) = \langle df, X_g \rangle = X_g (f)$, hence $\{ f, g \} = X_g(f) = - X_f(g)$.
 
 \begin{definition}
 	A \textbf{Poisson algebra} $(\mathcal P, \{-,-\})$ is a commutative associative algebra $\mathcal P$ equipped with an additional Lie algebra structure $\{-,-\}$ which satisfy a Leibniz rule relative to the algebra product:
@@ -656,12 +663,12 @@ We start with a construction and some vocabulary:
 	then the populations change through time according to the pair of equations:
 	\begin{eqalign}
 	\label{eq:Lotka_Volterra_system}
-		\begin{cases}
+		\begin{dcases}
 			\der{P}{t} = - mP + aPp\\
 			\der{p}{t} = rp-cPp
-		\end{cases}
+		\end{dcases}
 	\end{eqalign}
-	Consider the Hamiltonian system $(M, \omega, h)$ such that\footnote{The form $\omega = \omega_{jk} dx^j \wedge dx^k$ is defined by $(\omega^{-1})^{ij} \omega_{jk} = \delta^i_k$.}
+	Consider the Hamiltonian system $(M, \omega, h)$ such that
 	\begin{eqalign}
 		M = \R^2_{>0} \qquad \omega^{-1} = Pp \pder{}{P} \wedge \pder{}{p} \qquad h(P,p) = - ap + m\log p - cP + r\log P
 	\end{eqalign}
@@ -669,10 +676,10 @@ We start with a construction and some vocabulary:
 	\begin{equation}
 		dh = (- cP + r) \frac {dP}{P} + (- ap + m) \frac {dp}{p}
 	\end{equation}
-	We see that using\footnote{For $P$ we have $\dot P = \{P, h\} = \omega(X_P, X_h) = \omega^{-1}(dP, dh)$ which gives the first equation in eq.~\eqref{eq:Lotka_Volterra_system}. Same procedure for $p$ leads to the second equation in eq.~\eqref{eq:Lotka_Volterra_system}.} Equation eq.~\eqref{eq:evolution_f_flow_Xh} the flow of $X_h$ gives the Lotka-Volterra eq.~\eqref{eq:Lotka_Volterra_system}.
+	We see that using\footnote{Recall Remark \ref{eq:inv_sym_form_Ham_fields}. For $P$ we have $\dot P = \{P, h\} = \omega(X_P, X_h) = \omega^{-1}(dP, dh)$ which gives the first equation in eq.~\eqref{eq:Lotka_Volterra_system}. Same procedure for $p$ leads to the second equation in eq.~\eqref{eq:Lotka_Volterra_system}.} Equation eq.~\eqref{eq:evolution_f_flow_Xh} the flow of $X_h$ gives the Lotka-Volterra eq.~\eqref{eq:Lotka_Volterra_system}.
 	The only singular point of $dh$ is $\left ( \frac {r}{c}, \frac{m}{a} \right)$, where $X_h$ vanish. 
 	
-	We plot the level sets of $h$\footnote{In the following link one can find the Mathematica code for plot these level set, with the possibility of change the parameters of the theory: \url{https://it.wikitolearn.org/File:Lotka-Volterra.svg}.}:
+	We plot the level sets of $h$\footnote{In the following link one can find the Mathematica code for plot these level set, with the possibility of change the parameters of the model: \url{https://it.wikitolearn.org/File:Lotka-Volterra.svg}.}:
 	
 	\begin{figure}[H]
 		\centering
@@ -700,12 +707,12 @@ We start with a construction and some vocabulary:
 	Moreover, if we set $m=0$ and $a = c$  then Lotka--Volterra system eq.~\eqref{eq:Lotka_Volterra_system} becomes 
 	\begin{eqalign}
 	\label{eq:SIR_model_system}
-		\begin{cases}
+		\begin{dcases}
 			\der{P}{t} = -aPp\\
 			\der{p}{t} = aPp-rp
-		\end{cases}
+		\end{dcases}
 	\end{eqalign}
-	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} to some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model.
+	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} for some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model.
 \end{example}
 
 \begin{example}[Kepler's problem on the plane]
