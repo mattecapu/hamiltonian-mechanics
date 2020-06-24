@@ -571,7 +571,11 @@ We start with a construction and some vocabulary:
 
 		\item Since ${H: M_C \to \R^n}$ is locally trivial, we can identify a neighbourhood of each fiber with $U_0 \times \T^n$ and $U_0 \subseteq \R^n$ is open ($H$ is a fibration in tori). By point (2), $\omega = d(t^i dh_i) = -d(h_i dt^i)$ where $h_1, \ldots, h_n$ are linear coordinates on $\R^n$ and $t^1, \ldots, t^n$ are linear functions on $\T^n$. What we want to do now is a change of coordinates to get angle coordinates on the torus. Since we'd like this change to be structure-preserving, we'll try to get it as a canonical transformation, thus a symplectomorphism found through a generating function.
 
-		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define
+		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define\footnote{Notice that these functions do not depend on the representatives $\gamma_\alpha$ of the homology classes we chosen, indeed for any equivalent loop $\gamma'_\alpha$ we have 
+		\begin{eqalign}
+			-\int_{\gamma_\alpha} h_i \, dt^i + \int_{\gamma'_\alpha} h_i \, dt^i = -\int_{M_\alpha} d(h_i \, dt^i) =  \int_{M_\alpha} \omega = 0
+		\end{eqalign}
+		where $M_\alpha$ is a submanifold of $\T^n$ whose border is given by $\gamma_\alpha$ and $\gamma'_\alpha$. The last step follows from $\omega\vert_{\T^n}=0$.}
 		\begin{eqalign}
 			I_\alpha(h_1, \ldots, h_n) := -\int_{\gamma_\alpha} h_i \, dt^i,
 		\end{eqalign}
@@ -585,11 +589,16 @@ We start with a construction and some vocabulary:
 		\end{eqalign}
 		Now define
 		\begin{eqalign}
-			S(I_1, \ldots, I_n, t^1, \ldots, t^n) := -\int^t_{t_0} h_i(I_1, \ldots, I_n) \, dt^i.
+			S(I_1, \ldots, I_n, t^1, \ldots, t^n) := - \sum_{i = 1}^n \int^{t^i}_{0} h_i(I_1, \ldots, I_n) \, dt.
 		\end{eqalign}
-		Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / I_\alpha$ we get a canonical transformation whose generating function is $S$. Moreover, these second set of coordinates are the angle coordinates we were looking for. Indeed, fix a $\beta$:
+		Again, the integral is performed along a curve where $I_\alpha$ are constants. Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / I_\alpha$ we get a canonical transformation whose generating function is $S$ such that
 		\begin{eqalign}
-			\phi^\alpha(p + \gamma_\beta) &= \pder{}{I_\alpha} \left( \int^{t(p)+\gamma_\beta}_{t_0} h_i(I_1, \ldots, I_n) \, dt^i \right)\\
+			\omega = dt^i \wedge dh_j = d\phi^\alpha \wedge dI_\alpha.
+		\end{eqalign}
+		Moreover, these second set of coordinates are the angle coordinates we were looking for. Indeed, fix a $\beta$:
+		\begin{eqalign}
+			\phi^\alpha(p + \gamma_\beta) &= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p+\gamma_\beta)}_{0} h_i(I_1, \ldots, I_n) \, dt \right)\\
+			&= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p)}_{0} h_i(I_1, \ldots, I_n) \, dt  - \sum_{i = 1}^n \int_{\gamma_\beta} h_i(I_1, \ldots, I_n) \, dt \right)\\
 			&= \pder{}{I_\alpha} (S(I_1, \ldots, I_n, t^1(p), \ldots, t^n(p)) - I_\beta)\\
 			&= \phi^\alpha(p) - \delta^\alpha_\beta.
 		\end{eqalign}
