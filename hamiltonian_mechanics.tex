@@ -456,7 +456,7 @@ We start with a construction and some vocabulary:
 \end{construction}
 
 \begin{definition}
-	Let $M$ be a symplectic manifold. A \textbf{Lagrangian fibration} is a submersion\footnotemark $H : M \to N$ where all of the fibres are Lagrangian submanifolds.
+	Let $M$ be a symplectic manifold. A \textbf{Lagrangian fibration} is a submersion\footnotemark $H : M \to N$ where all of the fibres are Lagrangian submanifolds (a Lagrangian fibration is obviously a surjective submersion).
 \end{definition}
 \footnotetext{A submersion $H : M \to N$ is a smooth function such that $dH$ is pointwise surjective.}
 
@@ -470,9 +470,9 @@ We start with a construction and some vocabulary:
 \end{remark}
 
 \begin{definition}
-	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exist an open neighbourhood $U$ and a diffeomorphism $f^{-1}(U) \isoto U \times F$ which makes the following commute:
+	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exists an open neighbourhood $U$ of $p$ and a diffeomorphism $f^{-1}(U) \isoto U \times F$ which makes the following commute:
 	\begin{diagram}
-		M \arrow[relation=\supset]{r} \&[-3ex] f^{-1}(U) \arrow[swap]{dr}{f} \arrow{rr}{\phi} \& \& U \times F \arrow{dl}{\pr_2}\\
+		M \arrow[relation=\supset]{r} \&[-3ex] f^{-1}(U) \arrow[swap]{dr}{f} \arrow{rr}{\phi} \& \& U \times F \arrow{dl}{\pr_1}\\
 		\& \& U
 	\end{diagram}
 \end{definition}
