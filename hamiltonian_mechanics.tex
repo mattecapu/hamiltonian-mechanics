@@ -606,6 +606,31 @@ We start with a construction and some vocabulary:
 	\end{enumerate}
 \end{proof}
 
+\begin{remark}
+	From the proof of the last point of the Arnold--Liouville theorem we see in particular that, given $n$ integrals of motion $h_1, \ldots, h_n$ and a basis $\gamma_1,\ldots, \gamma_n \in H_1(\T^n)$ of smoothly varying loops in the level set $\{h_\alpha (p) = h_\alpha\}$ the action variables $I_\alpha$ can be defined in a tubular neighbourhood of any fiber where $\omega = d\eta$ as
+	\begin{eqalign}
+		I_\alpha (h_1, \ldots, h_n) = \int_{\gamma_\alpha}\iota^*\eta
+	\end{eqalign}
+	where $\iota : \{h_\alpha(p) = h_\alpha\} \into M$ is the embedding of the level set into $M$. 
+	
+	Moreover, given any local system of Darboux coordinates $x^1, \ldots, x^n, \xi_1, \ldots, \xi_n$ with $\omega = d(x^i \, d\xi_i)$ where the manifolds $\{x^i = \text{const.}\}$ are transversal to the fibers $\{h_i = \text{const.}\}$, the equation
+	\begin{eqalign}
+		I_\alpha (x^1, \ldots, x^n, \xi_1, \ldots, \xi_n) = I_\alpha
+	\end{eqalign}
+	can be inverted to 
+	\begin{eqalign}
+		\xi_\alpha = \xi_\alpha(x^1, \ldots, x^n, I_1, \ldots, I_n).
+	\end{eqalign}
+	Then
+	\begin{eqalign}
+		S (x^1, \ldots, x^n, I_1, \ldots, I_n) = - \int^x_{x_0} \xi_\alpha (x, I) \, dx^\alpha
+	\end{eqalign}
+	where the integration is on any curve on $\{I_\alpha = \text{const.}\}$. The angle variables are hence
+	\begin{eqalign}
+		\phi^\alpha = \pder{S}{I_\alpha} ( x, I(x, \xi))
+	\end{eqalign}
+\end{remark}
+
 \section{Applications of Arnold--Liouville Theorem}
 \begin{example}[Simple pendulum]
 	Let's analyze Example~\ref{ex:pendulum} in light of Arnold--Liouville Theorem. Figure~\ref{fig:pendulum_phase_diagram} shows the fibration induced by $h$ on $T^*S^1$. We need to take in consideration that the diagram should actually be wrapped around a cylinder. Hence not only the closed curves near the singular point $(0, 0)$ are compact fibers, but also the ones further away, which look open on the plane but close up on the cylinder. The open fibers are the two halves of the ``doubly punctured'' circle which constitutes the separatrix between the two families of compact fibers.
