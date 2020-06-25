@@ -598,7 +598,7 @@ We start with a construction and some vocabulary:
 		Moreover, these second set of coordinates are the angle coordinates we were looking for. Indeed, fix a $\beta$:
 		\begin{eqalign}
 			\phi^\alpha(p + \gamma_\beta) &= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p+\gamma_\beta)}_{0} h_i(I_1, \ldots, I_n) \, dt \right)\\
-			&= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p)}_{0} h_i(I_1, \ldots, I_n) \, dt  - \sum_{i = 1}^n \int_{\gamma_\beta} h_i(I_1, \ldots, I_n) \, dt \right)\\
+			&= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p)}_{0} h_i(I_1, \ldots, I_n) \, dt  - \int_{\gamma_\beta} h_i(I_1, \ldots, I_n) \, dt^i \right)\\
 			&= \pder{}{I_\alpha} (S(I_1, \ldots, I_n, t^1(p), \ldots, t^n(p)) - I_\beta)\\
 			&= \phi^\alpha(p) - \delta^\alpha_\beta.
 		\end{eqalign}
