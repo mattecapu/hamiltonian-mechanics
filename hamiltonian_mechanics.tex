@@ -750,7 +750,7 @@ We start with a construction and some vocabulary:
 \end{example}
 
 \begin{example}[Kepler's problem on the plane]
-	Consider $M= T^*(\R^2 \setminus \{0\})$ with polar coordinates $r, \theta$ for the points and $p_r, p_\theta$ for covectors. The symplectic form on this manifold is
+	We assume that we already reduced the Kepler's problem from three dimensions to two dimensions by introducing the center of mass frame. Consider $M= T^*(\R^2 \setminus \{0\})$ with polar coordinates $r, \theta$ for the points and $p_r, p_\theta$ for covectors. The symplectic form on this manifold is
 	\begin{eqalign}
 		\omega = dr \wedge dp_r + d\theta \wedge dp_\theta
 	\end{eqalign}
@@ -758,7 +758,7 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		h = \frac{p^2_r}{2m} + \frac{p^2_\theta}{2mr^2} - \frac{k}{r}, \quad k,m > 0
 	\end{eqalign}
-	The two integrals of motion are then $h_1=h$ and $h_2 = p_\theta$.
+	The two integrals of motion are then $h_1=h$ and $h_2 = p_\theta$.\footnote{This choice due to the fact that $h$ is independent from $\theta$, indeed using $X_{p_\theta} = \partial_\theta$ we obtain $\{h, p_\theta\} = \langle dh, X_{p_\theta} \rangle = 0$ and the two integral of motion are in involution.}
 
 	As before, we now study the linear independence of $dh_1, dh_2$. First of all, they are
 	\begin{eqalign}
@@ -773,6 +773,7 @@ We start with a construction and some vocabulary:
 
 	To find the fibers, choose an arbitrary point $c = (c_1, c_2) \in \R^2$. Hence the equations of a level set of $H = (h_1, h_2)$ are
 	\begin{eqalign}
+	\label{eq:Kepler_level_set_eqs}
 		\begin{dcases}
 			c_1 = \frac{p_r^2}{2m} + V_{c_2}(r), \quad \text{where}\ V_{c_2}(r) = \frac{c_2^2}{2mr^2} - \frac{k}r\\
 			c_2 = p_\theta
@@ -784,9 +785,38 @@ We start with a construction and some vocabulary:
 		\begin{eqalign}
 			c_1 = \frac{p_r^2}{2m} - \frac{k}r \implies r = \frac1k \frac1{\frac{p_r^2}{2m} - c_1}
 		\end{eqalign}
-		We observe that $r$ is free to be as large as we please, hence these fibers correspond to unbounded orbits of the system and, geometrically, to non-compact fibers.
-		\item $c_2 \neq 0$, then inspecting the first equation we see that $c_1 < 0$ implies $V_{c_2}$ negative, thus when we draw its graph we notice this is only the case when $r < 0$. In this case, we get compact level sets. Clearly, the level set is empty whenever $c_1 < \min V_{c_2}(r)$.
+		We observe that previous equation describes a non-compact curve in the $(r, p_r)$ plane, hence fibers of the form $H^{-1}(c_1, 0)$ correspond to unbounded orbits of the system and, geometrically, to non-compact fibers.\footnote{Notice that $\theta$ lives in $S^1$, so it never gives problems of compactness.}
+		\item $c_2 \neq 0$, then inspecting the first equation we see that $c_1 < 0$ implies $V_{c_2}$ negative, thus when we draw its graph we notice in this case we have compact level sets (given by $r \in [r_-, r_+]$). Clearly, the level set is empty whenever $c_1 < \min V_{c_2}(r) = V_{c_2} \left(\frac{c_2^2}{mk} \right) =  - \frac{mk^2}{2 c_2^2}$.
+		
+		\vspace{-0.5cm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.6\textwidth]{figures/Kepler_c2_0.png}
+			\caption{Plot of first equation of eq.~\eqref{eq:Kepler_level_set_eqs} for $p_\theta = 0$, i.e. the body moves in the radial direction. Is clear that level sets $\{c_1 = \text{const.}\}$ are non-compact. For $h < 0$ level sets represent bounded states where the body is allowed to move away from the origin $r = 0$ only until a fixed value $r = r_+$. For $h \geq 0$  level sets represent states where the body has enough kinetic energy to leave definitely the original position.}
+			\label{fig:Kepler_c2_0}
+		\end{figure}
+		\vspace{-0.5cm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.6\textwidth]{figures/Kepler_c2_neq_0.png}
+			\caption{Plot of first equation of eq.~\eqref{eq:Kepler_level_set_eqs} for $p_\theta \neq 0$, i.e. the body moves with non-zero angular momentum. For $h = 0$ we have compact fibers where the body is bounded in the range $r \in [r_-, r_+]$, i.e. represent bodies with compact orbits around the origin, such as planets in the Solar System. Conversely, for $h > 0$, the body state is no more bounded, and represent bodies which has enough energy to leave the attraction given by the effective potential, such as bodies which go through the Solar System without being bounded in orbits around the Sun because of their high kinetic energy.}
+			\label{fig:Kepler_c2_neq_0}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.55\textwidth]{figures/KeplerCompactFiber.jpg}
+			\caption{Level set given by $p_\theta \neq 0$ and $0 > h > -\frac{mk^2}{2c_2^2}$.}
+			\label{fig:KeplerCompactFiber}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.55\textwidth]{figures/Kepler_Lagrangian_fiber.jpeg}
+			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$.}
+			\label{fig:KeplerLagrangianFiber}
+		\end{figure}
+		
 	\end{enumerate}
+	
 	Therefore
 	\begin{eqalign}
 		H^{-1}(c_1, c_2) \begin{dcases}
@@ -801,7 +831,7 @@ We start with a construction and some vocabulary:
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-			\node (image) at (0,0) {\includegraphics[width=.85\textwidth]{figures/mar28_fibers.jpg}};
+			\node (image) at (0,0) {\includegraphics[width=.85\textwidth]{figures/Kepler_fibers.jpg}};
 		\end{tikzpicture}
 	\end{figure}
 
@@ -821,15 +851,8 @@ We start with a construction and some vocabulary:
 	\end{eqalign}
 	The expression for $r$ is computed by imposing the circle to stay inside the fiber $H^{-1}(c_1, c_2)$, once we fixed $p_r=0$ (which is an arbitrary choice).
 
-	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$
-	of the fibers: as seen in Figure~\ref{fig:KeplerCompactFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
+	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$ of the fibers: as seen in Figure~\ref{fig:KeplerCompactFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.7\textwidth]{figures/KeplerCompactFiber.jpeg}
-		\caption{}
-		\label{fig:KeplerCompactFiber}
-	\end{figure}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.85\textwidth]{figures/MultivaluedFunctionDef.jpeg}
