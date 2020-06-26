@@ -591,7 +591,7 @@ We start with a construction and some vocabulary:
 		\begin{eqalign}
 			S(I_1, \ldots, I_n, t^1, \ldots, t^n) := - \sum_{i = 1}^n \int^{t^i}_{0} h_i(I_1, \ldots, I_n) \, dt.
 		\end{eqalign}
-		Again, the integral is performed along a curve where $I_\alpha$ are constants. Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / I_\alpha$ we get a canonical transformation whose generating function is $S$ such that
+		Again, the integral is performed along a curve where $I_\alpha$ are constants. Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / \partial I_\alpha$ we get a canonical transformation whose generating function is $S$ such that
 		\begin{eqalign}
 			\omega = dt^i \wedge dh_j = d\phi^\alpha \wedge dI_\alpha.
 		\end{eqalign}
@@ -811,7 +811,7 @@ We start with a construction and some vocabulary:
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=.55\textwidth]{figures/Kepler_Lagrangian_fiber.jpeg}
-			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$.}
+			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$. The vertical direction corresponds to $p_r$ values, while the plane is parametrized by variables $r$ and $\theta$. Starting from some special points one can find circular trajectories wrapped-up around the torus.}
 			\label{fig:KeplerLagrangianFiber}
 		\end{figure}
 		
@@ -826,12 +826,12 @@ We start with a construction and some vocabulary:
 			= \varnothing & \text{when $c_2 \neq 0,\ c_1 < -\frac{mk^2}{2c_2^2}$}
 		\end{dcases}
 	\end{eqalign}
-	Notice that the third case happens when $r= c_2^2/mk$, which we excluded previously for reasons of linear independence. Indeed, it represent a separatrix between compact and non-compact trajectories more or less like in the example of the pendulum. We can represent the fibration on the plane as such:
+	Notice that the third case happens when $r= c_2^2/mk$, which we excluded previously for reasons of linear independence (this corresponds to the fiber in Figure~\ref{fig:KeplerLagrangianFiber} shrunk to a circle, this has to be excluded since this fiber haas dimension 1). Indeed, it represent a separatrix between compact and non-compact trajectories more or less like in the example of the pendulum. We can represent the fibration on the plane as such:
 
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-			\node (image) at (0,0) {\includegraphics[width=.85\textwidth]{figures/Kepler_fibers.jpg}};
+			\node (image) at (0,0) {\includegraphics[width=.7\textwidth]{figures/Kepler_fibers.jpg}};
 		\end{tikzpicture}
 	\end{figure}
 
@@ -839,7 +839,7 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		B = \left\{ (h, p_\theta) \in \R^2 \suchthat h < 0,\ 0 < |p_\theta| < k \sqrt{-m/2h} \right\}
 	\end{eqalign}
-	We can now move on to find the action-angle variables of the system: we start choosing $\gamma_1, \gamma_2$ basis for $H_1(H^{-1}(c_1, c_2))$. As the first one, we choose the circle in the $\theta$ direction parametrized by
+	We can now move on to find the action-angle variables of the system: we start choosing $\gamma_1, \gamma_2$ basis for $H_1(H^{-1}(c_1, c_2))$, i.e. two independent loops in Figure~\ref{fig:KeplerLagrangianFiber}. As the first one, we choose the circle in the $\theta$ direction parametrized by
 	\begin{eqalign}
 		\gamma_1 : S^1 &\longto H^{-1}(c_1, c_2)\\
 		t &\overset{\theta}\longmapsto \begin{dcases}
@@ -851,53 +851,57 @@ We start with a construction and some vocabulary:
 	\end{eqalign}
 	The expression for $r$ is computed by imposing the circle to stay inside the fiber $H^{-1}(c_1, c_2)$, once we fixed $p_r=0$ (which is an arbitrary choice).
 
-	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$ of the fibers: as seen in Figure~\ref{fig:KeplerCompactFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.85\textwidth]{figures/MultivaluedFunctionDef.jpeg}
-		\caption{}
-		\label{fig:MultivaluedFunctionDef}
-	\end{figure}
-
-	Although harder to visualize, this should make clear why $\gamma_2$ can be chosen to be formed by two branches $\gamma^\pm_2$ stitched together at the ends:
+	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$ of the fibers: as seen in Figure~\ref{fig:KeplerLagrangianFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
+	Figure~\ref{fig:KeplerCompactFiber} shows that the loop $\gamma_2$ can be chosen to be formed by two branches $\gamma^\pm_2$ stitched together:
 	\begin{eqalign}
-		\gamma_2^\pm : (r_+, r_-) &\longto H^{-1}(c_1, c_2)\\
+		\gamma_2^+ : (r_-, r_+) &\longto H^{-1}(c_1, c_2)\\
+		\gamma_2^- : (r_+, r_-) &\longto H^{-1}(c_1, c_2)\\
 		t &\longmapsto \begin{cases}
 			\theta = 0 \comment{(arbitrary choice)} \\
-			r= \pm t\\
-			p_r = \pm \sqrt{2m \left(c_1 - V_{c_2}(\pm t) \right)}\\
+			r= t\\
+			p_r = \pm \sqrt{2m \left(c_1 - V_{c_2}(t) \right)}\\
 			p_\theta = c_2
 		\end{cases}
 	\end{eqalign}
 	The expression for $p_r$ is computed by imposing the circle to stay inside the fiber $H^{-1}(c_1, c_2)$, once we fixed $p_\theta=c_2$.
-	The values $r_+$ and $r_-$ are given by the zeroes of the discriminant of $h_1=c_1$:
+	The values $r_-$ and $r_+$ are given by the zeroes of the discriminant of $h_1=c_1$:
 	\begin{eqalign}
-	 r_\pm = \frac{-k \pm \sqrt{k^2 + \frac{c_1c_2^2}{m}}}{2c_1} \qquad (r_+<r_-).
+	 r_\pm = \frac{-k \pm \sqrt{k^2 + \frac{2c_1c_2^2}{m}}}{2c_1} \qquad (r_-<r_+).
 	\end{eqalign}
 
-	Put together, $\gamma_2$ goes go back and forth between $r_+$ and $r_-$ using the $p_r$ dimension.
+	Put together, $\gamma_2$ goes go back and forth between $r_-$ and $r_+$ using the $p_r$ dimension.
 
-	Then recall $\omega = d(-p_\theta d\theta - p_rdr)$, so, since $p_r=0$ on $\gamma_1$.
+	Then recall $\omega = d(-p_\theta d\theta - p_rdr)$, so, since $p_r=0$ on $\gamma_1$
 	\begin{eqalign}
-		I_1(c_1, c_2) = - \int_{\gamma_1} (p_\theta d\theta + p_r dr) = -2\pi c_2
+		I_1(c_1, c_2) = - \frac{1}{2\pi} \int_{\gamma_1} (p_\theta d\theta + p_r dr) = - \frac{1}{2\pi} \int_0^{2\pi} \gamma_1^*(p_\theta d\theta + p_r dr) = - c_2
 	\end{eqalign}
-	As for computing $I_2$, $\gamma_2$ is obtained by spanning $r$ from $r_+$ to $r_-$ setting $p_r(r)=+g(r)$,
-	and then spanning $r$ from $r_-$ to $r_+$ setting $p_r(r)=-g(r)$, where $g(r)=\sqrt{2m(c_1-V_{c_2}(r))}$, therefore
+	As for computing $I_2$, $\gamma_2$ is obtained by spanning $r$ from $r_-$ to $r_+$ setting $p_r(r)=+g(r)$,
+	and then spanning $r$ from $r_+$ to $r_-$ setting $p_r(r)=-g(r)$, where $g(r)=\sqrt{2m(c_1-V_{c_2}(r))}$, therefore
 	\begin{eqalign}
-		I_2(c_1, c_2) &= - \int_{\gamma_2} p_r dr \\
-			      &= -\left(\int_{r_+}^{r_-} g(t) \,dt + \int_{r_-}^{r_+} (-g(t)) \,dt\right).
+		I_2(c_1, c_2) &= - \frac{1}{2\pi} \int_{\gamma_2} p_r dr = - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} (\gamma_2^+)^*(p_r dr) + \int_{r_+}^{r_-} (\gamma_2^-)^*(p_r dr) \right)\\
+			      &= - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} g(t) \,dt + \int_{r_+}^{r_-} (-g(t)) \,dt\right).
 	\end{eqalign}
-	To compute it, we use residues by interpreting the integral in the complex $t$ plane.
+	To compute it, we use residues by interpreting the integral as a loop integral over the Riemann surface. Consider two spaces $\C_1 \iso \C_2 \iso \C$ as shown in the Figure~\ref{fig:MultivaluedFunctionDef} and glue them together along $a$ and $b$ making these lines coincide as shown in Figure~\ref{fig:Riemann_surface}. 
 
-	In order to do that, we aim to rewrite $I_2$ as a circuit integral and then to deform the integration path using
-	the properties of integrals of holomorphic functions.
-	Let us start by defining the following function
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\textwidth]{figures/MultivaluedFunctionDef.jpeg}
+		\caption{Patches of the Riemann surface.}
+		\label{fig:MultivaluedFunctionDef}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\textwidth]{figures/Riemann_surface.jpg}
+		\caption{Construction of the Riemann surface for $N=6$. We are interested in the case $N=2$.}
+		\label{fig:Riemann_surface}
+	\end{figure}
+
+	In order to do that, we aim to rewrite $I_2$ as a circuit integral and then to deform the integration path using the properties of integrals of holomorphic functions.
+	Let us start by defining the following function, which should be interpreted  the complexification of $g(t)$, with the introduction of a minus sign that gives us the different signs for $\gamma_2^+$ and $\gamma_2^-$ when we perform the loop integration:
 	\begin{eqalign}
-	 \pi_r(t)=\frac{\sqrt{-2mc_1}}{t}\sqrt{(t-r_-)(t-r_+)}.
+	 \pi_r(t) = \frac{1}{t}\sqrt{-2m\left (t^2c_1+tk-\frac{c_2^2}{2m} \right)} = \frac{1}{t}\sqrt{-2mc_1(t-r_+)(t-r_-)}.
 	\end{eqalign}
-	This is clearly a multivalued function on two sheets, I and II, with two branches.
-	It displays only two ramification points in $r_\pm$, therefore we take the cut connecting them as shown in Figure~\ref{fig:MultivaluedFunctionDef}.
+	This is clearly a multivalued function on two sheets, I and II, with two branches. For each value of $t$ the square root in $\pi_r$ gives a value per sheet, with only two ramification points in $r_\pm$. This justify the choice of glueing $\C_1$ and $\C_2$ as previously described. 
 	Finally, it features a simple pole in zero, while being holomorphic elsewhere.
 
 	Next, consider its restrictions to the real axis above and below the cut (respectively b and a sides): one easily gets
@@ -911,7 +915,7 @@ We start with a construction and some vocabulary:
 	\end{equation}
 	where $\gamma$ is the path shown in Figure~\ref{fig:IntPath}.
 
-	\begin{figure}
+	\begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 	\centering
@@ -931,76 +935,74 @@ We start with a construction and some vocabulary:
 	One can continuously deform the integration path $\gamma$ without changing the result
 	(since $\pi_r$ is holomorphic outside zero), so let us shrink $\gamma$ to the segment $[r_+,r_-]$, getting
 	\begin{eqalign}
-		I &=\int_{r_-}^{r_+}ig(x)\,dx+\int_{r_+}^{r_-}(-ig(x))\,dx\\
-		  &=i\,I_2
+		I &=\int_{r_-}^{r_+}ig(x)\,dx+\int_{r_+}^{r_-}(-ig(x))\,dx =2\pi i\,I_2
 	\end{eqalign}
 	so that $I_2$ can actually be rewritten as
 	\begin{equation}
-		I_2(c_1,c_2)= -i\int_\gamma \pi_r(t)\,dt.
+		I_2(c_1,c_2)= \frac{1}{2\pi i}\int_\gamma \pi_r(t)\,dt.
 	\end{equation}
 
 	Now we can use the residue theorem and trade $\gamma$ for the union of the circles $C_0$ and $C_\infty$ around
 	the pole in zero and around $\infty_\C$ as integration path (see Figure~(\ref{fig:ResidueIntPath})).
 	Keeping track of the inherited orientations of the circles, one gets
 	\begin{eqalign}
-	 I_2(c_1,c_2) &= \left(\int_{C_0} \pi_r(t) \,dt + \int_{C_\infty} \pi_r(t) \,dt\right)	\\
-		      &= 2\pi i\left(-\underset{t=0}{\Res}(\pi_r(t))-\underset{t=\infty_\C}{\Res}(\pi_r(t))\right)
+	 I(c_1,c_2) &= \left(\int_{C_0} \pi_r(t) \,dt + \int_{C_\infty} \pi_r(t) \,dt\right)	\\
+		      &=2\pi i\left(-\underset{t=0}{\Res}(\pi_r(t))-\underset{t=\infty_\C}{\Res}(\pi_r(t))\right)
 	\end{eqalign}
 
 	Let us carry out the residue computation:
 	\begin{enumerate}
 	 \item \textbf{In $t=0$.} Let us expand $\pi_r$ in its Laurent series around $t=0$: one finds
-			 \begin{equation}
+			 \begin{eqalign}
 			  \pi_r(t)=\frac{\sqrt{-2mc_1}}{t}\sqrt{r_+r_-}+\mathcal{O}(1),
-			 \end{equation}
+			 \end{eqalign}
 			 so that
 			 \begin{eqalign}
-			  \underset{t=0}{\Res}(\pi_r(t))&=\sqrt{-2mc_1r_+r_-}	\\
-							&=c_2
+			  \underset{t=0}{\Res}(\pi_r(t))&=\sqrt{-2mc_1r_+r_-}	=c_2
 			 \end{eqalign}
 			 where we took $c_2>0$ and we used $r_+r_-=-\frac{c_2^2}{2mc_1}$.
 	 \item \textbf{In $t=\infty_\C$.} Let us expand $\pi_r$ in its Laurent series around $t=\infty_\C$: one finds
-			 \begin{equation}
+			 \begin{eqalign}
 			  \pi_r(t)=\sqrt{-2mc_1}-\frac{\sqrt{-2mc_1}(r_++r_-)}{2t}+\mathcal{O}(t^{-2}),
-			 \end{equation}
+			 \end{eqalign}
 			 therefore
 			 \begin{eqalign}
-			  \underset{t=\infty_\C}{\Res}(\pi_r(t))&=\frac{\sqrt{-2mc_1}}{2}(r_++r_-)	\\
-							&=\frac{mk}{\sqrt{-2mc_1}}.
+			  \underset{t=\infty_\C}{\Res}(\pi_r(t))&=\frac{\sqrt{-2mc_1}}{2}(r_++r_-) =\sqrt{\frac{mk^2}{-2c_1}}.
 			 \end{eqalign}
 	\end{enumerate}
 
 	Finally, one gets
 	\begin{eqalign}
-	 I_2(c_1,c_2)&=-i\left[-2\pi i\Big(c_2+\frac{mk}{\sqrt{-2mc_1}}\Big)\right]	\\
-		     &= -2\pi\left(c_2+\frac{mk}{\sqrt{-2mc_1}}\right).
+	 I_2(c_1,c_2)&=\frac{1}{2\pi i}\left[-2\pi i\Big(c_2+\sqrt{\frac{mk^2}{-2c_1}}\Big)\right]	= -\left(c_2+\sqrt{\frac{mk^2}{-2c_1}}\right).
 	\end{eqalign}
-
 
 	Reinserting back the functions for $c_1$ and $c_2$, one gets the following results:
 	\begin{eqalign}
-		I_1 &= -2\pi p_\theta\\
-		I_2 &= -2\pi p_\theta - 2\pi \sqrt{\frac{mk^2}{-2 \left( \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} - \frac{k}{r} \right)}}
+		I_1 &= -p_\theta\\
+		I_2 &= -p_\theta - \sqrt{\frac{mk^2}{-2 \left( \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} - \frac{k}{r} \right)}} = -p_\theta - \sqrt{\frac{mk^2}{-2h}}
 	\end{eqalign}
 	from which we can obtain the generalized momenta:
 	\begin{eqalign}
-		p_\theta &= -\frac1{2\pi} I_1\\
-		p_r &= \sqrt{2m \left( -2\pi^2\frac{mk^2}{(I_2-I_1)^2} - \frac1{4\pi^2} \frac{I_1^2}{2mr^2} + \frac{k}{r} \right)}
+		p_\theta &= -I_1\\
+		p_r &= \sqrt{2m \left( -\frac{mk^2}{2(I_2-I_1)^2} - \frac{I_1^2}{2mr^2} + \frac{k}{r} \right)}
 	\end{eqalign}
 
 	Call $\phi^\alpha$ the angle variables. Then
 	\begin{eqalign}
-		S(\theta, r, I_1, I_2) = \int_{(\phi_0, r_0)}^{(\theta, r)} (p_\theta d\theta + p_rdr)
+		S(\theta, r, I_1, I_2) = - \int_{(\phi_0, r_0)}^{(\theta, r)} (p_\theta d\theta + p_rdr)
 	\end{eqalign}
 	where the integration path is not relevant as long as it remains inside $H^{-1}(c_1, c_2)$. Then $\phi^\alpha = \partial S / \partial I_\alpha$, but \textbf{it's not possible to compute $S$ analytically}. However, we can still find the canonical transformation to get the action variables. We start by writing $h$ in terms of $I_1$ and $I_2$, an expression not depending on any other variable since $H$ is costant along the fibers. From the relative computation, we get
 	\begin{eqalign}
-		h=h(I_1, I_2) = 2\pi^2 \frac{mk^2}{(I_2 - I_1)^2}
+		h=h(I_1, I_2) = \frac{mk^2}{2(I_2 - I_1)^2}
 	\end{eqalign}
-	We know the equations of motion imply
+	We know the equations of motion imply\footnote{
+	\begin{eqalign}
+		\dot\phi^\alpha = \pder{}{t_1} \phi^\alpha =  \pder{}{t_1} \pder{S}{I_\alpha} = \pder{}{I_\alpha} \pder{S}{t_1} = \pder{h}{I_\alpha}
+	\end{eqalign}}
 	\begin{eqalign}
 		\begin{dcases}
 			\dot I_\alpha = 0 \comment{since it is an integral of motion}\\
-			\dot\phi^\alpha = \pder{h}{I_\alpha} = \pm 4\pi^2 \frac{mk^2}{(I_2-I_1)^3}
+			\dot\phi^\alpha = \pder{h}{I_\alpha} = (-1)^{\alpha+1} \frac{mk^2}{(I_2-I_1)^3}
 		\end{dcases}
 	\end{eqalign}
 	Since $\phi^\alpha$ comes from the linear action on the torus, we can now get the angle coordinates:
@@ -1010,15 +1012,21 @@ We start with a construction and some vocabulary:
 
 	The information we extracted from the system allows us, for example, to analyze the question of the periodicity of the motion. By computing the slope of the line described by the $\phi^\alpha$ on the toric fiber, we can answer positively that question:
 	\begin{eqalign}
-		\frac{\dot\phi^1}{\dot\phi^2} = -1 \in \Q
+		\frac{\omega^1}{\omega^2} = \frac{\dot\phi^1}{\dot\phi^2} = -1 \in \Q
 	\end{eqalign}
+	where $\omega^\alpha$ is the frequency (recall that we normalized $\phi^\alpha$ with $(2\pi)^{-1}$). This relation tells us that that there is a trajectory wrapped-up around the torus in Figure~\ref{fig:KeplerLagrangianFiber} in such a way that the trajectory is elliptic. This complete our study of the Kepler's problem since the last statement gives us complete information about the possible trajectories.
 \end{example}
 
 \begin{remark}
 	The last part of the previous example shows an approach which works generally -- once we have $I_1, \ldots, I_n$, we can express $h$ in terms of them and then the angle variables as
 	\begin{eqalign}
-		\phi^\alpha = \pder{h(I_1, \ldots, I_n)}{I_\alpha} t + \phi^\alpha_0
+		\phi^\alpha (t) = \pder{h(I_1, \ldots, I_n)}{I_\alpha} t + \phi^\alpha_0.
 	\end{eqalign}
+	Then the motion is periodic if and only if all ratios between frequencies
+	\begin{eqalign}
+		\omega^\alpha := \pder{h(I_1, \ldots, I_n)}{I_\alpha}
+	\end{eqalign}
+	is rational (in general this depends on the value of $I_1, \ldots, I_n$, so on the torus containing the curve in $M$). 
 \end{remark}
 
 \end{document}
