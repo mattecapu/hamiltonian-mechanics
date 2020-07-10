@@ -4,7 +4,7 @@
 \chapter{Symplectic geometry}
 \section{Symplectic vector spaces}
 \begin{definition}
-	A \textbf{symplectic form} is a non-degenerate, skew-symmetric bilinear form. A vector space $V$ equipped with a symplectic form on $V$ is called a \textbf{symplectic vector field}.
+	A \textbf{symplectic form} is a non-degenerate, skew-symmetric bilinear form. A vector space $V$ equipped with a symplectic form on $V$ is called a \textbf{symplectic vector space}.
 \end{definition}
 
 Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
@@ -77,7 +77,7 @@ Even if, as noted before, the choice of such a basis is far from unique, we'll r
 	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both isotropic and coisotropic, it's named \textbf{Lagrangian}. In particular, in the finite-dimensional case a Lagrangian subspace of a vector space $V$ is an isotropic subspace whose dimension is half that of $V$.
 \end{definition}
 
-Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. 
+Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. Moreover if $\Omega$ is non-degenerate (i.e. $U=\{ 0 \}$) both $\langle e_1, \ldots, e_n\rangle$ and $\langle f_1, \ldots, f_n\rangle$ are Lagrangian subspaces.
 
 \begin{definition}
 	A \textbf{symplectomorphism} is a linear map $\phi : (V, \Omega) \to (V', \Omega')$ between symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ such that
@@ -161,7 +161,7 @@ Other obstructions are given by topology. For example
 \end{proof}
 
 \begin{remark}
-	Notice \textbf{the proof can be generalized to any compact manifold with vanishing second cohomology}. Moreover, it shows a symplectic form cannot be exact on a compact manifold.
+	Notice the proof can be generalized: \textbf{any compact manifold with vanishing second cohomology does not admit a symplectic structure}. Moreover, it shows a symplectic form cannot be exact on a compact manifold.
 \end{remark}
 
 \begin{definition}
@@ -194,24 +194,24 @@ Other obstructions are given by topology. For example
 \subsection[The canonical symplectic structure on the cotangent bundle]{The canonical symplectic structure\\on the cotangent bundle}
 The chief example of symplectic manifolds are cotangent bundles of smooth manifolds. In fact, there's a natural/canonical way to equip $M= T^*X$ with a symplectic structure. Notice that $\dim T^*X = 2\dim X$ so that, in principle, we can expect to assign a symplectic structure to arbitrary cotangent bundles. Clearly, as we've seen, dimensionality isn't the only obstruction so we need to exhibit a symplectic form.
 
-The construction of the symplectic structure exploits a particular, naturally defined, $1$-form on $T^*X$. The symplectic form will then be it's exterior derivative.
+The construction of the symplectic structure exploits a particular, naturally defined, $1$-form on $T^*X$. The symplectic form will then be its exterior derivative.
 
 \begin{construction}
-	Let $\pi : T^*X \to X$ be the bundle projection. Notice that a differential $1$-form on $T^*X$ is a function $T^*X \to T^*T^*X$ (with the additional condition of being compatible with the fibers, more on this later) which is exactly the type of function $d\pi^*$ is. If we unpack its definition from Construction~\ref{const:global_diff_and_dual}, we get
+	Let $\pi : T^*X \to X$ be the bundle projection. Notice that a differential $1$-form on $T^*X$ is a function $T^*X \to T^*T^*X$ (with the additional condition of being compatible with the fibers, more on this later) which is exactly the type of function $\pi^*$ is, meant as pointwise function as in Construction~\ref{const:dual_diff_at_P}:
 	\begin{eqalign}
 		\pi^* : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto (\pi^{-1}(x),\, \xi \circ d\pi_{\pi^{-1}(x)})
 	\end{eqalign}
-	So the definition fails. We already knew this: we remarked that $F^*$ is well-defined if and only if $F$ is a diffeomorphism, which is certainly not the case for $\pi$. On the other hand, we can try to fix this pathology by finding another way to choose a ``canonical'' element from $\pi^{-1}(x)$ in the mapping expression of $\pi^*(x, \xi)$. Indeed, since $\pi$ is surjective, that's the only obstruction! And we clearly see that those $\pi^{-1}(x)$ can be unambiguously resolved by simply using the argument of the sought function. So we define the mapping
+	Notice that the definition fails: we remarked that $F^* : T^*_xN \to T^*_{F^{-1}(x)}M$ is well-defined if and only if $F: M \to N$ is a diffeomorphism, which is certainly not the case for $\pi$. We can try to fix this pathology by taking the pull-back\footnote{Which is defined without requiring the invertibility of $F$.} $\pi^*$ of $\xi$ where $\xi$ is seen as an element of $\Omega^1(X)$ and then evaluating the result on $(x, \xi)\in T^*X$:\footnote{Notice that $\xi\in\Omega^1(X)$ should be defined everywhere to take its pull-back, nevertheless our definition works since evaluating our result only in $(x, \xi)$ we only need to know the value of $\xi$ in $x$. We can equivalently define $\xi$ everywhere by requiring that it's constant.}
+	\begin{eqalign}
+		\alpha(x, \xi) = \pi^*_{(x, \xi)} \xi.
+	\end{eqalign}
+	i.e.
 	\begin{eqalign}
 		\alpha : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto ((x, \xi), \xi \circ d\pi_{(x, \xi)})
 	\end{eqalign}
-	or, using the fiberwise duals (Construction~\ref{const:dual_diff_at_P}):
-	\begin{eqalign}
-		\alpha(x, \xi) = \pi^*_{(x, \xi)} \xi.
-	\end{eqalign}
-	This is clearly well-defined as the domain of $\pi^*_{(x,\xi)}$ is precisely $T^*_{(x,\xi)} T^*X$. The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
+	The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
 \end{construction}
 
 The name \emph{tautological} comes from the following property: for every $\mu \in \Omega^1(X)$,
@@ -259,14 +259,14 @@ whose differential, expressed as its Jacobian matrix, is then
 \end{eqalign}
 Then
 \begin{eqalign}
-	\alpha(x, \xi) &= d\pi^*_{(x, \xi)}\xi = \xi \circ d\pi_{(x, \xi)} = \xi_j \cancelto{\delta^j_k}{\pder{\pi^j}{x^k}} dx^k\vert_{(x,\xi)} + \xi_j \cancelto{0}{\pder{\pi^j}{\xi^k}} d\xi^k\vert_{(x,\xi)} = \xi_k dx^k\vert_{(x,\xi)}
+	\alpha(x, \xi) &= \pi^*_{(x, \xi)}\xi = \xi \circ d\pi_{(x, \xi)} = \xi_j \cancelto{\delta^j_k}{\pder{\pi^j}{x^k}} dx^k\vert_{(x,\xi)} + \xi_j \cancelto{0}{\pder{\pi^j}{\xi^k}} d\xi^k\vert_{(x,\xi)} = \xi_k dx^k\vert_{(x,\xi)}
 \end{eqalign}
 
 The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 
 \begin{theorem}
 \label{th:canonicity_of_taut}
-	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}=(F^{-1})^*$ the dual morphism induced by $F^{-1}$. Then $\mathcal F^* \beta = \alpha$.
+	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}=(F^{-1})^* : T^*X_1 \to T^*X_2$ the morphism induced by $F^{-1}$ as in Construction~\ref{const:dual_diff_at_P}. Then $\mathcal F^* \beta = \alpha$, where $\mathcal F^*: \Omega^1(T^*X_2) \to \Omega^1(T^*X_1)$ mean the pullback map.
 	\begin{diagram}
 	\label{diag:liouville}
 		T^*X_1 \arrow{d}{\pi_1} \arrow{r}{\mathcal F} \& T^*X_2 \arrow{d}{\pi_2}\\
@@ -276,12 +276,11 @@ The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 \begin{proof}
 	For each $(x, \xi) \in T^*X_1$,
 	\begin{eqalign}
-		\mathcal{F}(x, \xi) = (F(x), (F^{-1})^*_{F(x)}\xi),
+		\mathcal{F}(x, \xi) = (F(x), \xi \circ d(F^{-1})_{F(x)}),
 	\end{eqalign}
 	so that
 	\begin{eqalign}
 		(\mathcal F^* \beta)_{(x, \xi)} &= \beta_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
-		&= ((\pi_2)^*_{\mathcal F(x,\xi)} (F^{-1})^*_{F(x)}\xi) \circ d\mathcal F_{(x, \xi)}\\
 		&= \xi \circ d(F^{-1})_{F(x)} \circ d(\pi_2)_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
 		&= \xi \circ d(F^{-1} \circ \pi_2 \circ \mathcal F)_{(x, \xi)} \comment{by chain rule}\\
 		&= \xi \circ d(\pi_1)_{(x,\xi)} \comment{by Diagram~\ref{diag:liouville}}\\
