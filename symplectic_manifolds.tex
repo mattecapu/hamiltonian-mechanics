@@ -211,7 +211,11 @@ The construction of the symplectic structure exploits a particular, naturally de
 		\alpha : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto ((x, \xi), \xi \circ d\pi_{(x, \xi)})
 	\end{eqalign}
-	The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
+	The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.\footnote{Since $\mu : X\to T^*X$ then $\mu^* : \Omega^1(T^*X)\to\Omega^1(X)$ and $\mu^*\alpha \in \Omega^1(X)$ hence the statement makes sense. Then:
+	\begin{eqalign}
+		\mu^*\alpha : x \to\, &\alpha_{\mu(x)} \circ d\mu_x = \alpha_{x, \mu_x} \circ d\mu_x = \mu_x \circ d\pi_{(x, \mu_x)} \circ d\mu_x =\\
+		&= \mu_x \circ d(\pi \circ \mu)_x = \mu_x \circ d(\id_{X})_x = \mu_x
+	\end{eqalign}}
 \end{construction}
 
 The name \emph{tautological} comes from the following property: for every $\mu \in \Omega^1(X)$,
@@ -350,7 +354,7 @@ Consider now two symplectic manifolds $(M_1,\omega_1)$ and $(M_2, \omega_2)$, wi
 \begin{eqalign}
 	\omega_\pm = \pr_1^*\omega_1 \pm \pr_2^*\omega_2
 \end{eqalign}
-where $\pr_.$ denote a projection map onto $M_.$.
+where $\pr_\bullet$ denote a projection map onto $M_\bullet$.
 
 \begin{theorem}
 \label{th:char_of_symplectomorphism}
