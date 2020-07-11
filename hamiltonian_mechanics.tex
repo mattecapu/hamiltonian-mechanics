@@ -91,9 +91,13 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	This means that \textbf{the group is actually a group of symplectomorphisms}.
 \end{theorem}
 \begin{proof}
-	Follows from Equation~\ref{eq:t_depend_Lie_derivative} and Remark~\ref{rmk:omega_is_const_on_symp_fields}. Indeed let $\phi_t : M \to M$ be associated to $X_h = \omega^{-1}(dh)$. Then 
+	Follows from the definition of the Lie derivative for one-forms
 	\begin{eqalign}
-		\der{}{t}(\phi_t^*(\omega))=\phi_t^* \Lie{X_h}\omega = \phi_t^* (d\ipr{X_h}\omega + \ipr{X}\cancel{d\omega}) = \phi_t^*(\cancel{d^2 h}) = 0 .
+		\Lie{X_h}\omega := \der{}{\epsilon}(\phi_\epsilon^*(\omega))\vert_{\epsilon=0}
+	\end{eqalign}
+	together with Remark~\ref{rmk:omega_is_const_on_symp_fields}. Indeed let $\phi_t : M \to M$ be associated to $X_h = \omega^{-1}(dh)$. Then the derivative evaluated at $t$ reads
+	\begin{eqalign}
+		\der{}{\epsilon}(\phi_\epsilon^*(\omega))\vert_{\epsilon = t} = \phi_t^*\Lie{X_h}\omega = \phi_t^* (d\ipr{X_h}\omega + \ipr{X}\cancel{d\omega}) = \phi_t^*(\cancel{d^2 h}) = 0 .
 	\end{eqalign}
 \end{proof}
 
