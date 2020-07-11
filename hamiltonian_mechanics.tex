@@ -338,13 +338,12 @@ The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system unde
 	Let $f, h \in \Cinfty(M)$. Then the evolution of $f$ on the flow of $X_h$ is given by the bracket with $h$:
 	\begin{eqalign}
 	\label{eq:evolution_f_flow_Xh}
-		\der{f}{t} = \{f, h\}
+		\der{}{t} (f \circ \phi_t) \vert_{t=0} = \{f,h\}
 	\end{eqalign}
 \end{theorem}
 \begin{proof}
 	\begin{eqalign}
-		\der{}{t} (f \circ \phi_t) & = (\Lie{X_h} f) \circ \phi_t = X_h(f) \circ \phi_t = \langle X_h, \ipr{X_f}\omega \rangle \circ \phi_t\\
-		& = (\ipr{X_h}\ipr{X_f}\omega) \circ \phi_t = \omega(X_f, X_h) \circ \phi_t = \{f,h\} \circ \phi_t .
+		\der{}{t} (f \circ \phi_t) \vert_{t=0} & = X_h(f) = \langle X_h, \ipr{X_f}\omega \rangle = (\ipr{X_h}\ipr{X_f}\omega) = \omega(X_f, X_h) = \{f,h\}.
 	\end{eqalign}
 \end{proof}
 
