@@ -477,7 +477,7 @@ We start with a construction and some vocabulary:
 \end{remark}
 
 \begin{definition}
-	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exists an open neighbourhood $U$ of $p$ and a diffeomorphism $f^{-1}(U) \isoto U \times F$ which makes the following commute:
+	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exists an open neighbourhood $U$ of $p$ and a diffeomorphism $\phi : f^{-1}(U) \isoto U \times F$ which makes the following commute:
 	\begin{diagram}
 		M \arrow[relation=\supset]{r} \&[-3ex] f^{-1}(U) \arrow[swap]{dr}{f} \arrow{rr}{\phi} \& \& U \times F \arrow{dl}{\pr_1}\\
 		\& \& U
@@ -500,7 +500,7 @@ We start with a construction and some vocabulary:
 
 \begin{theorem}[Arnold--Liouville]
 \label{th:arnold_liouville}
-	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case by removing the set of critical points of $H$ from $M$.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
+	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case by removing the set of critical points of $H$ from $M$.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of the fiber $H^{-1}(H(p))$ containing $p$. Then
 	\begin{enumerate}
 		\item $F^{(p)}$ is diffeomorphic to $\R^{n-k} \times \T^k$ for some $0 \leq k \leq n$ through a diffeomorphism that maps the flows of $X_{h_1}, \ldots, X_{h_n}$ to linear flows on $\R^{n-k} \times \T^k$; i.e. a linear $\R^n$-action on $\R^{n-k} \times \T^k$;
 		\item in a neighbourhood of $F^{(p)}$ the functions $h_1, \ldots, h_n$ can be completed to a system of Darboux coordinates;
@@ -588,7 +588,7 @@ We start with a construction and some vocabulary:
 		\end{eqalign}
 		Since $H$ is constant on each $\gamma_\alpha$, the $h_i$ in the integral are (non-zero) constants, so that the assignment is a linear function:
 		\begin{eqalign}
-			(I_\alpha) = \underbrace{(-\int_{\gamma_\alpha} \,dt^i)}_A (h^i).
+			(I_\alpha) = \underbrace{(-\int_{\gamma_\alpha} \,dt^i)}_A (h_i).
 		\end{eqalign}
 		Since we choose $\gamma_1, \ldots, \gamma_n$ to be linearly independent, the matrix $A$ can be easily shown to be invertible. Then we can write:
 		\begin{eqalign}
@@ -818,12 +818,11 @@ We start with a construction and some vocabulary:
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=.55\textwidth]{figures/Kepler_Lagrangian_fiber.jpeg}
-			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$. The vertical direction corresponds to $p_r$ values, while the plane is parametrized by variables $r$ and $\theta$. Starting from some special points one can find circular trajectories wrapped-up around the torus.}
+			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$. The vertical direction corresponds to $p_r$ values, while the plane is parametrized by variables $r$ and $\theta$. We'll see that starting from some special points one can find elliptic trajectories wrapped-up around the torus.}
 			\label{fig:KeplerLagrangianFiber}
-		\end{figure}
-		
+		\end{figure}	
 	\end{enumerate}
-	
+
 	Therefore
 	\begin{eqalign}
 		H^{-1}(c_1, c_2) \begin{dcases}
