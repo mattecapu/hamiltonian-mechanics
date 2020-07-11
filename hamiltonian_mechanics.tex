@@ -168,10 +168,13 @@ We'd like now to justify our mathematical definitions in terms of the properties
 	\end{eqalign}
 	i.e. in matrix representation
 	\begin{eqalign}
-		\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix} = \begin{pmatrix} 0 & 1\\-1 & 0\end{pmatrix}\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh}
+	\label{eq:Newton_eom_matrix}
+		\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h} = \underbrace{\begin{pmatrix} 0 & 1\\-1 & 0\end{pmatrix}}_{\eta^\#}\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh}
 	\end{eqalign}
-	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $\eta^\# : T^*_pM \to T_pM$, so that $X_h = \eta^\# (dh)$. Geometrically, such a smooth choice of linear maps is encoded by the tensor field $\eta \in \Gamma(TM \tens TM)$ associated to $\eta^\#$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnote{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.} all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate\footnote{Which is equivalent to assume the injectivity of $\eta^\#$. In this case we can define $(\eta^\#)^{-1} =: \omega^\# : TM \to T^*M$ and its associated tensor $\omega \in \Gamma(T^*M \tens T^*M)$.}; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$.
-
+	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $\eta^\# : T^*_pM \to T_pM$, so that $X_h = \eta^\# (dh)$. Geometrically, such a smooth choice of linear maps is encoded by the tensor field $\eta \in \Gamma(TM \tens TM)$ associated to $\eta^\#$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnote{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.} all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate\footnote{Which is equivalent to assume the injectivity of $\eta^\#$. In this case we can define $(\eta^\#)^{-1} =: \omega^\# : TM \to T^*M$ and its associated tensor $\omega \in \Gamma(T^*M \tens T^*M)$.}; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$:
+	\begin{eqalign}
+		\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh} = \underbrace{\begin{pmatrix} 0 & -1\\1 & 0\end{pmatrix}}_{\omega^\#}\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h}
+	\end{eqalign}
 	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes\footnote{We can rewrite $X_h(h) = \langle X_h, dh \rangle = \langle X_h, \omega^\#(\eta^\#(dh)) \rangle = \langle X_h, \omega^\#(X_h) \rangle = \omega(X_h, X_h)$.} $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
 
 	\textbf{The second assumption is that laws of physics are time-independent}, which translates mathematically to:
@@ -185,10 +188,10 @@ Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent th
 \begin{eqalign}
 	X_h = \pder{h}{\xi_j} \partial_{x^j} - \pder{h}{x^j}\partial_{\xi_j}
 \end{eqalign}
-\textbf{which corresponds very naturally to the vector field we got from Newton's equations}. Indeed, they're the same up to rescaling by a factor $1/m$. Somehow, this ``trick'' to lower Newton's equations to the first-order, when taken seriously and globally on the configuration space, gives us the symplectic structure of $T^* X$.
-\footnotetext{Explicitly:
+\textbf{which corresponds very naturally to the vector field we got from Newton's equations}~\eqref{eq:Newton_eom_matrix}. Indeed, they're the same up to rescaling by a factor $1/m$. Somehow, this ``trick'' to lower Newton's equations to the first-order, when taken seriously and globally on the configuration space, gives us the symplectic structure of $T^* X$.
+\footnotetext{We can see explicitly that this definition gives the Hamiltonian vector field associated to $h$:
 \begin{eqalign}
-	\ipr{X_h}\omega &= (dx^j \wedge d\xi_j) \left(\pder{h}{\xi_i} \partial_{x^i} - \pder{h}{x^i}\partial_{\xi_i}, -\right) = dx^j\left(\pder{h}{\xi_i} \partial_{x^i}\right) d\xi_j - d\xi_j\left(- \pder{h}{x^i}\partial_{\xi_i}\right)dx^j\\
+	\ipr{X_h}\omega &= (dx^j \wedge d\xi_j) \left(\pder{h}{\xi_i} \partial_{x^i} - \pder{h}{x^i}\partial_{\xi_i}, \bullet \right) = \langle dx^j, \pder{h}{\xi_i} \partial_{x^i} \rangle d\xi_j - \langle d\xi_j , - \pder{h}{x^i}\partial_{\xi_i} \rangle dx^j\\
 	& = \pder{h}{x^j}dx^j + \pder{h}{\xi_j} d\xi_j = dh.
 \end{eqalign}}
 
@@ -275,7 +278,8 @@ Direct computation.
 	\begin{eqalign}
 	\label{eq:Lie_deriv_k_form}
 		(\Lie{U}\omega)(\partial_{\alpha_1}, \dots, \partial_{\alpha_k}) & = U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) - \omega([U, \partial_{\alpha_1}], \dots \partial_{\alpha_k}) - \dots - \omega(\partial_{\alpha_1}, \dots , [U, \partial_{\alpha_k}]) \\
-		& = U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) + (\partial_{\alpha_1} U^{\alpha_1})\omega(\partial_{\alpha_1}, \dots \partial_{\alpha_k}) + \dots + (\partial_{\alpha_k} U^{\alpha_k})\omega(\partial_{\alpha_1}, \dots , \partial_{\alpha_k}) 
+		&= U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) + (\partial_{\alpha_1} U^{\beta})\omega(\partial_{\beta}, \dots \partial_{\alpha_k}) + \dots + (\partial_{\alpha_k} U^{\beta})\omega(\partial_{\alpha_1}, \dots , \partial_{\beta}) \\
+		&= U^\mu (\partial_\mu \omega_{\alpha_1,\dots,\alpha_k}) + (\partial_{\alpha_1}U^\beta)\omega_{\beta,\dots,\alpha_k} + \dots + (\partial_{\alpha_k}U^\beta)\omega_{\alpha_1,\dots,\beta}
 	\end{eqalign}
 	}
 
