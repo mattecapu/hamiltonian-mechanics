@@ -3,7 +3,7 @@
 
 \chapter{Coadjoint orbits}
 \section{The adjoint action of a Lie group}
-A Lie group is a group supported on a smooth manifold and whose product and inverse maps are smooth. This is a very fertile combination of structures from which a canonical symplectic structure of certain associated manifolds (the \textbf{coadjoint orbits}) will emerge naturally. As Lie groups are a quite large class of manifolds which includes groups of matrices, such a treatment is relevant to many physical situations.
+A Lie group is a group supported on a smooth manifold and whose product and inverse maps are smooth. This is a very fertile combination of structures from which a canonical symplectic structure of certain associated manifolds (the \textbf{coadjoint orbits}) will emerge naturally. As Lie groups are a quite large class of manifolds which includes groups of matrices, such a treatment is relevant to many physical situations. Most of the topics treated in this chapter (actually most of the topics treated in these notes) are contained in \cite{michor2008}.
 
 It is interesting to study the (smooth) actions of such a group, i.e. group maps
 \begin{eqalign}
@@ -170,6 +170,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 \end{remark} 
 
 \begin{proposition}
+\label{prop:ad_to_coad_adinvariant}
 	The identification $\lalg \iso \lalg^*$, $X\mapsto (X,\bullet)$ induced by an $\Ad$-invariant form $(\bullet,\bullet)$ sends the adjoint action to the coadjoint one $\Ad_g(X) \mapsto \Ad^*_g((X, \bullet))$:
 	\begin{diagram}
 		\lalg \arrow{d}{\Ad_g} \arrow{r} \& \lalg^* \arrow{d}{\Ad^*_g}\\
@@ -183,7 +184,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{eqalign}
 \end{proof}
 
-\section{The symplectic structure of co-adjoint orbits}
+\section{The symplectic structure of coadjoint orbits}
 \begin{definition}
 	The \textbf{coadjoint orbit} through $\alpha \in \lalg^*$ is
 	\begin{eqalign}
@@ -275,14 +276,14 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 
 \begin{example}
 \label{ex:SO3_algebra}
-	Let $G=SO(3)$ (the group of orientation-preserving rotations of the $2$-dimensional sphere), identified with the manifold of order $3$ square, orthogonal matrices with positive determinant.
+	Let $G=SO(3):= \{g \in M_{3\times3}(\R) \suchthat \det(g)=1, g^Tg=e\}$ (the group of orientation-preserving rotations of the $2$-dimensional sphere), identified with the manifold of order $3$ square, orthogonal matrices with positive determinant.
 
 	We can obtain an explicit description of its Lie algebra as $T_{I_3} SO(3)$, by differentiating the relation $X^TX = I_3$:
 	\begin{eqalign}
 		\mathfrak{so}(3) &= \{\der{}t\vert_{I_3} X \suchthat X \in \R^{3 \times 3},\ X^TX = I_3 \}\\
 		&= \{X \in \R^{3 \times 3} \suchthat X + X^T = 0 \}.
 	\end{eqalign}
-	The Lie bracket on $\mathfrak{so}(3)$ is the usual commutator of matrices (in the ring theoretic sense). There is an isomorphism
+	The Lie bracket on $\mathfrak{so}(3)$ is the usual commutator $[\bullet,\bullet]$ of matrices (in the ring theoretic sense). There is an isomorphism
 	\begin{eqalign}
 		\phi : \R^3 &\isolongto \mathfrak{so}(3)\\
 			(x,y,z) &\longmapsto \begin{pmatrix}
@@ -297,26 +298,41 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{eqalign}
 	So
 	\begin{eqalign}
-		(\mathfrak{so}(3), [-,-]) \underset{\cat{LieAlg}}\iso (\R^3, \times).
+		 (\R^3, \times) \underset{\cat{LieAlg}}\iso (\mathfrak{so}(3), [\bullet,\bullet]).
 	\end{eqalign}
-	The action $\Ad_g$ applied to $v$ results in $g \phi(v) g^{-1}$. It produces a rotation of $v$ by $g$: $=\phi(g v)$. We have an $\Ad$-invariant structure:
+	The action $\Ad_g$ applied elements of $\mathfrak{so}(3)$ results in a rotation of $v$:
+	\begin{eqalign}
+		\Ad_g(\phi(v)) = g\phi(v)g^{-1} = \phi(g \cdot v) \quad \forall g\in SO(3), \forall v\in \R^3
+	\end{eqalign}
+	We can define the following $\Ad$-invariant bilinear form:
 	\begin{eqalign}
 			(\phi(v), \phi(w)) := v \cdot w, \quad \forall v,w \in \R^3.
 	\end{eqalign}
-	The coadjoint action is then
+	which gives the following identifications
 	\begin{eqalign}
-		\Ad^*_g(\phi(v)) = \phi(g^{-1} v) \cdot
+		\R^3 \isolongto \mathfrak{so}(3) \isolongto \mathfrak{so}^*(3)
 	\end{eqalign}
-	Consider
+	and sends $\Ad$ in $\Ad^*$ as proved in Proposition~\ref{prop:ad_to_coad_adinvariant}:\footnote{Sometimes in literature the coadjoint action is defined as the inverse dual rather than the dual of the adjoint action, i.e. $\langle \Ad_g^*\alpha, X \rangle = \langle \alpha, \Ad_gX\rangle$. If this is the case Equation~\eqref{eq:coadj_action_so3} become
 	\begin{eqalign}
-		\Omega_{\phi(v)} &= \{\Ad_g^*(\phi(v)) \suchthat g \in SO(3) \}\\
-		&= \phi \{g^{-1} v \suchthat g \in SO(3) \}
+		\Ad^*_g((\phi(v),\bullet)) = (\Ad_{g^{-1}}(\phi(v)), \bullet) = (\phi(g^{-1}\cdot v),\bullet)
+	\end{eqalign}}
+	\begin{eqalign}
+	\label{eq:coadj_action_so3}
+		\Ad^*_g((\phi(v),\bullet)) = (\Ad_g(\phi(v)), \bullet) = (\phi(g\cdot v),\bullet)
+	\end{eqalign}
+	Consider the coadjoint orbits
+	\begin{eqalign}
+		\Omega_{(\phi(v), \bullet)} &= \{\Ad_g^*((\phi(v),\bullet) \suchthat g \in SO(3) \}\\
+		&= \phi \{g \cdot v \suchthat g \in SO(3) \}
 	\end{eqalign}
 	The symplectic form is then
 	\begin{eqalign}
-		\omega(\ad^*_{\phi(v)}, \ad^*_{\phi(w)})_{\phi(u)} = u \cdot (v \times w)
+		\omega(\ad^*_{\phi(v)}, \ad^*_{\phi(w)})_{(\phi(u), \bullet)} = (\phi(u), \phi(v\times w)) = u \cdot (v \times w)
 	\end{eqalign}
-	which is the usual symplectic structure on the sphere!
+	which is the usual symplectic structure on the sphere:
+	\begin{eqalign}
+		(\Omega_\alpha, \omega) \isolongto (S^2, \omega_0)
+	\end{eqalign}
 
 	We've said $T_v \Omega_v$ describes the infinitesimal action -- thus the infinitesimal rotations in this case --- departing from $v$. Thus we can understand the quotient structure as this
 	\begin{eqalign}
@@ -328,6 +344,10 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 		&= \text{infinitesimal movements on the sphere starting at $v$}
 	\end{eqalign}
 \end{example}
+
+\begin{remark}
+	Notice that $SO(3)$ has odd dimension (hence cannot be a Lagrangian manifold), nevertheless we have been able to define a foliation of such manifolds in orbits. In the next chapter we'll try to generalize the concept of Lagrangian manifolds to a larger class of manifolds which can be used to describe mechanics and describes also coadjoint orbits case, called \emph{Poisson manifolds}.
+\end{remark}
 
 \chapter{Poisson manifolds}
 \section{Poisson manifolds}
