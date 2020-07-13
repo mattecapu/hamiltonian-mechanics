@@ -1,7 +1,7 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\chapter{Poisson manifolds}
+\chapter{Coadjoint orbits}
 \section{The adjoint action of a Lie group}
 A Lie group is a group supported on a smooth manifold and whose product and inverse maps are smooth. This is a very fertile combination of structures from which a canonical symplectic structure of certain associated manifolds (the \textbf{coadjoint orbits}) will emerge naturally. As Lie groups are a quite large class of manifolds which includes groups of matrices, such a treatment is relevant to many physical situations.
 
@@ -183,6 +183,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{eqalign}
 \end{proof}
 
+\section{The symplectic structure of co-adjoint orbits}
 \begin{definition}
 	The \textbf{coadjoint orbit} through $\alpha \in \lalg^*$ is
 	\begin{eqalign}
@@ -263,7 +264,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{equation}
 	and using Cartan's formula
 	\begin{eqalign}
-		0 = \Lie{\ad^*_Z}\omega = d\iota_{\ad^*_Z} \omega + \iota_{\ad^*_Z} d\omega=\iota_{\ad^*_Z} d\omega \qquad \forall\ad^*_Z,
+		0 = \Lie{\ad^*_Z}\omega = d\iota_{\ad^*_Z} \omega + \iota_{\ad^*_Z} d\omega=\iota_{\ad^*_Z} d\omega \quad \forall\ad^*_Z,
 	\end{eqalign}
 	which implies that $d\omega=0$ since $\ad^*_Z$ generates $T_\alpha\Omega_\alpha$.
 \end{proof}
@@ -328,6 +329,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{eqalign}
 \end{example}
 
+\chapter{Poisson manifolds}
 \section{Poisson manifolds}
 \begin{definition}
 	A \textbf{Poisson manifold} $(M, \{-,-\})$ is a smooth manifold $M$ together with a Poisson algebra structure $\{-,-\}$ on $\Cinfty(M)$.
