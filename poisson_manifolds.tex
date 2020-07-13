@@ -22,24 +22,26 @@ where $M$ is a smooth manifold. Any such action, by virtue of the smooth structu
 Even when we do not have at our disposal another manifold $M$ for $G$ to act on, $G$ acts on itself already in interesting ways. The easiest way a group acts on itself is with the \textbf{left action}:
 \begin{eqalign}
 	L : G \times G &\longto G\\
-	(g,h) &\longmapsto gh
+	(g,h) &\longmapsto L_g(h) := gh
 \end{eqalign}
-By noting that $L_e = \id_G$, meaning vectors at the identity are fixed by the action, we can guess the following identification
+
+A field $X \in \fields(G)$ is \textbf{left invariant} if $(L_g)_*X = X$ for all $g \in G$, i.e. $d(L_g)_x(X_x) = X_{gx}$ for all $g,x \in G$. We denote by $\fields^L(G)$ the set of all left invariant vector fields. 
+One can prove\footnote{See \cite[Proposition 3.6.2]{abate2011geometria}.} that $\fields^L(G)$ is a Lie algebra with the usual bracket $[-,-]$ of vector fields. Moreover there is a Lie algebra isomorphism between $\fields^L(G)$ and $T_eG$:
 \begin{eqalign}
-	T_eG \underset{\cat{LieAlg}}\iso \fields^L(G) = \{X \in \fields(G) \suchthat (L_g)_* X = X\ \forall g \in G \}
+	T_eG \underset{\cat{LieAlg}}\iso \fields^L(G) := \{X \in \fields(G) \suchthat (L_g)_* X = X\ \forall g \in G \}
 \end{eqalign}
-In fact, any vector in $T_e G$ (which is left-invariant) can be extended to a left-invariant vector field by prolonging it using the action's flow; transitivity of $L$ takes care of injectivity issues. Evaluation at $e$ is the inverse map. Both $T_eG$ and $\fields^L(G)$, along with the usual brackets $[-,-]$, are called the \textbf{Lie algebra} of $G$ and denoted by $\lalg$. Incidentally, $\lalg$ is also \emph{a} Lie algebra with respect to the usual bracket of vector fields, thus $\lalg \incat{LieAlg}\subseteq \fields(G)$.
+In fact, any vector in $T_e G$ can be extended to a left-invariant vector field by prolonging it using the action's flow, $X_g := d(L_g)_e(X_e)$; transitivity of $L$ takes care of injectivity issues. Evaluation at $e$ is the inverse map. The isomorphism induces a Lie algebra structure on $T_eG$, given by $[X_e, Y_e] := [X,Y]_e$, promoting the isomorphism to a Lie algebra isomorphism as claimed before. Both $T_eG$ and $\fields^L(G)$ are called the \textbf{Lie algebra} of $G$ and denoted by $\lalg$. 
 
 Of course, these construction can be carried out for the \textbf{\emph{right} action}, too, defined obviosuly as multplication on the right. The fields invariant for this action are denoted by $\fields^R(G)$ and for the same reasons as before, they form a Lie algebra isomorphic to $T_e G$, thus to $\lalg$. However, this doesn't mean right-invariant fields are automatically left-invariant --- at all.
 
-Since $\lalg$ can be considered a tangent space of $G$, to any action $\rho : G \times G \to G$ fixing the identity we can associate an action on the Lie algebra, simply by taking differentials at $e$:
+Since $\lalg$ can be considered a tangent space of $G$, to any action $\rho : G \times G \to G$ \emph{fixing the identity} (i.e. such that $\rho_g (e) = e$ for all $g \in G$) we can associate an action on the Lie algebra, simply by taking differentials at $e$:
 \begin{eqalign}
 	\mathfrak p : G \times \lalg &\longto \lalg\\
-		(g, X_e) &\longmapsto d\rho_g(X_e)
+		(g, X_e) &\longmapsto d(\rho_g)_e(X_e)
 \end{eqalign}
 
 \begin{proposition}
-	When $\rho : G \times G \to G$ is an action fixing the identity, then the action $\mathfrak p$ is isomorphic (in the representation-theoretic sense) to $\rho_*$ restricted to $\fields^L(G)$, that is, the following commutes for every $g \in G$:
+	When $\rho : G \times G \to G$ is an action fixing the identity, then the action $\mathfrak p$ is isomorphic (in the representation-theoretic sense) to the pullback $\rho_*$ restricted to $\fields^L(G)$, that is, the following commutes for every $g \in G$:
 	\begin{diagram}
 		\fields^L(G) \arrow{r}{(\rho_g)_*} \arrow{d}{\phi} \& \fields^L(G) \arrow{d}{\phi}\\
 		T_e G \arrow{r}{d\rho_g} \& T_e G
@@ -49,7 +51,7 @@ Since $\lalg$ can be considered a tangent space of $G$, to any action $\rho : G 
 \begin{proof}
 	Let $X \in \fields^L(G)$, then
 	\begin{eqalign}
-		\phi((\rho_g)_*(X)) &= (\rho_g)_*(X)_e\\
+		\phi((\rho_g)_*(X)) &= ((\rho_g)_*X)_e\\
 		&= d(\rho_g)_{\rho_g^{-1}e}(X_{\rho_g^{-1}e})\\
 		&= d(\rho_g)_e(X_e) \comment{because $\rho$ fixes $e \in G$}\\
 		&= d\rho_g(\phi(X)).
@@ -59,66 +61,127 @@ Since $\lalg$ can be considered a tangent space of $G$, to any action $\rho : G 
 The simplest of such actions is the \textbf{conjugation action} (since the left action and the right action do not fix the identity):
 \begin{eqalign}
 	I : G \times G &\longto G\\
-	(g, x) &\longmapsto g x g^{-1}
+	(g, x) &\longmapsto I_g(x) := g x g^{-1}
 \end{eqalign}
 The identity $e \in G$ is a fixed point for this action.
+
+Given $X\in\fields(G)$, we denote its associated flow by
+\begin{eqalign}
+	\phi^X_\bullet : (-\epsilon, \epsilon) \times G &\longto G\\
+	(t, g) &\longmapsto \phi_t^X(g)
+\end{eqalign}
 
 \begin{definition}
 	The \textbf{adjoint action} of a Lie group $G$ is the action
 	\begin{eqalign}
 		\Ad : G \times \lalg &\longto \lalg\\
-		(g, X) &\longmapsto (I_g)_* X
+		(g, X_e) &\longmapsto \Ad_g(X_e) := ((I_g)_* X)_e = \der{}{t}\vert_{t=0}(g\, \phi_t^X(e)\,g^{-1})
 	\end{eqalign}
-	induced on its Lie algebra $\lalg$ by the conjugate action
+	induced on its Lie algebra $\lalg$ by the conjugate action, for any $X \in \fields^L(G)$.
 \end{definition}
 
 \begin{construction}
-	Fix $X \in \lalg$ and call $g(t)$ its flow through the identity. If we are given a smooth action $\rho : G \times M \to M$ on a smooth manifold $M$, $g(t)$ induces a $1$-parameter group of diffeomorphisms of $M$:
+	If we are given a smooth action $\rho : G \times M \to M$ on a smooth manifold $M$, the flow through the identity $\phi^X_\bullet(e) : (-\epsilon, \epsilon) \to G$ induces a $1$-parameter group of diffeomorphisms of $M$:
 	\begin{eqalign}
-		\phi_t := \rho_{g(t)}.
+		\phi^{X_M}_\bullet : (-\epsilon, \epsilon) \times M &\longto M\\
+		(t, p) &\longmapsto \rho_{\phi^X_t(e)}(p)
 	\end{eqalign}
-	Its derivative then defines a field $X_M \in \fields(M)$. This procedure can be embodied by a map
+	Its derivative then defines a field\footnote{Usually in literature $X_M$ is called \textbf{fundamental vector field} associated with $X$.} $X_M \in \fields(M)$ such that
+	\begin{eqalign}
+	\label{eq:dfn_expl_inf_action}
+		X_M \vert_p = \der{}{t} \rho_{\phi^X_t(e)}(p) \vert_{t=0}.
+	\end{eqalign}
+	This procedure can be embodied by a map
 	\begin{eqalign}
 		\lalg &\longto \fields(M)\\
 		X &\longmapsto X_M
 	\end{eqalign}
-	called the \textbf{infinitesimal action} (even if it's not an action on its own right) of $X$ on $M$. It can be proven to be a Lie algebra homomorphism.
+	called the \textbf{infinitesimal action} (even if it's not an action on its own right) of $\lalg$ on $M$. It can be proven\footnote{\cite[Appendix 5, Proposition 3.8]{libermann1987}} to be a Lie algebra homomorphism. The meaning of such map is that the infinitesimal transformation defined by $X\in\lalg$ induces an infinitesimal transformation on $M$ described by $X_M$.
 \end{construction}
 
 \begin{definition}
-	The infinitesimal action associated to the adjoint action of $G$ unto $\lalg$ is denoted by
+	The infinitesimal action associated to $\Ad : G \times \lalg \to \lalg$ is denoted by
 	\begin{eqalign}
 		\ad : \lalg &\longto \fields(\lalg)\\
-		X &\longmapsto X_\lalg
-	\end{eqalign}
-	Since $\ad_X$ is a vector field on $\lalg$, it yields a vector for any left-invariant vector field $Y$ we pass to it. Prove:
-	\begin{eqalign}
-		\ad_X\vert_Y = [X, Y] \quad \forall X \in \lalg.
+		X &\longmapsto X_\lalg =: \ad_X
 	\end{eqalign}
 \end{definition}
 
 \begin{remark}
-	Notice that $\ad_X\vert_Y \in T_X\lalg$, but \textbf{since $T_eG$ is a vector space its tangent space is naturally isomorphic to itself}. This is why we can consider $[X, Y]$ (which is an element of $\lalg$, since both $X$ and $Y$ are left-invariant and pushforward respects the bracket) both as an element of $\lalg$ and as a vector.
+\label{rem:ident_lalg_Tlalg}
+	Notice that $\ad_X\vert_Y \in T_Y\lalg$, but \textbf{since $T_eG$ is a vector space its tangent space is naturally isomorphic to itself}. Then we can consider $[X, Y]$ (which is an element of $\lalg$, since both $X$ and $Y$ are left-invariant and pushforward respects the bracket) both as an element of $\lalg$ and as a vector.
 \end{remark}
+
+\begin{proposition}
+	The infinitesimal action $\ad : \lalg \to \fields(\lalg)$ satisfies
+	\begin{eqalign}
+	\label{eq:inf_adj_and_comm}
+		\ad_X\vert_Y = [X, Y] \quad \forall X, Y \in \lalg.
+	\end{eqalign}
+\end{proposition}
+\begin{proof}
+	Choose any $f \in C^\infty(G)$ and consider $\ad_X\vert_Y$ as an element of $T_eG$. Then
+	\begin{eqalign}
+		\ad_X\vert_Y (f) &= \der{}{t}(\Ad_{\phi^X_t(e)}Y)(f) \vert_{t=0}\\
+		&= \spder{}{t}{s} f (\phi^X_t(e) \phi^Y_s(e) \phi^X_{-t}(e)) \vert_{t=s=0}\\
+		&= \spder{}{s}{t_1} f (\phi^X_{t_1}(e) \phi^Y_s(e) \phi^X_{-t_2}(e)) \vert_{t_1=t_2=s=0} +\\
+		&\quad+ \spder{}{s}{t_2} f (\phi^X_{t_1}(e) \phi^Y_s(e) \phi^X_{-t_2}(e)) \vert_{t_1=t_2=s=0}\\
+		&= \spder{}{s}{t} f (\phi^X_{t}(e) \phi^Y_s(e)) \vert_{t=s=0} + \spder{}{s}{t} f (\phi^Y_s(e) \phi^X_{-t}(e)) \vert_{t=s=0}\\
+		&= X(Y(f))-Y(X(f)) = [X,Y](f)
+	\end{eqalign}
+\end{proof}
 
 \begin{definition}
 	The \textbf{coadjoint action} $\Ad^*$ is the dual map to $\Ad$, hence the unique map
 	\begin{eqalign}
-		\Ad^* : G \times \lalg^* &\longto \lalg^*
+		\Ad^* : G \times \lalg^* &\longto \lalg^*\\
+		(g, \alpha) &\longmapsto \Ad^*_g\alpha
 	\end{eqalign}
 	such that
 	\begin{eqalign}
 		\langle \Ad^*_g \alpha, X \rangle = \langle \alpha, \Ad_{g^{-1}} X \rangle, \quad \forall \alpha \in \lalg^*, X \in \lalg.
 	\end{eqalign}
-	Its infinitesimal action is the map $\ad^*_X : \lalg \to \fields(\lalg^*)$ satisfying
+	Its infinitesimal action is the map $\ad^*_\bullet : \lalg \to \fields(\lalg^*)$, $X \mapsto \ad^*_X$, called \textbf{infinitesimal co-adjoint action}, satisfying\footnote{The proof relies on the definition of infinitesimal action, Equation~\eqref{eq:dfn_expl_inf_action}:
 	\begin{eqalign}
-		\langle \ad^*_X\vert_\alpha, Y \rangle = \langle \alpha, \ad_{-X}\vert_Y \rangle = - \langle \alpha, [X, Y] \rangle.
+		\langle \ad^*_X\vert_\alpha, Y \rangle =  \der{}{t}\vert_{t=0}\,\langle \Ad^*_{\exp(tX_e)}\alpha, Y \rangle = \der{}{t}\vert_{t=0}\,\langle \alpha, \Ad_{\exp(-tX_e)} Y \rangle = \langle \alpha, \ad_{-X}\vert_Y \rangle
+	\end{eqalign}}
+	\begin{eqalign}
+	\label{eq:inf_co_adj_and_comm}
+		\langle \ad^*_X\vert_\alpha, Y \rangle = \langle \alpha, \ad_{-X}\vert_Y \rangle = - \langle \alpha, [X, Y] \rangle, \quad \forall \alpha \in \lalg^*, X,Y \in \lalg,
+	\end{eqalign}
+	where we identified $\lalg^*$ with $T_\alpha\lalg^*$ in analogy to what we have done in Remark~\ref{rem:ident_lalg_Tlalg}. In this way $\ad^*_X\vert_\alpha \in T_\alpha\lalg^*$ can be applied as a one-form on $Y\in\lalg$. 
+\end{definition}
+
+Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_comm} show explicitely the linearity of $\ad_X$ and $\ad^*_X$ respect to $X$, which indeed are Lie algebra homomorphisms, as we just mentioned before. 
+
+\begin{definition}
+	A symmetric non-degenerate bilinear form $(\bullet,\bullet) : \lalg \times \lalg \to \R$ is called \textbf{$\Ad$-invariant} if
+	\begin{eqalign}
+		(\Ad_g X, \Ad_g Y) = (X,Y), \quad \forall g \in G,\, \forall X,Y \in \lalg.
 	\end{eqalign}
 \end{definition}
 
-\begin{exercise}
-	Prove the last claim.
-\end{exercise}
+\begin{remark}
+	Heuristically, an adjoint invariant metric on $\lalg$ can be constructed for a compact Lie group $G$ starting from any metric $(\bullet,\bullet)^\sim$ on $\lalg$ by averaging over $G$
+	\begin{eqalign}
+		(X,Y) = \int_G (\Ad_gX, \Ad_gY)^\sim\,d\mu_G
+	\end{eqalign}
+	where $d\mu_G$ is any volume form on $G$. Since Lie groups are always orientable, there always exists a volume form on $G$.
+\end{remark} 
+
+\begin{proposition}
+	The identification $\lalg \iso \lalg^*$, $X\mapsto (X,\bullet)$ induced by an $\Ad$-invariant form $(\bullet,\bullet)$ sends the adjoint action to the coadjoint one $\Ad_g(X) \mapsto \Ad^*_g((X, \bullet))$:
+	\begin{diagram}
+		\lalg \arrow{d}{\Ad_g} \arrow{r} \& \lalg^* \arrow{d}{\Ad^*_g}\\
+		\lalg \arrow{r} \& \lalg^*.
+	\end{diagram}
+\end{proposition}
+\begin{proof}
+	The following equalities hold:
+	\begin{eqalign}
+		(\Ad_g(X), Y) = (X, \Ad_{g^{-1}}Y) = \langle (X, \bullet), \Ad_{g^{-1}} Y \rangle = \langle \Ad_g^* ((X, \bullet)), Y \rangle
+	\end{eqalign}
+\end{proof}
 
 \begin{definition}
 	The \textbf{coadjoint orbit} through $\alpha \in \lalg^*$ is
@@ -129,56 +192,72 @@ The identity $e \in G$ is a fixed point for this action.
 
 \begin{theorem}
 \label{th:coadj_is_tangent}
-	There is an identification $T_\alpha \Omega_\alpha \iso \lalg / \ker (\ad^*\vert_\alpha)$.
+	There is an identification $T_\alpha \Omega_\alpha \iso \lalg / \ker (\ad^*_\bullet\vert_\alpha)$.\footnote{The subspace $ \ker (\ad^*_\bullet\vert_\alpha)$ is the kernel of the application $\ad^*_\bullet\vert_\alpha : \lalg \to T_\alpha\lalg^*$, $X \mapsto \ad^*_X\vert_\alpha$.}
 \end{theorem}
 \begin{proof}
-	Let's start by trying to understand intuitively what is the kernel of $\ad^*\vert_\alpha$. Remember $\ad^*$ represents the infinitesimal action of $G$ on $\lalg^*$, thus we may think of its kernel at a given point $\alpha \in \lalg^*$ as the stabilizer of this action, i.e. those vector fields which do not move $\alpha$. It's easy then to picture the claimed isomorphism: the tangent space of the coadjoint orbit is made by the vectors along which the action can move $\alpha$, thus it makes sense to say these are exactly all the vectors of the infinitesimal action modulo the ones that do not move $\alpha$, namely the ones in the infinitesimal stabilizer.
+	Let's start by trying to understand intuitively what is the kernel of $\ad^*_\bullet\vert_\alpha$. Remember $\ad^*$ represents the infinitesimal action of $G$ on $\lalg^*$, thus we may think of its kernel at a given point $\alpha \in \lalg^*$ as the stabilizer of this action, i.e. those vector fields which do not move $\alpha$. It's easy then to picture the claimed isomorphism: the tangent space of the coadjoint orbit is made by the vectors along which the action can move $\alpha$, thus it makes sense to say these are exactly all the vectors of the infinitesimal action modulo the ones that do not move $\alpha$, namely the ones in the infinitesimal stabilizer.
 
-	Consider the submersion $g \longmapsto \Ad_g^*(\alpha)$. We have $T_g G \iso T_e G = \lalg$ through the left action of $G$ on itself and $T_{\Ad_g^*(\alpha)}\Omega_\alpha \iso T_\alpha \Omega_\alpha$ for analogous reasons.
-	Its differential at the identity of $e$ then is
+	Consider the submersion $G \to \Omega_\alpha$, $g \mapsto \Ad_g^*(\alpha)$.\footnote{The surjectivity is obvious from definition, moreover the invertibility of the Jacobian in ensured the the fact that the action of $G$ on itself is free.} 
+	Its differential at the identity of $e$ then is, given $X \in \lalg$,
 	\begin{eqalign}
-		\ad^* : \lalg &\longto T_\alpha \Omega_\alpha\\
-		X &\longmapsto \ad^*_X
+		X \longmapsto \der{}{t} \Ad_{\phi_t^X}^*\alpha \vert_{t=0} = \ad^*_X \vert_\alpha
+	\end{eqalign}
+	i.e. is given by
+	\begin{eqalign}
+	\label{eq:coadj_map_lalg_to_Torbits}
+		\ad^*_\bullet\vert_\alpha : \lalg &\longto T_\alpha \Omega_\alpha\\
+		X &\longmapsto \ad^*_X\vert_\alpha
 	\end{eqalign}
 	and by surjectivity, the claim follows from the First Isomorphism Theorem.
 \end{proof}
 
-\begin{theorem}
-	There $2$-form $\omega \in \Omega^2(\Omega_\alpha)$ defined by
+\begin{theorem}[Kirillov-Kostant-Souriau]
+	The $2$-form $\omega \in \Omega^2(\Omega_\beta)$ defined by\footnotemark
 	\begin{eqalign}
-		\omega(X, Y)_\xi = \omega(\ad^*_X, \ad^*_Y)_\xi = \langle \xi, [X,Y] \rangle, \quad \forall X,Y \in \fields(\Omega_\alpha),\, \forall \xi \in \Omega_\alpha,
+		\omega(\ad^*_X\vert_\alpha, \ad^*_Y\vert_\alpha) := \langle \alpha, [X,Y] \rangle, \quad \forall X,Y \in \lalg, \forall \alpha \in \Omega_\beta
 	\end{eqalign}
 	is symplectic.
 \end{theorem}
+\footnotetext{This is a well defined 2-form provided that for each $X_1,X_2,Y \in \fields(\Omega_\beta)$, $\alpha \in \lalg^*$ such that $\ad^*_{X_1} \vert_\alpha = \ad^*_{X_2} \vert_\alpha$, we have $\langle \alpha, [X_1,Y] \rangle = \langle \alpha, [X_2,Y] \rangle$. This is the case if $\ad^*_{X_1} \vert_\alpha - \ad^*_{X_2} \vert_\alpha = \ad^*_{X_1-X_2} \vert_\alpha=0$ implies $X_1-X_2=0$. But this is true since $\omega$ is defined over $T_\alpha \Omega_\alpha\iso \lalg/\ker\ad^*_\bullet\vert_\alpha$ (obviously $\Omega_\alpha=\Omega_\beta$).}
 \begin{proof}
 	It is indeed well-defined as $2$-form: it is trivially bilinear and skew-symmetric.
 
-	It is non-degenerate because
+	Let's prove that it is non-degenerate. Since $\ad_{\bullet}^*\vert_\alpha$ is surjective\footnote{As we seen in the proof of Theorem~\ref{th:coadj_is_tangent}.} $\forall\alpha\in\lalg^*$, we just have to prove that
+	\begin{equation}
+		\omega(\ad^*_X\vert_\alpha, \ad^*_Y\vert_\alpha) = 0  \quad \forall Y \in \fields(\Omega_\beta) \iff \ad^*_X \vert_\alpha=0,
+	\end{equation}
+	which, thanks to Equation~\eqref{eq:inf_co_adj_and_comm}, is equivalent to
 	\begin{eqalign}
-		\langle \alpha, [X,Y] \rangle &= \langle \alpha, \ad_X\vert_Y \rangle\\
-			&= -\langle \ad_X^*\vert_\alpha, Y \rangle = 0	\qquad \forall Y\in\fields(\Omega_\alpha)\\
-			&\iff X \in \ker \ad_{\bullet}^*\vert_\alpha,\\
+		\langle \ad_X^*\vert_\alpha, Y \rangle = 0  \quad \forall Y \in \fields(\Omega_\beta) \iff \ad^*_X \vert_\alpha=0.
 	\end{eqalign}
-	that is, since $\ad_{\bullet}^*\vert_\alpha$ is surjective $\forall\alpha\in\lalg^*$,
-	\begin{equation}
-		\omega(\ad^*_X, \bullet) = 0 \iff X\in\ker\ad_{\bullet}^*\vert_\alpha.
-	\end{equation}
-	On the other hand, by the previous theorem,
-	\begin{equation}
-		X\in T_\alpha \Omega_\alpha\iso \lalg/\ker\ad^*_\bullet\vert_\alpha,
-	\end{equation}
-	which means exactly that $[X]=0\in T_\alpha \Omega_\alpha$, so $\omega$ is non-degenerate on its domain.
+	which is trivially true.
 
-	Finally, let us prove $\omega$ is closd. One can show, using the Lie algebra axioms (after long computations we are skipping) that $\Lie{\ad^*_Z} \omega = 0$ for all $Z\in T_\alpha\Omega_\alpha$. On the other hand, notice that
+	Finally, let us prove $\omega$ is closed. Using
 	\begin{eqalign}
-		\ipr{\ad^*_Z} \omega = \omega(\ad^*_Z, \bullet) = - \langle \ad^*_Z\vert_\alpha, \bullet \rangle,
+		\Lie{\ad^*_Z} \omega(\ad^*_X, \ad^*_Y) &= \ad^*_Z\langle \alpha, [X,Y]\rangle - \omega([\ad^*_Z, \ad^*_X], \ad^*_Y)-\omega(\ad^*_Y, [\ad^*_Z, \ad^*_Y])
 	\end{eqalign}
-	and thanks to the identification
+	together with
 	\begin{eqalign}
-		\ad^*_Z\vert_\alpha\in T_\alpha\Omega_\alpha&\iso\lalg/\ker\ad_\bullet^*\vert_\alpha \\
-		\ad^*_Z\vert_\alpha&\sim Z
+		\ad^*_Z \langle \alpha, X \rangle = \der{}{t} \langle \Ad^*_{\phi_t^Z(e)}\alpha, X \rangle \vert_{t=0} = \der{}{t} \langle \alpha, \Ad_{\phi_t^Z(e)} X \rangle \vert_{t=0}= - \langle \alpha, [Z, X] \rangle
 	\end{eqalign}
-	one can write $\langle\ad^*_Z\vert_\alpha,\bullet\rangle=dZ$, therefore
+	one gets (thanks to Jacobi identity and the property of Lie algebra morphism $[\ad^*_X, \ad^*_Y]=\ad^*_{[X,Y]}$):
+	\begin{eqalign}
+		\Lie{\ad^*_Z} \omega = 0 \quad \forall Z\in \lalg.
+	\end{eqalign}
+	On the other hand, notice that\footnote{Indeed $\ipr{\ad^*_Z} \omega \vert_\alpha (\ad^*_X\vert_\alpha) = \omega(\ad^*_Z \vert_\alpha, \ad^*_X\vert_\alpha) = \langle \alpha, [Z,X] \rangle = - \langle \alpha, \ad_X\vert_Z \rangle = \langle \ad_X^*\vert_\alpha, Z\rangle$.}
+	\begin{eqalign}
+		\ipr{\ad^*_Z} \omega = \omega(\ad^*_Z, \bullet) = - \langle Z, \bullet \rangle,
+	\end{eqalign}
+	and if we consider $Z\in\lalg$ as a map
+	\begin{eqalign}
+		Z : \lalg^* &\longto \R\\
+		\beta &\longmapsto \langle Z, \beta \rangle = Z^i\beta_i
+	\end{eqalign}
+	i.e. $Z \in C^\infty (\lalg^*)$, then $dZ \in \Omega^1(\lalg^*)$ such that
+	\begin{eqalign}
+		dZ = \pder{\langle Z, \beta \rangle}{\beta_i}d\beta_i=\langle Z, \bullet \rangle
+	\end{eqalign}
+	where $\beta_i$ are coordinates on $\lalg^*$ respect to the basis dual to $\{\partial_i\}_i\subset\lalg$. Therefore
 	\begin{equation}
 		\ipr{\ad^*_Z} \omega\vert_\alpha=-dZ,
 	\end{equation}
@@ -189,20 +268,9 @@ The identity $e \in G$ is a fixed point for this action.
 	which implies that $d\omega=0$ since $\ad^*_Z$ generates $T_\alpha\Omega_\alpha$.
 \end{proof}
 
-\begin{definition}
-	A symmetric non-degenerate bilinear form $(-,-) : \lalg \times \lalg \to \R$ is called \textbf{$\Ad$-invariant} if
-	\begin{eqalign}
-		(\Ad_g X, \Ad_g Y) = (X,Y), \quad \forall g \in G,\, \forall X,Y \in \lalg.
-	\end{eqalign}
-\end{definition}
-
-\begin{exercise}
-	Prove that the identification $\lalg \iso \lalg^*$ induced by an $\Ad$-invariant form commutes with both $\Ad$ and $\Ad^*$:
-	\begin{diagram}
-		\lalg \arrow{d}{\Ad_g} \arrow{r} \& \lalg^* \arrow{d}{\Ad^*_g}\\
-		\lalg \arrow{r} \& \lalg^*.
-	\end{diagram}
-\end{exercise}
+\begin{remark}
+	Previous theorem shows that we can give a symplectic structure (sometimes called \emph{Kirillov's symplectic structure}) to coadjoint orbits $\Omega_\alpha \subseteq \lalg^*$.
+\end{remark}
 
 \begin{example}
 \label{ex:SO3_algebra}
