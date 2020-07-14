@@ -352,7 +352,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 \chapter{Poisson manifolds}
 \section{Poisson manifolds}
 \begin{definition}
-	A \textbf{Poisson manifold} $(M, \{-,-\})$ is a smooth manifold $M$ together with a Poisson algebra structure $\{-,-\}$ on $\Cinfty(M)$.
+	A \textbf{Poisson manifold} $(M, \{\bullet,\bullet\})$ is a smooth manifold $M$ together with a Poisson algebra structure $\{\bullet,\bullet\}$ on $\Cinfty(M)$.
 \end{definition}
 
 \begin{example}
@@ -373,9 +373,9 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 \end{example}
 
 \begin{definition}
-	On a Poisson manifold $(M, \{-,-\})$ a \textbf{Casimir function} is a function $f \in \Cinfty(M)$ such that
+	On a Poisson manifold $(M, \{\bullet,\bullet\})$ a \textbf{Casimir function} is a function $f \in \Cinfty(M)$ such that
 	\begin{eqalign}
-		\{f, -\} = 0.
+		\{f, \bullet\} = 0.
 	\end{eqalign}
 \end{definition}
 
@@ -384,29 +384,28 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 \end{remark}
 
 \subsection{Poisson tensor}
-Reference: \cite{fernandes2014lectures}. On a symplectic manifold we can prove the value of $\{f,g\}$ at a point $p \in M$ only depends on $df_p$ and $dg_p$: let indeed $h \in \Cinfty(M)$ be such that $dh_p = 0$, then
-\begin{eqalign}
-	\{f, gh\}(p) = \{f, g\}(p)\,\cancel{h(p)} + g(p)\{f,h\}(p) = g(p) \underbrace{\cancel{\omega^{-1}_p(df_p, dh_p)}}_{\text{by non-degeneracy}} = 0.
-\end{eqalign}
-Moreover, notice this dependence is linear and skew-symmetric. Hence we see that a Poisson structure can be encoded by a map $\Pi_p : T^*_pM \wedge T^*_pM \longto \R$ at each point $p \in M$. In other words, a tensor field $\Pi \in \Gamma(TM \wedge TM)$ on $M$:
+On a symplectic manifold the poisson bracket induces a derivation $\{f, \bullet\}$ on $f \in \Cinfty(M)$, hence one can prove\footnote{See \cite[Section 33.1]{michor2008} for this type of argument.} that the value of $\{f,g\}$ at a point $p \in M$ only depends on $df\vert_p$ and $dg\vert_p$. Moreover, notice this dependence is linear and skew-symmetric. Hence we see that a Poisson structure can be encoded by a map $\Pi_p : T^*_pM \wedge T^*_pM \longto \R$ at each point $p \in M$. In other words, a tensor field $\Pi \in \Gamma(TM \wedge TM)$ on $M$:
 
 \begin{definition}
-	The \textbf{Poisson tensor} of a Poisson manifold $M$ is the unique tensor field such that
+	The \textbf{Poisson tensor} of a Poisson manifold $M$ is the unique tensor field $\Pi \in  \Gamma(TM^{\wedge 2})$ such that
 	\begin{eqalign}
-		\{f,g\} = \Pi(df, dg).
+		\{f,g\}\vert_p = \Pi\vert_p(df\vert_p, dg\vert_p) \quad \forall p\in M.
 	\end{eqalign}
 \end{definition}
 
 \begin{example}
-	For a symplectic manifold $(M, \omega)$ the Poisson tensor is simply $\omega^{-1}$.
+	For a symplectic manifold $(M, \omega)$ the Poisson tensor is simply $\omega^{-1}$.\footnote{In the symplectic case we have $\Pi(df, dg) = \{f, g\} = \omega(X_f, X_g)=\omega^{-1}(df, dg)$.}
 \end{example}
 
-The Poisson tensor brings some of the amenities of a symplectic structure to a Poisson manifold -- in fact, anything definable by means of $\omega^{-1}$. For instance, this is the case for Hamiltonian vector fields:
+The Poisson tensor brings some of the amenities of a symplectic structure to a Poisson manifold -- in fact, anything definable by means of $\omega^{-1}$. For instance, this is the case for Hamiltonian vector fields:\footnote{In the symplectic case we have $\Pi(df, \bullet) = \omega^{-1}(df, \bullet) = X_f$.}
 \begin{eqalign}
 \label{eq:ham_vf_from_pi}
-	X_f = \Pi^\sharp(df).
+	X_f = \Pi(df, \bullet) =: \Pi^\sharp(df).
 \end{eqalign}
-Here, $\Pi^\sharp$ is the map $\Omega^1(M) \to \fields^1(M)$ induced by partial application of $\Pi$ on the left.
+Here, $\Pi^\sharp$ is the map $\Omega^1(M) \to \fields^1(M)$ induced by partial application of $\Pi$ on the \emph{left}. As we seen these fields satisfies:
+\begin{eqalign}
+	X_{\{f, g\}}=-[X_f, X_g]
+\end{eqalign}
 
 On the other hand, we can start with a manifold equipped with a Poisson tensor and recover the bracket as a byproduct. In fact, in local coordinates, such a tensor can be written as
 \begin{eqalign}
@@ -434,6 +433,7 @@ Therefore \textbf{we call a Poisson tensor} (or Poisson structure) \textbf{any s
 \begin{exercise}
 	Show that, for a symplectic form $\omega$, Equation~\eqref{eq:jacobi_id_for_pi_tensor} translates to the condition $d\omega = 0$.
 \end{exercise}
+
 \begin{example}
 \label{ex:canonical_poisson}
 	Consider $\R^{2n}$ with linear coordinates $q^1, \ldots, q^n, p_1, \ldots, p_n$. Equip it with the tensor
@@ -471,19 +471,23 @@ Therefore \textbf{we call a Poisson tensor} (or Poisson structure) \textbf{any s
 \end{example}
 
 \subsection{The Schouten--Nijenhuis bracket}
-The Jacobi condition has a more concise expression in terms of the \textbf{Schouten--Nijenhuis bracket}, which is a graded extension of the customary Lie bracket to (skew-symmetric) multivector fields:
+The Jacobi condition \eqref{eq:jacobi_id_for_pi_tensor} has a more concise expression in terms of the \textbf{Schouten--Nijenhuis bracket},\footnote{See \cite[Section 33.2]{michor2008} for the proof of the well-definiteness and the properties of such object.} which is a graded extension of the customary Lie bracket to (skew-symmetric) multivector fields:
 \begin{eqalign}
-	[-, -] : \fields^m(M) \times \fields^n(M) \longto \fields^{n+m-1}(M), \comment{where $\fields^k(M) = \Gamma(TM^{\wedge k})$.}
+	[\bullet, \bullet] : \Gamma(TM^{\wedge m}) \times \Gamma(TM^{\wedge n}) \longto \Gamma(TM^{\wedge (n+m-1)}).
 \end{eqalign}
-It is defined inductively starting from the Lie bracket (taken for the case $n=m=1$) and the derivative of functions along vector fields (taken for the case $n=1$, $m=0$) by imposing the rules to make it into a graded anti-derivation on $\bigwedge^\bullet TM$:
+It is defined inductively starting from the Lie bracket (taken for the case $n=m=1$) and the derivative of functions along vector fields (taken for the case $m=1$, $n=0$) 
+\begin{eqalign}
+	[X,Y] = \Lie XY \quad \text{and} \quad [X, f] = X(f) \quad \forall X,Y\in\fields(M), f\in\Cinfty(M)
+\end{eqalign}
+by imposing the rules to make it into a graded anti-derivation on $\bigwedge^\bullet TM$:
 \begin{enumerate}
 	\item \textbf{Graded skew-symmetry}:
 	\begin{eqalign}
-		[A,B] = (-1)^{(|A|-1)(|B|-1)} [B, A].
+		[A,B] = -(-1)^{(|A|-1)(|B|-1)} [B, A].
 	\end{eqalign}
 	\item \textbf{Graded Leibniz rule}:
 	\begin{eqalign}
-		[A,B \wedge C] := [A, B] \wedge C + (-1)^{|B|(|A|-1)} B \wedge [A,C].
+		[A,B \wedge C] := [A, B] \wedge C + (-1)^{(|A|-1)|B|} B \wedge [A,C].
 	\end{eqalign}
 \end{enumerate}
 
@@ -491,6 +495,7 @@ In this formalism, the Jacobi identity for the Poisson tensor can be expressed i
 \begin{eqalign}
 	[\Pi, \Pi] = 0.
 \end{eqalign}
+i.e. $\Pi\in\Gamma(TM^{\wedge2})$ is a Poisson tensor iff the previous relation is satisfied.
 
 \begin{exercise}
 \label{ex:graded_jacobi}
