@@ -157,7 +157,10 @@ and $R^\dagger$ is the operator induced on $\lalg$ by $R^*$.
 			&= \trace (g^{-1}gXY) \comment{b.c. trace is cyclic-invariant}\\
 			&= \trace XY.
 	\end{eqalign}
-	Some Casimir functions in $(\lalg^*, \{\bullet,\bullet\})$ are given by $h_i = \trace (X^i)$ (where the apex is an exponent), because any such function is $\Ad$-invariant, hence constant on (co)adjoint orbits.
+	Some Casimir functions in $(\lalg^*, \{\bullet,\bullet\})$ are given by $h_i = \trace (X^i)$ (where the apex is an exponent), because any such function is $\Ad$-invariant, hence constant on (co)adjoint orbits.\footnote{Indeed 
+	\begin{eqalign}
+		((\Ad_g)^* h_i)(X) = h_i (g X g^{-1}) = \trace(g X g^{-1}g X g^{-1}\dots g X g^{-1}) = \trace(g X^i g^{-1}) = \trace(X^i) = h_i(X)
+	\end{eqalign}}
 
 	By the last corollary, \emph{any} Casimir function $h$ on the Poisson algebra on $\lalg^*$ let's you find the evolution of any $X \in \lalg$:
 	\begin{eqalign}
