@@ -120,7 +120,7 @@ Given $X\in\fields(G)$, we denote its associated flow by
 	\end{eqalign}
 \end{proposition}
 \begin{proof}
-	Choose any $f \in C^\infty(G)$ and consider $\ad_X\vert_Y$ as an element of $T_eG$. Then
+	Choose any $f \in \Cinfty(G)$ and consider $\ad_X\vert_Y$ as an element of $T_eG$. Then
 	\begin{eqalign}
 		\ad_X\vert_Y (f) &= \der{}{t}(\Ad_{\phi^X_t(e)}Y)(f) \vert_{t=0}\\
 		&= \spder{}{t}{s} f (\phi^X_t(e) \phi^Y_s(e) \phi^X_{-t}(e)) \vert_{t=s=0}\\
@@ -255,7 +255,7 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 		Z : \lalg^* &\longto \R\\
 		\beta &\longmapsto \langle Z, \beta \rangle = Z^i\beta_i
 	\end{eqalign}
-	i.e. $Z \in C^\infty (\lalg^*)$, then $dZ \in \Omega^1(\lalg^*)$ such that
+	i.e. $Z \in \Cinfty (\lalg^*)$, then $dZ \in \Omega^1(\lalg^*)$ such that
 	\begin{eqalign}
 		dZ = \pder{\langle Z, \beta \rangle}{\beta_i}d\beta_i=\langle Z, \bullet \rangle
 	\end{eqalign}
@@ -828,7 +828,7 @@ Finally the following result, which we do not prove, shows that the intuition ab
 	\end{eqalign}
 	where $L=I(\omega)$ is  the angular momentum, $M$ embodies the external forces, and $I$ is the ineritial tensor
 	\begin{eqalign}
-		I = \int_{\R^3} \rho(\vec x)\big(|\vec x|^2\id(\bullet)-(\vec x, \bullet)_{\R^3}\tens \vec x\big)\,d^3x \in (\R^3)^*\tens \R^3 \simeq \Hom(\R^3 \to \R^3)
+		I = \int_{\R^3} \rho(\vec x)\big(|\vec x|^2\id(\bullet)-(\vec x, \bullet)_{\R^3}\tens \vec x\big)\,d^3x \in (\R^3)^*\tens \R^3 \iso \Hom(\R^3 \to \R^3)
 	\end{eqalign}
 	for some density function $\rho : \R^3\to\R_+$. Thanks to the symmetry of $I$ respect to the scalar product $(\bullet, \bullet)_{\R^3}$, the angular momentum $L=I(\omega)$ can be diagonalized in the frame of principal inertia axis
 	\begin{eqalign}
@@ -950,7 +950,7 @@ The cochain complex arising from these coboundaries is called the \textbf{Poisso
 \end{example}
 
 \subsection{Meaning of the Poisson cohomologies}
-We now set to interpret the Poisson cohomologies of a given manifold $(M, \Pi)$. Let's start with the zeroth cohomology: it is the space of all $f \in \Cinfty(M)$ such that $[\Pi, f] = 0$. As we've shown in a previous calculation, this is the same as saying $\{f,-\} = 0$, meaning
+We now set to interpret the Poisson cohomologies of a given manifold $(M, \Pi)$. Let's start with the zeroth cohomology: it is the space of all $f \in \Cinfty(M)$ such that $[\Pi, f] = 0$. As we've shown in a previous calculation, this is the same as saying $\{f,\bullet\} = 0$, meaning
 \begin{eqalign}
 	H_\Pi^0(M) = \Cas(M) =\text{Casimir functions}.
 \end{eqalign}
@@ -962,7 +962,7 @@ Next, the interpretation of the first cohomology was our motivational example:
 
 Finally, both $2$-cocycles and $2$-boundaries assume meaning in the context of \textbf{Poisson infinitesimal deformations}. A \emph{deformation} of $\Pi$ is another Poisson tensor $\Pi'$ obtained by adding a bivector $\Delta = \Pi' - \Pi$. An \emph{infinitesimal deformation} is a deformation ``up to the first-order'', i.e. it is of the form $\Pi + \varepsilon \Delta$ for $\varepsilon > 0$, but we only require $[\Pi', \Pi'] = O(\varepsilon^2)$, hence
 \begin{eqalign}
-	[\Pi + \varepsilon \Delta, \Pi + \varepsilon\Delta] = [\Pi,&\Pi] + 2\varepsilon[\Pi,\Delta] + \varepsilon^2[\Delta, \Delta] = O(\varepsilon^2) \iff [\Pi, \Delta] = 0.
+	[\Pi + \varepsilon \Delta, \Pi + \varepsilon\Delta] - [\Pi,&\Pi] = 2\varepsilon[\Pi,\Delta] + \varepsilon^2[\Delta, \Delta] = O(\varepsilon^2) \iff [\Pi, \Delta] = 0.
 \end{eqalign}
 From a cohomological point of view, this latter condition might be better expressed as $\Delta \in \ker d_\Pi^{(2)}$.
 
@@ -984,7 +984,7 @@ Therefore we reach an interpretation for $H_\Pi^2(M)$: \textbf{it is the space o
 Higher cohomologies do not have, in general, an enlightening interpretation in terms of geometrical property of the manifold, but the general cohomological interpretation remains valid: they represent obstructions to ``deformations'' of higher orders.
 
 \begin{example}
-	Let $M=S^2$ equipped with the usual symplectic structure (the area form pulled back from the volume form of $\R^3$). We know then $H^2_\Pi(S^2) \iso H^2_{dR}(S^2) \iso \R$ because, up to rescaling, there's only one volume closed form which is not exact.
+	Let $M=S^2$ equipped with the usual symplectic structure (the area form pulled back from the volume form of $\R^3$). We know then $H^2_\Pi(S^2) \iso H^2_{dR}(S^2) =\langle \omega \rangle \iso \R$ because, up to rescaling, there's only one volume closed form which is not exact.
 
 	Indeed, any infinitesimal deformation has the form $\Pi + \varepsilon \Pi = (1+\varepsilon)\Pi$, i.e. a rescaling. But the diffeomorphism between a sphere of radius $1$ and one of radius $1+\varepsilon$ is not a symplectomorphism since it is not area preserving, hence they are all different Poisson structures.
 \end{example}
