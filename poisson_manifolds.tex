@@ -887,7 +887,7 @@ and in the same vein, we can express $\Pi^\sharp(df)$ as a bracket:
 		&= [\frac12 \Pi^{ij}\partial_i \wedge \partial_j, f]\\
 		&= [\Pi, f].
 \end{eqalign}
-Hence we might guess our coboundary map to be $d_\Pi = [\Pi, -]$. To be such a map, it must square to zero:
+Hence we might guess our coboundary map to be $d_\Pi := [\Pi, \bullet]$. To be such a map, it must square to zero:
 
 \begin{lemma}
 \label{lemma:poisson_coboundary}
@@ -919,7 +919,7 @@ The cochain complex arising from these coboundaries is called the \textbf{Poisso
 \end{definition}
 
 \begin{example}
-	For the trivial Poisson tensor $\Pi = 0$, $H^r_\Pi \iso \fields^r(M)$.
+	For the trivial Poisson tensor $\Pi = 0$, $H^r_\Pi \iso \fields^r(M)$. Notice that the Poisson cohomology can be infinite dimensional. This is not the case of the de Rham cohomology, which under loose (satisfied) assuptions is finite dimensional. 
 \end{example}
 
 \begin{example}
@@ -934,12 +934,13 @@ The cochain complex arising from these coboundaries is called the \textbf{Poisso
 \begin{example}
 	Consider the Lie--Poisson structure on $\lalg^*$. For this case, it turns out
 	\begin{eqalign}
-		H^k_\Pi(\lalg^*) \iso H^k_L(\lalg) \tens \Cas(\lalg^*)
+		H^k_\Pi(\lalg^*) \iso H^k_L(\lalg) \tens \Cas(\lalg^*) \iso H^k_L(\lalg) \tens \Cinfty(\lalg^*)^G
 	\end{eqalign}
 	where
 	\begin{enumerate}
-		\item $H^k_L(\lalg)$ is the $k$-th Lie cohomology\footnotemark\ of $\lalg$, and
-		\item $\Cas(\lalg^*)$ is the space of Casimir functions on $\lalg^*$.
+		\item $H^k_L(\lalg)$ is the $k$-th Lie cohomology\footnotemark\ of $\lalg$,
+		\item $\Cas(\lalg^*)$ is the space of Casimir functions on $\lalg^*$, i.e. functions constant on symplectic leaves (coadjoint orbits),
+		\item $\Cinfty(\lalg^*)^G$ is the space of functions invariant w.r.t. the coadjoint $G$-action.
 	\end{enumerate}
 	\footnotetext{The \textbf{Lie cohomology} of a (real) Lie algebra $\lalg$ of finite dimension $n$ is defined from the Chevalley--Eilenberg complex, whose objects are the $k$-th exterior powers of $\lalg^*$ and the coboundary maps ${d_L^{(k)} : \wedge^k \lalg^* \to \wedge^{k+1}\lalg^*}$ are given by:
 	\begin{eqalign}
