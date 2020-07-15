@@ -10,17 +10,17 @@ This chapter is based on \cite[Section 3]{oevel1989r}.
 	\begin{eqalign}
 		[X,Y]_R = [RX,Y]+[X,RY], \quad \forall X,Y \in \lalg
 	\end{eqalign}
-	defines a Lie product on $\lalg$.
+	defines a Lie product on $\lalg$. Equivalently, $(\lalg, [\bullet, \bullet]_R)$ should be a Lie algebra (in particular $[\bullet, \bullet]_R$ satisfy the Jacobi identity).
+	To the $R$-bracket on $\lalg$ is associated a Poisson bracket on $\lalg^*$:
+	\begin{eqalign}
+		\{f,g\}_R\vert_\xi = \langle [df\vert_\xi, dg\vert_\xi]_R, \xi \rangle, \quad \forall \xi \in \lalg^*,\, \forall f,g \in \Cinfty(\lalg^*).
+	\end{eqalign}
 \end{definition}
 
-As customary, to the $R$-bracket on $\lalg$ is associated a Poisson bracket on $\lalg^*$:
-\begin{eqalign}
-	\{f,g\}_R(\xi) = \langle [df, dg]_R, \xi \rangle, \quad \forall \xi \in \lalg^*,\, \forall f,g \in \Cinfty(\lalg^*).
-\end{eqalign}
-
 \begin{proposition}
-	A linear map $R: \lalg \to \lalg$ on a Lie algebra $(\lalg, [-,-])$ is an $R$-matrix if and only if
+	A linear map $R: \lalg \to \lalg$ on a Lie algebra $(\lalg, [\bullet,\bullet])$ is an $R$-matrix if and only if
 	\begin{eqalign}
+	\label{eq:cond_R_matrix_B}
 		[B_R(X,Y), Z] + [B_R(Y,Z), X] + [B_R(Z,X), Y] = 0
 	\end{eqalign}
 	where
@@ -37,28 +37,32 @@ The operator $B_R$ measures how far $R$ is from being a Lie algebra homomorphism
 \begin{corollary}
 	A \emph{sufficient} condition for a linear map $R: \lalg \to \lalg$ to be an $R$-matrix is for $R$ to satisfy the \textbf{modified Yang--Baxter equation} (mYBE):
 	\begin{eqalign}
+	\label{eq:mYBE}
 		B_R(X,Y) = -c[X,Y],
 	\end{eqalign}
 	for some $c \in \R$.
 \end{corollary}
+\begin{proof}
+	If Equation~\eqref{eq:mYBE} is satisfied, then Equation~\eqref{eq:cond_R_matrix_B} follows immediately using Jacobi identity.
+\end{proof}
 
 Clearly, up to rescaling of $R$, there are actually just two cases of the mYBE: the one with $c=0$ (corresponding to the case where $R$ is an automorphism of the algebra) and the one with $c=1$. For this second case, there is a special class of solutions that arises in a very simple manner:
 
 \begin{construction}
-	Let $(\lalg, [-,-])$ be a Lie algebra which decomposes (as vector space!) as $\lalg = \lalg_+ \dir \lalg_-$, for $\lalg_\pm \leq \lalg$. We do \textbf{not} require $[\lalg_+, \lalg_+] = 0$, i.e. the direct sum does not need to be one of Lie algebras. Let $\pr_\pm$ denote the projections onto $\lalg_+$ and $\lalg_+$ respectively and write $X_\pm = \pr_\pm X$ for any vector $X \in \lalg$. Then we claim $R = \frac12 (\pr_+ - \pr_-)$ is an $R$-matrix. In fact observe that, by virtue of the bilinearity of $[-,-]$, the $R$-bracket follows the splitting perfectly:
+	Let $(\lalg, [\bullet,\bullet])$ be a Lie algebra which decomposes (as vector space!) as $\lalg = \lalg_+ \dir \lalg_-$, for $\lalg_\pm \leq \lalg$. We do \textbf{not} require $[\lalg_+, \lalg_+] = 0$, i.e. the direct sum does not need to be one of Lie algebras. Let $\pr_\pm$ denote the projections onto $\lalg_+$ and $\lalg_+$ respectively and write $X_\pm = \pr_\pm X$ for any vector $X \in \lalg$. Then we claim $R = \frac12 (\pr_+ - \pr_-)$ is an $R$-matrix. In fact observe that, by virtue of the bilinearity of $[\bullet,\bullet]$, the $R$-bracket follows the splitting perfectly:
 	\begin{eqalign}
 		[X,Y]_R &= \frac12 [X_+ - X_-, Y] + \frac12 [X, Y_+ - Y_-]\\
 			&= \frac12 \left( [X_+ - X_-, Y_+ + Y_-] + [X_+ + X_-, Y_+ - Y_-] \right)\\
 			&= \frac12 \left( [X_+, Y_+] - [X_-, Y_-]\right)
 	\end{eqalign}
-	Then its clear we can decompose the Jacobi identity of $[-,-]_R$ into two Jacobi identities for $[-,-]$, which hold by assumption. This class of examples is very ample as any decomposition of $\lalg$ works.
+	Then its clear we can decompose the Jacobi identity of $[\bullet,\bullet]_R$ into two Jacobi identities for $[\bullet,\bullet]$, which hold by assumption. This class of examples is very ample as any decomposition of $\lalg$ works.
 \end{construction}
 
 Occasionally people find solutions of the mYBE which do not come from the decomposition we've treated. In fact, there are a lot of examples but the great majority of them is in the infinite-dimensional context. Indeed, this theory comes from that environment (in particular the study of PDEs), and only later it was realized there was some honest finite-dimensional geometry behind it.
 
 \begin{proposition}
 \label{prop:cas_ham_field}
-	If $h \in \Cas(\lalg^*, \{-,-\})$ then its Hamiltonian vector field with respect to the Poisson $R$-bracket is
+	If $h \in \Cas(\lalg^*, \{\bullet,\bullet\})$ then its Hamiltonian vector field with respect to the Poisson $R$-bracket is
 	\begin{eqalign}
 		X^R_h\vert_\alpha = \ad^*_{R(dh\vert_\alpha)}\vert_\alpha.
 	\end{eqalign}
@@ -66,6 +70,7 @@ Occasionally people find solutions of the mYBE which do not come from the decomp
 \begin{proof}
 	For all $f \in \Cinfty(\lalg^*)$ and $\alpha \in \lalg^*$,
 	\begin{eqalign}
+	\label{eq:ham_vec_field_R_matr_comp}
 		X^R_h(f)\vert_\alpha &= \{f,h\}_R\vert_\alpha\\
 			&= \langle [df\vert_\alpha, dh\vert_\alpha]_R, \alpha \rangle\\
 			&= \langle [R(df\vert_\alpha), dh\vert_\alpha] + [df\vert_\alpha, R(dh\vert_\alpha)], \alpha \rangle\\
@@ -78,7 +83,7 @@ Occasionally people find solutions of the mYBE which do not come from the decomp
 
 \begin{corollary}
 \label{cor:cas_are_inherited}
-	If $f,g, \in \Cas(\lalg^*, \{-,-\})$, then they commute with respect to the Poisson $R$-bracket.
+	If $f,g, \in \Cas(\lalg^*, \{\bullet,\bullet\})$, then they commute with respect to the Poisson $R$-bracket.
 \end{corollary}
 \begin{proof}
 	Since $f$ is constant on coadjoint orbits:
@@ -88,15 +93,62 @@ Occasionally people find solutions of the mYBE which do not come from the decomp
 \end{proof}
 
 \begin{remark}
-	The flow of $X^R_h$ for $h$ Casimir lies in the intersection of the coadjoint orbits of $(\lalg, [-,-])$ and $(\lalg, [-,-]_R)$. So it is $\ad^*$ of something but also the $\ad^*_R$ of something.
+	The flow of $X^R_h$ for $h$ Casimir lies in the intersection of the coadjoint orbits of $(\lalg, [\bullet,\bullet])$ and $(\lalg, [\bullet,\bullet]_R)$. So it is $\ad^*$ of something but also the $\ad^*_R$ of something.
 \end{remark}
 
-\begin{remark}
-	Let $(-,-)$ be an $\Ad$-invariant (bilinear, non-degenerate) form on $\lalg$. Then this provides an identification $\lalg \iso \lalg^*$ sending $\ad_X$ to $-\ad^*_X$. In this case the equations of motion (Hamilton's) become (for the $R$-matrix)
+\subsection{$R$-matrix and $\Ad$-invariant forms}
+
+Let $(\bullet,\bullet)$ be an $\Ad$-invariant (bilinear, non-degenerate) form on $\lalg$. Then this provides an identification
+\begin{eqalign}
+	\lalg^* &\isolongto \lalg\\
+	\alpha &\longleftrightarrow L
+\end{eqalign}
+This isomorphism also induces the following identifications:
+\begin{eqalign}
+\label{eq:identif_lalg_colalg_R}
+	h(\alpha) \in \Cinfty(\lalg^*) &\longleftrightarrow f(L) \in \Cinfty(\lalg)\\
+	dh \vert_\alpha &\longleftrightarrow \nabla f \vert_L\\
+	\ad_X^* \vert_\alpha &\longleftrightarrow -\ad_X \vert_L\\
+	(R^* : \lalg^* \to \lalg^*) &\longleftrightarrow (R^\dagger: \lalg \iso \lalg^* \overset{R^*}\to \lalg^* \iso \lalg )
+\end{eqalign}
+where $R^*$ denotes the transposed operator
+\begin{eqalign}
+	R^* : \lalg^* &\longto \lalg^*\\
+	\alpha &\longmapsto R^*\alpha	\comment{s.t.} \quad \langle R^*\alpha, X \rangle = \langle \alpha, RX \rangle \quad \forall X \in \lalg
+\end{eqalign}
+and $R^\dagger$ is the operator induced on $\lalg$ by $R^*$.
+
+\begin{proposition}
+	Using previous identifications, given $h\in\Cinfty(\lalg^*)$, we have the following identification for the Hamiltonian vector field with respect to the Poisson $R$-bracket:
 	\begin{eqalign}
-		\der{X}{t} = - \ad_{R(dh)}\vert_X = [X, R(dh)].
+		X_h^R \vert_\alpha \longleftrightarrow \der{L}{t}\vert_L &= -\ad_{R\nabla f\vert_L} \vert_L - R^\dagger \ad_{\nabla f\vert_L} \vert_L\\
+		&= [L, R\nabla f\vert_L] + R^\dagger [L, \nabla f\vert_L]
 	\end{eqalign}
-\end{remark}
+\end{proposition}
+\begin{proof}
+	Using computation in Equation~\eqref{eq:ham_vec_field_R_matr_comp} we get for all $Y \in \lalg$:
+	\begin{eqalign}
+		\langle X^R_h\vert_\alpha, Y \rangle &= \langle \alpha, [Y, dh\vert_\alpha]_R \rangle\\
+			&= \langle \alpha, [RY, dh \vert_\alpha] \rangle + \langle \alpha, R dh\vert_\alpha ] \rangle\\
+			&= \langle \alpha, -\ad_{dh\vert_\alpha}\vert_{RY} \rangle + \langle \alpha, -\ad_{R dh \vert_\alpha} \vert_Y \rangle\\
+			&= \langle \ad^*_{dh\vert_\alpha} \vert_\alpha, RY \rangle + \langle \ad^*_{R dh \vert_\alpha} \vert_\alpha, Y \rangle\\
+			&= \langle R^* (\ad^*_{dh \vert_\alpha} \vert_\alpha) + \ad^*_{R dh \vert_\alpha} \vert_\alpha, Y \rangle
+	\end{eqalign}
+	which implies, using identifications of Equation~\eqref{eq:identif_lalg_colalg_R}:
+	\begin{eqalign}
+		X^R_h\vert_\alpha = R^* (\ad^*_{dh \vert_\alpha} \vert_\alpha) + \ad^*_{R dh \vert_\alpha} \vert_\alpha \longleftrightarrow -R^\dagger \ad_{\nabla f\vert_L} \vert_L - \ad_{R\nabla f\vert_L} \vert_L
+	\end{eqalign}
+\end{proof}
+
+\begin{corollary}
+	Using previous notation, if $h \in  \Cas(\lalg^*, \{\bullet,\bullet\})$, then
+	\begin{eqalign}
+		 \der{L}{t}\vert_L &= -\ad_{R\nabla f\vert_L} \vert_L = [L, R\nabla f\vert_L]
+	\end{eqalign}
+\end{corollary}
+\begin{proof}
+	Follows directly from the result of the previous proposition mimicking the last piece of the proof of Proposition~\ref{prop:cas_ham_field}.
+\end{proof}
 
 \begin{example}
 	In the case $\lalg = \mathfrak{gl}(n)$ (the Lie algebra associated to square matrices with complex entries, but seen as a real manifold). Then $\Ad_g X = gXg^{-1}$. We consider the form $(X,Y) := \trace(XY)$. It is $\Ad$-invariant since
@@ -105,33 +157,16 @@ Occasionally people find solutions of the mYBE which do not come from the decomp
 			&= \trace (g^{-1}gXY) \comment{b.c. trace is cyclic-invariant}\\
 			&= \trace XY.
 	\end{eqalign}
-	Some Casimir functions in $(\lalg^*, \{-,-\})$ are given by $h_i = \trace (X^i)$ (where the apex is an exponent), because any such function is $\Ad$-invariant, hence constant on (co)adjoint orbits.
+	Some Casimir functions in $(\lalg^*, \{\bullet,\bullet\})$ are given by $h_i = \trace (X^i)$ (where the apex is an exponent), because any such function is $\Ad$-invariant, hence constant on (co)adjoint orbits.
 
-	By the last remark, \emph{any} Casimir function $h$ on the Poisson algebra on $\lalg^*$ let's you find the evolution given by $X$:
+	By the last corollary, \emph{any} Casimir function $h$ on the Poisson algebra on $\lalg^*$ let's you find the evolution of any $X \in \lalg$:
 	\begin{eqalign}
-		\der{X}{t} =[X, R(dh)]
+		\der{X}{t} =[X, R\nabla h \vert_X]
 	\end{eqalign}
-	The $h_i$, for $i=1,\ldots,n$, are in involution, so they represent symmetries of the system. These will turn out to be the most general spectral invariants of the matrix $X$.
+	The $h_i$, for $i=1,\ldots,n$, are in involution, so they represent symmetries of the system, and hopefully can be used to obtain a foliation of the manifold into orbits. These will turn out to be the most general spectral invariants of the matrix $X$.
 \end{example}
 
 These last ideas will be applied in the informative example of the Toda lattice (Example~\ref{ex:toda_lattice}).
-
-\begin{center}
-	------------------------
-\end{center}
-
-Given an $\Ad$-invariant form $(-,-)$ and an $R$-matrix, then if $h \in \Cinfty(\lalg^*)$ from the computation of Lemma~\ref{prop:cas_ham_field} we get:
-\begin{eqalign}
-\label{eq:evolution_in_an_R_system}
-	\der{X}{t} = [X, R \nabla h] + R^*[X, \nabla h]
-\end{eqalign}
-where $R^*$ is the $(-,-)$-adjoint of $R$ ($(RX, Y) = (X, R^*Y)$). If $h$ is Casimir on $\lalg^*$ the second term drops, as we've seen above. Alternatively, in terms of adjoint actions:
-\begin{eqalign}
-	X^R_h(f)\vert_\alpha = \ad^*_{R(dh\vert_\alpha)}(f)\vert_\alpha - \ad^*_{R(df\vert_\alpha)}(h)\vert_\alpha.
-\end{eqalign}
-In Equation~\eqref{eq:evolution_in_an_R_system}, we could put any $A \in \lalg$ in lieu of $\nabla h$, interpreted as a $1$-form \what.
-
-Every other Casimir provides an integral of motion and they all commute. In the case of $\mathfrak{gl}(n)$, or its Lie subalgebras, a set of Casimirs is given by $h_i = \trace X^i$.
 
 \section{Lax Representations}
 \begin{definition}
