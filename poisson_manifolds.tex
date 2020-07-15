@@ -362,16 +362,6 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 	\end{eqalign}
 \end{example}
 
-\begin{example}[{\cite[Example 1.4]{fernandes2014lectures}}]
-\label{ex:poisson_on_dual_lie}
-	Let $\lalg$ be any finite dimensional Lie algebra. If $f \in \Cinfty(\lalg^*)$ and $\xi \in \lalg^*$, then the differential of $f$ at $\xi$ can be viewed naturally\footnotemark\ as an element of $\lalg$. Hence we can define a Poisson bracket on $\lalg^*$ (called the \textbf{Lie--Poisson bracket}) by simply reusing the Lie structure:
-	\begin{eqalign}
-		\{f,g\}(\xi) := \langle [df, dg]_\lalg, \xi \rangle, \quad \forall \xi \in \lalg^*.
-	\end{eqalign}
-	The fact it satisfies the required properties is straightforward, if tedious, to check.
-	\footnotetext{Because $\lalg$ is assumed to be finite dimensional; otherwise $df \in \lalg^{**}$ which might not be naturally isomorphic to $\lalg$.}
-\end{example}
-
 \begin{definition}
 	On a Poisson manifold $(M, \{\bullet,\bullet\})$ a \textbf{Casimir function} is a function $f \in \Cinfty(M)$ such that
 	\begin{eqalign}
@@ -434,42 +424,6 @@ Therefore \textbf{we call a Poisson tensor} (or Poisson structure) \textbf{any s
 	Show that, for a symplectic form $\omega$, Equation~\eqref{eq:jacobi_id_for_pi_tensor} translates to the condition $d\omega = 0$.
 \end{exercise}
 
-\begin{example}
-\label{ex:canonical_poisson}
-	Consider $\R^{2n}$ with linear coordinates $q^1, \ldots, q^n, p_1, \ldots, p_n$. Equip it with the tensor
-	\begin{eqalign}
-		\Pi = \pder{}{q^i} \wedge \pder{}{p_i}
-	\end{eqalign}
-	which is called the \textbf{canonical Poisson structure on $\R^{2n}$}. Indeed, this is simply the inverse of the canonical symplectic structure on $\R^{2n}$!
-\end{example}
-\begin{example}
-\label{ex:quadratic_poisson}
-	On $\R^n$, consider a skew-symmetric matrix $A = (a_{ij}) \in \R^{n \times n}$. We can define a \textbf{quadratic Poisson bracket} on this space by the formula:
-	\begin{eqalign}
-		\Pi = \frac12 \sum_{i,j \leq n} a_{ij} x^i x^j \pder{}{x_i} \wedge \pder{}{x_j}.
-	\end{eqalign}
-\end{example}
-\begin{example}
-	Consider $\R^n_+$ (the positive quadrant of the Euclidean $n$-space) equipped with a quadratic Poisson structure. A popular biological model, called the \textbf{Lotka--Volterra equations}, models population dynamics using the following Hamiltonian:
-	\begin{eqalign}
-		h = \eta_j x^j + k_j \log x^j
-	\end{eqalign}
-	for a certain choice of the parameters $\eta^i, k_i \in \R$. To find the dynamics of the system, we apply a quadratic Poisson tensor to $dh = \sum_{j=1}^n \eta_j dx^j + k_j (x^j)^{-1} dx^j$ to get
-	\begin{eqalign}
-		X_h = \Pi^\sharp(dh) = \sum_{j=1}^n (\underbrace{a_{ij} \eta_j}_{\gamma_{ij}} x^ix^j + \underbrace{a_{ij} k_j}_{\varepsilon_i} x^i) \partial_i,
-	\end{eqalign}
-	whose components are then the Lotka--Volterra equations:
-	\begin{eqalign}
-		\der{x^i}{t} = \gamma_{ij} x^i x^j + \varepsilon_i x^i.
-	\end{eqalign}
-\end{example}
-\begin{example}
-	For a Lie algebra dual $\lalg^*$, equipped with the natural Poisson structure of Example~\ref{ex:poisson_on_dual_lie}, the Poisson tensor has the contraction of the \textbf{structure constants} of the Lie algebra (the numbers $c^{ij}_k$ below) as components:
-	\begin{eqalign}
-		\Pi^{ij} = \{x^i, x^j\} = [dx^i, dx^j]_\lalg = c^{ij}_k x^k.
-	\end{eqalign}
-\end{example}
-
 \subsection{The Schouten--Nijenhuis bracket}
 The Jacobi condition \eqref{eq:jacobi_id_for_pi_tensor} has a more concise expression in terms of the \textbf{Schouten--Nijenhuis bracket},\footnote{See \cite[Section 33.2]{michor2008} for the proof of the well-definiteness and the properties of such object.} which is a graded extension of the customary Lie bracket to (skew-symmetric) multivector fields:
 \begin{eqalign}
@@ -521,17 +475,6 @@ Using the brackets to express the structure of a Poisson manifold, the condition
 	\{ f \circ \phi, g \circ \phi \}_N = \{f,g\}_M \circ \phi, \quad \forall f,g \in \Cinfty(M).
 \end{eqalign}
 
-\begin{exercise}[{\cite[Example 1.3]{fernandes2014lectures}}]
-	Show the map $\Phi : \R^{2n} \to \R^n$, where the domain and codomain are equipped with the canonical and quadratic Poisson structures respectively (Example~\ref{ex:canonical_poisson} and Example~\ref{ex:quadratic_poisson}), defined by
-	\begin{eqalign}
-		(p^i, q^j) \mapsto x^i = \e^{p^i - \frac12 a_{ij} q^j}
-	\end{eqalign}
-	is Poisson.
-\end{exercise}
-\begin{example}[{\cite[Example 1.4]{fernandes2014lectures}}]
-	We've seen in Example~\ref{ex:poisson_on_dual_lie} that the dual of any Lie algebra carries a natural Poisson structure. In fact, for any map $\Psi : \mathfrak h \to \lalg$, the dual map $\Psi^* : \lalg^* \to \mathfrak h^*$ is a Poisson map for the natural structures
-\end{example}
-
 \begin{definition}
 	A \textbf{Poisson submanifold} of a Poisson manifold $(M, \Pi_M)$ is a Poisson manifold $(N, \Pi_N)$ together with a Poisson injective immersion $\iota: N \into M$.
 \end{definition}
@@ -541,44 +484,56 @@ Notice that when the rank of $\Pi$ is constant throughout $M$ we obtain a \emph{
 
 \begin{lemma}[{\cite[Proposition 2.2]{fernandes2014lectures}}]
 \label{lemma:poisson_submanifold}
-	A submanifold $N$ of a Poisson manifold $(M, \Pi)$ is Poisson if only if the distribution induced by $\Pi^\sharp$ on $M$ is a distribution on $N$ too:
+	Given a submanifold $\iota : N \into M$ of a Poisson manifold $(M, \Pi)$ then there is at most one Poisson structure $\Pi_N$ on $N$ that makes $(N, \Pi_N)$ a Poisson manifold such that $\iota_*(\Pi_N) = \Pi\vert_{\iota(N)}$, i.e. such that the immersion $\iota$ is a Poisson map. 
+	This happens iff the distribution induced by $\Pi^\sharp$ on $M$ is a distribution on $N$ too:
 	\begin{eqalign}
 	\label{eq:poisson_submanifold_condition}
-		\im \Pi\vert_p^\sharp \subseteq d\iota_p(T_p N), \quad \forall p \in N.
+		\im \Pi^\sharp\vert_{\iota(p)} \subseteq \iota_*(T_p N), \quad \forall p \in N.
 	\end{eqalign}
-	Moreover, in this case the Poisson substructure on $N$ is unique as such.
+	In particulat, if this is the case then the Poisson substructure on $N$ is unique as such.
 \end{lemma}
 \begin{proof}
-	Suppose $N$ is a Poisson submanifold. We want to prove~\eqref{eq:poisson_submanifold_condition} holds. Notice first that $\Pi_N$ is \emph{$\iota$-related} to $\Pi$ (because, more strongly, it is its pushforward), that is
+	Suppose $N$ is a Poisson submanifold with Poisson structure defined in the statement of the Lemma. We want to prove~\eqref{eq:poisson_submanifold_condition} holds. Notice first that $\Pi_N$ is \emph{$\iota$-related} to $\Pi$ (because, more strongly, it is its pushforward), that is
 	\begin{eqalign}
-		d\iota_p(\Pi_N\vert_p) = \Pi\vert_{\iota(p)}, \quad \forall p \in N,
+		\iota_*(\Pi_N\vert_p) = \Pi\vert_{\iota(p)}, \quad \forall p \in N,
 	\end{eqalign}
-	which basically means $\Pi\vert_N = \Pi_N$.	Then, sharping both tensors and precomposing $\Pi_N^\sharp$ with the pullback of covectors, we clearly have:
+	which basically means $\Pi\vert_N = \Pi_N$.	Then, sharping both tensors and precomposing $\Pi_N^\sharp$ with the pullback of covectors, we equivalently have:
 	\begin{eqalign}
-		d\iota_p \circ \Pi_N^\sharp\vert_p \circ d\iota_p^* = \Pi\vert_{\iota(p)}^\sharp, \quad \forall p \in N.
+		\iota_* \circ \Pi_N^\sharp\vert_p \circ \iota^* = \Pi^\sharp\vert_{\iota(p)}, \quad \forall p \in N.
 	\end{eqalign}
 	This means the following commutes
 	\begin{diagram}
-		T_{\iota(p)}^* M \arrow{r}{\Pi\vert_{\iota(p)}^\sharp} \arrow{d}{d\iota^*_p} \& T_{\iota(p)} M\\
-		T_p^* N \arrow[dashed]{r}{\Pi_N\vert_p} \& T_p N \arrow{u}{d\iota_p}
+		T_{\iota(p)}^* M \arrow{r}{\Pi^\sharp\vert_{\iota(p)}} \arrow{d}{\iota^*} \& T_{\iota(p)} M\\
+		T_p^* N \arrow{r}{\Pi_N^\sharp\vert_p} \& T_p N \arrow{u}{\iota_*}
 	\end{diagram}
-	and it's now very apparent both~\eqref{eq:poisson_submanifold_condition} (by commutativity in the upper right corner) and uniqueness of $\Pi_N$ (by injectivity of $d\iota_p$) hold.
+	Since $\iota$ is an immersion, then $\iota_*$ is injective and $\iota^*$ is surjective, and it's now very apparent both~\eqref{eq:poisson_submanifold_condition} (by commutativity in the upper right corner) and uniqueness of $\Pi_N$.
 
-	Conversely, assume now~\eqref{eq:poisson_submanifold_condition} holds. Then the previous considerations about the maps $d\iota_p$ and $d\iota_p^*$ allow us to define
+	Conversely, assume now~\eqref{eq:poisson_submanifold_condition} holds. Since $\im \Pi^\sharp\vert_p \subseteq \iota_*(T_p N)$, we claim that there exists a unique map $\Pi^\sharp_N\vert_p : T_p^*N \to T_pN$ making the following diagram commute: 
+	\begin{diagram}
+		T_{\iota(p)}^* M \arrow{r}{\Pi^\sharp\vert_{\iota(p)}} \arrow{d}{\iota^*} \& T_{\iota(p)} M\\
+		T_p^* N \arrow[dashed]{r}{\Pi_N^\sharp\vert_p} \& T_p N \arrow{u}{\iota_*}
+	\end{diagram}
+	i.e.
 	\begin{eqalign}
-		\Pi_N^\sharp \vert_p = (d\iota_p)^{-1} \circ \Pi^\sharp\vert_{\iota(p)} \circ (d\iota_p^*)^{-1},
+		\Pi_N^\sharp \vert_p := (\iota_*)^{-1} \circ \Pi^\sharp\vert_{\iota(p)} \circ (\iota^*)^{-1} : T_p^*N &\longto T_pN\\
+		\alpha &\longmapsto (\iota_*)^{-1}(\Pi^\sharp\vert_{\iota(p)} \hat\alpha)
 	\end{eqalign}
-	where the inverses are just left and right sided respectively, and meant to be set-theoretical inverses. This means $d\iota_p^{-1}$ is defined by sending any $v \in T_{\iota(p)}M \setminus d\iota_p(T_pN)$ to an arbitrarly chosen $v \in T_p N$, whereas $(d\iota_p^*)^{-1}$ choses an arbitrary lift $\hat\alpha$ from the $d\iota_p$-preimage of any $\alpha \in T_p^* M$. Then we want to show the values of $\Pi_N$ do not actually depend on any of these choices. As for the first case, the assumption~\eqref{eq:poisson_submanifold_condition} guarantees no point outside $d\iota(TN)$ is ever passed to $d\iota_p^{-1}$, hence the choice of $v$ doesn't matter and doesn't ruin smoothness and linearity. As for the second, let $\hat\alpha, \hat\alpha'$ be both different lifts of $\alpha$, i.e.
+	where $\hat\alpha \in (\iota^*)^{-1}(\alpha)$. Notice that $\iota_*$ can be inverted on its image since it's injective, whereas $(\iota^*)^{-1}$ choses an arbitrary lift $\hat\alpha$ from the $\iota^*$-preimage of $\alpha \in T_p^* M$. Then we want to show the values of $\Pi_N$ do not actually depend on the lift $\hat\alpha$ of $\alpha$. Let $\hat\alpha, \hat\alpha' \in T_p^* M$ be both different lifts of $\alpha$, i.e.
 	\begin{eqalign}
-		d\iota_p^*\hat\alpha = d\iota_p^*\hat\alpha' \implies \hat\alpha - \hat\alpha' = \beta \in \ker d\iota_p^*.
+		\iota^*\hat\alpha = \iota^*\hat\alpha' \implies \hat\alpha - \hat\alpha' = \beta \in \ker \iota^*\vert_p.
 	\end{eqalign}
-	Recall $\ker d\iota_p^* = \{ \psi \suchthat \psi(\im d\iota_p) = 0\}$, so that, in particular, $\beta$ vanishes on $\im \Pi^\sharp\vert_{\iota(p)}$. Then, however chosen $\gamma \in T^*_{\iota(p)} M$,
+	Then, however chosen $\gamma \in T^*_{\iota(p)} M$, condition~\eqref{eq:poisson_submanifold_condition} tells us that 
+	\begin{eqalign}
+		\Pi^\sharp\vert_{\iota(p)}(\gamma) = \iota_*((\iota_*)^{-1}(\Pi^\sharp\vert_{\iota(p)}(\gamma))) =: \iota_*(\check\gamma)
+	\end{eqalign}
+	where $\check\gamma$ is uniquely determined and is used in the following computation:
 	\begin{eqalign}
 		\langle \Pi^\sharp\vert_{\iota(p)}(\hat\alpha) - \Pi^\sharp\vert_{\iota(p)}(\hat\alpha'), \gamma \rangle &= \langle \Pi^\sharp\vert_{\iota(p)}(\beta), \gamma \rangle\\
 		&= \Pi\vert_{\iota(p)}(\beta, \gamma) \comment{by undoing the $\sharp$}\\
 		&= -\Pi\vert_{\iota(p)}(\gamma, \beta) \comment{by skew-symmetry of $\Pi$}\\
-		&= - \langle \Pi\vert_{\iota(p)}(\gamma), \beta \rangle\\
-		&= \beta(\Pi\vert_{\iota(p)}(\gamma)) = 0.
+		&= - \langle \Pi^\sharp\vert_{\iota(p)}(\gamma), \beta \rangle\\
+		&= - \langle \iota_*(\check\gamma), \beta \rangle\\
+		&= - \langle \check\gamma, \iota^*(\beta) \rangle=0.
 	\end{eqalign}
 	Thus $\Pi^\sharp\vert_{\iota(p)}(\hat\alpha) = \Pi^\sharp\vert_{\iota(p)}(\hat\alpha')$, as desired.
 
@@ -586,10 +541,10 @@ Notice that when the rank of $\Pi$ is constant throughout $M$ we obtain a \emph{
 	\begin{eqalign}
 		\iota_* [\Pi_N, \Pi_N] = [\iota_* \Pi_N, \iota_* \Pi_N] = [\Pi, \Pi] = 0,
 	\end{eqalign}
-	and since $\iota$ is an immersion, this implies $[\Pi_N, \Pi_N] = 0$, as wished.
+	and since $\iota_*$ is injective this implies $[\Pi_N, \Pi_N] = 0$, as wished.
 \end{proof}
 
-We've seen a symplectic structure always gives rise to a Poisson structure, yet the opposite is not true. In fact, $\Pi$ isn't always non-degenerate, and this prevents $\Pi^{-1}$ to be a well-defined symplectic form. However, we know from (multi)linear algebra (by Theorem~\ref{th:decomp_th} for instance) that, at least pointwise, $\Pi$ has $2n$ dimensions on which is degenerate and $k$ on which is not, such that $\dim M = 2n+k$.
+We've seen a symplectic structure always gives rise to a Poisson structure, yet the opposite is not true. In fact, $\Pi$ isn't always non-degenerate, and this prevents $\Pi^{-1}$ to be a well-defined symplectic form. However, we know from (multi)linear algebra (by Theorem~\ref{th:decomp_th} for instance) that, at least pointwise, $\Pi$ has $k$ dimensions on which is degenerate and $2n$ on which is not, such that $\dim M = 2n+k$.
 
 The aim of this section is then to show this pointwise argument has global and local refinements.
 
@@ -606,28 +561,33 @@ The aim of this section is then to show this pointwise argument has global and l
 
 \begin{theorem}
 \label{th:poisson_foliation}
-	Let $(M, \Pi)$ be a Poisson manifold with $\Pi$ of constant rank. Then $\im \Pi^\sharp$ is an integrable distribution and on each leaf $S$ there is a unique induced symplectic structure $\omega \in \Omega^r(S)$ such that
+	Let $(M, \Pi)$ be a Poisson manifold with $\Pi$ of constant rank.\footnote{If this is not the case, we can always restrict $M$ to $M_{reg}$.} Then $\im (\Pi^\sharp : T^*M \to TM) \subseteq TM$ is an integrable distribution and on each leaf $S$ there is a unique induced symplectic structure $\omega \in \Omega^r(S)$ such that
 	\begin{eqalign}
 		\iota_*(\omega^{-1}) = \Pi\vert_{\iota(S)}
 	\end{eqalign}
-	where $\iota$ is the inclusion map of $S$ in $M$.
+	where $\iota : S \into M$ is the inclusion map of $S$ in $M$.
 \end{theorem}
 \begin{proof}
-	The distribution $\im \Pi^\sharp$ is generated by Hamiltonian vector fields (per \eqref{eq:ham_vf_from_pi}) and hence involutive by Theorem~\ref{th:comm_is_ham}. Therefore, by Frobenius' Theorem (Theorem~\ref{th:frobenius}), it is an integrable distribution. Then $M$ foliates into leaves (i.e., maximal integral submanifolds of $\im \Pi^\sharp$), denote $S$ one of them. By definition $\im \Pi\vert_p^\sharp = d\iota_p(T_pS)$, so by Lemma~\ref{lemma:poisson_submanifold} there exists a unique Poisson structure $\Pi_S$ on $S$, which satisfies
+	The distribution $\im \Pi^\sharp$ is generated by Hamiltonian vector fields (per \eqref{eq:ham_vf_from_pi}) and hence involutive by Equation~\eqref{eq:Lie_alg_struct_Ham_fields}. Therefore, by Frobenius' Theorem (Theorem~\ref{th:frobenius}), it is an integrable distribution. Then $M$ foliates into leaves (i.e., maximal integral submanifolds of $\im \Pi^\sharp$), denote $S$ one of them. By definition $\im \Pi\vert_{\iota(p)}^\sharp = \iota_*(T_pS)$, so by Lemma~\ref{lemma:poisson_submanifold} there exists a unique Poisson structure $\Pi_S$ on $S$, which satisfies
 	\begin{eqalign}
-		\Pi_S^\sharp\vert_p = (d\iota_p)^{-1} \circ \Pi^\sharp\vert_p \circ (d\iota^*_p)^{-1}
+		\iota_*(\Pi_S)=\Pi\vert_{\iota(S)}
 	\end{eqalign}
-	so that
+	which implies
 	\begin{eqalign}
-		\im \Pi_S^\sharp &= \im (d\iota^{-1}\Pi^\sharp (d\iota^*)^{-1})\\
-			&= \im (d\iota^{-1} \Pi^\sharp) \comment{by surjectivity of $d\iota^*$}\\
-			&= d\iota^{-1} \im (\Pi^\sharp) \comment{by surjectivity of $d\iota$}\\
-			&= d\iota^{-1}d\iota(TS) = TS.
+		\im (\Pi^\sharp\vert_{\iota(S)} = \iota_* \circ \Pi_S^\sharp \circ \iota^* : T^*M \to TM) = \iota_*(TS)
 	\end{eqalign}
-	Hence $\Pi^\sharp$ is surjective. Since both $S$ and $M$ are finite-dimensional, this suffices to prove $\Pi_S$ is non-degenerate, hence the inverse of a symplectic form $\omega$. Then the claim is just the pullback condition \eqref{eq:poisson_map_condition}.
+	It remains to prove that $\Pi_S$ is non degenerate. First notice that injectivity of $\iota_*$ implies
+	\begin{eqalign}
+		\im (\Pi_S^\sharp \circ \iota^* : T^*M \to TS) = TS
+	\end{eqalign}
+	and then surjectivity of $\iota^*$ give
+	\begin{eqalign}
+		 \im(\Pi_S^\sharp : T^*S \to TS)= \im(\Pi_S^\sharp \circ \iota^* : T^*M \to TS)
+	\end{eqalign}
+	Hence $\Pi^\sharp_S$ is surjective: $\im(\Pi_S^\sharp : T^*S \to TS)=TS$. Since both $S$ and $M$ are finite-dimensional, this suffices to prove $\Pi_S$ is non-degenerate, hence the inverse of a symplectic form $\omega$. Then the claim is just the pullback condition \eqref{eq:poisson_map_condition}.
 \end{proof}
 
-When $(M, \Pi)$ is of constant rank (the \textbf{regular case}) then this theorem basically tells us \textbf{Poisson manifolds are a lasagna of symplectic manifolds}, or more formally, any Poisson manifold is the disjoint union of symplectic submanifolds of the same dimension. On the other hand, even in the general case this holds at least locally (morally, by a smoothness argument applied to the reasoning we did initially):
+When $(M, \Pi)$ is of constant rank (the \textbf{regular case}) then this theorem basically tells us \textbf{Poisson manifolds are a layering of symplectic manifolds}, or more formally, any Poisson manifold is the disjoint union of symplectic submanifolds of the same dimension. On the other hand, even in the general case this holds at least locally (morally, by a smoothness argument applied to the reasoning we did initially):
 
 \begin{theorem}[Darboux--Weinstein]
 \label{th:darboux_weinstein}
@@ -641,6 +601,9 @@ When $(M, \Pi)$ is of constant rank (the \textbf{regular case}) then this theore
 	\end{eqalign}
 	with $c^{ij}(p) = 0$.
 \end{theorem}
+\begin{proof}
+	\cite[Theorem 3.13]{fernandes2014lectures} \footnote{Notice that in the constant-rank-case the proof is very similar to the proof of Darboux theorem in the symplectic case, whereas in the case of non constant rank one has to nest the result for constant rank in each stratum where the rank is indeed constant.}
+\end{proof}
 
 Notice $n$ depends on $p$, and --- in general--- isn't constant on $M$. The idea of the theorem is that \textbf{$\Pi^{-1}$ is ``almost symplectic'': there are $k$ degenerate directions given by the $y^i$}.
 
@@ -662,11 +625,87 @@ Finally the following result, which we do not prove, shows that the intuition ab
 	Let $(M, \Pi)$ be a Poisson manifold. Then every point $x_0 \in M$, regular or not, is contained in a single symplectic leaf, i.e. a maximal integrable submanifold of $\im \Pi^\sharp$.
 \end{theorem}
 
+\section{Examples of Poisson manifolds}
+
+\begin{example}
+\label{ex:canonical_poisson}
+	Consider $\R^{2n}$ with linear coordinates $q^1, \ldots, q^n, p_1, \ldots, p_n$. Equip it with the tensor
+	\begin{eqalign}
+		\Pi_1 = \pder{}{q^i} \wedge \pder{}{p_i}
+	\end{eqalign}
+	which in the case $k=0$ is called the \textbf{canonical Poisson structure on $\R^{2n}$}. Indeed, this is simply the inverse of the canonical symplectic structure on $\R^{2n}$.
+\end{example}
+
+\begin{example}
+\label{ex:quadratic_poisson}
+	On $\R^{n+l}$, consider a constant skew-symmetric matrix $A = (a_{ij}) \in \R^{n \times n}$. We can define a \textbf{quadratic Poisson bracket} on this space by the formula:
+	\begin{eqalign}
+	\label{eq:quadratic_poisson}
+		\Pi_2 = \frac12 \sum_{i,j \leq n} a_{ij} x^i x^j \pder{}{x_i} \wedge \pder{}{x_j}.
+	\end{eqalign}
+\end{example}
+
+\begin{example}[{\cite[Example 1.3]{fernandes2014lectures}}]
+	 Consider the map 
+	 \begin{eqalign}
+	 	\Phi : \R^{2n+k} &\longto \R^{n+k}
+		(p^i, q^j, y^k) &\longmapsto (x^i = \e^{p^i - \frac12 a_{ij} q^j}, y^k)
+	\end{eqalign}
+	 where the domain and codomain are equipped with Poisson structures defined in Example~\ref{ex:canonical_poisson} and Example~\ref{ex:quadratic_poisson}. One can prove that such map is a Poisson map: $\Phi_* \Pi_1 = \Pi_2$.
+\end{example}
+
+\begin{example}[{\cite[Example 1.4]{fernandes2014lectures}}]
+\label{ex:poisson_on_dual_lie}
+	Let $\lalg$ be any finite dimensional Lie algebra. If $f \in \Cinfty(\lalg^*)$ and $\xi \in \lalg^*$, then the differential of $f$ at $\xi$ can be viewed naturally\footnotemark\ as an element of $\lalg$. Hence we can define a Poisson bracket on $\lalg^*$ (called the \textbf{Lie--Poisson bracket}) by simply reusing the Lie structure:
+	\begin{eqalign}
+		\{f,g\}\vert_\xi := \langle [df\vert_\xi, dg\vert_\xi]_\lalg, \xi \rangle, \quad \forall \xi \in \lalg^*.
+	\end{eqalign}
+	The fact it satisfies the required properties is straightforward, if tedious, to check. Notice that this is the same same expression we found for coadjoint orbits. 
+	\footnotetext{Because $\lalg$ is assumed to be finite dimensional; otherwise $df \in \lalg^{**}$ which might not be naturally isomorphic to $\lalg$.}
+	For any map $\Psi : \mathfrak h \to \lalg$, the dual map $\Psi^* : \lalg^* \to \mathfrak h^*$ is a Poisson map for the natural structures given by Lie-Poisson bracket.
+\end{example}
+
+\begin{example}
+	For a Lie algebra dual $\lalg^*$, equipped with the natural Poisson structure of Example~\ref{ex:poisson_on_dual_lie}, the Poisson tensor has the contraction of the \textbf{structure constants} of the Lie algebra (the numbers $c^{ij}_k$ below) as components:
+	\begin{eqalign}
+		\Pi^{ij} = \{x^i, x^j\} = [dx^i, dx^j]_\lalg = c^{ij}_k x^k.
+	\end{eqalign}
+\end{example}
+
+\begin{example}[$n$-species Lotka-Volterra system]
+\label{ex:Lotka_Volterra_nspec_pois}
+	Let's consider Example~\ref{ex:Lotka_Volterra_2spec_ham} i the more general framework of Poisson manifolds for $n$ species, rather than only 2 (notice that the analysis for $n$ odd couldn't be performed in the symplectic case).
+	Take $\R^n_+$ (the positive quadrant of the Euclidean $n$-space) equipped with a quadratic Poisson structure~\eqref{eq:quadratic_poisson}. The $n$ species case can be described using the following Hamiltonian:
+	\begin{eqalign}
+		h = \sum_{j=1}^n(\eta^j x^j + k_j \log x^j) \in \Cinfty(\R_+^n)
+	\end{eqalign}
+	for a certain choice of the parameters $\eta^j, k_j \in \R$. To find the dynamics of the system, we apply a quadratic Poisson tensor to $dh = \sum_{j=1}^n \eta^j dx^j + k_j (x^j)^{-1} dx^j$ to get
+	\begin{eqalign}
+		X_h = \Pi^\sharp(dh) = \sum_{i=1}^n\big(\sum_{j=1}^n \underbrace{\eta^j a_{ij}}_{\gamma^{ij}} x^ix^j + \underbrace{\big(\sum_{j=1}^n a_{ij} k_j\big)}_{\varepsilon^i} x^i\big) \partial_i,
+	\end{eqalign}
+	(notice that in $\gamma^{ij} := \eta^j a_{ij}$ no summation is implied) whose components are then the Lotka--Volterra equations:
+	\begin{eqalign}
+		\der{x^i}{t} = \sum_{j=1}^n \gamma^{ij} x^i x^j + \varepsilon^i x^i.
+	\end{eqalign}
+	Notice that, from the previous interpretation of the parameters in $h$, the parameter $\gamma^{ij}$ embodies the interaction between different species, while $\varepsilon^i$ embodies the natural birth/death rate of population. Moreover, $\varepsilon^i>0$ means that the population grows exponentially in absence of other species (typically are prey) whereas $\varepsilon^i<0$ means that the population decreases exponentially in absence of other species (typically are predators). Antisymmetry of $\Pi$, and hence $a_{ii}=0$ for each $i=1, \dots, n$, implies that there is no self interactions between species.
+\end{example}
+
 
 \begin{example}[Euler's equations for a rigid body]
+	Consider again the description of $\so(3)$ in Example~\ref{ex:SO3_algebra} where we found the identification
+	\begin{eqalign}
+		&\R^3 \isolongto \mathfrak{so}(3) \isolongto \mathfrak{so}^*(3)\\
+		&(x, y, z) \longmapsto \begin{pmatrix}
+				0 & -z & y\\
+				z & 0 & -x\\
+				-y & x & 0
+		\end{pmatrix} \longmapsto (x, y, z) \bullet
+	\end{eqalign}
+	where the element $(x, y, z) \bullet$ is the one-form induced by the Euclidean scalar product. 
 	On $\R^3$ the Poisson bracket is
 	\begin{eqalign}
-		\{f,g\}(x,y,z) = (df \times dg)(x, y, z) = \left| \begin{matrix}
+	\label{eq:rig_bod_R_pois_struc}
+		\{f,g\}\vert_{(x,y,z)} = (\vec\nabla f\vert_{\vec x} \times \vec\nabla g\vert_{\vec x})\cdot (x, y, z) = \left| \begin{matrix}
 			\partial_x f & \partial_y f & \partial_z f\\
 			\partial_x g & \partial_y g & \partial_z g\\
 			x & y & z
@@ -674,9 +713,14 @@ Finally the following result, which we do not prove, shows that the intuition ab
 	\end{eqalign}
 	This Poisson structure is the same as the one on $\so(3)$ -- by the isomorphism we exhibited in
 	Example~\ref{ex:SO3_algebra} -- and $\so^*(3)$, since the inner product of $\R^3$ induces an identification.
-	In more practical terms, we get the fundamental Poisson brackets
+	In more practical terms, we get from Equation~\eqref{eq:rig_bod_R_pois_struc} the fundamental Poisson brackets
 	\begin{eqalign}
+	\label{eq:fund_poiss_brac_so3}
 		\{x,y\} = z, \quad \{x,z\} = -y, \quad \{y,z\} = x.
+	\end{eqalign}
+	Notice that these relations leads to a linear Poisson structure, in particular, since $\Pi(df, dg)\vert_{\vec x}=\{f, g\}\vert_{\vec x}$:
+	\begin{eqalign}
+		\Pi = \frac12 \Big( x \partial_y\wedge\partial_z + y \partial_z\wedge\partial_x + z \partial_x\wedge\partial_y \Big)
 	\end{eqalign}
 	To get the symplectic foliation induced by the Poisson structure, we need to find a Casimir function for the bracket. Such is any solution to the PDE $\Pi^\sharp(df) = 0$, which in this case is
 	\begin{eqalign}
@@ -686,19 +730,85 @@ Finally the following result, which we do not prove, shows that the intuition ab
 			z \partial_y f - y \partial_z f = 0
 		\end{dcases}
 	\end{eqalign}
-	One possible solution of this system is $f(x,y,z)=x^2+y^2+z^2$. The induced foliation is then, clearly, a foliation in concentric spheres, and it is easy to see they inherit a symplectic structure from the Poisson tensor. Moreover, we get regular leaves for $f > 0$ and a singular leaf at $f=0$.
-
-	\what \what \what
+	One possible solution of this system is $C(x,y,z)=x^2+y^2+z^2$. The induced foliation is then, clearly, a foliation in concentric spheres, and it is easy to see they inherit a symplectic structure from the Poisson tensor. Moreover, we get regular leaves for $f > 0$ and a singular leaf at $f=0$.\\
+	
+	In order to describe the motion of the rigid body, we introduce the Hamiltonian function
+	\begin{eqalign}
+		h := \frac{x^2}{2I_x}+\frac{y^2}{2I_y}+\frac{z^2}{2I_z} \in \Cinfty(\mathfrak{so}^*(3))
+	\end{eqalign}
+	with $I_x, I_y, I_z \in \R_+$, then the associated Hamiltonian vector field is 
+	\begin{eqalign}
+		X_h = \left ( \frac{I_y-I_z}{I_yI_z}yz\right)\partial_x + \left ( \frac{I_z-I_x}{I_zI_x}zx\right)\partial_y + \left ( \frac{I_x-I_y}{I_xI_y}xy\right)\partial_z
+	\end{eqalign}
+	which is tangent to both $C^{-1}(R^2)$ and to $h^{-1}(E)$, so the trajectory is given by
+	\begin{eqalign}
+		C^{-1}(R^2) \cap h^{-1}(E) : \begin{cases}
+			\frac{x^2}{2I_x}+\frac{y^2}{2I_y}+\frac{z^2}{2I_z}=E\\
+			x^2+y^2+z^2=R^2
+		\end{cases}
+	\end{eqalign}
+	i.e. is given by the intersection of an ellipsoid and a sphere:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.35\textwidth]{figures/sphere-ellipsoid-inters.jpg}
+		\caption{Intersection of an ellipsoid and a sphere.}
+		\label{fig:sphere-ellipsoid-inters}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.35\textwidth]{figures/rigid_body_phase_space.jpg}
+		\caption{Some of the possibile trajectories given by $X_h$.}
+		\label{fig:rigid_body_phase_space}
+	\end{figure}
+	On the intersection one can fine two different path with opposite directions (given by $X_h$)
+	\begin{eqalign}
+		\begin{cases}
+			y = \pm \frac{\sqrt{ 2EI_xI_yI_z-R^2I_xI_y+(I_xI_y-I_yI_z)x^2}}{\sqrt{I_xI_z-I_xI_y}}\\
+			z = \pm \frac{\sqrt{ 2EI_xI_yI_z-R^2I_xI_z+(I_xI_z-I_yI_z)x^2}}{\sqrt{I_xI_y-I_xI_z}}
+		\end{cases}
+	\end{eqalign}
+	which may assume complex values if the sphere and the ellipsoid does not intersect. Then we just have to derive the equation of motion for the $x$ coordinate:
+	\begin{eqalign}
+		\der{x}{t} = \frac{I_y-I_z}{I_yI_z}yz = \sqrt{\alpha+\beta x^2 + \gamma x^4}
+	\end{eqalign}
+	with $\alpha, \beta, \gamma$ constants. This gives an elliptic integral
+	\begin{eqalign}
+		\int_{t_0}^t dt = \int_{x(t_0)}^x \frac{1}{\sqrt{\alpha+\beta x^2 + \gamma x^4}}\,dx
+	\end{eqalign}
+	which can be solved using complex analysis as we done for the Kepler's problem.\\
+	We can also consider Euler's equations for the motion of a rigid body in the frame attached to the rotating body:
+	\begin{eqalign}
+	\label{eq:euler_eq_rigid_body}
+		\der{L}{t} + \omega\times L = M
+	\end{eqalign}
+	where $L=I(\omega)$ is  the angular momentum, $M$ embodies the external forces, and $I$ is the ineritial tensor
+	\begin{eqalign}
+		I = \int_{\R^3} \rho(\vec x)\big(|\vec x|^2\id(\bullet)-(\vec x, \bullet)_{\R^3}\tens \vec x\big)\,d^3x \in (\R^3)^*\tens \R^3 \simeq \Hom(\R^3 \to \R^3)
+	\end{eqalign}
+	for some density function $\rho : \R^3\to\R_+$. Thanks to the symmetry of $I$ respect to the scalar product $(\bullet, \bullet)_{\R^3}$, the angular momentum $L=I(\omega)$ can be diagonalized in the frame of principal inertia axis
+	\begin{eqalign}
+		L = I(\omega) = (I_x\omega_x, I_y\omega_y, I_z\omega_z)
+	\end{eqalign}
+	giving the eigenvalues $I_x, I_y, I_z$. Equation of motion~\eqref{eq:euler_eq_rigid_body} then can be solved for eigenvectors $\omega_x, \omega_y, \omega_z$ giving
+	\begin{eqalign}
+		\der{L}{t} = -\omega\times L + M = - \left(\der{L_x}{I_x}, \der{L_y}{I_x}, \der{L_z}{I_z} \right)\times L + M
+	\end{eqalign}
+	i.e.
+	\begin{eqalign}
+		\der{L_x}{t} &= (I_z^{-1} - I_y^{-1})L_yL_z+M_x\\
+		\der{L_y}{t} &= (I_x^{-1} - I_z^{-1})L_zL_x+M_y\\
+		\der{L_z}{t} &= (I_y^{-1} - I_x^{-1})L_xL_y+M_z
+	\end{eqalign}
+	If we consider the case $M=\vec 0$ then previous equations describe the e.o.m. of the angular momentum for a free rigid body.  In such case, if we consider again Figure~\ref{fig:rigid_body_phase_space}, we can represent the vector $L$ as a vector attached to the center of the sphere whose tip follows the trajectory given by the intersection.  
 \end{example}
 
 \section{Poisson cohomology}
-\section{Poisson vector fields}
 \begin{definition}
 	A \textbf{Poisson vector field} $X \in \fields(M)$ on a Poisson manifold $(M, \Pi)$ is a vector field such that
 	\begin{eqalign}
 		\Lie{X} \Pi = 0
 	\end{eqalign}
-	or, equivalently (applying Leibniz rule):
+	or, equivalently (applying definition of $\Lie{X}$ for a tensor):
 	\begin{eqalign}
 		X(\{f,g\}) = \{X(f), g\} + \{f,X(g)\}.
 	\end{eqalign}
@@ -714,7 +824,7 @@ Echoing analogous statements for Hamiltonian and symplectic fields, we have:
 			(\phi_t)_* \Pi = \Pi,
 		\end{eqalign}
 		\item Hamiltonian vector fields are Poisson,
-		\item the bracket of Poisson fields is Poisson.
+		\item the bracket $[\bullet, \bullet]$ of Poisson vector fields is Poisson.
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
