@@ -164,6 +164,7 @@ and $R^\dagger$ is the operator induced on $\lalg$ by $R^*$.
 
 	By the last corollary, \emph{any} Casimir function $h$ on the Poisson algebra on $\lalg^*$ let's you find the evolution of any $X \in \lalg$:
 	\begin{eqalign}
+	\label{eq:evo_lalg_R_matrix}
 		\der{X}{t} =[X, R\nabla h \vert_X]
 	\end{eqalign}
 	The $h_i$, for $i=1,\ldots,n$, are in involution, so they represent symmetries of the system, and hopefully can be used to obtain a foliation of the manifold into orbits. These will turn out to be the most general spectral invariants of the matrix $X$.
@@ -171,25 +172,33 @@ and $R^\dagger$ is the operator induced on $\lalg$ by $R^*$.
 
 These last ideas will be applied in the informative example of the Toda lattice (Example~\ref{ex:toda_lattice}).
 
+\begin{remark}
+	The study of the geometry and topology of coadjoint orbits in relation to the spectral theory of the chosen Lie groups / algebra is necessary to ascertain the complete integrability of such Hamiltonian systems.
+\end{remark}
+
 \section{Lax Representations}
 \begin{definition}
-	Given a vector field $X \in \fields(N)$ on a smooth manifold $N$, an open $U \subseteq N$, a \textbf{Lax representation for $(X, U)$} is a smooth map $(L, M) : N \to \gl(n) \times \gl(n)$ such that
+	Given a vector field $X \in \fields(N)$ on a smooth manifold $N$, an open $U \subseteq N$, a \textbf{Lax representation of $(X, U)$} is the collection $(L,M)$ of a smooth immersion $L : U \into \gl(n)$ and a smooth map $M : U \to \gl(n)$ such that
 	\begin{eqalign}
-		L_*X(L(x)) = [L(x), M(x)]
+		L_*X\vert_{L(x)} = [L(x), M(x)]
 	\end{eqalign}
 	or, equivalently,
 	\begin{eqalign}
 		\der{L}{t} = [L,M].
 	\end{eqalign}
+	where $\der{L}{t}$ is seen as a vector field on $\im L$.
 \end{definition}
 
-It mimics the evolution of a quantum operator in the Heisenberg formalism.
+It mimics the evolution of a quantum operator in the Heisenberg formalism. The second equation in the definition should be meant as a generalization of Equation~\eqref{eq:evo_lalg_R_matrix} to a more general situation where no Poisson structure has been defined.
 
 \begin{proposition}
-	The eigenvalues $\lambda_1(x), \ldots, \lambda_n(x)$ of the Lax matrix $L$ are integrals of motion of the system.
+	The eigenvalues $\lambda_1(x), \ldots, \lambda_n(x)$ of the Lax matrix $L(x)$ are integrals of motion of the system $\der{L}{t} = [L,M]$, i.e.
+	\begin{eqalign}
+		\der{\lambda_i(x(t))}{t}=0.
+	\end{eqalign}
 \end{proposition}
 \begin{proof}
-	Let $t_k = \trace L^k$, then eigenvalues of $L$ are roots of its characteristic polynomial:
+	Let $t_k = \trace (L^k)$, then eigenvalues of $L$ are roots of its characteristic polynomial:
 	\begin{eqalign}
 		\det(L- \lambda I) = (-1)^n(\lambda^n + c_1 \lambda^{n-1} + \ldots + c_n).
 	\end{eqalign}
@@ -199,7 +208,8 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism.
 	\end{eqalign}
 	Now, using the cyclic invariance of the trace to tackle the derivative, we obtain:
 	\begin{eqalign}
-		\der{}{t} \trace L^k &= k\trace ([L,M] L^{k-1})\\
+		\der{}{t} \trace L^k &= k \trace\Big(\der{L}{t} L^{k-1}\Big)\\ 
+			&= k\trace ([L,M] L^{k-1})\\
 			&= k \trace (LML^{k-1} - ML^k)\\
 			&= 0.
 	\end{eqalign}
@@ -209,9 +219,9 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism.
 \begin{theorem}
 	Let $(L, M)$ be a Lax representation for a vector field on some smooth manifold $N$. Let $G: N \to \GL(n)$ be a smooth map. Then
 	\begin{eqalign}
-		L' = GLG^{-1},\quad M'=GMG^{-1}- \der{G}{t}G',
+		L' = GLG^{-1},\quad M'=GMG^{-1}- \der{G}{t}G^{-1},
 	\end{eqalign}
-	where $t$ is the time of the Lax equation, is another Lax representation.
+	where $t$ is the time of the Lax equation, is another Lax representation for the vector field.
 \end{theorem}
 \begin{remark}
 	The transformation is in the same spirit of the gauge transformation of a fiber bundle connection!
@@ -234,13 +244,14 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism.
 \label{ex:toda_lattice}
 	Take $\lalg = \gl(n)$ as before and split it into $\lalg_+ \dir \lalg_-$, where $\lalg_+$ is the space of lower triangular matrices and $\lalg_- = \so(n)$ the space of skew-symmetric ones. We will use the duality given by the trace to identify $\lalg$ with $\lalg^*$. Then
 	\begin{eqalign}
-		\lalg_+^* = \lalg_-^\perp = \{\text{symmetric matrices}\},
+		\lalg_+^* \iso \lalg_-^\perp = \{\text{symmetric matrices}\},
 	\end{eqalign}
 	and
 	\begin{eqalign}
-		\lalg_-^* = \lalg_+^\perp = \{\text{strictly lower triangular matrices}\}.
+		\lalg_-^* \iso \lalg_+^\perp = \{\text{strictly lower triangular matrices}\}.
 	\end{eqalign}
-	Consider the projection given by
+	in such a way that we decomposed $\lalg^*$ too: $\lalg^* = \lalg_+^* \dir \lalg_-^*$.
+	Consider the projections
 	\begin{eqalign}
 		\pr_+(L) &= \underline\ell(L) + \overline{u}(L)^T + d(L),\\
 		\pr_-(L) &= \overline{u}(L) - \overline{u}(L)^T,
@@ -256,7 +267,7 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism.
 		R^*(L) &= \pr_+^*(L)-\pr_-^*(L) = -\underline\ell(L) + 2\overline u(L)^T + d(L) + \overline u(L).
 	\end{eqalign}
 	We will build a hierarchy of commuting Hamiltonian equations on the space $\lalg$.
-	Now, using Equation~\ref{eq:evolution_in_an_R_system} we can put a Poisson structure on $\lalg$:
+	Now we can put a Poisson structure on $\lalg$:
 	\begin{eqalign}
 		\Pi^\sharp_R(A)\vert_L = [L,RA] + R^*[L,A].
 	\end{eqalign}
@@ -294,15 +305,28 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism.
 			& & & 1& 0
 		\end{pmatrix}.
 	\end{eqalign}
-	One could prove that, for any $L \in S$ and $A \in \lalg$, $\Pi^\sharp_R(A)\vert_L \in S$, which means $\Pi^\sharp_R(A)$ is tangent to $S$ if $L \in S$. This means $\im(\Pi_R(L)) \subseteq TS$, hence by Theorem~\ref{eq:poisson_submanifold_condition} there is a unique Poisson submanifold structure on $S$, given by the restriction of $\Pi_R$ to $S$. The function $c_k = \frac1k \trace L^k$ is Casimir for the Poisson structure of the dual algebra, and
+	One could prove that, for any $L \in S$ and $A \in \lalg$, $\Pi^\sharp_R(A)\vert_L \in S$, which means $\Pi^\sharp_R(A)$ is tangent to $S$ if $L \in S$. This means $\im(\Pi_R(L)) \subseteq TS$, hence by Theorem~\ref{eq:poisson_submanifold_condition} there is a unique Poisson submanifold structure on $S$, given by the restriction of $\Pi_R$ to $S$. The functions $c_k = \frac1k \trace L^k$ are Casimir for $(\lalg^*, \{\bullet, \bullet\}_R)$, and restricting them to $S$ we get
 	\begin{eqalign}
-		\der{L}{t_k} = [L, R\nabla c_k]\quad \text{and} \quad \{c_i, c_j\}_R=0.
+		\der{L}{t_k} = [L, R\nabla c_k] = [L, RL^{k-1}] = -2[L, P_-(L^{k-1})]
 	\end{eqalign}
-	For instance, take $k=2$.
+	and $\{c_i, c_j\}_R=0$. For instance, take $k=2$.
 	\begin{eqalign}
 		\der{L}{t_2} = [L, R\nabla c_2] = [L, RL] \iff \begin{dcases}
 			\dot{b}_i = 4(a_i^2 - a_{i-1^2})\\
 			\dot{a}_i = 2a_i(b_{i+1} - b_i)
+		\end{dcases}
+	\end{eqalign}
+	or equivalently
+	\begin{eqalign}
+		\begin{dcases}
+			\dot v_i = 4(a_i^2-a_{i-1}^2)\\
+			\dot u_i = 2a_i(b_{i+1}-b_i)
+		\end{dcases}
+		\quad \text{where} \quad
+		\begin{dcases}
+			a_i \mapsto \e{\frac{u_i+1}2}\\
+			b_i \mapsto v_i\\
+			t \mapsto t
 		\end{dcases}
 	\end{eqalign}
 	These are \textbf{Toda equations} and describe a finite line of particles interacting (exponentially) with their neighbours. This is a good example of a system which is not integrable at first sight, but where its abstract study brings out the $n$ integral of motions given by the Casimir functions we found, so we can completely integrate it.
