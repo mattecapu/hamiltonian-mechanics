@@ -342,16 +342,16 @@ We can think of the space of Poisson structures as a manifold, the submanifold o
 
 An ordered basis $(\Pi_0, \Pi_1)$ of such a space is called a \textbf{pair of compatible Poisson tensors}. Since this means any linear combination of them is again a Poisson tensor, we've already seen we must have
 \begin{eqalign}
-	[\Pi_0, \Pi_1] = 0.
+	[a_0\Pi_0 + a_1\Pi_1,a_0\Pi_0 + a_1\Pi_1] = 0 \quad\Longrightarrow\quad [\Pi_0, \Pi_1] = 0.
 \end{eqalign}
 
-Let us denote $\{-,-\}_i$ the Poisson bracket associated to the Poisson tensor $\Pi_i$.
+Let us denote $\{\bullet,\bullet\}_i$ the Poisson bracket associated to the Poisson tensor $\Pi_i$.
 
 \begin{theorem}[Magri]
 \label{th:magri}
-	Let $M$ be a smooth manifold equipped with two different Poisson structures, $\Pi_0$ and $\Pi_1$. Consider a sequence of functions $\seq{h}{n} \subseteq \Cinfty(M)$ satisfying the following ``Hamiltonian recursion'':
+	Let $M$ be a smooth manifold equipped with two different Poisson structures, $\Pi_0$ and $\Pi_1$. Consider a sequence of functions $\seq{h}{n} \subseteq \Cinfty(M)$ satisfying the following ``bihamiltonian recursion'':\footnote{Equivalently: $\Pi_1^\sharp (dh_{p+1}) = \Pi_2^\sharp(dh_p))$.}
 	\begin{eqalign}
-		\{-,h_{p+1}\}_0 = \{-,h_p\}_1, \quad \forall p \in \N.
+		\{\bullet,h_{p+1}\}_0 = \{\bullet,h_p\}_1, \quad \forall p \in \N.
 	\end{eqalign}
 	Then $\{h_p,h_q\}_0 = \{h_p,h_q\}_1 = 0$ for all $p,q \in \N$.
 \end{theorem}
@@ -377,12 +377,12 @@ Notice \textbf{we actually didn't use the compatibility of $\Pi_0$ and $\Pi_1$ t
 
 \begin{enumerate}
 	\item when the rank of any $\Pi \in \Span_\R \{\Pi_0, \Pi_1\}$ is constant (and non-maximal), or
-	\item when one of the Poisson structures is non-degenerate, hence we have at our disposal a symplectic structure.
+	\item when one of the Poisson structures is non-degenerate, hence we have at our disposal a symplectic structure (if this is the case the bihamiltonian recursion is truly a recursion).
 \end{enumerate}
 
 Let's start with the first one.
 
-\subsection{The Hamiltonian recursion in the constant rank case}
+\section{The Hamiltonian recursion in the constant rank case}
 \begin{definition}
 	A marked line $\Pi_0 + \varepsilon \Pi_1$ in a bihamiltonian structure $\{\Pi_0, \Pi_1\}$ is called a \textbf{Poisson pencil}.
 \end{definition}
@@ -705,10 +705,10 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 
 The situation of this example is general: given an $R$-matrix for a Lie--Poisson structure, there's a canonical way to construct a second (and actually even a third) compatible quadratic Poisson structure. The spectral invariants we get from the Lax representation are then in Hamiltonian recursion for this pair of Poisson structures.
 
-\subsection{The Hamiltonian recursion in the symplectic case}
+\section{The Hamiltonian recursion in the symplectic case}
 In the case one of the Poisson is symplectic, we do not have enough Casimir functions\footnote{This is especially true for the constant rank case: in fact, under this assumption the non-degeneracy of one Poisson structure forces non-degeneracy in the other, so we really do not have any Casimir.} so we need a different approach.
 
-\subsection{Nijenhuis structures}
+\section{Nijenhuis structures}
 For this section, we refer to \cite{magri1984geometrical}. In this seminal paper, Magri and Morosi set out the theory of Poisson--Nijenhuis geometry, which deals with ``compatible'' tensor structures of Poisson, Nijenhuis and symplectic type. The article obtains hierarchies of symmetries out of this especially nice situation, through the method of Hamiltonian recursions.
 
 \begin{definition}
@@ -864,7 +864,7 @@ A peculiar fact about the hierarchy of Poisson tensors we get out of a Poisson--
 \end{eqalign}
 so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma~\ref{lemma:fund_fields_of_nijenhuis} tells us that when we find a system of commuting fields which preserve $N$, we get out a whole hierarchy of them. One can show that $X_i$ is Hamiltonian with respect to each $\Pi_j$, $j \leq i$, and that this fact characterizes completely integrable systems.
 
-\subsection{The recursion}
+\section{The recursion}
 \begin{theorem}
 	The functions
 	\begin{eqalign}
