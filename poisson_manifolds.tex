@@ -374,10 +374,10 @@ Notice that Equations~\eqref{eq:inf_adj_and_comm} and \eqref{eq:inf_co_adj_and_c
 \end{remark}
 
 \subsection{Poisson tensor}
-On a symplectic manifold the poisson bracket induces a derivation $\{f, \bullet\}$ on $f \in \Cinfty(M)$, hence one can prove\footnote{See \cite[Section 33.1]{michor2008} for this type of argument.} that the value of $\{f,g\}$ at a point $p \in M$ only depends on $df\vert_p$ and $dg\vert_p$. Moreover, notice this dependence is linear and skew-symmetric. Hence we see that a Poisson structure can be encoded by a map $\Pi_p : T^*_pM \wedge T^*_pM \longto \R$ at each point $p \in M$. In other words, a tensor field $\Pi \in \Gamma(TM \wedge TM)$ on $M$:
+On a symplectic manifold the poisson bracket induces a derivation $\{f, \bullet\}$ on $f \in \Cinfty(M)$, hence one can prove\footnote{See \cite[Section 33.1]{michor2008} for this type of argument.} that the value of $\{f,g\}$ at a point $p \in M$ only depends on $df\vert_p$ and $dg\vert_p$. Moreover, notice this dependence is linear and skew-symmetric. Hence we see that a Poisson structure can be encoded by a map $\Pi_p : T^*_pM \wedge T^*_pM \longto \R$ at each point $p \in M$. In other words, a tensor field $\Pi \in \Lambda^2(M)$\footnote{We denote by $\Lambda^k(M)$ the space of antisymmetric $(k,0)$ tensors $\Gamma((TM)^{\wedge k})$. This is very different from the space of antisymmetric $(0,k)$ tensors $\Gamma((T^*M)^{\wedge k})$, i.e. $k$-forms, which is always denoted by $\Omega^k(M)$.} on $M$:
 
 \begin{definition}
-	The \textbf{Poisson tensor} of a Poisson manifold $M$ is the unique tensor field $\Pi \in  \Gamma(TM^{\wedge 2})$ such that
+	The \textbf{Poisson tensor} of a Poisson manifold $M$ is the unique tensor field $\Pi \in  \Lambda^2(M)$ such that
 	\begin{eqalign}
 		\{f,g\}\vert_p = \Pi\vert_p(df\vert_p, dg\vert_p) \quad \forall p\in M.
 	\end{eqalign}
@@ -427,7 +427,7 @@ Therefore \textbf{we call a Poisson tensor} (or Poisson structure) \textbf{any s
 \subsection{The Schouten--Nijenhuis bracket}
 The Jacobi condition \eqref{eq:jacobi_id_for_pi_tensor} has a more concise expression in terms of the \textbf{Schouten--Nijenhuis bracket},\footnote{See \cite[Section 33.2]{michor2008} for the proof of the well-definiteness and the properties of such object.} which is a graded extension of the customary Lie bracket to (skew-symmetric) multivector fields:
 \begin{eqalign}
-	[\bullet, \bullet] : \Gamma(TM^{\wedge m}) \times \Gamma(TM^{\wedge n}) \longto \Gamma(TM^{\wedge (n+m-1)}).
+	[\bullet, \bullet] : \Lambda^m(M) \times \Lambda^n(M) \longto \Lambda^{n+m-1}(M).
 \end{eqalign}
 It is defined inductively starting from the Lie bracket (taken for the case $n=m=1$) and the derivative of functions along vector fields (taken for the case $m=1$, $n=0$) 
 \begin{eqalign}
@@ -856,7 +856,7 @@ It should be clear by now that Poisson geometry is closely related to symplectic
  	\begin{tabular}{c|c}
  		\textbf{Symplectic geometry} & \textbf{Poisson geometry}\\[1ex]
  		\hline
- 		$\omega \in \Omega^2(M)$ & $\Pi \in \Gamma(\Lambda^2TM)$\\[1.5ex]
+ 		$\omega \in \Omega^2(M)$ & $\Pi \in \Lambda^2(M)$\\[1.5ex]
  		$d\omega = 0$ & $[\Pi,\Pi] = 0$\\[1.5ex]
  		non-degeneracy & \textcolor{gray}{(nothing)}\\[1.5ex]
  		Hamiltonian v.f.: & Hamiltonian v.f.:\\
@@ -891,9 +891,9 @@ Hence we might guess our coboundary map to be $d_\Pi := [\Pi, \bullet]$. To be s
 
 \begin{lemma}
 \label{lemma:poisson_coboundary}
-	Let $\Pi \in \fields^2(M)$ be a Poisson tensor. Then
+	Let $\Pi \in \Lambda^2(M)$ be a Poisson tensor. Then
 	\begin{eqalign}
-		[\Pi,[\Pi,A]] = 0, \quad \forall A \in \fields^k(M).
+		[\Pi,[\Pi,A]] = 0, \quad \forall A \in \Lambda^k(M).
 	\end{eqalign}
 \end{lemma}
 \begin{proof}
@@ -907,26 +907,26 @@ Hence we might guess our coboundary map to be $d_\Pi := [\Pi, \bullet]$. To be s
 
 The cochain complex arising from these coboundaries is called the \textbf{Poisson complex}:
 \begin{diagram}
-	\ldots \arrow{r}{d_\Pi} \& \fields^p(M) \arrow{r}{d_\Pi} \& \fields^{p+1}(M) \arrow{r}{d_\Pi} \& \ldots
-\end{diagram}
+	\ldots \arrow{r}{d_\Pi} \&\Lambda^p(M) \arrow{r}{d_\Pi} \& \Lambda^{p+1}(M) \arrow{r}{d_\Pi} \& \ldots
+\end{diagram} 
 
 \begin{definition}
 	The $r$-th Poisson cohomology of $(M, \Pi)$ is
 	\begin{eqalign}
 		H^r_\Pi (M) = \ker d^{(r)}_\Pi / \im d^{(r-1)}_\Pi
 	\end{eqalign}
-	where $d^{(k)}_\Pi$ denotes $d_\Pi : \fields^k(M) \to \fields^{k+1}(M)$.
+	where $d^{(k)}_\Pi$ denotes $d_\Pi : \Lambda^k(M) \to \Lambda^{k+1}(M)$.
 \end{definition}
 
 \begin{example}
-	For the trivial Poisson tensor $\Pi = 0$, $H^r_\Pi \iso \fields^r(M)$. Notice that the Poisson cohomology can be infinite dimensional. This is not the case of the de Rham cohomology, which under loose (satisfied) assuptions is finite dimensional. 
+	For the trivial Poisson tensor $\Pi = 0$, $H^r_\Pi \iso \Lambda^r(M)$. Notice that the Poisson cohomology can be infinite dimensional. This is not the case of the de Rham cohomology, which under loose (satisfied) assuptions is finite dimensional. 
 \end{example}
 
 \begin{example}
-	In the symplectic case ($\Pi$ non-degenerate), then $\Pi^\sharp$ induces an identification of $\Omega^\bullet$ with $\fields^\bullet$, which commutes with the de Rham's and Poisson differentials:
+	In the symplectic case ($\Pi$ non-degenerate), then $\Pi^\sharp$ induces an identification of $\Omega^\bullet$ with $\Lambda^\bullet$, which commutes with the de Rham's and Poisson differentials:
 	\begin{diagram}
 		\ldots \arrow{r}{d} \& \Omega^p(M) \arrow{d}{\Pi^\sharp} \arrow{r}{d} \& \Omega^{p+1}(M) \arrow{d}{\Pi^\sharp} \arrow{r}{d} \& \ldots\\
-		\ldots \arrow{r}{d_\Pi} \& \fields^p(M) \arrow{r}{d_\Pi} \& \fields^{p+1}(M) \arrow{r}{d_\Pi} \& \ldots
+		\ldots \arrow{r}{d_\Pi} \& \Lambda^p(M) \arrow{r}{d_\Pi} \& \Lambda^{p+1}(M) \arrow{r}{d_\Pi} \& \ldots
 	\end{diagram}
 	This is called, in homological algebra, a \textbf{(co)chain isomorphism} and implies that the cohomologies arising from the two complexes are naturally isomorphic. Thus, \textbf{in the symplectic case, Poisson cohomology coincides with de Rham cohomology}, as expected.
 \end{example}
