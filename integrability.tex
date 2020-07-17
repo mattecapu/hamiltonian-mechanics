@@ -312,21 +312,21 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism. The s
 	and $\{c_i, c_j\}_R=0$. For instance, take $k=2$.
 	\begin{eqalign}
 		\der{L}{t_2} = [L, R\nabla c_2] = [L, RL] \iff \begin{dcases}
-			\dot{b}_i = 4(a_i^2 - a_{i-1^2})\\
+			\dot{b}_i = 4(a_i^2 - a_{i-1}^2)\\
 			\dot{a}_i = 2a_i(b_{i+1} - b_i)
 		\end{dcases}
 	\end{eqalign}
 	or equivalently
 	\begin{eqalign}
 		\begin{dcases}
-			\dot v_i = 4(a_i^2-a_{i-1}^2)\\
-			\dot u_i = 2a_i(b_{i+1}-b_i)
+			\dot v_i = \e^{u_i+1}-\e^{u_i}\\
+			\dot u_i = v_i-v_{i-1}
 		\end{dcases}
 		\quad \text{where} \quad
 		\begin{dcases}
-			a_i \mapsto \e{\frac{u_i+1}2}\\
+			a_i \mapsto \e^{\frac{u_i+1}2}\\
 			b_i \mapsto v_i\\
-			t \mapsto t
+			t \mapsto \frac t4
 		\end{dcases}
 	\end{eqalign}
 	These are \textbf{Toda equations} and describe a finite line of particles interacting (exponentially) with their neighbours. This is a good example of a system which is not integrable at first sight, but where its abstract study brings out the $n$ integral of motions given by the Casimir functions we found, so we can completely integrate it.
@@ -334,7 +334,7 @@ It mimics the evolution of a quantum operator in the Heisenberg formalism. The s
 
 \chapter{Bihamiltonian structures}
 \section{Bihamiltonian structures}
-We can think of the space of Poisson structures as a manifold, the submanifold of the manifold of bivectors defined by the quadratic equation \eqref{eq:jacobi_id_for_pi_tensor}. It is not a vector space \emph{per se}, but since it lives inside $\fields^2(M)$, which \emph{is} a vector space, can contain subspaces.
+We can think of the space of Poisson structures as a manifold, the submanifold of the manifold of bivectors defined by the quadratic equation \eqref{eq:jacobi_id_for_pi_tensor}. It is not a vector space \emph{per se}, but since it lives inside $\Lambda^2(M)$, which \emph{is} a vector space, can contain subspaces.
 
 \begin{definition}
 	A \textbf{bihamiltonian structure} on a smooth manifold $M$ is a $2$-dimensional linear subspace of the space of Poisson structures on $M$.
@@ -347,7 +347,7 @@ An ordered basis $(\Pi_0, \Pi_1)$ of such a space is called a \textbf{pair of co
 
 Let us denote $\{\bullet,\bullet\}_i$ the Poisson bracket associated to the Poisson tensor $\Pi_i$.
 
-\begin{theorem}[Magri]
+\begin{theorem}[Magri, {\cite[Lemma 1.2.4]{dubrovin2005}}]
 \label{th:magri}
 	Let $M$ be a smooth manifold equipped with two different Poisson structures, $\Pi_0$ and $\Pi_1$. Consider a sequence of functions $\seq{h}{n} \subseteq \Cinfty(M)$ satisfying the following ``bihamiltonian recursion'':\footnote{Equivalently: $\Pi_1^\sharp (dh_{p+1}) = \Pi_2^\sharp(dh_p))$.}
 	\begin{eqalign}
@@ -376,7 +376,7 @@ Let us denote $\{\bullet,\bullet\}_i$ the Poisson bracket associated to the Pois
 Notice \textbf{we actually didn't use the compatibility of $\Pi_0$ and $\Pi_1$ to get this result}. Indeed, it is not necessary. However a bihamiltonian structure gives us a canonical way to produce a sequence of functions in recursion in two particular cases:
 
 \begin{enumerate}
-	\item when the rank of any $\Pi \in \Span_\R \{\Pi_0, \Pi_1\}$ is constant (and non-maximal), or
+	\item when the rank of any $a_0\Pi_0 + a_1\Pi_1 \in \Span_\R \{\Pi_0, \Pi_1\}$ is constant (and non-maximal) in some open subset\footnote{In this case we can always assume that the open subset of $\R^2$ contains the point $(1, 0)$ (this is always true up to linear transformations of $\Pi_0$ and $\Pi_1$), in such a way that the Poisson pencil defined in the following lives in such open subset.} of $\langle a_0, a_1\rangle \iso \R^2$, or
 	\item when one of the Poisson structures is non-degenerate, hence we have at our disposal a symplectic structure (if this is the case the bihamiltonian recursion is truly a recursion).
 \end{enumerate}
 
@@ -387,12 +387,9 @@ Let's start with the first one.
 	A marked line $\Pi_0 + \varepsilon \Pi_1$ in a bihamiltonian structure $\{\Pi_0, \Pi_1\}$ is called a \textbf{Poisson pencil}.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}[{\cite[Lemma 1.2.7]{dubrovin2005}}]
 \label{lemma:comp_poisson_of_const_rank_same_cas}
-	Let $\Pi_\varepsilon = \Pi_0 + \varepsilon \Pi_1$ be a Poisson pencil of constant rank for small $\varepsilon$ and $k = \cork(\Pi_0 + \varepsilon\Pi_1) = \cork(\Pi_0)$. Then if $c_1, \ldots, c_k \in \Cas(M, \Pi_0)$, then
-	\begin{eqalign}
-		\{c_i,c_j\}_1 = 0, \quad \forall i,j \leq k.
-	\end{eqalign}
+	Let $\Pi_\varepsilon = \Pi_0 + \varepsilon \Pi_1$ be a Poisson pencil of constant and non-maximal rank in a neighbourhood of $\varepsilon=0$ and let $k = \cork(\Pi_0 + \varepsilon\Pi_1) = \cork(\Pi_0)$. If $c_1, c_2 \in \Cas(M, \Pi_0)$, then $\{c_1,c_2\}_1 = 0$.
 \end{lemma}
 \begin{remark}
 	This is remindful of the alike theorem for Lax representations (Corollary~\ref{cor:cas_are_inherited}).
@@ -408,7 +405,7 @@ Let's start with the first one.
 	\end{eqalign}
 	Hence
 	\begin{eqalign}
-		(\Pi_0 + \varepsilon \Pi_1)^{ab} = \begin{pmatrix}
+		(\Pi_0 + \varepsilon \Pi_1)^{ab}\vert_p = \begin{pmatrix}
 			O(\varepsilon) & I + O(\varepsilon) & O(\varepsilon)\\
 			-I + O(\varepsilon) & O(\varepsilon) & O(\varepsilon)\\
 			O(\varepsilon)& O(\varepsilon) & O(\varepsilon)
@@ -416,9 +413,9 @@ Let's start with the first one.
 	\end{eqalign}
 	The fact that $\rk(\Pi_\varepsilon) = \rk(\Pi_0) = 2m$ implies the determinant of any minor of order $2m+1$ vanishes. In particular, consider the minor $M_{ij}$ we get from adjoining the $i$-th row and the $j$-th column ($2m < i,j \leq 2m+k$) to the upper left minor of size $2m$. Developing the determinant of such a minor with respect to the adjoined row, we obtain\footnotemark
 	\begin{eqalign}
-		0 = \det M_{ij}(\varepsilon) = \underbrace{(-1)^{4m+2} (\Pi_0^{ij} + \varepsilon \Pi_1^{ij})}_{\text{rightmost element}} + \underbrace{O(\varepsilon)}_{\text{others}} = \varepsilon \Pi_1^{ij} + O(\varepsilon^2), \quad \forall i,j.
+		0 = \det M_{ij}(\varepsilon)\vert_p = \underbrace{(-1)^{4m+2} (\Pi_0^{ij}\vert_p+ \varepsilon \Pi_1^{ij}\vert_p)}_{\text{rightmost element}} + \underbrace{O(\varepsilon^2)}_{\text{others}} = \varepsilon \Pi_1^{ij}\vert_p + O(\varepsilon^2), \quad \forall i,j.
 	\end{eqalign}
-	Since $\det M_{ij}$ is a polynomial in $\varepsilon$ which vanishes on a whole neighbourood of $\varepsilon = 0$, thus it must be the zero polynomial, implying $\Pi_1^{ij} = 0$ for $2m < i,j \leq 2m+k$. Now recall that $\Pi^{ij} = \{x^i, x^j\}$, so this result about the components of $\Pi_1$ translates to the thesis, since the last $k$ coordinates of a Darboux--Weinstein system are (a basis for) Casimirs.
+	Since $\det M_{ij}\vert_p$ is a polynomial in $\varepsilon$ which vanishes on a whole neighbourood of $\varepsilon = 0$, thus it must be the zero polynomial, implying $\Pi_1^{ij}\vert_p = 0$ for $2m < i,j \leq 2m+k$. Since this holds for any $p \in M$ we just obtained $\Pi_1^{ij}=0$ in a neighbourhood of $\varepsilon=0$ for $2m < i,j \leq 2m+k$. Now recall that $\Pi^{ij} = \{x^i, x^j\}$, so this result about the components of $\Pi_1$ translates to the thesis, since the last $k$ coordinates of a Darboux--Weinstein system are (a basis for) Casimirs.
 	\footnotetext{An appreciable digression should be made about how did we obtain the stated equalities. Eventually, the employed results are the consequence of a careful and attentive application of the definition of determinant to the peculiar structure the involved matrices have, hence a challenging, if pedant, exercise. Explicitly, we are using the fact that:
 	\begin{eqalign}
 		\left| \begin{matrix}
@@ -429,18 +426,18 @@ Let's start with the first one.
 	while the same matrix with any line replaced by one whose entries are $O(\varepsilon)$ has determinant $O(\varepsilon)$. Applying Laplace's formula to the stated row leads to the expression of $\det M_{ij}$ we used.}
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[{\cite[Lemma 1.1.3]{dubrovin2005}}]
 \label{lemma:poisson_cohomology_is_loc_trivial}
 	Let $\Pi$ be a Poisson structure of constant rank $2m$ on a $(2m+k)$-dimensional smooth manifold $M$. Locally, in a sufficiently small open ball (in the topological sense, i.e. homeomorphic to a ball of suitable dimension) $U \subseteq M$:
 	\begin{enumerate}
-		\item if $\overline X \in H^1_\Pi(U)$, then $\overline X = 0$ (i.e. the Poisson vector field $X$ is Hamiltonian) if and only if $X = \Pi^\sharp \eta$ for some $\eta \in \Omega^1$ (hence not necessarily closed),
-		\item if $\overline\Delta \in H^2_\Pi(U)$, then $\overline\Delta =0$ (i.e. the first-order deformation given by $\Delta$ is trivial) if and only if is zero on the Casimirs.
+		\item if $\overline X \in H^1_\Pi(U)$, then $\overline X = 0$ (i.e. the Poisson vector field $X$ is Hamiltonian) if and only if $X = \Pi^\sharp \eta$ for some $\eta \in \Omega^1$ (i.e. the vector field $X$ is tangent to the leaves of the symplectic foliation),
+		\item if $\overline\Delta \in H^2_\Pi(U)$, then $\overline\Delta =0$ (i.e. the first-order deformation given by $\Delta$ is trivial) if and only if $\Delta(dc_1, dc_2)=0$ for any $c_1, c_2 \in \Cas(U, \Pi)$ (i.e. is zero on the Casimirs).
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
 	\leavevmode
 	\begin{enumerate}
-		\item If $\overline X =0$, then $X = \Pi^\sharp(df)$ for some $f \in \Cinfty(M)$, then of course $X \in \im \Pi^\sharp$. Conversely, suppose $X \in \im \Pi^\sharp$. Let's start by putting Darboux--Weinstein coordinates $(x^i, \xi^i, c^j)$ on $U$ of $M$. Use the Casimir coordinates to foliate the ball in symplectic leaves. We'll denote with $U_c$ the symplectic leaf where Casimirs have a fixed value $c \in \R^k$. Then on any of these, $\Pi\vert_{U_c} = \partial_{x^i} \wedge \partial_{\xi^i}$. Consider now its transpose, which is simply Darboux $2$-form $\omega_c = dx^i \wedge d\xi^i$. Extending $\omega_c$ on the whole ball $U$, we would get a closed form, even if not a symplectic one. Now, since $[\Pi, X] = 0$ then $\Lie{X}\omega_c$ as well, thus:
+		\item If $\overline X =0$, then $X = \Pi^\sharp(df)$ for some $f \in \Cinfty(M)$, then of course $X \in \im \Pi^\sharp$. Conversely, suppose $X \in \im \Pi^\sharp$. Let's start by putting Darboux--Weinstein coordinates $x^i = (q^j, p^h, c^\ell)$ on $U$ of $M$, with $c^j$ independent Casimirs. Use the Casimir coordinates to foliate the ball in symplectic leaves. We'll denote with $U_c$ the symplectic leaf where Casimirs have a fixed value $c \in \R^k$. Then on any of these, $\Pi\vert_{U_c} = \partial_{q^i} \wedge \partial_{p^i}$. Consider now its transpose, which is simply Darboux $2$-form $\omega_c = dq^i \wedge dp^i$. Extending $\omega_c$ on the whole ball $U$, we would get a closed form, even if not a symplectic one. Now, since $[\Pi, X] = 0$ then $\Lie{X}\omega_c=0$ as well, thus:
 		\begin{eqalign}
 			\Lie{X}\omega_c = d\ipr{X}\omega_c + \ipr{X}d\omega_c = d\ipr{X}\omega_c = 0.
 		\end{eqalign}
@@ -448,8 +445,8 @@ Let's start with the first one.
 		\begin{eqalign}
 			\iota_X \omega = df + \text{transverse\footnotemark\ part} \in \Omega^1(U),
 		\end{eqalign}
-		\footnotetext{Here and in the following ``transverse'' means along the $k$ directions of degeneracy of the Poisson structure.}
-		where $f(x,\xi,c) = f_c(x,\xi) \in \Cinfty(U)$. Remember, now, that $\iota_-\omega$ is the inverse of $\omega^{-1} = \Pi\vert_{U_c}^\sharp$. Thus, leafwise
+		\footnotetext{Here and in the following ``transverse'' means along the $k$ directions of degeneracy of the Poisson structure. Hence such piece should be in the form $\phi_i dc^i$ for some functions $\phi_1, \dots, \phi_k$.}
+		where $f(q,p,c) := f_c(q,p) \in \Cinfty(U)$. Remember, now, that $\iota_-\omega$ is the inverse of $\omega^{-1} = \Pi\vert_{U_c}^\sharp$. Thus, leafwise
 		\begin{eqalign}
 			X\vert_{U_c} &= \Pi\vert_{U_c}^\sharp(\iota_X\omega)\\
 			&= \Pi^\sharp\vert_{U_c}(df\vert_{U_c} +\text{transverse part})\\
@@ -458,126 +455,107 @@ Let's start with the first one.
 		 Thus, since the symplectic foliation of $U$ partitions $U$, we get $\Pi^\sharp(df) = [\Pi, f] = X$.
 		\item If $\overline \Delta = 0$, then $\Delta = \mathcal{L}_X\Pi= [X,\Pi]$ for $X \in \fields(U)$, so that for $c_1,c_2 \in \Cas(U)$
 		\begin{eqalign}
-			\Delta(dc_1, dc_2) = \left(\mathcal{L}_X\Pi\right)(dc_1,dc_2),
+			\Delta(dc_1, dc_2) &= \left(\mathcal{L}_X\Pi\right)(dc_1,dc_2)\\
+			&=\Lie{X}(\Pi(dc_1,dc_2)) - \Pi(\Lie{X}dc_1,dc_2) - \Pi(dc_1,\Lie{X}dc_2)\\
+			&=\Lie{X}(\cancel{\{c_1,c_2\}})- \Pi(d(X(c_1)),dc_2) - \Pi(dc_1,d(X(c_2)))\\
+			&=-\{X(c_1),c_2\}-\{c_1,X(c_2)\}=0
 		\end{eqalign}
-		and to compute it we recall that
-		\begin{eqalign}
-		 0=\Lie{X}(\{c_1,c_2\})&=\Lie{X}(\Pi(dc_1,dc_2))=	\\
-				       &=(\Lie{X})(dc_1,dc_2)+\Pi(\Lie{X}dc_1,dc_2)+\Pi,(dc_1,\Lie{X}dc_2),
-		\end{eqalign}
-		so that, since $\Lie{X}df=d(X(f))$ for all $f\in\Cinfty(M)$,
-		\begin{equation}
-		 \Delta(dc_1,dc_2)=-\{X(c_1),c_2\}-\{c_1,X(c_2)\}=0,
-		\end{equation}
 		as stated.
 
 		Conversely, choose Darboux--Weinstein coordinates $x^i = (q^j, p^h, c^\ell)$. Consider the $k$ vectors given by the components of $\Delta$ in the transverse directions:
 		\begin{eqalign}
-			X_a = \Delta^{i\,\,2m+a} \pder{}{x^i}, \quad 1 \leq a \leq k.
+			X_a = \Delta^{ia} \pder{}{x^i}, \quad 2m+1 \leq a \leq 2m+k.
 		\end{eqalign}
-		Since $\Delta$ is zero on Casimirs, this means $X_a^{i+2m} = 0$ for $i=1,\ldots,k$, therefore $X_a\in \im(\Pi^\sharp)$ since it is
-		tangent to the symplectic leaves.
+		In this proof the index $a$ always runs in these values. Since $\Delta$ is zero on Casimirs, this means $X_a^{i} = 0$ for $i=2m+1,\ldots,2m+k$, therefore $X_a\in \im(\Pi^\sharp)$ since it is
+		tangent to the symplectic leaves of $\Pi^\sharp$.
 
 		Now, let us compute explicitly the components of $[\Pi, \Delta]$ and of $[\Pi, X_a]$.
-		As for $[\Pi, \Delta]$, one finds by direct computation (using the S-N brackets definition and properties)
+		One finds by direct computation (using Equation~\eqref{eq:local_form_SNB} and definition of $X_a$)
 		\begin{eqalign}
-		 [\Pi,\Delta]^{ijh}=&-(\Delta^{hl}\partial_h\Pi^{ij}+\Delta^{ih}\partial_h\Pi^{jl})	\\
-				    &-(\Pi^{hi}\partial_h\Delta^{jl}+\Pi^{hj}\partial_h\Delta^{li}),
+		 	[\Pi,\Delta]^{i_1i_2i_3}=&\Pi^{ji_1}\partial_j\Delta^{i_2i_3}+\Pi^{ji_2}\partial_j\Delta^{i_3i_1}+\Pi^{ji_3}\partial_j\Delta^{i_1i_2}\\
+			&+\Delta^{ji_1}\partial_j\Pi^{i_2i_3}+\Delta^{ji_2}\partial_j\Pi^{i_3i_1}+\Delta^{ji_3}\partial_j\Pi^{i_1i_2},
 		\end{eqalign}
-		and since $\Pi^{ij}$ are constant in D-W coordinates
-		\begin{equation}
-		 [\Pi,\Delta]^{ij\,2m+a}=-(\Pi^{hi}\partial_h\Delta^{j\,2m+a}+\Pi^{hj}\partial_h\Delta^{2m+a\,i}).
-		\end{equation}
-		As for $[\Pi, X_a]$, by direct computation one gets
-		\begin{equation}
-		 [\Pi,X_a]^{ij}=-(\Pi^{hi}\partial_{h}\Delta^{j\,2m+a}+\Pi^{hj}\partial_{h}\Delta^{2m+a\,i}),
-		\end{equation}
-		which proves that
-		\begin{equation}
-		 [\Pi,X_a]^{ij}=[\Pi,\Delta]^{ija},\quad  1 \leq a \leq k.
-		\end{equation}
+		\begin{eqalign}
+			[\Pi, X_a]^{k_1k_2} = \Pi^{ji_1}\partial_j\Delta^{i_2a} + \Pi^{ji_2}\partial_j\Delta^{ai_1} + \Delta^{ja}\partial_j\Pi^{i_1i_2}
+		\end{eqalign}
+		and using $\Pi^{ia}=\Pi^{ai}=0$:
+		\begin{eqalign}
+		 	[\Pi,\Delta]^{i_1i_2a}=\Pi^{ji_1}\partial_j\Delta^{i_2a}+\Pi^{ji_2}\partial_j\Delta^{ai_1}+\Delta^{ja}\partial_j\Pi^{i_1i_2} = [\Pi, X_a]^{i_1i_2}.
+		\end{eqalign}
 		Now, by hypothesis $[\Pi,\Delta]=0$, so we find
-		\begin{equation}
-		 \Lie{X_a}\Pi=0,
-		\end{equation}
-		that is $X_a$ is a Poisson vector field for all $a=1,\ldots,k$: $\overline{X_a}\in H^1_\Pi(U)$.
+		\begin{eqalign}
+			\Lie{X_a}\Pi=0,
+		\end{eqalign}
+		that is $\{X_a\}$ are Poisson vector fields: $\overline{X_a}\in H^1_\Pi(U)$.
 
 		Therefore, we just built $k$ vector fields $X_a$ such that
 		\begin{enumerate}
-		 \item $\overline{X_a}\in H^1_\Pi(U)$;
-		 \item $X_a\in\im(\Pi)$,
+			\item $\overline{X_a}\in H^1_\Pi(U)$;
+			\item $X_a\in\im(\Pi^\sharp)$,
 		\end{enumerate}
 		so by the previous point, $X_a = [\Pi, f_a]$ for some $f_a \in \Cinfty(U)$.
-		In local coordinates this reads $\Delta^{i\,a+2m} = 2\Pi^{ij}\partial_j f_a$ ($1 \leq a \leq k$),
-		which implies the constraint on the $f_a$
+		In local coordinates this reads $\Delta^{i\,a} = \Pi^{ji}\partial_j f_a$.
+		
+		Let us now change representative for this cohomology class, taking $\Delta^\prime=\Delta-[\Pi,Z]$ as the new one, where we defined \textit{ad hoc} the vector field
 		\begin{equation}
-		 \Pi^{2m+a\,j}\partial_j f_b=0.
-		\end{equation}
-		Let us now change representative for this cohomology class, taking $\Delta^\prime=\Delta-[\Pi,Z]$ as the new one,
-		where we defined \textit{ad hoc}
-		\begin{equation}
-		 Z=\sum_{a=1}^k Z^{2m+a}\pder{}{c^a}=\sum_{a=1}^k 2f_a\pder{}{c^a}.
+			Z:=\sum_{\ell=1}^k f_{2m+\ell}\pder{}{c^\ell}.
 		\end{equation}
 
-		Let us show why this is convenient.
-		By direct computation one finds
+		Let us show why this is convenient. By direct computation one finds
 		\begin{equation}
-		 [\Pi,Z]^{i\,2m+a}=\Delta^{i\,2m+a},
+			[\Pi,Z]^{ia}= \Pi^{ji}\partial_j f_a = \Delta^{ia},
 		\end{equation}
 		which implies that now the new representative is such that
 		\begin{equation}
-		 \Delta^{\prime\,i\,2m+a}=\Delta^{\prime\,2m+a\,i}=0,
+		\label{eq:Delta_vanish_along_casim}
+			\Delta^{\prime\,ia}=\Delta^{\prime\,ai}=0.
 		\end{equation}
-		while it keeps holding, just like for $\Delta$,
+		Now we want to prove that $\Delta^\prime$ is exact. The rest of the proof repeats the argument of the first part. 
+		
+		Equation~\eqref{eq:Delta_vanish_along_casim} means that $\Delta^\prime$ only has non-zero components along $\partial_{q^i}$ and $\partial_{p^i}$ directions, that is $\Delta^{\prime\sharp}$ can be really ``restricted'' to the symplectic leaves $U_c$, for all $c\in U$:
 		\begin{equation}
-		 \Delta^{\prime\,2ma+a\,2m+b}=0.
-		\end{equation}
-		This means that $\Delta^\prime$ only has non-zero components along $\pder{}{q^i}$ and $\pder{}{p^i}$ directions,
-		that is $\Delta^{\prime\sharp}$ can be really ``restricted'' to the symplectic leaves $U_c$, for all $c\in U$:
-		\begin{equation}
-		 \Delta^\prime_c:\Omega^1(U_c)\longrightarrow\fields(U_c).
+			\Delta^{\prime\sharp}_c := \Delta^{\prime\sharp}\vert_{U_c}:\Omega^1(U_c)\longrightarrow\fields(U_c).
 		\end{equation}
 
-		This allows us to lower the indices of $\Delta$ and define, said $\omega=dq^i\wedge dp_i$,
+		This allows us to lower the indices of $\Delta^\prime$ and define, said $\omega=dq^i\wedge dp^i$,
+		\begin{eqalign}
+			\delta:=\omega\circ\Delta^\prime\circ\omega\in\Omega^2(U)
+		\end{eqalign}
+		whose components are
+		\begin{eqalign}
+			\delta_{ij}:=\omega_{i k}\Delta^{\prime\,kl}\omega_{lj},
+		\end{eqalign}
+		and correspondingly we have the leaf-restricted version
 		\begin{equation}
-		 \delta=\omega_{\bullet k}\Delta^{kl}\omega_{l\bullet}\in\Omega^2(U),
+			\delta_c := \delta \vert_{U_c} =\omega_c\circ\Delta^\prime_c\circ\omega_c	\quad	\forall c\in U.
 		\end{equation}
-		which means $\delta=\omega\circ\Delta\circ\omega$, and correspondingly we have the leaf-restricted version
+		where $\omega_c := \omega\vert_{U_c}$. 
+		
+		Now, $\Pi_\epsilon=\Pi+\epsilon\Delta^\prime$ is Poisson at first order in $\epsilon$ if and only if $[\Pi, \Delta^\prime]=0$, and this is true by hypothesis. Moreover, we know $\Pi_c$ is symplectic and $\Delta^\prime_c$ is well defined, therefore $\Pi_\epsilon\vert_c=\Pi_c+\epsilon\Delta^\prime_c$ is Poisson if and only if $[\Pi\vert_c,\Delta_c]=0$, which is true by hypothesis, and since
 		\begin{equation}
-		 \delta_c=\omega_c\circ\Delta_c\circ\omega_c	\quad	\forall c\in U.
+			\Pi_\epsilon\vert_c^{-1}=\omega_\epsilon\vert_c=\omega_c-\epsilon\omega_{\bullet h}\Delta^{hl}\omega_{l\bullet}+\mathcal{O}(\epsilon^2)
 		\end{equation}
-		Now, $\Pi_\epsilon=\Pi+\epsilon\Delta$ is Poisson at first order in $\epsilon$ if and only if $[\Pi, \Delta]=0$,
-		and this is true by hypothesis.
-		Moreover, we know $\Pi_c$ is symplectic and $\Delta_c$ is well defined, therefore $\Pi_\epsilon\vert_c=\Pi_c+\epsilon\Delta_c$
-		is Poisson if and only if $[\Pi\vert_c,\Delta_c]=0$, which is true by hypothesis, and since
-		\begin{equation}
-		 \Pi_\epsilon\vert_c^{-1}=\omega_\epsilon\vert_c=\omega_c-\epsilon\omega_{\bullet h}\Delta^{hl}\omega_{l\bullet}+\mathcal{O}(\epsilon^2)
-		\end{equation}
-		then $\omega_\epsilon\vert_c$ is symplectic if and only if $d\omega_\epsilon\vert_c=0$, that is iff $d\delta_c=0$,
-		which shows that $\delta_c$ is closed on the symplectic leaves $U_c$.
+		then $\omega_\epsilon\vert_c$ is symplectic if and only if $d\omega_\epsilon\vert_c=0$, that is iff $d\delta_c=0$, which shows that $\delta_c$ is closed on the symplectic leaves $U_c$.
 
-		Therefore, analogously to what we did in point 1. of this proof, by Poincarè lemma $d\delta_c$ is locally
-		exact:
+		Therefore, analogously to what we did in point 1. of this proof, by Poincarè lemma $d\delta_c$ is locally exact:
 		\begin{equation}
-		 \delta_c=d\phi_c	\quad 	\exists\phi_c\in\Omega^1(U_c)\quad\forall c\in U
+			\delta_c=d\phi_c	\quad 	\exists\phi_c\in\Omega^1(U_c)\quad\forall c\in U
 		\end{equation}
-		so that, going back outside the leaves, $\delta=d\phi+\tilde{\delta}$ for some $\tilde{\delta}\in\Omega^2(U)$,
-		where $\phi(q,p,c)=\phi_c(q,p)$ and $\tilde{\delta}$ contains at least one $dc^a$ in each summand.
-		Now, to recover $\Delta^\prime$ we compose the identity $\delta=d\phi+\tilde{\delta}$ with $\Pi$ on both
-		sides:
+		so that, going back outside the leaves, $\delta=d\phi+\tilde{\delta}$ for some $\tilde{\delta}\in\Omega^2(U)$, where $\phi(q,p,c)=\phi_c(q,p)$ and $\tilde{\delta}$ contains at least one $dc^a$ in each summand. 
+		
+		Now, to recover $\Delta^\prime$ we compose the identity $\delta=d\phi+\tilde{\delta}$ with $\Pi$ on both sides:
 		\begin{equation}
-		 \underbrace{\Pi\delta\Pi}_{\Delta^\prime}=\Pi d\phi\Pi+\underbrace{\Pi\tilde{\delta}\Pi}_{0}
+			\underbrace{\Pi\delta\Pi}_{\Delta^\prime}=\Pi d\phi\Pi+\underbrace{\Pi\tilde{\delta}\Pi}_{0}
 		\end{equation}
-		so $\Delta^\prime=\Pi d\phi\Pi$, and by direct computations one finds that
+		so $\Delta^\prime=\Pi d\phi\Pi$, and by direct computations one finds that\footnote{Recall that components $\Pi^{ij}$ are constant in D-W coordinates, i.e. $\partial_k\Pi^{ij}=0$.}
 		\begin{equation}
-		 \Pi d\phi \Pi=-[\Pi,\Pi(\phi)]
+			\Pi d\phi \Pi=[\Pi,\Pi(\phi)] \comment{where}\footnote{$\Pi(\phi)=(\frac{\Pi^{ij}}2\partial_i\wedge\partial_j)(\phi_k dx^k)=\Pi^{ij}\phi_j\partial_i\in\fields(M)$} \quad \Pi(\phi) = \Pi^{ij}\phi_j\partial_i
 		\end{equation}
-		that is $\Delta^\prime=-[\Pi,\Pi(\phi)]$ (where we mean $\Pi(\phi)=\Pi^{ij}\phi_j\partial_i\in\fields(M)$).
-		This proves that $\bar{\Delta^\prime}=0$, as we wanted.
+		that is $\Delta^\prime=[\Pi,\Pi(\phi)]\in\im[\Pi, \bullet]$. This proves that $\overline{\Delta^\prime}=0$, as we wanted.
 	\end{enumerate}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}[{\cite[Corollary 1.2.8]{dubrovin2005}}]
 	Let $\Pi_0 + \varepsilon \Pi_1$ be a Poisson pencil of constant rank for small $\varepsilon$ and on some ball $U \subseteq M$. Then
 	\begin{eqalign}
 		\overline \Pi_1 = 0 \in H^2_{\Pi_0}(U).
@@ -589,8 +567,8 @@ Let's start with the first one.
 
 The meaning of the last result is that if $(\Pi_0, \Pi_1)$ forms a Poisson pencil of constant rank, then we can locally reabsorb any deformation of $\Pi_0$ by $\Pi_1$ with a coordinate change.
 
-\begin{theorem}
-	Let $\Pi_\varepsilon = \Pi_0 - \varepsilon \Pi_1$ be a Poisson pencil of constant rank for small $\varepsilon$ on a ball $U$ on the manifold $M$. Let $c^1(\varepsilon), \ldots, c^k(\varepsilon)$ be $k = \cork(\Pi_0) = \cork(\Pi_0-\varepsilon \Pi_1)$ independent Casimirs for $\Pi_\varepsilon$ and let
+\begin{theorem}[{\cite[Theorem 1.2.9]{dubrovin2005}}]
+	Let $\Pi_\varepsilon = \Pi_0 - \varepsilon \Pi_1$ be a Poisson pencil of constant\footnote{Constant respect both $\varepsilon\ll1$ and $p\in M$. This ensures the existence of $k$ Casimir for each value of $\varepsilon$.} rank for small $\varepsilon$ on a ball $U$ on the manifold $M$. Let $c^1(\varepsilon), \ldots, c^k(\varepsilon)$ be $k = \cork(\Pi_0) = \cork(\Pi_\varepsilon)$ independent Casimirs for $\Pi_\varepsilon$ and let\footnote{We label the components of $c^i$ starting from $-1$ since the first component is usually trivial.}
 	\begin{eqalign}
 	\label{eq:casimir_taylor_exp}
 		c^i(\varepsilon) = c^i_{-1} + c^i_0\varepsilon + c_1^i\varepsilon^2 + \ldots
@@ -603,12 +581,13 @@ The meaning of the last result is that if $(\Pi_0, \Pi_1)$ forms a Poisson penci
 \begin{proof}
 	Since $c^i(\varepsilon)$ is a Casimir of $\Pi_\varepsilon$,
 	\begin{eqalign}
-		0 &= \{-,c^i(\varepsilon)\}_\varepsilon\\
-		&= \{-, c^i(\varepsilon)\}_0 - \varepsilon \{-,c^i(\varepsilon)\}_1\\
-		&= \left( \sum_{p=-1}^{\infty} \{-,c^i_p(\varepsilon)\}_0 \varepsilon^{p+1} \right) + \varepsilon\left( \sum_{p=-1}^{\infty} \{-,c^i_p(\varepsilon)\}_1 \varepsilon^{p+1} \right)\\
-		&= \sum_{p=-1}^{\infty} (\{-,c^i_p\}_0 - \{-,c^i_{p+1}\}_1)\varepsilon^{p+1}
+		0 &= \Pi(\varepsilon)^\sharp(dc^i(\varepsilon))\\
+		&= \{\bullet,c^i(\varepsilon)\}_\varepsilon\\
+		&= \{\bullet, c^i(\varepsilon)\}_0 - \varepsilon \{\bullet,c^i(\varepsilon)\}_1\\
+		&= \left( \sum_{p=-1}^{\infty} \{\bullet,c^i_p(\varepsilon)\}_0 \varepsilon^{p+1} \right) - \varepsilon\left( \sum_{p=-1}^{\infty} \{\bullet,c^i_p(\varepsilon)\}_1 \varepsilon^{p+1} \right)\\
+		&= \sum_{p=-1}^{\infty} (\{\bullet,c^i_p\}_0 - \{\bullet,c^i_{p+1}\}_1)\varepsilon^{p+1}
 	\end{eqalign}
-	where we set $c^i_{-2} = 0$. Then the fact all the coefficients of the above power series vanish correspond to the wanted recursion relation. Theorem~\ref{th:magri} takes care of the commuting relations among each of the $k$ sequences $\seq{c^i}{p}$, so we just need to prove the functions commute also when in different sequences. To do this, we turn the trick we used for Magri's Theorem on its head: we spread the functions apart until one of them hits $-1$, at which point we can use the fact $c^i_{-1}$ is Casimir at $\varepsilon =0$ (because the rest of the terms of \eqref{eq:casimir_taylor_exp} vanish):
+	where we set $c^i_{-2} := 0$. Then the fact all the coefficients of the above power series vanish correspond to the wanted recursion relation. Theorem~\ref{th:magri} takes care of the commuting relations among each of the $k$ sequences $\seq{c^i}{p}$, so we just need to prove the functions commute also when in different sequences. To do this, we turn the trick we used for Magri's Theorem on its head: we spread the functions apart until one of them hits $-1$, at which point we can use the fact $c^i_{-1}$ is Casimir at $\varepsilon =0$ (because the rest of the terms of \eqref{eq:casimir_taylor_exp} vanish):
 	\begin{eqalign}
 		\{c^i_p, c^j_q\}_0 &= \{c^i_p, c^j_{q-1}\}_1\\
 		&= -\{c^j_{q-1}, c^i_p\}_1\\
@@ -621,21 +600,21 @@ The meaning of the last result is that if $(\Pi_0, \Pi_1)$ forms a Poisson penci
 
 Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltonian structure of constant rank is to find the Taylor expansion of the Casimirs. \textbf{How do we find it?}
 
-\begin{construction}
+\begin{construction}[{\cite[Example 1.2.10]{dubrovin2005}}]
 	One strategy goes like this. We have shown that if $\Pi_0-\varepsilon\Pi_1$ is a Poisson pencil of constant rank, then $\overline \Pi_1 = 0 \in H_{\Pi_0}^2(U)$. This means $\Pi_1 = \Lie{Z}\Pi_0$ for some $Z \in \fields^1(U)$. Let us make the additional assumption that $\Lie{Z}^2\Pi_0 = 0$, i.e. the Poisson pencil is \textbf{exact}.
 
-	On a fixed coordinate patch, one can rectify $Z = \partial_1$ so that $\Pi_0^{ij}$ will depend linearly on $x^1$ (since the second derivative vanishes), while $\Pi_1^{ij}$ will be independent of it (since $\Lie{\partial_1} \Pi_1 = \Lie{\partial_1}\Lie{\partial_1}\Pi_0 = 0$). This means that, if $\mathsf{shift}^1_\varepsilon$ is the change of coordinates sending $x_1$ to $x_1 - \varepsilon$, then
+	Let's chose a fixed coordinate patch in such a way that $Z = \partial_1$, i.e. $Z$ corresponds to the shift along $x^1$. Then $\Pi_0^{ij}$ will depend linearly on $x^1$ (since the second derivative vanishes), while $\Pi_1^{ij}$ will be independent of it (since $\Lie{\partial_1} \Pi_1 = \Lie{\partial_1}\Lie{\partial_1}\Pi_0 = 0$). This means that, if $\mathsf{shift}^1_\varepsilon$ is the change of coordinates sending $x_1$ to $x_1 - \varepsilon$, then
 	\begin{eqalign}
 		\mathsf{shift}^1_\varepsilon(\Pi_0)^{ij} = \Pi_0^{ij} - \varepsilon \Pi_1^{ij} = \Pi_\varepsilon^{ij}.
 	\end{eqalign}
-	This shows that the Casimirs of $\Pi_\varepsilon$ are $c^i(\varepsilon) = \mathsf{shift}^1_\varepsilon(c^i_{-1})$, hence we have a simple way to get the desired functions from the Casimirs of $\Pi_0$:
+	This shows that the Casimirs of $\Pi_\varepsilon$ are $c^i(\varepsilon) = \mathsf{shift}^1_\varepsilon(c^i_{-1})$, hence we have a simple way to get the desired functions from the Casimirs of $\Pi_0$:\footnote{This follows from $c_{-1}^i\in\Cas(\Pi_0)$ and $\Pi_\varepsilon = \mathsf{shift}^1_\varepsilon(\Pi_0)$.}
 	\begin{eqalign}
 		c^i(\varepsilon) = \exp(\varepsilon Z)c^i_{-1} = c^i_{-1} + \varepsilon Z(c^i_{-1}) + \frac{\varepsilon^2}2 Z(Z(c^i_{-1})) + \ldots
 	\end{eqalign}
 \end{construction}
 
 \begin{example}[Toda lattice]
-	Remember Toda's equations from Example~\ref{ex:toda_lattice} (we rescaled them by a factor to get nicer numbers later on):
+	Remember Toda's equations from Example~\ref{ex:toda_lattice} (we rescaled them by a factor, $t\mapsto t/2$,  to get nicer numbers later on):
 	\begin{eqalign}
 		\begin{cases}
 			\dot{a}_i = a_i (b_{i+1} - b_i)\\
@@ -644,7 +623,8 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 	\end{eqalign}
 	Geometrically, we think of $a_1, \ldots, a_{n-1}$ and $b_1, \ldots, b_n$ as coordinates on a manifold. We equip it with a Poisson structure by setting
 	\begin{eqalign}
-		\{a_i, b_i\}_1 = -a_i, \quad \{a_i, b_{i+1}\}_1 = a_i
+	\label{eq:poiss_struct_toda}
+		\{a_i, b_i\}_1 = -a_i \quad , \quad \{a_i, b_{i+1}\}_1 = a_i
 	\end{eqalign}
 	and zero in every other case.
 
@@ -667,16 +647,16 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 			& & \ddots & & \\
 			& & \ddots & & a_{n-1}\\
 			0 & & & a_{n-1} & b_{n-1}
-		\end{pmatrix},\\[2ex]
+		\end{pmatrix}\quad,\quad
 		B &= \begin{pmatrix}
 			0 & a_1 & & & 0\\
 			-a_1 & & \ddots & & \\
 			& & \ddots & & \\
 			& & \ddots & & a_{n-1}\\
 			0 & & & -a_{n-1} & 0
-		\end{pmatrix} = \pr_- L = \overline{u}(L) - \overline(u)L^T
+		\end{pmatrix}
 	\end{eqalign}
-	In lieu of $B=RL$ we have $B=\pr_-L$, but it is the same thing as
+	such that $\der{L}{t} = -[L, B]$. In lieu of $B=RL$ we have $B=\pr_-(L) = \overline{u}(L) - \overline{u}(L)^T$, but it is the same thing as
 	\begin{eqalign}
 		R = \pr_+ - \pr_- = \pr_+ \pr_- - 2\pr_- = \id - 2\pr_-.
 	\end{eqalign}
@@ -686,9 +666,15 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 		\{\trace L, a_i\}_1 &= \{b_1, a_i\}_1 + \ldots + \{b_i, a_i\}_1 + \{b_{i+1}, a_i\}_1 + \ldots + \{b_n, a_i\}_1\\
 		&= 0 + \ldots + 0 + \cancel{-a_i + a_i} + 0 + \ldots + 0 = 0.
 	\end{eqalign}
-	This, and the traces of higher powers of $L$, are the symmetries of the lattice (but only the first are Casimirs).
+	This, and the traces of higher powers of $L$, are the symmetries of the lattice (but only the first is a Casimir):
+	\begin{eqalign}
+		H_{-1} &= \trace L = b_1+\dots+b_n \comment{Casimir}\\
+		H_0 &= \frac12\trace L^2 = \frac12(b_1^2+\dots+b_n^2) + a_1^2 + \dots + a_{n-1}^2 \comment{Hamiltonian}\\
+		H_1 &= \frac13 \trace {L^3}\\
+		&\ \, \vdots
+	\end{eqalign}
 
-	We now give a second Hamiltonian structure to the system, by providing new Poisson brackets. The pivotal observation is that the bracket we just defined is independent from the $b_i$ coordinates, as we see from the definition (a $b_i$ coordinate never appears on the right hand side). So we guess (there are actually good theoretical reason for this) there might be a second compatible Poisson bracket linearly dependent on the $b_i$s, to which we could then apply the machinery we just derived for this case. So we start by adding a linear dependence on $b_i$s:
+	We now give a second Hamiltonian structure to the system, by providing new Poisson brackets. The pivotal observation is that the bracket we just defined is independent from the $b_i$ coordinates, as we see from the definition (a $b_i$ coordinate never appears on the right hand side of Equations~\eqref{eq:poiss_struct_toda}). So we guess (there are actually good theoretical reason for this) there might be a second compatible Poisson bracket linearly dependent on the $b_i$s, to which we could then apply the machinery we just derived for this case. So we start by adding a linear dependence on $b_i$s:
 	\begin{eqalign}
 		\{a_i, b_i\}_2 = -a_ib_i, \quad \{a_i, b_{i+1}\}_2 = a_ib_{i+1}
 	\end{eqalign}
@@ -700,7 +686,7 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 	\begin{eqalign}
 		Z = \sum_{i=1}^n \partial_{b_i}.
 	\end{eqalign}
-	One can show $\det L$ is a Casimir for $\{-,-\}_2$, and we get $\mathsf{shift}^1_\varepsilon(\det L)= \det (L-\varepsilon I)$. This latter object is the characteristic polynomial of $L$ evaluated at $\varepsilon$, thus the coefficients of its Taylor expansion in $\varepsilon$ coincides with its coefficient as a polynomial, are exactly $n$ and given by the traces of successive powers of $L$.
+	One can show $\det L$ is a Casimir for $\{\bullet,\bullet\}_2$, and we get $\mathsf{shift}^1_\varepsilon(\det L)= \det (L-\varepsilon I)$. This latter object is the characteristic polynomial of $L$ evaluated at $\varepsilon$, thus the coefficients of its Taylor expansion in $\varepsilon$ coincides with its coefficient as a polynomial, are exactly $n$ and given by the traces of successive powers of $L$.
 \end{example}
 
 The situation of this example is general: given an $R$-matrix for a Lie--Poisson structure, there's a canonical way to construct a second (and actually even a third) compatible quadratic Poisson structure. The spectral invariants we get from the Lax representation are then in Hamiltonian recursion for this pair of Poisson structures.

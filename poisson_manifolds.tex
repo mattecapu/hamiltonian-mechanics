@@ -461,6 +461,24 @@ i.e. $\Pi\in\Gamma(TM^{\wedge2})$ is a Poisson tensor iff the previous relation 
 	\end{eqalign}
 \end{exercise}
 
+Let $A\in\Lambda^p(M)$ and $B\in\Lambda^q(M)$, $p,q \leq n$, given in a local chart by
+\begin{eqalign}
+	A = \frac1{p!} A^{i_1 \dots i_p}\partial_{i_1}\wedge \dots \wedge \partial_{i_p}
+	\quad,\quad
+	B = \frac1{q!} B^{j_1 \dots j_p}\partial_{j_1}\wedge \dots \wedge \partial_{j_q}
+\end{eqalign}
+The Schouten-Nijenhuis bracket\footnote{Reference: \url{http://cds.cern.ch/record/302834/files/9605067.pdf}} of $A$ and $B$ is the tensor $[A, B] \in \Lambda^{p+q-1}(M)$
+\begin{subequations}
+\label{eq:local_form_SNB}
+\begin{eqalign}
+	[A, B] = \frac{1}{(p+q-1)!} [A, B]^{k_1 \dots k_{p+q-1}} \partial_{k_1}\wedge, \dots, \wedge \partial_{k_{p+q-1}}
+\end{eqalign}
+\begin{eqalign}
+	[A, B]^{k_1, \dots, k_{p+q-1}} &= \frac{1}{(p-1)!q!}\varepsilon^{k_1 \dots k_{p+q-1}}_{i_1 \dots i_{p-1}j_1 \dots j_q} A^{\nu i_1 \dots i_{p-1}} \partial_\nu B^{j_1 \dots j_q}\\
+	&\quad + \frac{(-1)^p}{p!(q-1)!}\varepsilon^{k_1 \dots k_{p+q-1}}_{i_1 \dots i_{p}j_1 \dots j_{q-1}}A^{\nu i_1 \dots i_{p}} \partial_\nu B^{j_1 \dots j_{q-1}}
+\end{eqalign}
+\end{subequations}
+
 \subsection{Poisson maps and Poisson submanifolds}
 \begin{definition}
 	A \textbf{Poisson map} is a smooth map $\phi : (N, \Pi_N) \to (M, \Pi_M)$ between Poisson manifolds such that
