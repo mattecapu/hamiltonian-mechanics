@@ -686,7 +686,7 @@ Hence the ``canonical way'' to get an Hamiltonian recursion out of a bihamiltoni
 	\begin{eqalign}
 		Z = \sum_{i=1}^n \partial_{b_i}.
 	\end{eqalign}
-	One can show $\det L$ is a Casimir for $\{\bullet,\bullet\}_2$, and we get $\mathsf{shift}^1_\varepsilon(\det L)= \det (L-\varepsilon I)$. This latter object is the characteristic polynomial of $L$ evaluated at $\varepsilon$, thus the coefficients of its Taylor expansion in $\varepsilon$ coincides with its coefficient as a polynomial, are exactly $n$ and given by the traces of successive powers of $L$.
+	One can show $\det L$ is a Casimir for $\{\bullet,\bullet\}_2$, and we get $\mathsf{shift}^1_\varepsilon(\det L)= \det (L-\varepsilon I)$, hence $\det (L-\varepsilon I)$ is a Casimir for $\{\bullet,\bullet\}_\varepsilon$. This latter object is the characteristic polynomial of $L$ evaluated at $\varepsilon$, thus the coefficients of its Taylor expansion in $\varepsilon$ coincides with its coefficient as a polynomial, are exactly $n$ and given by the traces of successive powers of $L$.
 \end{example}
 
 The situation of this example is general: given an $R$-matrix for a Lie--Poisson structure, there's a canonical way to construct a second (and actually even a third) compatible quadratic Poisson structure. The spectral invariants we get from the Lax representation are then in Hamiltonian recursion for this pair of Poisson structures.
@@ -694,13 +694,15 @@ The situation of this example is general: given an $R$-matrix for a Lie--Poisson
 \section{The Hamiltonian recursion in the symplectic case}
 In the case one of the Poisson is symplectic, we do not have enough Casimir functions\footnote{This is especially true for the constant rank case: in fact, under this assumption the non-degeneracy of one Poisson structure forces non-degeneracy in the other, so we really do not have any Casimir.} so we need a different approach.
 
-\section{Nijenhuis structures}
+\subsection{Nijenhuis structures}
 For this section, we refer to \cite{magri1984geometrical}. In this seminal paper, Magri and Morosi set out the theory of Poisson--Nijenhuis geometry, which deals with ``compatible'' tensor structures of Poisson, Nijenhuis and symplectic type. The article obtains hierarchies of symmetries out of this especially nice situation, through the method of Hamiltonian recursions.
 
 \begin{definition}
-	The \textbf{Nijenhuis torsion} is the operator
+	The \textbf{Nijenhuis torsion} is the operator $T(N) : \fields(M) \tens \fields(M) \to \fields(M)$ defined $\forall X,Y \in \fields(M)$ by
 	\begin{eqalign}
-		T(N)(X,Y) = [NX, NY] - N([NX, Y] + [X,NY]) + N^2[X,Y], \quad \forall X,Y \in \fields(M),
+		T(N)(X,Y) &= [NX, NY] - N([NX, Y] + [X,NY]) + N^2[X,Y]\\
+		&= [NX, NY] + N(\Lie Y(N)X - \Lie X(N)Y) - N^2[X,Y]\\
+		&= \Lie{NX}(N)Y - N\Lie{X}(N)Y
 	\end{eqalign}
 	where $N \in \fields^1_1(M)$.
 \end{definition}
@@ -709,6 +711,12 @@ For this section, we refer to \cite{magri1984geometrical}. In this seminal paper
 	A tensor field $N \in \fields^1_1(M)$ is called \textbf{Nijenhuis} if it satisfies $T(N) = 0$.
 \end{definition}
 
+The Nijenhuis torsion embodies the obstruction to some sort of compatibility between the Lie derivative and the field $N\in\fields^1_1(M)$. When $N$ is Nijenhuis such compatibility is archived and
+\begin{eqalign}
+\label{eq:nijenhuis_prop}
+	\Lie{NX}(N) = N\Lie{X}(N), \quad\forall X \in \fields(M).
+\end{eqalign}
+
 \begin{definition}
 	A \textbf{Nijenhuis manifold} is a smooth manifold $M$ equipped with a Nijenhuis tensor $N$.
 \end{definition}
@@ -716,7 +724,7 @@ For this section, we refer to \cite{magri1984geometrical}. In this seminal paper
 However, the most interesting situation comes when a Nijenhuis structure coexists (nicely) with a symplectic or Poisson structure:
 
 \begin{definition}
-	A \textbf{symplectic--Nijenhuis manifold} $M$ is a symplectic manifold $(M, \omega)$ equipped with a Nijenhuis tensor $N$ such that
+	A \textbf{symplectic--Nijenhuis manifold} $M$ is a symplectic manifold $(M, \omega)$ equipped with a Nijenhuis tensor $N$ such that\footnote{We denote by $N^* : T^*M \to T^*M$ the transposed map respect to $N$.}
 	\begin{eqalign}
 	\label{eq:symp_nijenhuis_conditions}
 		S(\omega, N) = 0, \quad \omega N - N^*\omega = 0.
@@ -745,11 +753,16 @@ The first intriguing geometric result about these structures is that any ``sympl
 
 \begin{lemma}
 \label{lemma:powers_of_comp_are_closed}
-	Let $\Pi$ be a Poisson structure on $M$ and $\omega$ a compatible symplectic form. Then
+	Let $\Pi$ be a Poisson structure on $M$ and $\omega$ a compatible symplectic form, i.e. $[\Pi, \omega^{-1}]=0$. Then\footnotemark
 	\begin{eqalign}
-		d(\omega(\Pi \omega)^n) = 0, \quad \forall n \in \N.
+		d((\omega\Pi)^n \omega) = 0, \quad \forall n \in \N.
 	\end{eqalign}
 \end{lemma}
+\footnotetext{Let's clarify the notation. The object $\omega\Pi\omega$ is the map defined by
+\begin{eqalign}
+	\omega\Pi\omega : TM \overset{\omega^\sharp}\longto T^*M \overset{\Pi^\sharp}\longto TM \overset{\omega^\sharp}\longto T^*M
+\end{eqalign}
+and similarly we get $(\omega\Pi)^n \omega \in \Omega^2(M)$. Then $d((\omega\Pi)^n \omega)\in \Omega^3(M)$ is the usual exterior derivative.}
 \begin{proof}
 	Since $\omega$ is compatible with $\Pi$, $(\omega^{-1}, \Pi)$ is a bihamiltonian structure. In particular, $\omega^{-1}-\varepsilon \Pi$ is Poisson and non-degenerate if $\varepsilon$ is sufficiently small, so that $(\omega^{-1}-\varepsilon \Pi)^{-1}$ is symplectic, and
 	\begin{eqalign}
@@ -758,15 +771,24 @@ The first intriguing geometric result about these structures is that any ``sympl
 	Because symplectic implies closed, and $d$ it's a linear operator, the above expression gives the thesis for every value of $n \in \N$.
 \end{proof}
 
-\begin{proposition}
-	Let $\Pi$ be a Poisson tensor and $\omega$ a symplectic form on some manifold $M$, such that $d(\omega\Pi\omega) = 0$. Then $\Pi\omega$ is a Nijenhuis tensor.
+\begin{proposition}[\cite{magri1984geometrical}]
+	Let $\Pi$ be a Poisson tensor and $\omega$ a symplectic form on some manifold $M$, such that $d(\omega\Pi\omega) = 0$. Then:
+	\begin{enumerate}
+		\item $T(\Pi\omega)=0$, i.e. $\Pi\omega$ is a Nijenhuis tensor;
+		\item the symplectic manifold $(M, \omega)$ equipped with $\Pi\omega$ is a symplectic-Nijenhuis manifold;
+		\item the Poisson manifold ($M, \Pi$) equipped with $\Pi\omega$ is a Poisson-Nijenhuis manifold;
+		\item $d((\omega\Pi)^n\omega)=0$, $\forall n \in \N$, i.e. we have an infinite number of symplectic structures on $M$;
+		\item $[(\Pi\omega)^n\Pi, (\Pi\omega)^m\Pi]=0$, $\forall n,m\in\N$, i.e. we have an infinite number of Poisson structures on $M$.
+	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	The proof rests on the following identity, whose lengthy proof can be found in \cite[Appendix A]{magri1984geometrical}: given $P \in \fields^2(M)$ and $\eta \in \Omega^2(M)$,
+	The proof rests on the following identities, whose lengthy proof can be found in \cite[Appendix B.3]{magri1984geometrical}: given  $P \in \Lambda^2(M)$, $Q \in \fields_1^1(M)$ and $\eta \in \Omega^2(M)$,
 	\begin{eqalign}
-		T(P\eta)(X,Y) = [P,P](\eta X, \eta Y) - PS(\eta,P\eta)(X,Y).
+		R(P, P\eta)(\alpha, X) &= [P,P](\eta X, \alpha)+P\,d\eta(P\alpha, X)\\
+		S(\eta, Q)(X,Y) &= d\eta(QX,Y)+d\eta(QY,X)+d(\eta Q)(X,Y)\\
+		T(P\eta)(X,Y) &= [P,P](\eta X, \eta Y) - PS(\eta,P\eta)(X,Y)
 	\end{eqalign}
-	Now, when $P = \Pi$ and $\eta = \omega$, we have $[\Pi, \Pi] = 0$ as $\Pi$ is Poisson, $d\omega = 0$ as $\omega$ is symplectic, and $d(\Pi\Omega) = 0$ by hypothesis, therefore all the terms of $T(\Pi\omega)$ vanish, as claimed.
+	For instance, for the first point, when $P = \Pi$ and $\eta = \omega$, we have $[\Pi, \Pi] = 0$ as $\Pi$ is Poisson, $d\omega = 0$ as $\omega$ is symplectic, and $d(\Pi\Omega) = 0$ by hypothesis, therefore all the terms of $T(\Pi\omega)$ vanish, as claimed.
 \end{proof}
 
 Indeed symplectic, Poisson and Nijenhuis structures dance around each other in an interesting way:
@@ -810,22 +832,6 @@ This in turn originates from the fact that Nijenhuis structures come in hierarch
 % \end{proof}
 
 \begin{lemma}
-	When $N$ is a Nijenhuis tensor,
-	\begin{eqalign}
-	\label{eq:nijenhuis_prop}
-		\Lie{NX}(N) = N\Lie{X}(N), \quad \forall X \in \fields(M).
-	\end{eqalign}
-\end{lemma}
-\begin{proof}
-	\begin{eqalign}
-		T(N)(X,Y) &= [NX,NY] - N([X, NY] + [NX, Y]) + N^2[X,Y]\\
-		&= (\Lie{NY}(NX) - N\Lie{NY}(X)) - N(\Lie{Y}(NX) - N\Lie{Y}(X))\\
-		&= \Lie{NY}(N)X - N(\Lie{Y}(N)X).
-	\end{eqalign}
-	Thus when $N$ is Nijenhuis, the thesis follows.
-\end{proof}
-
-\begin{lemma}
 \label{lemma:fund_fields_of_nijenhuis}
 	Let $N$ be Nijenhuis and let $\{X_1, \ldots, X_n, \ldots\}$ be a system of vector fields in involution and preserving $N$ ($\Lie{X_i}N=0$ for any $n$). Then
 	\begin{eqalign}
@@ -850,13 +856,13 @@ A peculiar fact about the hierarchy of Poisson tensors we get out of a Poisson--
 \end{eqalign}
 so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma~\ref{lemma:fund_fields_of_nijenhuis} tells us that when we find a system of commuting fields which preserve $N$, we get out a whole hierarchy of them. One can show that $X_i$ is Hamiltonian with respect to each $\Pi_j$, $j \leq i$, and that this fact characterizes completely integrable systems.
 
-\section{The recursion}
+\subsection{The recursion}
 \begin{theorem}
 	The functions
 	\begin{eqalign}
 		h_{p+1} := \frac1{p+1} \trace N^{p+1},
 	\end{eqalign}
-	for positive $p$, satisfy the recursion
+	for $p\in\N$ and $N:= \omega\Pi$, satisfy the recursion
 	\begin{eqalign}
 		dh_{p+1} = N^* dh_p.
 	\end{eqalign}
