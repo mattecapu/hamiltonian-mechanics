@@ -358,6 +358,9 @@ Let us denote $\{\bullet,\bullet\}_i$ the Poisson bracket associated to the Pois
 \begin{remark}
 	The relation is not really a recursion, since to really write $h_{p+1}$ in terms of $h_p$ one has to invert $\Pi_0^\sharp$ and then ``integrate'' which are both operations not possible in general (as $\Pi_0$ might be singular).
 \end{remark}
+\begin{remark}
+	Let $n$ be the number of independent functions in the sequence $\seq{h}{n}$, since these function are in involution, their associated flows mutually commute in both the Poisson structures, hence we obtained a set of $n$ symmetries of our system that can be used to foliate it.
+\end{remark}
 \begin{proof}
 	Suppose $q-p=2m$, for $m \neq 0$. Then, by using recursion and skew-symmetry:
 	\begin{eqalign}
@@ -854,7 +857,7 @@ A peculiar fact about the hierarchy of Poisson tensors we get out of a Poisson--
 \begin{eqalign}
 	[\Pi_i, \Pi_j] = 0, \quad \forall i,j;
 \end{eqalign}
-so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma~\ref{lemma:fund_fields_of_nijenhuis} tells us that when we find a system of commuting fields which preserve $N$, we get out a whole hierarchy of them. One can show that $X_i$ is Hamiltonian with respect to each $\Pi_j$, $j \leq i$, and that this fact characterizes completely integrable systems.
+so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma~\ref{lemma:fund_fields_of_nijenhuis} tells us that when we find a system of commuting fields which preserve $N$, we get out a whole hierarchy of them. One can show that each vector field preserving both $N$ and $\Pi_i$ is Hamiltonian respect to $\Pi_i$, so under the hypothesis of this lemma each Hamiltonian $X_i$ is Hamiltonian with respect to each $\Pi_j$, $j \leq i$, and so are each $N^kX_i$, so the system is integrable respect to Arnold-Liouville theorem provided that at lest $\frac12\dim M$ of these fields are independent. 
 
 \subsection{The recursion}
 \begin{theorem}
@@ -867,15 +870,6 @@ so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma
 		dh_{p+1} = N^* dh_p.
 	\end{eqalign}
 \end{theorem}
-\begin{remark}
-	Notice that, when $N=\Pi\omega$, $N^* = \omega \Pi$ by antisymmetry. This means the recursion is
-	\begin{eqalign}
-		dh_{p+1} &= \omega\Pi dh_p\\
-		\omega^{-1}(dh_{p+1}) &= \Pi(dh_p)\\
-		\{-,h_{p+1}\}_{\omega^{-1}} &= \{-,h_p\}_\Pi
-	\end{eqalign}
-	that is, the Hamiltonian recursion of Magri's Theorem! However, the result is completely general since we do not assume $N$ to be in a particular form, indeed, we do not even assume the manifold to be Poisson or symplectic.
-\end{remark}
 \begin{proof}
 	Recall contractions commute with Lie derivatives, then we compute
 	\begin{eqalign}
@@ -889,6 +883,18 @@ so Nijenhuis tensor become a rich source of bihamiltonian structures. Then Lemma
 	\end{eqalign}
 \end{proof}
 
-Hence with this theorem we found the hierarchy of symmetries we were looking for in the symplectic (non-degenerate) case of a bihamiltonian structure. In fact, if $(\Pi_0,\Pi_1)$ is a compatible pair of Poisson tensors where $\Pi_0$ is non-degenerate, $N=\Pi_0\Pi_0^{-1}$ is Nijenhuis and the hierarchy is given by the spectrum of $N$ (as per previous theorem).
+\begin{remark}[{\cite[Section 1.2.2]{dubrovin2005}}]
+	Notice that, when $N=\Pi\omega$, $N^* = \omega \Pi$ by antisymmetry. This means the recursion is
+	\begin{eqalign}
+		dh_{p+1} &= \omega\Pi dh_p\\
+		\omega^{-1}(dh_{p+1}) &= \Pi(dh_p)\\
+		\{\bullet,h_{p+1}\}_{\omega^{-1}} &= \{\bullet,h_p\}_\Pi
+	\end{eqalign}
+	that is, the operator $N^* : \Omega^1(M) \to \Omega^1(M)$ describes  the Hamiltonian recursion of Magri's Theorem!
+	
+	Clearly, there are at most $n=\frac12\dim M$ independent functions $h_p$, since we cannot have more than $n$ independent covectors $dh_p\vert_x$ in $T^*_xM$ because of the non-degeneracy of $\Pi_0^{-1} =\omega$. If we have $n$ independent functions Magri's Theorem tells us that they are in involution and can be used with Frobenius' Theorem to integrate $M$. 
+
+With this theorem we found the hierarchy of symmetries we were looking for in the symplectic (non-degenerate) case of a bihamiltonian structure. In fact, if $(\Pi_0,\Pi_1)$ is a compatible pair of Poisson tensors where $\Pi_0$ is non-degenerate, $N=\Pi_1\Pi_0^{-1}$ is Nijenhuis and the hierarchy is given by the spectrum of $N$ (as per previous theorem).
+\end{remark}
 
 \end{document}
