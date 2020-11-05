@@ -87,53 +87,50 @@ Any smooth map $F: M \to N$ induces morphisms between the respective tangent and
 \label{const:diff_at_P}
 	For \textbf{vectors}, at each point $p$ of $M$ there's a well-defined map of fibers
 	\begin{eqalign}
-		dF_p : T_p M \to T_{F(p)}N
+		(F_*)_p = dF_p : T_p M \to T_{F(p)}N
 	\end{eqalign}
-	called the \textbf{differential of $F$ at $p$}, whose intrinsic definition depends on the specific way the tangent bundle is defined. Anyway, once coordinates $(x^1, \ldots, x^m)$ are fixed around $p$ and coordinates $(y^1, \ldots, y^n)$ are fixed around $q$, its expression becomes
+	called the \textbf{differential of $F$ at $p$}, whose intrinsic definition depends on the specific way the tangent bundle is defined. Anyway, once coordinates $(x^1, \ldots, x^m)$ are fixed around $p$ and coordinates $(y^1, \ldots, y^n)$ are fixed around $q$, its expression becomes\footnote{The subscript in $(F_*)_p$ is usually omitted when unnecessary, writing only $F_*$.}
 	\begin{eqalign}
-		dF_p\left( X^h\vert_p \partial_h\vert_p \right) = X^h\vert_p\,\pder{F^k}{x^h}\vert_{F(p)}\, \partial_k\vert_{F(p)}
+		F_* \left( X^h\vert_p \partial_h\vert_p \right) = X^h\vert_p\,\pder{F^k}{x^h}\vert_{F(p)}\, \partial_k\vert_{F(p)}
 	\end{eqalign}
 	where $\partial F^k /\partial x^h \vert_{F(p)}$ is the Jacobian of $F$ at $F(p)$ computed with respect to the chosen coordinates\footnote{This means that we should actually refer to the Jacobian of the local representation $\tilde F$ at the point $(x^1(p),\ldots,x^m(p))$.}.
 \end{construction}
 
 \begin{construction}
 \label{const:dual_diff_at_P}
-	The dual of $dF_p$, in the sense of linear algebra, is a corresponding fiberwise morphism between the cotangent bundles, but in the opposite direction. Recall that $T^*_qN$ is the space of $\R$-valued functionals on $T_q N$. When $q = F(p)$, it's then natural to precompose any such functional with the differential of $F$ at $p$ to get a functional on $T_p M$. Diagrammatically, it is very intuitive:
+	The dual of $F_*$, in the sense of linear algebra, is a corresponding fiberwise morphism between the cotangent bundles, but in the opposite direction. Recall that $T^*_qN$ is the space of $\R$-valued functionals on $T_q N$. When $q = F(p)$, it's then natural to precompose any such functional with the differential of $F$ at $p$ to get a functional on $T_p M$. Diagrammatically, it is very intuitive:
 	\begin{diagram}
-		T_p M \arrow[dashed, swap]{dr}{dF^*_p \xi} \arrow{r}{dF_p} \& T_{F(p)}N \arrow{d}{\xi}\\[3ex]
+		T_p M \arrow[dashed, swap]{dr}{F^* \xi} \arrow{r}{F_*} \& T_{F(p)}N \arrow{d}{\xi}\\[3ex]
 		\& \R
 	\end{diagram}
 	Hence
 	\begin{eqalign}
-		dF^*_p : T^*_{F(p)} N &\longto T^*_p M\\
-		\xi &\longmapsto \xi \circ dF_p
+		F^* : T^*_{F(p)} N &\longto T^*_p M\\
+		\xi &\longmapsto \xi \circ F_*
 	\end{eqalign}
+	Notice that $F^*\xi_q$ for $\xi_q \in T^*_qN$ is well defined provided that $F^{-1}(q)$ is defined uniquely, hence in the definition of $F^*$ we require that  \textbf{$F$ is a diffeomorphism}.  
+	Then we can easily see that $F^*$ is the dual of $F_*$:
+	\begin{eqalign}
+		\langle \xi_q, F_* X_p \rangle = \langle F^* \xi_q, X_p \rangle
+	\end{eqalign} 
+	where $X_p \in T_pM$ and $\xi_q \in T^*_qN$ with $q= F(p)$.
 \end{construction}
 
-\begin{construction}
-\label{const:global_diff_and_dual}
-	When we want to bundle up all these fiberwise morphisms, we see that there's no problem for vectors:
-	\begin{eqalign}
-		dF: TM &\longto TN\\
-		(p, X_p) &\longmapsto (F(p), dF_p(X_p))
-	\end{eqalign}
-	Conversely, $dF^*_p$ is generally ill-defined when we replace $p$ with $F^{-1}(q)$, so that to eliminate such concerns \textbf{we need to assume $F$ to be a diffeomorphism}. Only in this case we can define
-	\begin{eqalign}
-		dF^* : T^*N &\longto T^*M\\
-		(q, \xi) &\longmapsto (F^{-1}(q), \xi \circ dF_{F^{-1}(q)})
-	\end{eqalign}
-\end{construction}
-
-However, we usually use vectors and covectors in the form of vector fields and differential forms. Thus we'd like to define a way to move sections along $F$.
+We usually use vectors and covectors in the form of vector fields and differential forms. Thus we'd like to define a way to move sections along $F$.
 
 \begin{construction}
 \label{const:pushforward}
 	For vector fields, this operation is called \textbf{pushforward}
 	\begin{eqalign}
 		F_* : \fields(M) &\longto \fields(N)\\
-		X &\longmapsto q \mapsto dF_{F^{-1}(q)}(X_{F^{-1}(q)})
+		X &\longmapsto F_*X
 	\end{eqalign}
-	Like $dF^*$, this map is well defined if and only if $F$ is a diffeomorphism.
+	such that
+	\begin{eqalign}
+		F_*X : N &\longto TN\\
+		q &\longmapsto (F_*X)_q := dF_{F^{-1}(q)}(X_{F^{-1}(q)})
+	\end{eqalign}
+	Notice that this map is well defined if and only if $F$ is a diffeomorphism.
 \end{construction}
 
 \begin{construction}
@@ -141,7 +138,12 @@ However, we usually use vectors and covectors in the form of vector fields and d
 	Conversely, the analogous map for differential forms, called the \textbf{pullback} is now well defined everytime:
 	\begin{eqalign}
 		F^* : \Omega^1(N) &\longto \Omega^1(M)\\
-		\omega &\longmapsto (p, X_p) \mapsto \omega_{F(p)}(dF_p(X_p))
+		\omega &\longmapsto F^*\omega
+	\end{eqalign}
+	such that
+	\begin{eqalign}
+		F^*\omega : M &\longto T^*M\\
+		p &\longmapsto F^*_p\omega := \omega_{F(p)} \circ dF_p
 	\end{eqalign}
 \end{construction}
 

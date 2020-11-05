@@ -10,11 +10,13 @@ In this chapter, we'll study how a symplectic structure may be used to produce a
 	\begin{eqalign}
 		\ipr{X_h} \omega = dh
 	\end{eqalign}
-	or equivalently
+	or equivalently\footnotemark
 	\begin{eqalign}
+	\label{eq:ass_ham_vec_field}
 		X_h = \omega^{-1}(dh).
 	\end{eqalign}
 \end{definition}
+\footnotetext{Again, with $\omega^{-1}$ we mean the inverse of the isomorphism $\omega^\# : TM \isoto T^*M, X \mapsto \ipr{X}\omega$.}
 
 \begin{definition}
 	A vector field $X \in \fields(M)$ is \textbf{Hamiltonian} iff there exists a function $h \in \Cinfty(M)$ such that
@@ -23,6 +25,15 @@ In this chapter, we'll study how a symplectic structure may be used to produce a
 	\end{eqalign}
 	The subset of Hamiltonian fields is denoted by $\hamfields(M)$.
 \end{definition}
+
+\begin{remark}
+	Let $\omega^{-1} \in \Gamma(TM \tens TM)$ be the inverse\footnote{The form $\omega^{-1} = (\omega^{-1})^{ij} \partial_i \wedge \partial_j$ is defined by $(\omega^{-1})^{ij} \omega_{jk} = \delta^i_k$ (The Wedge product reflects the skew-symmetry of $\omega^{-1}$).} of $\omega \in \Gamma(T^*M \tens T^*M)$, then
+	\begin{eqalign}
+	\label{eq:inv_sym_form_Ham_fields}
+		\omega(X_f, X_g) = \omega^{-1} (df, dg)
+	\end{eqalign}
+	where $X_f$ and $X_g$ are the Hamiltonian vector fields associated to $f$ and $g$ respectively.
+\end{remark}
 
 Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega$ to be exact}. By analogy then we could conceive the following definition:
 
@@ -45,14 +56,6 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	Moreover, $\omega^{-1}$ carries the $\R$-module structure downstairs: indeed, the linear combination of Hamiltonian (resp. symplectic) fields is still Hamiltonian (resp. symplectic). \textbf{This means the obstructions for a symplectic vector field to be an Hamiltonian one are encoded by the same cohomology data for differential forms}, i.e. the module $H^1_{dR}(M)$. If one wonders wheter this could be extended to a whole cohomology theory, the answer is \emph{yes}, although we'll need to wait the more general context of Poisson manifolds. The ``symplectic cohomology'' we'll get, however, will be canonically isomorphic to de Rham cohomology, as the first cohomology witnesses. As remarked in the previous chapter, this means that this flavor of cohomology is not enough to discern symplectic structures on $M$.
 \end{remark}
 
-\begin{example}
-	Let $M = T^2$ with symplectic form $\omega = d\theta_1 \wedge d\theta_2$. The chosen coordinates represent angle variables around two closed circles around the torus, (for simplicity, we can think of them to be around the ``principal'' directions of the torus). Consider the fields $X_1 = \partial_{\theta^1}$ and $X_2 = -\partial_{\theta^2}$: they are symplectic but not Hamiltonian. Indeed, $\Lie{X_i} \omega = 0$ for both $i=1,2$ but
-	\begin{eqalign}
-		\ipr{X_i} \omega = d\theta^{3-i}
-	\end{eqalign}
-	which is \textbf{not} exact since $\theta^i$ can't be defined globally: they are only defined locally (at most on the whole torus with two independent\footnote{Non-homotopic, non-contractible loops which wind once.} circles removed). Anyway, $d\theta^i$ does define a differential $1$-form on the whole space (intuitively, since differentiating eliminates the $2\pi$ jump discontinuity which prevents a global definition). Actually this is the whole point of the first cohomology group: $\overline{d\theta_1}, \overline{d\theta_2}$ generate $H^1_{dR}(T^2)$ which is, indeed, $\R \times \R$.
-\end{example}
-
 \begin{remark}
 \label{rmk:omega_is_const_on_symp_fields}
 	An equivalent condition for a vector field to be symplectic can be obtained through Cartan's formula. In fact,
@@ -65,6 +68,19 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	\end{eqalign}
 \end{remark}
 
+\begin{example}
+	Let $M = T^2$ with symplectic form $\omega = d\theta_1 \wedge d\theta_2$. The chosen coordinates represent angle variables around two closed circles around the torus, (for simplicity, we can think of them to be around the ``principal'' directions of the torus). Consider the fields $X_1 = \partial_{\theta_1}$ and $X_2 = -\partial_{\theta_2}$: they are symplectic but not Hamiltonian. Indeed, $\Lie{X_i} \omega = 0$ for both $i=1,2$ but
+	\begin{eqalign}
+		\ipr{X_1} \omega = d\theta_{2}
+		\qquad \text{and} \qquad
+		\ipr{X_2} \omega = d\theta_{1}
+	\end{eqalign}
+	which is \textbf{not} exact since $\theta_i$ can't be defined globally\footnote{Variables $\theta_1$ and $\theta_2$ are multivalued on $T^2 = \R^2/(2\pi\Z)^2$, for instance $(0,\theta_2) = (2\pi, \theta_2)$. We cannot restrict these coordinates to $[0, 2\pi)$ to define a cohomology otherwise they would be discontinuous, for instance $\theta_1$ would have a discontinuity at $(0, \theta_2)$.}: they are only defined locally (at most on the whole torus with two independent\footnote{Non-homotopic, non-contractible loops which wind once.} circles removed). Anyway, $d\theta_i$ does define a differential $1$-form on the whole space (intuitively, since differentiating eliminates the $2\pi$ jump discontinuity which prevents a global definition). Actually this is the whole point of the first cohomology group: $\overline{d\theta_1}, \overline{d\theta_2}$ generate $H^1_{dR}(T^2)$ which is, indeed, $\R \times \R$:
+	\begin{eqalign}
+		H^1_{dR}(T^2) = \langle \overline{d\theta_1}, \overline{d\theta_2} \rangle \iso \R \times \R .
+	\end{eqalign}
+\end{example}
+
 \begin{theorem}
 \label{th:flow_of_symp_field}
 	The $1$-parameter group of diffeomorphisms $\phi_t : M \isoto M$ associated to a symplectic vector field $X$ preserves the symplectic structure:
@@ -75,20 +91,27 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	This means that \textbf{the group is actually a group of symplectomorphisms}.
 \end{theorem}
 \begin{proof}
-	Follows from Equation~\ref{eq:der_of_flowing_symp} and Remark~\ref{rmk:omega_is_const_on_symp_fields}.
+	Follows from the definition of the Lie derivative for one-forms
+	\begin{eqalign}
+		\Lie{X_h}\omega := \der{}{\epsilon}(\phi_\epsilon^*(\omega))\vert_{\epsilon=0}
+	\end{eqalign}
+	together with Remark~\ref{rmk:omega_is_const_on_symp_fields}. Indeed let $\phi_t : M \to M$ be associated to $X_h = \omega^{-1}(dh)$. Then the derivative evaluated at $t$ reads
+	\begin{eqalign}
+		\der{}{\epsilon}(\phi_\epsilon^*(\omega))\vert_{\epsilon = t} = \phi_t^*\Lie{X_h}\omega = \phi_t^* (d\ipr{X_h}\omega + \ipr{X}\cancel{d\omega}) = \phi_t^*(\cancel{d^2 h}) = 0 .
+	\end{eqalign}
 \end{proof}
 
 \begin{example}
 \label{ex:sphere_with_height_ham}
-	Let $M=S^2$ with the symplectic structure given by the mixed product. Consider the immersion given by cylindrical coordinates
+	Let $M=S^2$ with the symplectic structure given by the mixed product introduced in Example~\ref{ex:eu_sp_sphere}. Consider the immersion given by cylindrical coordinates
 	\begin{eqalign}
 		\iota : S^2 &\longto \R^3\\
 		(\theta,h) &\longmapsto (\sqrt{1-h^2} \cos \theta,\, \sqrt{1-h^2}\sin \theta,\, h).
 	\end{eqalign}
-	Then
+	Then $T\iota(S^2)$ is described by
 	\begin{eqalign}
-		\iota_*(\partial_\theta) &= \partial_\theta x \partial_x + \partial_\theta y \partial_y + \partial_\theta z \partial_z = -y \partial_x + x\partial_y\\[2ex]
-		\iota_*(\partial_h) &= \partial_h x \partial_x + \partial_h y \partial_y \partial_h z \partial_z = \frac{z}{1-z^2}
+		\iota_*(\partial_\theta) &= \pder{x}{\theta} \pder{}{x} + \pder{y}{\theta} \pder{}{y} + \pder{z}{\theta} \pder{}{z} = -y \partial_x + x\partial_y\\[2ex]
+		\iota_*(\partial_h) &= \pder{x}{h} \pder{}{x} + \pder{y}{h} \pder{}{y} + \pder{z}{h} \pder{}{z} = - \frac{xz}{1-z^2}\partial_x - \frac{yz}{1-z^2}\partial_y + \partial_z
 	\end{eqalign}
 	where in the second computation we made the substitution $\cos \theta = x/\sqrt{1-z^2}$ and $\sin \theta = y/\sqrt{1-z^2}$. We use these to compute the symplectic form in coordinates. In truth, we already know
 	\begin{eqalign}
@@ -112,7 +135,7 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 \begin{proof}
 	We check $X_h(h)$, the derivative of $h$ along the field $X_h$:
 	\begin{eqalign}
-		X_h(h) = dh(X_h) = \ipr{X_h} dh = \ipr{X_h} \ipr{X_h} \omega = 0.
+		\Lie{X_h}h = X_h(h) = dh(X_h) = \ipr{X_h} dh = \ipr{X_h} \ipr{X_h} \omega = 0.
 	\end{eqalign}
 \end{proof}
 \begin{corollary}
@@ -143,23 +166,34 @@ We'd like now to justify our mathematical definitions in terms of the properties
 			\ddot x = - \frac1m \bigpder{h}{x}
 		\end{dcases}
 	\end{eqalign}
-	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $T^*_pM \to T_pM$. Geometrically, such a smooth choice of linear maps is encoded by a tensor field $\eta \in \Gamma(TM \tens TM)$, so that $X_h = \eta (dh)$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnotemark\ all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$.
-	\footnotetext{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.}
+	i.e. in matrix representation
+	\begin{eqalign}
+	\label{eq:Newton_eom_matrix}
+		\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h} = \underbrace{\begin{pmatrix} 0 & 1\\-1 & 0\end{pmatrix}}_{\eta^\#}\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh}
+	\end{eqalign}
+	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $\eta^\# : T^*_pM \to T_pM$, so that $X_h = \eta^\# (dh)$. Geometrically, such a smooth choice of linear maps is encoded by the tensor field $\eta \in \Gamma(TM \tens TM)$ associated to $\eta^\#$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnote{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.} all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate\footnote{Which is equivalent to assume the injectivity of $\eta^\#$. In this case we can define $(\eta^\#)^{-1} =: \omega^\# : TM \to T^*M$ and its associated tensor $\omega \in \Gamma(T^*M \tens T^*M)$.}; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$:
+	\begin{eqalign}
+		\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh} = \underbrace{\begin{pmatrix} 0 & -1\\1 & 0\end{pmatrix}}_{\omega^\#}\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h}
+	\end{eqalign}
+	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes\footnote{We can rewrite $X_h(h) = \langle X_h, dh \rangle = \langle X_h, \omega^\#(\eta^\#(dh)) \rangle = \langle X_h, \omega^\#(X_h) \rangle = \omega(X_h, X_h)$.} $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
 
-	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
-
-	\textbf{The second assumption is to have non-changing laws of physics} (now embodied in $\omega$), which translates mathematically to:
+	\textbf{The second assumption is that laws of physics are time-independent}, which translates mathematically to:
 	\begin{eqalign}
 		\phi_t^*\omega = \omega
 	\end{eqalign}
-	where $\phi_t : M \to M$ is the flow of $X_h$. Notice, again, this must be true for any choice of $h$, so that by the same computation we did to prove Theorem~\ref{th:flow_of_symp_field}, it implies $d\omega = 0$.
+	where $\phi_t : M \to M$ is the flow of $X_h$. Notice, again, this must be true for any choice of $h$, so that by the same computation we did to prove Theorem~\ref{th:flow_of_symp_field}, it implies\footnote{The condition $\phi_t^*\omega = \omega$ is equivalent to $0 = \Lie{X_h}\omega = (d\ipr{X_h} + \ipr{X_h}d)\omega = d(\ipr{X_h}\omega)+\ipr{X_h}d\omega = \cancel{d^2h} + \ipr{X_h}d\omega$. Since this has to hold for any choice of $h$ it implies $d\omega=0$.} $d\omega = 0$.
 \end{construction}
 
-Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent the configuration space of a mechanical system, and let $\omega = -d\alpha = dx^j \wedge d\xi_j$ be the canonical symplectic structure on $M$. Fix a function $h \in \Cinfty(T^*X)$. Then its Hamiltonian vector field is obtained by applying the graded Leibniz rule for the interior product:
+Now let $M=T^*X$ for some smooth manifold $X$, which we think as to represent the configuration space of a mechanical system, and let $\omega = -d\alpha = dx^j \wedge d\xi_j$ be the canonical symplectic structure on $M$. Fix a function $h \in \Cinfty(T^*X)$. Then its Hamiltonian vector field is obtained by applying the graded Leibniz rule for the interior product\footnotemark:
 \begin{eqalign}
-	X_h = \pder{h}{\xi_j} \partial_{x^j} - \pder{h}{x^j}\partial_{\xi^j}
+	X_h = \pder{h}{\xi_j} \partial_{x^j} - \pder{h}{x^j}\partial_{\xi_j}
 \end{eqalign}
-\textbf{which corresponds very naturally to the vector field we got from Newton's equations}. Indeed, they're the same up to rescaling by a factor $1/m$. Somehow, this ``trick'' to lower Newton's equations to the first-order, when taken seriously and globally on the configuration space, gives us the symplectic structure of $T^* X$.
+\textbf{which corresponds very naturally to the vector field we got from Newton's equations}~\eqref{eq:Newton_eom_matrix}. Indeed, they're the same up to rescaling by a factor $1/m$. Somehow, this ``trick'' to lower Newton's equations to the first-order, when taken seriously and globally on the configuration space, gives us the symplectic structure of $T^* X$.
+\footnotetext{We can see explicitly that this definition gives the Hamiltonian vector field associated to $h$:
+\begin{eqalign}
+	\ipr{X_h}\omega &= (dx^j \wedge d\xi_j) \left(\pder{h}{\xi_i} \partial_{x^i} - \pder{h}{x^i}\partial_{\xi_i}, \bullet \right) = \langle dx^j, \pder{h}{\xi_i} \partial_{x^i} \rangle d\xi_j - \langle d\xi_j , - \pder{h}{x^i}\partial_{\xi_i} \rangle dx^j\\
+	& = \pder{h}{x^j}dx^j + \pder{h}{\xi_j} d\xi_j = dh.
+\end{eqalign}}
 
 \section{Poisson brackets}
 We've seen in the previous sections that the dynamics on a symplectic manifold comes, in the first place, from a function $h \in \Cinfty(M)$. Moreover, in the physical interpretation of a symplectic manifold we can also imagine the smooth functions on $M$ to represent observables of the system, i.e. quantities we can measure at any given state $p \in M$. Then we might try to find a way to study not only the dynamics of the system, but also the dynamics of the observables themselves.
@@ -172,6 +206,14 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		\{ f, g \} = \omega(X_f, X_g).
 	\end{eqalign}
 \end{definition}
+
+\begin{definition}
+	A \textbf{Poisson algebra} $(\mathcal P, \{-,-\})$ is a commutative associative algebra $\mathcal P$ equipped with an additional Lie algebra structure $\{-,-\}$ which satisfy a Leibniz rule relative to the algebra product:
+	\begin{eqalign}
+		\{f, gh\} = \{f,g\}h + g\{f,h\}, \quad \forall f,g,h \in \mathcal P.
+	\end{eqalign}
+\end{definition}
+
 \begin{theorem}
 	For all $f,g,h \in \Cinfty(M)$, the Poisson brackets satisfy the following properties:
 	\begin{enumerate}
@@ -196,6 +238,13 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		for all $f,g,h \in \Cinfty(M)$.
 	\end{enumerate}
 \end{theorem}
+\begin{proof}
+Direct computation.
+\end{proof}
+
+\begin{corollary}
+	The Poisson brackets puts a Poisson algebra structure on $\Cinfty(M)$, i.e. $(\Cinfty(M), \{ - , -\})$ is a Poisson algebra
+\end{corollary}
 
 \begin{theorem}
 \label{th:comm_is_ham}
@@ -207,7 +256,7 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 \begin{proof}
 	Fix an atlas, we'll verify $\ipr{[U,V]} \omega = -d(\omega(U,V))$ using coordinates computation. We'll use of the following facts (the order reflects where they are used in the computation):
 	\begin{enumerate}
-		\item The Lie derivative of a tensor is found by successively saturating the involved indices (one for the derivative + all the indices of the tensor) with the vector field we are differentiating along, so in particular for a $1$-form, it is
+		\item The Lie derivative of a tensor is found by successively saturating the involved indices\footnotemark (one for the derivative + all the indices of the tensor) with the vector field we are differentiating along, so in particular for a $1$-form, it is
 		\begin{eqalign}
 			\Lie{U} \eta = \left[ U^\mu (\partial_\mu \eta_\beta) + (\partial_\beta U^\mu) \eta_\mu \right] dx^\beta;
 		\end{eqalign}
@@ -221,6 +270,18 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 			d\ipr{U}\omega = d\ipr{V}\omega = 0.
 		\end{eqalign}
 	\end{enumerate}
+	\footnotetext{The Lie derivative of a $k$-form $\omega$ is given by the extension of the Leibniz rule
+	\begin{eqalign}
+		\Lie{U}(\langle \omega, \partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle) = \langle \Lie{U}\omega, \partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle + \langle \omega, \Lie{U}\partial_{\alpha_1}, \dots, \partial_{\alpha_k} \rangle + \dots + \langle \omega, \partial_{\alpha_1}, \dots, \Lie{U}\partial_{\alpha_k} \rangle
+	\end{eqalign}
+	i.e.
+	\begin{eqalign}
+	\label{eq:Lie_deriv_k_form}
+		(\Lie{U}\omega)(\partial_{\alpha_1}, \dots, \partial_{\alpha_k}) & = U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) - \omega([U, \partial_{\alpha_1}], \dots \partial_{\alpha_k}) - \dots - \omega(\partial_{\alpha_1}, \dots , [U, \partial_{\alpha_k}]) \\
+		&= U^\mu \partial_\mu ( \omega ( \partial_{\alpha_1}, \dots, \partial_{\alpha_k} )) + (\partial_{\alpha_1} U^{\beta})\omega(\partial_{\beta}, \dots \partial_{\alpha_k}) + \dots + (\partial_{\alpha_k} U^{\beta})\omega(\partial_{\alpha_1}, \dots , \partial_{\beta}) \\
+		&= U^\mu (\partial_\mu \omega_{\alpha_1,\dots,\alpha_k}) + (\partial_{\alpha_1}U^\beta)\omega_{\beta,\dots,\alpha_k} + \dots + (\partial_{\alpha_k}U^\beta)\omega_{\alpha_1,\dots,\beta}
+	\end{eqalign}
+	}
 
 	Together with the above facts, two algebraic tricks are used:
 
@@ -261,67 +322,40 @@ To do this, we introduce a formalism which relies solely on the functions $\Cinf
 		(\Cinfty(M), \{-,-\}) &\longto (\fields^{\text{Ham}}(M), [-,-])\\
 		f &\longmapsto X_f
 	\end{eqalign}
-	is an \textbf{anti}morphism of Lie algebras, surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
+	is an \textbf{anti}morphism of Lie algebras, since
+	\begin{eqalign}
+	\label{eq:Lie_alg_struct_Ham_fields}
+		X_{\{f,g\}} = - [X_f, X_g]
+	\end{eqalign}
+	Such morphism is surjective (by the very definition of Hamiltonian vector field), but not injective (as $f$ and $f+\cost$ have clearly the same image under this map).
 \end{corollary}
 
-\begin{definition}
-	A \textbf{Poisson algebra} $(\mathcal P, \{-,-\})$ is a commutative associative algebra $\mathcal P$ equipped with an additional Lie algebra structure $\{-,-\}$ which satisfy a Leibniz rule relative to the algebra product:
-	\begin{eqalign}
-		\{f, gh\} = \{f,g\}h + g\{f,h\}, \quad \forall f,g,h \in \mathcal P.
-	\end{eqalign}
-\end{definition}
-
-The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
+\chapter{Integrable systems}
+\section{Integrals of motion}
+The flow $\phi_t$ of $X_h$ encodes the evolution of the state of the system under the Hamiltonian function $h \in \Cinfty(M)$. Evaluating $f$ on $\phi_t$ makes $f$ a function of time, $f(t) = f \circ \phi_t$, thus providing a function $f(t)$ which spits out the value of $f$ on the state reached by the system at $t$. Using the Poisson brackets, we can skip a step and get the evolution of $f$ directly:
 
 \begin{theorem}
 	Let $f, h \in \Cinfty(M)$. Then the evolution of $f$ on the flow of $X_h$ is given by the bracket with $h$:
 	\begin{eqalign}
-		\der{f}{t} = \{f, h\}
+	\label{eq:evolution_f_flow_Xh}
+		\der{}{t} (f \circ \phi_t) \vert_{t=0} = \{f,h\}
 	\end{eqalign}
 \end{theorem}
 \begin{proof}
 	\begin{eqalign}
-		\der{f}{t} = X_h(f) = \langle X_h, \ipr{X_f}\omega \rangle = \ipr{X_h}\ipr{X_f}\omega = \omega(X_f, X_h) = \{f,h\}.
+		\der{}{t} (f \circ \phi_t) \vert_{t=0} & = X_h(f) = \langle X_h, \ipr{X_f}\omega \rangle = (\ipr{X_h}\ipr{X_f}\omega) = \omega(X_f, X_h) = \{f,h\}.
 	\end{eqalign}
 \end{proof}
 
-\section{Integrable systems}
 \begin{definition}
 	We call \textbf{Hamiltonian system} the data of a symplectic manifold together with a fixed choice of Hamiltonian $h \in \Cinfty(M)$.
 \end{definition}
 
 \begin{definition}
-	Let $(M, \omega, h)$ be an Hamiltonian system. A function $f \in \Cinfty(M)$ such that $\{f,h\} = 0$ is called an \textbf{integral of motion} of the system.
+	Let $(M, \omega, h)$ be an Hamiltonian system. A function $f \in \Cinfty(M)$ such that $\{f,h\} = 0$ is called an \textbf{integral of motion} (or \textbf{constant of motion}) of the system.
 \end{definition}
 
-The great insight of Hamiltonian formalism is that \textbf{integrals of motion are the key to describe explicitly the evolution of a system.} This intuition can be justified by the geometrical treatment we have given so far. Hence this section will be devoted to this purpose, and will culminate with a structural result about Hamiltonian systems, the Arnold--Liouville Theorem.
-
-\begin{definition}
-	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{in involution} or to \textbf{commute} if
-	\begin{eqalign}
-		\{f_i, f_j \} = 0, \quad \forall i,j \leq k.
-	\end{eqalign}
-\end{definition}
-
-\begin{construction}
-\label{const:level_submanifolds_of_involutions}
-	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold, let $h_1, \ldots, h_n$ be functions in involution and let finally $c \in \R^n$ be a regular value of
-	\begin{eqalign}
-		H : M &\longto \R^n\\
-		p &\longmapsto (h_1(p), \ldots, h_n(p))
-	\end{eqalign}
-	meaning that $dh_1\vert_p, \ldots dh_n \vert_p$ are linearly independent at each $p \in H^{-1}(c)$.
-
-	By the implicit function theorem, \textbf{$H^{-1}(c)$ is a submanifold of $M$ and its tangent spaces are generated by the Hamiltonian vector fields associated to the functions $h_1, \ldots, h_n$}: indeed,
-	\begin{eqalign}
-		T_pH^{-1}(c) = \{ X_p \in T_pM \suchthat X_p(h_i)=0\ \forall i \leq n \}
-	\end{eqalign}
-	and
-	\begin{eqalign}
-		X_{h_i}(h_j) = \omega(X_{h_i}, X_{h_j}) = \{ h_i, h_j \} = 0
-	\end{eqalign}
-	and the $X_{h_i}$ are independent. Moreover, \textbf{this computation also shows $H^{-1}(c)$ is a Lagrangian submanifold of $M$}, since it has dimension $n$ and $\omega$ vanishes on its generators. Then $H$ is said to be a \textbf{Lagrangian fibration}.
-\end{construction}
+The great insight of Hamiltonian formalism is that \textbf{integrals of motion are the key to describe explicitly the evolution of a system.} This intuition can be justified by the geometrical treatment we have given so far. Hence this chapter will be devoted to this purpose, and will culminate with a structural result about Hamiltonian systems, the Arnold--Liouville Theorem.
 
 \begin{definition}
 	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{independent} if
@@ -330,11 +364,16 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 	\end{eqalign}
 \end{definition}
 
-Construction~\ref{const:level_submanifolds_of_involutions} then shows that:
+\begin{definition}
+	A set of functions $f_1, \ldots, f_k \in \Cinfty(M)$ is said to be \textbf{in involution} or to \textbf{commute} if
+	\begin{eqalign}
+		\{f_i, f_j \} = 0, \quad \forall i,j \leq k.
+	\end{eqalign}
+\end{definition}
 
 \begin{lemma}
 \label{lemma:isotropic_dist}
-	A set $f_1, \ldots, f_k$ of functions independent and in involution generates an \textbf{isotropic distribution}, which means at every point $x \in M$ they span a subspace of $T_xM$ depending smoothly on $x$
+	A set $f_1, \ldots, f_k$ of functions in involution generates an \textbf{isotropic distribution}, which means at every point $x \in M$ they span a subspace of $T_xM$ depending smoothly on $x$
 	\begin{eqalign}
 		\langle X_{f_1}\vert_x, \ldots, X_{f_k}\vert_x \rangle \underset{\cat{Vec}}\subseteq T_x M
 	\end{eqalign}
@@ -342,21 +381,41 @@ Construction~\ref{const:level_submanifolds_of_involutions} then shows that:
 	\begin{eqalign}
 		\omega(X, Y) = 0, \quad \forall X,Y \in \langle X_{f_1}, \ldots, X_{f_k} \rangle.
 	\end{eqalign}
-	In particular, when $k = \frac12 \dim M$, the distribution is Lagrangian.
+	If $f_1, \ldots, f_k$ are also independent they can be at most $\frac12 \dim M$.
 \end{lemma}
+\begin{proof}
+	From the definition of Poisson bracket we see that if $f_1, \ldots, f_k$ are in involution then $\omega(X_{f_i}, X_{f_j}) = 0$, hence the first part of the statement follows immediately. If we assume that  $f_1, \ldots, f_k$ are independent then also the associated vector fields $X_{f_1}, \dots, X_{f_k}$ are independent, therefore we cannot have $k > n$ since in such case $\omega$ would be degenerate.
+\end{proof}
+
+\begin{construction}
+\label{const:compl_integr_Ham_system}
+	If we introduce $n$ independent functions $f_1, \dots, f_n$ in involution, then the associated vector fields $X_{h_1}, \dots, X_{h_n}$ are independent and the distribution $\mathcal D := \langle X_{h_1}, \dots, X_{h_n} \rangle$ is smooth. Equation eq.~\eqref{eq:Lie_alg_struct_Ham_fields} tells us that 
+	\begin{eqalign}
+		[X_{h_i}, X_{h_j}] = 0, \quad \forall i,j \leq k.
+	\end{eqalign}
+	and that $[X, Y]$ is an Hamiltonian vector field for each $X, Y \in \mathcal D$. Finally Theorem \ref{lemma:isotropic_dist} tells us that $[X, Y] \in \fields_{\mathcal D}(M)$, since we cannot have $n+1$ independent Hamiltonian vector fields. Hence the smooth distribution $\mathcal D$ is involutive, and thanks to Frobenius' theorem\footnote{Theorems 3.7.11 and 3.7.17 \cite{abate2011geometria}} \textbf{the distribution $\langle X_{h_1}, \dots, X_{h_n} \rangle$ is completely integrable and the collection of all maximal integrable submanifolds of $\mathcal D$ constitute a foliation of $M$ into Lagrangian submanifolds}.
+\end{construction}
 
 \begin{definition}
-	An Hamiltonian system $(M, \omega, h)$ is called \textbf{completely integrable} if it possesses $n=\frac12 \dim M$ integrals of motion which are independent and in involution.
+	An Hamiltonian system $(M, \omega, h)$ is called \textbf{completely integrable} (or \textbf{integrable}) if it possesses $n=\frac12 \dim M$ integrals of motion which are independent and in involution.
 \end{definition}
+
+\begin{remark}
+	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds, i.e. the previous definition is consistent with the definition of completely integrable distribution. 
+\end{remark}
+
+\begin{remark}
+	When $\dim M=2$, every Hamiltonian system whose energy function $h$ is not closed ($dh \neq 0$) is an integrable system (because we need just one function, and we have $h$ already).
+\end{remark}
 
 \section{Arnold--Liouville Theorem}
 \begin{example}[Pendulum]
 \label{ex:pendulum}
-	When $\dim M=2$, every Hamiltonian system whose energy function $h$ is not closed ($dh \neq 0$) is an integrable system (because we need just one function, and we have $h$ already). The configuration space of a simple pendulum is $S^1$, and thus $M = T^*S^1 \iso S^1 \times \R$ is such a $2$-dimensional Hamiltonian system, with Hamiltonian given by the energy function:
+	The configuration space of a simple pendulum is $S^1$, and thus $M = T^*S^1 \iso S^1 \times \R$ is a $2$-dimensional Hamiltonian system, with Hamiltonian given by the energy function:
 	\begin{eqalign}
 		h(\theta, \xi) = \frac{\xi^2}{2m \ell^2} +m\ell (1-\cos \theta)
 	\end{eqalign}
-	where $m$ is the mass of the pendulum and $\ell$ the length of the rod. The parameter $\theta$ will refer to the anticlockwise angle measured from the down direction. We choose units as to have $m=\ell=1$. Then
+	where $m$ is the mass of the pendulum and $\ell$ the length of the rod. The parameter $\theta$ will refer to the anticlockwise angle measured from the down direction and $\xi$ refers to the momentum of the pendulum. We choose units as to have $m=\ell=1$. Then
 	\begin{eqalign}
 		h(\theta, \xi) = \frac{\xi^2}2 + 1-\cos \theta.
 	\end{eqalign}
@@ -376,17 +435,51 @@ Construction~\ref{const:level_submanifolds_of_involutions} then shows that:
 	\begin{eqalign}
 		\xi = 0, \quad \theta = 0,\, \pm \pi
 	\end{eqalign}
-	In these points, the system is not integrable anymore (as $h$ is not regular, see Construction~\ref{const:level_submanifolds_of_involutions}), so we remove them from the manifold $M$. In this new manifold, which is again symplectic and smooth, the system is everywhere integrable and its integral submanifolds are either circles (for closed orbits) or copies of $\R$ (for the extremal orbit which is a circle with two points removed, as well as for larger orbits which are unaffected).
+	Due to these points, the system is not integrable (as $dh = 0$ implies $X_h =0$, i.e. the distribution described by $X_h$ is not smooth, see Construction~\ref{const:compl_integr_Ham_system}), so we remove them from the manifold $M$. In this new manifold, which is again symplectic and smooth, the system is everywhere integrable and its integral submanifolds are either circles (for closed orbits) or copies of $\R$ (for the extremal orbit which is a circle with two points removed, as well as for larger orbits which are unaffected).
 \end{example}
 
 It is somewhat surprising that the fibration phenomenon we have seen at the end of Example~\ref{ex:pendulum} is not peculiar to that example: \textbf{integral submanifolds happen to be always tori or Euclidean spaces}. This is the subject of Arnold--Liouville Theorem.
 
-We start with some vocabulary:
+We start with a construction and some vocabulary:
+
+\begin{construction}
+\label{const:level_submanifolds_of_involutions}
+	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold, let $h_1, \ldots, h_n$ be functions in involution and let finally $c \in \R^n$ be a regular value of
+	\begin{eqalign}
+		H : M &\longto \R^n\\
+		p &\longmapsto (h_1(p), \ldots, h_n(p))
+	\end{eqalign}
+	meaning that $dh_1\vert_p, \ldots dh_n \vert_p$ are linearly independent at each $p \in H^{-1}(c)$.
+
+	By the inverse function theorem\footnote{Theorem 2.4.23 \cite{abate2011geometria}.}, \textbf{$H^{-1}(c)$ is a submanifold of $M$ and its tangent spaces are generated by the Hamiltonian vector fields associated to the functions $h_1, \ldots, h_n$}: indeed,
+	\begin{eqalign}
+		T_pH^{-1}(c) = \ker dH_p = \{ X_p \in T_pM \suchthat X_p(h_i)=0\ \forall i \leq n \}
+	\end{eqalign}
+	and
+	\begin{eqalign}
+		X_{h_i}(h_j) = \omega(X_{h_i}, X_{h_j}) = \{ h_i, h_j \} = 0
+	\end{eqalign}
+	and the $X_{h_i}$ are independent. Moreover, \textbf{this computation also shows $H^{-1}(c)$ is a Lagrangian submanifold of $M$}, since it has dimension $n$ and $\omega$ vanishes on its generators.
+\end{construction}
 
 \begin{definition}
-	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exist an open neighbourhood $U$ and a diffeomorphism $f^{-1}(U) \isoto U \times F$ which makes the following commute:
+	Let $M$ be a symplectic manifold. A \textbf{Lagrangian fibration} is a submersion\footnotemark $H : M \to N$ where all of the fibres are Lagrangian submanifolds (a Lagrangian fibration is obviously a surjective submersion).
+\end{definition}
+\footnotetext{A submersion $H : M \to N$ is a smooth function such that $dH$ is pointwise surjective.}
+
+\begin{remark}
+\label{rem:submersion_to_Lag_fibration} 
+	Let $H : M \to N$ be a submersion, $M$ symplectic, then the set $\operatorname{crit} H$ of critical points of $H$ is given by the vanishing of $\det dH$, hence it is closed. Then if all fibres of regular points of $H$ are Lagrangian submanifolds of $M$, we can promote $H$ to a Lagrangian fibration by restricting $M$ to the open set $M \setminus \operatorname{crit} H$.
+\end{remark}
+
+\begin{remark}
+	Let $H : M \to \R^n$ as in Construction \ref{const:level_submanifolds_of_involutions}, then $H : M \setminus \operatorname{crit} H \to \R^n$ is a Lagrangian fibration.
+\end{remark}
+
+\begin{definition}
+	A \textbf{locally trivial surjective submersion} is a surjective submersion $f: M \to N$ such that there exists a manifold $F$ and for every point $p \in N$ there exists an open neighbourhood $U$ of $p$ and a diffeomorphism $\phi : f^{-1}(U) \isoto U \times F$ which makes the following commute:
 	\begin{diagram}
-		M \arrow[relation=\supset]{r} \&[-3ex] f^{-1}(U) \arrow[swap]{dr}{f} \arrow{rr}{\phi} \& \& U \times F \arrow{dl}{\pr_2}\\
+		M \arrow[relation=\supset]{r} \&[-3ex] f^{-1}(U) \arrow[swap]{dr}{f} \arrow{rr}{\phi} \& \& U \times F \arrow{dl}{\pr_1}\\
 		\& \& U
 	\end{diagram}
 \end{definition}
@@ -407,20 +500,17 @@ We start with some vocabulary:
 
 \begin{theorem}[Arnold--Liouville]
 \label{th:arnold_liouville}
-	Let $(M, \omega)$ be a symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a \textbf{Lagrangian fibration}; i.e. its fibers are Lagrangian submanifolds of constant dimension. Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of $H^{-1}(H(p))$ containing $p$. Then
+	Let $(M, \omega)$ be a $2n$-dimensional symplectic manifold equipped with $h_1, \ldots, h_n \in \Cinfty(M)$ functions in involution and define $H = (h_1, \ldots, h_n): M \to \R^n$. Suppose $H$ is a Lagrangian fibration.\footnote{We can always restrict to this case by removing the set of critical points of $H$ from $M$.} Let $p \in M$ such that the flows of $X_{h_1}, \ldots, X_{h_n}$, starting at $p$, are complete\footnotemark, and call $F^{(p)}$ the connected component of the fiber $H^{-1}(H(p))$ containing $p$. Then
 	\begin{enumerate}
-		\item $F^{(p)}$ is diffeomorphic to $\R^{n-k} \times \T^k$ through a diffeomorphism that maps the flows of $X_{h_1}, \ldots, X_{h_n}$ to linear flows on $\R^{n-k} \times \T^k$; i.e. a linear $\R^n$-action on $\R^{n-k} \times \T^k$;
+		\item $F^{(p)}$ is diffeomorphic to $\R^{n-k} \times \T^k$ for some $0 \leq k \leq n$ through a diffeomorphism that maps the flows of $X_{h_1}, \ldots, X_{h_n}$ to linear flows on $\R^{n-k} \times \T^k$; i.e. a linear $\R^n$-action on $\R^{n-k} \times \T^k$;
 		\item in a neighbourhood of $F^{(p)}$ the functions $h_1, \ldots, h_n$ can be completed to a system of Darboux coordinates;
-		\item the set $M_C$ of points whose fiber is compact is open, and $H\vert_{M_C}$ is a locally trivial Lagrangian fibration with fiber $\T^n$;
+		\item the locus $M_C$ of all compact connected components of all fibers of $H$ is open in $M$, and $H\vert_{M_C}$ is a locally trivial Lagrangian fibration with fiber $\T^n$;
 		\item in a neighbourhood of each fiber of $H\vert_{M_C}$ there exists a system of Darboux coordinates formed by $n$ angle variables on $\T^n$ and $n$ integrals of motion called \textbf{action variables} (where the term \emph{action} comes from their physical meaning).
 	\end{enumerate}
-	\footnotetext{Which means that the flow $\phi_t$ is defined for all $t \in \R$, or --- equivalently --- that it is infinitely prolongable. This is always the case when $M$ is compact.}
+	\footnotetext{A flow $\phi_t : M \to M$ is said \textbf{complete} if it is defined for any value of $t \in \R$, or --- equivalently --- that it is infinitely prolongable. This is always the case when $M$ is compact. Nevertheless notice that this requirement is not obvious if we defined the manifold $M$ by removing from it the set of all singular points, as the resulting manifold is open in the initial one.}
 \end{theorem}
 \begin{remark}
 	The statement of \textbf{the theorem is agnostic about the choice of Hamiltonian function}. Indeed, it is not about Hamiltonian manifolds but about symplectic ones with $n$ functions in involution. Basically, this comes from the fact that the choice of $h$ is (from the mathematical point of view) arbitrary, since it comes from the physical situation: the mathematical content of the Hamiltonian formalism is given solely by the set of functions in involution.
-\end{remark}
-\begin{remark}
-	The condition on $H$ is artificial since, following Example~\ref{ex:pendulum}, we can always remove from $M$ the critical points of $H$ and apply the theorem to $M\setminus \operatorname{crit}H$ (such a subset is always open, because it is the preimage of the open set of non-critical values). On this manifold $H$ is a fibration and by Construction~\ref{const:level_submanifolds_of_involutions} its fibers are Lagrangian.
 \end{remark}
 \begin{remark}
 	To state the theorem globally (since any local statement about a symplectic manifold is trivial) we must ask for completeness of the flow. Indeed, to get fibers diffeomorphic to $\R$ and $\T^1$ we need complete flow lines.
@@ -441,18 +531,18 @@ We start with some vocabulary:
 			&= \phi^{X_{h_1}}_{t^1} \circ \phi^{X_{h_1}}_{s^1} \circ \ldots \circ \phi^{X_{h_n}}_{t^n} \circ \phi^{X_{h_n}}_{s^n}\\
 			&= \phi^{X_{h_1}}_{t^1} \circ \ldots \circ \phi^{X_{h_n}}_{t^n} \circ \phi^{X_{h_1}}_{s^1} \circ \ldots \circ \phi^{X_{h_n}}_{s^n}.
 		\end{eqalign}
-		Moreover, it is a transitive\footnote{An action of a group $G$ on the set $M$ is \textbf{transitive} iff for every pair of points $p, q \in M$, there is a $g \in G$ whose action brings $p$ to $q$.} action by the following argument. It's easy to see each point $x \in F^{(p)}$ has an open neighbourhood on which the flows, starting from $x$ itself, define a chart. This is true because the fields are independent, so we can appeal to Frobenius' Theorem (Theorem~\ref{th:frobenius}). To show transitivity, we need to show any two $x,y \in F^{(p)}$ can be linked by flow lines. So pick a curve connecting $x$ and $y$ (it exists since $F^{(p)}$ is connected by assumption). By compactness of the curve, a finite number of the charts we defined using the flows suffice to cover the whole path from $x$ and $y$, and we can assume the chart centered at $x$ and the one centered at $y$ to be in the covering. Now starting at $x$, follow the flow lines until they meet a point in the next chart, and then pick up another flow line of the second chart from there, and so on until we reach $y$. Clearly this defines a single segment of a flow line linking $x$ to $y$, implying $\phi$ is transitive.
+		Moreover, it is a transitive\footnote{An action of a group $G$ on the set $M$ is \textbf{transitive} iff for every pair of points $p, q \in M$, there is a $g \in G$ whose action brings $p$ to $q$.} action by the following argument. It's easy to see each point $x \in F^{(p)}$ has an open neighbourhood on which the flows, starting from $x$ itself, define a chart. This is true because\footnote{Theorem 3.7.4 \cite{abate2011geometria}.} $X_{h_1}, \ldots, X_{h_n}$ provide a basis for $T_xF^{(p)}$ made of independent and Lie-commuting vector fields. To show transitivity, we need to show any two $x,y \in F^{(p)}$ can be linked by flow lines. So pick a curve in $F^{(p)}$ connecting $x$ and $y$ (it exists since $F^{(p)}$ is connected by assumption). By compactness of the curve, a finite number of the charts we defined using the flows suffice to cover the whole path from $x$ and $y$, and we can assume the chart centered at $x$ and the one centered at $y$ to be in the covering. Now starting at $x$, follow the flow lines until they meet a point in the next chart, and then pick up another flow line of the second chart from there, and so on until we reach $y$. Clearly this defines a single segment of a flow line linking $x$ to $y$, implying $\phi$ is transitive.
 
 		We then notice that, locally around any point, the action is free\footnote{An action of a group $G$ on the set $M$ is \textbf{free} if the identity of $G$ is the only element inducing the identity on $M$.} (indeed, as we already observed, each point is the center of a chart given by the flows) meaning the stabilizer of any point is a discrete subgroup of $\R^n$. Such a subgroup, we'll call it $\Gamma$, does not depend on the point we chose on $F^{(p)}$ (we can show this using transitivity of $\phi$ and abelianity of $\R^n$). Moreover, a discrete subgroup for $\R^n$ can only be a lattice of points generated by integer multiples of a family of $k$ independent vectors of $\R^n$. This suggests $\R^n / \Gamma \iso \R^{n-k} \times \T^k$. Moreover, this isomorphism of groups is also a \emph{diffeo}morphism as $\Gamma$ is a closed Lie subgroup of $\R^n$. The action $\phi$ then prolongs this diffeomorphism to $F^{(p)}$, proving the claim.
 
 		\item So now we know that $F^{(p)} \iso \R^{n-k} \times \T^k$ and by definition $h_1, \ldots, h_n$ are constant on $F^{(p)}$. Since their differentials are linearly independent, they define a system of coordinates on the cotangent space of each fiber. Then we can use the $h_1, \ldots, h_n$ to move across fibers, and we will show that together with $t^1, \ldots, t^n$ (the flow times) they form a system of Darboux coordinates for a suitable choice of starting points for the flows on each fiber $H^{-1}(c)$ in a neighbourhood of $F^{(p)}$.
 
-		Let us restrict to a tubular neighbourhood of $F^{(p)}$ where, since $F^{(p)}$ is Lagrangian (by Lemma~\ref{lemma:isotropic_dist}), we have $\omega = d\eta$ for some $1$-form $\eta$ defined on such a neighbourhood (since tubular neighbourhoods inherit cohomology).
+		Let us restrict to a tubular neighbourhood of $F^{(p)}$ where, since $F^{(p)}$ is Lagrangian (by Construction~\ref{const:level_submanifolds_of_involutions}), we have $\omega = d\eta$ for some $1$-form $\eta$ defined on such a neighbourhood (since tubular neighbourhoods inherit cohomology (Equation eq~\eqref{eq:tub_nbh_inherit_cohom}), see Proposition 6.8 \cite{daSilva2006}).
 
-		Start by making an arbitrary choice of starting points for the flows. They span an $n$-dimensional submanifold of the tubular neighbourhoods, which is transverse (i.e., the tangent spaces are never parallel) to each fiber $H^{-1}(c)$. The $t^1, \ldots, t^n, h_1, \ldots, h_n$ form a system of coordinates for the tubular neighbourhood. Let us compute the components of $\omega$ in such a system:
+		Start by making an arbitrary choice of starting points for the flows. Then flows span an $n$-dimensional submanifold of the tubular neighbourhoods, which is transverse (i.e., the tangent spaces are never parallel) to each fiber $H^{-1}(c)$. The $t^1, \ldots, t^n, h_1, \ldots, h_n$ form a system of coordinates for the tubular neighbourhood. Let us compute the components of $\omega$ in such a system:
 		\begin{eqalign}
 			\omega(\partial_{t^i}, \partial_{t^j}) &= \omega(X_{h_i}, X_{h_j}) = \{h_i, h_j\} = 0\\
-			\omega(\partial_{t^i}, \partial_{h_j}) &= \ipr{X_{h_i}}\omega(\partial_{h_j}) = dh_i(\partial_{h_j}) = \delta^j_i\\
+			\omega(\partial_{t^i}, \partial_{h_j}) &= \langle \ipr{X_{h_i}}\omega, \partial_{h_j} \rangle = \langle dh_i, \partial_{h_j} \rangle = \delta^j_i\\
 			\omega(\partial_{h_i}, \partial_{h_j}) &=: V^{ij} \in \Cinfty(U).
 		\end{eqalign}
 		Hence we can write
@@ -460,15 +550,15 @@ We start with some vocabulary:
 		\label{eq:omega_in_components}
 			\omega = dt^i \wedge dh_i + V^{ij} dh_i \wedge dh_j.
 		\end{eqalign}
-		To get Darboux coordinates we want to eliminate the second term. Let's use the freedom of starting points to make the $V^{ij}$ vanish at $p$. Now, since $t^1, \ldots, t^n$ commute, $\Lie{\partial_{t^i}}dt^j = 0$, and likewise for $h_1, \ldots, h_n$. Also $\Lie{\partial_{t^i}} \omega = 0$ by Theorem~\ref{th:flow_of_symp_field}. Hence, for each $k=1,\ldots, n$,
+		To get Darboux coordinates we want to eliminate the second term. Let's use the freedom of starting points to make the $V^{ij}$ vanish at $p$. Now, since $t^1, \ldots, t^n$ commute, $\Lie{\partial_{t^i}}dt^j = 0$,  and likewise $\Lie{\partial_{t^i}}dh_j = 0$.\footnote{Recall either Equation eq.~\eqref{eq:Lie_deriv_k_form} or Cartan's magic formula to compute explicitly these Lie derivatives.} Also $\Lie{\partial_{t^i}} \omega = 0$ by Theorem~\ref{th:flow_of_symp_field}. Hence, for each $k=1,\ldots, n$,
 		\begin{eqalign}
-			\Lie{\partial_{t^k}}V^{ij} = \Lie{\partial_{t^k}} \omega(\partial_{h_i}, \partial_{h_j}) = 0
+			\pder{V^{ij}}{t^k} = \Lie{\partial_{t^k}}V^{ij} = \Lie{\partial_{t^k}} \omega(\partial_{h_i}, \partial_{h_j}) = 0
 		\end{eqalign}
-		meaning $V^{ij} = V^{ij}(h_1, \ldots, h_n)$, that is, \textbf{they only depend on the transverse coordinates}. On the other hand, in the tubular neighbourhood we are working in, $\omega$ is an exact form. In fact, so is its first term (from \eqref{eq:omega_in_components}):
+		meaning $V^{ij} = V^{ij}(h_1, \ldots, h_n)$, that is, \textbf{they only depend on the transverse coordinates}. On the other hand, in the tubular neighbourhood we are working in, $\omega$ is an exact form. Moreover, so is its first term (from \eqref{eq:omega_in_components}):
 		\begin{eqalign}
 			dt^i \wedge dh_i = d(t^i dh_i).
 		\end{eqalign}
-		We then impose $V^{ij} dh_i \wedge dh_j$ to be exact, which means the second term has to be the differential of some $1$-form $W$ depending only on $h_1, \ldots, h_n$, which implies that
+		Hence we impose $V^{ij} dh_i \wedge dh_j$ to be exact, which means the second term has to be the differential of some $1$-form $W$ depending only on $h_1, \ldots, h_n$, which implies that
 		\begin{eqalign}
 			V^{ij} = \partial_{h_j} W^i - \partial_{h_i} W^j.
 		\end{eqalign}
@@ -488,13 +578,17 @@ We start with some vocabulary:
 
 		\item Since ${H: M_C \to \R^n}$ is locally trivial, we can identify a neighbourhood of each fiber with $U_0 \times \T^n$ and $U_0 \subseteq \R^n$ is open ($H$ is a fibration in tori). By point (2), $\omega = d(t^i dh_i) = -d(h_i dt^i)$ where $h_1, \ldots, h_n$ are linear coordinates on $\R^n$ and $t^1, \ldots, t^n$ are linear functions on $\T^n$. What we want to do now is a change of coordinates to get angle coordinates on the torus. Since we'd like this change to be structure-preserving, we'll try to get it as a canonical transformation, thus a symplectomorphism found through a generating function.
 
-		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define
+		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define\footnote{Notice that these functions do not depend on the representatives $\gamma_\alpha$ of the homology classes we chosen, indeed for any equivalent loop $\gamma'_\alpha$ we have 
+		\begin{eqalign}
+			-\int_{\gamma_\alpha} h_i \, dt^i + \int_{\gamma'_\alpha} h_i \, dt^i = -\int_{M_\alpha} d(h_i \, dt^i) =  \int_{M_\alpha} \omega = 0
+		\end{eqalign}
+		where $M_\alpha$ is a submanifold of $\T^n$ whose border is given by $\gamma_\alpha$ and $\gamma'_\alpha$. The last step follows from $\omega\vert_{\T^n}=0$.}
 		\begin{eqalign}
 			I_\alpha(h_1, \ldots, h_n) := -\int_{\gamma_\alpha} h_i \, dt^i,
 		\end{eqalign}
 		Since $H$ is constant on each $\gamma_\alpha$, the $h_i$ in the integral are (non-zero) constants, so that the assignment is a linear function:
 		\begin{eqalign}
-			(I_\alpha) = \underbrace{(-\int_{\gamma_\alpha} \,dt^i)}_A (h^i).
+			(I_\alpha) = \underbrace{(-\int_{\gamma_\alpha} \,dt^i)}_A (h_i).
 		\end{eqalign}
 		Since we choose $\gamma_1, \ldots, \gamma_n$ to be linearly independent, the matrix $A$ can be easily shown to be invertible. Then we can write:
 		\begin{eqalign}
@@ -502,11 +596,16 @@ We start with some vocabulary:
 		\end{eqalign}
 		Now define
 		\begin{eqalign}
-			S(I_1, \ldots, I_n, t^1, \ldots, t^n) := -\int^t_{t_0} h_i(I_1, \ldots, I_n) \, dt^i.
+			S(I_1, \ldots, I_n, t^1, \ldots, t^n) := - \sum_{i = 1}^n \int^{t^i}_{0} h_i(I_1, \ldots, I_n) \, dt.
 		\end{eqalign}
-		Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / I_\alpha$ we get a canonical transformation whose generating function is $S$. Moreover, these second set of coordinates are the angle coordinates we were looking for. Indeed, fix a $\beta$:
+		Again, the integral is performed along a curve where $I_\alpha$ are constants. Then by definition $h_\alpha = -\partial S / \partial t_\alpha$, thus calling $\phi^\alpha = \partial S / \partial I_\alpha$ we get a canonical transformation whose generating function is $S$ such that
 		\begin{eqalign}
-			\phi^\alpha(p + \gamma_\beta) &= \pder{}{I_\alpha} \left( \int^{t(p)+\gamma_\beta}_{t_0} h_i(I_1, \ldots, I_n) \, dt^i \right)\\
+			\omega = dt^i \wedge dh_j = d\phi^\alpha \wedge dI_\alpha.
+		\end{eqalign}
+		Moreover, these second set of coordinates are the angle coordinates we were looking for. Indeed, fix a $\beta$:
+		\begin{eqalign}
+			\phi^\alpha(p + \gamma_\beta) &= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p+\gamma_\beta)}_{0} h_i(I_1, \ldots, I_n) \, dt \right)\\
+			&= \pder{}{I_\alpha} \left( - \sum_{i = 1}^n \int^{t^i(p)}_{0} h_i(I_1, \ldots, I_n) \, dt  - \int_{\gamma_\beta} h_i(I_1, \ldots, I_n) \, dt^i \right)\\
 			&= \pder{}{I_\alpha} (S(I_1, \ldots, I_n, t^1(p), \ldots, t^n(p)) - I_\beta)\\
 			&= \phi^\alpha(p) - \delta^\alpha_\beta.
 		\end{eqalign}
@@ -514,7 +613,32 @@ We start with some vocabulary:
 	\end{enumerate}
 \end{proof}
 
-\subsection{Applications}
+\begin{remark}
+	From the proof of the last point of the Arnold--Liouville theorem we see in particular that, given $n$ integrals of motion $h_1, \ldots, h_n$ and a basis $\gamma_1,\ldots, \gamma_n \in H_1(\T^n)$ of smoothly varying loops in the level set $\{h_\alpha (p) = h_\alpha\}$ the action variables $I_\alpha$ can be defined in a tubular neighbourhood of any fiber where $\omega = d\eta$ as
+	\begin{eqalign}
+		I_\alpha (h_1, \ldots, h_n) = \int_{\gamma_\alpha}\iota^*\eta
+	\end{eqalign}
+	where $\iota : \{h_\alpha(p) = h_\alpha\} \into M$ is the embedding of the level set into $M$. 
+	
+	Moreover, given any local system of Darboux coordinates $x^1, \ldots, x^n, \xi_1, \ldots, \xi_n$ with $\omega = d(x^i \, d\xi_i)$ where the manifolds $\{x^i = \text{const.}\}$ are transversal to the fibers $\{h_i = \text{const.}\}$, the equation
+	\begin{eqalign}
+		I_\alpha (x^1, \ldots, x^n, \xi_1, \ldots, \xi_n) = I_\alpha
+	\end{eqalign}
+	can be inverted to 
+	\begin{eqalign}
+		\xi_\alpha = \xi_\alpha(x^1, \ldots, x^n, I_1, \ldots, I_n).
+	\end{eqalign}
+	Then
+	\begin{eqalign}
+		S (x^1, \ldots, x^n, I_1, \ldots, I_n) = - \int^x_{x_0} \xi_\alpha (x, I) \, dx^\alpha
+	\end{eqalign}
+	where the integration is on any curve on $\{I_\alpha = \text{const.}\}$. The angle variables are hence
+	\begin{eqalign}
+		\phi^\alpha = \pder{S}{I_\alpha} ( x, I(x, \xi))
+	\end{eqalign}
+\end{remark}
+
+\section{Applications of Arnold--Liouville Theorem}
 \begin{example}[Simple pendulum]
 	Let's analyze Example~\ref{ex:pendulum} in light of Arnold--Liouville Theorem. Figure~\ref{fig:pendulum_phase_diagram} shows the fibration induced by $h$ on $T^*S^1$. We need to take in consideration that the diagram should actually be wrapped around a cylinder. Hence not only the closed curves near the singular point $(0, 0)$ are compact fibers, but also the ones further away, which look open on the plane but close up on the cylinder. The open fibers are the two halves of the ``doubly punctured'' circle which constitutes the separatrix between the two families of compact fibers.
 
@@ -556,8 +680,85 @@ We start with some vocabulary:
 	Apply Arnold--Liouville Theorem to the ``updated'' phase space of the spherical pendulum, in particular describe the fibers of the Lagrangian fibration and the locus $M_C$ of the compact ones.
 \end{exercise}
 
+\begin{example}[$2$-species ``predator--prey'' Lotka--Volterra'' system]
+\label{ex:Lotka_Volterra_2spec_ham}
+	The \textbf{Lotka--Volterra model} describe predator-prey (or herbivore-plant, or parasitoid-host) dynamics in their simplest case (one predator population, one prey population). It was developed independently by Alfred Lotka and Vito Volterra in the 1920's, and is characterized by oscillations in the population size of both predator and prey, with the peak of the predator's oscillation lagging slightly behind the peak of the prey's oscillation. 
+	
+	The model makes several simplifying assumptions: 
+	\begin{enumerate}
+		\item the prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation.; 
+		\item the growth of predators population depend on the availability of food, the predator population will starve in the absence of the prey population (as opposed to switching to another type of prey) and in this case decreases exponentially; 
+		\item predators can consume infinite quantities of prey; 
+		\item there is no environmental complexity (in other words, both populations are moving randomly through a homogeneous environment).
+	\end{enumerate}
+	
+	Given the following parameters describing the two populations and the interaction of the two species:
+	\begin{enumerate}
+		\item $P$ = number of predators or consumers;
+		\item $p$ = number of prey or biomass of plants;
+		\item $t$ = time;
+		\item $m$ = predator death rate\footnote{Represents the loss rate of the predators due to either natural death or emigration, it leads to an exponential decay in the absence of prey.};
+		\item $a$ = predator growth rate;
+		\item $r$ = growth--death rate of prey (in absence of predators);
+		\item $c$ = predation rate\footnote{Note the similarity to the predator growth rate; however, a different constant is used, as the rate at which the predator population grows is not necessarily equal to the rate at which it consumes the prey};
+	\end{enumerate}
+	then the populations change through time according to the pair of equations:
+	\begin{eqalign}
+	\label{eq:Lotka_Volterra_system}
+		\begin{dcases}
+			\der{P}{t} = - mP + aPp\\
+			\der{p}{t} = rp-cPp
+		\end{dcases}
+	\end{eqalign}
+	Consider the Hamiltonian system $(M, \omega, h)$ such that
+	\begin{eqalign}
+		M = \R^2_{>0} \qquad \omega^{-1} = Pp \pder{}{P} \wedge \pder{}{p} \qquad h(P,p) = - ap + m\log p - cP + r\log P
+	\end{eqalign}
+	with coordinates $P$, $p$ on $M$. The differential of the Hamiltonian is 
+	\begin{equation}
+		dh = (- cP + r) \frac {dP}{P} + (- ap + m) \frac {dp}{p}
+	\end{equation}
+	We see that using\footnote{Recall Remark \ref{eq:inv_sym_form_Ham_fields}. For $P$ we have $\dot P = \{P, h\} = \omega(X_P, X_h) = \omega^{-1}(dP, dh)$ which gives the first equation in eq.~\eqref{eq:Lotka_Volterra_system}. Same procedure for $p$ leads to the second equation in eq.~\eqref{eq:Lotka_Volterra_system}.} Equation eq.~\eqref{eq:evolution_f_flow_Xh} the flow of $X_h$ gives the Lotka-Volterra eq.~\eqref{eq:Lotka_Volterra_system}.
+	The only singular point of $dh$ is $\left ( \frac {r}{c}, \frac{m}{a} \right)$, where $X_h$ vanish. 
+	
+	We plot the level sets of $h$\footnote{In the following link one can find the Mathematica code for plot these level set, with the possibility of change the parameters of the model: \url{https://it.wikitolearn.org/File:Lotka-Volterra.svg}.}:
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\node (image) at (0,0) {\includegraphics[width=.45\textwidth]{figures/Lotka_Volterra.png}};
+		\end{tikzpicture}
+		\caption{The manifold $\R^2_{>0}$, with compact fibers as solid blue lines, the blue point in the middle of the fibers is the equilibrium point. An extra equilibrium point outside the phase space is given by the origin of $\R^2$. Axis describe no prey (exponential decay of $P$) and no predator (exponential growth of $p$) cases.}
+		\label{fig:Lotka_Volterra_diagram}
+	\end{figure}
+	
+	There are some interesting special cases for this model. The first one is given by the case $m=0$, for instance if the predator can sustain its population even if there is no prey (e.g. it eats also vegetables). In such case the level sets of $h$ are:
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\node (image) at (0,0) {\includegraphics[width=.45\textwidth]{figures/Lotka_Volterra_SIR.png}};
+		\end{tikzpicture}
+		\caption{Special case $m=0$. In order to obtain the level sets shown in the picture one has to move slightly from the $P$-axis, in order to have a non-zero number of prey. The whole $P$-axis is corresponds to the case $\dot P = \dot p = p =0$, i.e. to the absence of prey and a constant number of predators. The blue point in the $P$-axis corresponds to the value $\frac{r}{c}$.}
+		\label{fig:SIR_diagram}
+	\end{figure}
+	
+	\noindent
+	It's clear that in this case we have compact fibers provided that $a < 0$, otherwise the number of predators increases monotonically.
+	
+	Moreover, if we set $m=0$ and $a = c$  then Lotka--Volterra system eq.~\eqref{eq:Lotka_Volterra_system} becomes 
+	\begin{eqalign}
+	\label{eq:SIR_model_system}
+		\begin{dcases}
+			\der{P}{t} = -aPp\\
+			\der{p}{t} = aPp-rp
+		\end{dcases}
+	\end{eqalign}
+	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} for some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model. In this case the $P$-axis corresponds to the case where there are no infected and then the number of susceptible individuals is kept constant. 
+\end{example}
+
 \begin{example}[Kepler's problem on the plane]
-	Consider $M= T^*(\R^2 \setminus \{0\})$ with polar coordinates $r, \theta$ for the points and $p_r, p_\theta$ for covectors. The symplectic form on this manifold is
+	We assume that we already reduced the Kepler's problem from three dimensions to two dimensions by introducing the center of mass frame. Consider $M= T^*(\R^2 \setminus \{0\})$ with polar coordinates $r, \theta$ for the points and $p_r, p_\theta$ for covectors. The symplectic form on this manifold is
 	\begin{eqalign}
 		\omega = dr \wedge dp_r + d\theta \wedge dp_\theta
 	\end{eqalign}
@@ -565,7 +766,7 @@ We start with some vocabulary:
 	\begin{eqalign}
 		h = \frac{p^2_r}{2m} + \frac{p^2_\theta}{2mr^2} - \frac{k}{r}, \quad k,m > 0
 	\end{eqalign}
-	The two integrals of motion are then $h_1=h$ and $h_2 = p_\theta$.
+	The two integrals of motion are then $h_1=h$ and $h_2 = p_\theta$.\footnote{This choice due to the fact that $h$ is independent from $\theta$, indeed using $X_{p_\theta} = \partial_\theta$ we obtain $\{h, p_\theta\} = \langle dh, X_{p_\theta} \rangle = 0$ and the two integral of motion are in involution.}
 
 	As before, we now study the linear independence of $dh_1, dh_2$. First of all, they are
 	\begin{eqalign}
@@ -580,6 +781,7 @@ We start with some vocabulary:
 
 	To find the fibers, choose an arbitrary point $c = (c_1, c_2) \in \R^2$. Hence the equations of a level set of $H = (h_1, h_2)$ are
 	\begin{eqalign}
+	\label{eq:Kepler_level_set_eqs}
 		\begin{dcases}
 			c_1 = \frac{p_r^2}{2m} + V_{c_2}(r), \quad \text{where}\ V_{c_2}(r) = \frac{c_2^2}{2mr^2} - \frac{k}r\\
 			c_2 = p_\theta
@@ -591,9 +793,37 @@ We start with some vocabulary:
 		\begin{eqalign}
 			c_1 = \frac{p_r^2}{2m} - \frac{k}r \implies r = \frac1k \frac1{\frac{p_r^2}{2m} - c_1}
 		\end{eqalign}
-		We observe that $r$ is free to be as large as we please, hence these fibers correspond to unbounded orbits of the system and, geometrically, to non-compact fibers.
-		\item $c_2 \neq 0$, then inspecting the first equation we see that $c_1 < 0$ implies $V_{c_2}$ negative, thus when we draw its graph we notice this is only the case when $r < 0$. In this case, we get compact level sets. Clearly, the level set is empty whenever $c_1 < \min V_{c_2}(r)$.
+		We observe that previous equation describes a non-compact curve in the $(r, p_r)$ plane, hence fibers of the form $H^{-1}(c_1, 0)$ correspond to unbounded orbits of the system and, geometrically, to non-compact fibers.\footnote{Notice that $\theta$ lives in $S^1$, so it never gives problems of compactness.}
+		\item $c_2 \neq 0$, then inspecting the first equation we see that $c_1 < 0$ implies $V_{c_2}$ negative, thus when we draw its graph we notice in this case we have compact level sets (given by $r \in [r_-, r_+]$). Clearly, the level set is empty whenever $c_1 < \min V_{c_2}(r) = V_{c_2} \left(\frac{c_2^2}{mk} \right) =  - \frac{mk^2}{2 c_2^2}$.
+		
+		\vspace{-0.5cm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.6\textwidth]{figures/Kepler_c2_0.png}
+			\caption{Plot of first equation of eq.~\eqref{eq:Kepler_level_set_eqs} for $p_\theta = 0$, i.e. the body moves in the radial direction. Is clear that level sets $\{c_1 = \text{const.}\}$ are non-compact. For $h < 0$ level sets represent bounded states where the body is allowed to move away from the origin $r = 0$ only until a fixed value $r = r_+$. For $h \geq 0$  level sets represent states where the body has enough kinetic energy to leave definitely the original position.}
+			\label{fig:Kepler_c2_0}
+		\end{figure}
+		\vspace{-0.5cm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.6\textwidth]{figures/Kepler_c2_neq_0.png}
+			\caption{Plot of first equation of eq.~\eqref{eq:Kepler_level_set_eqs} for $p_\theta \neq 0$, i.e. the body moves with non-zero angular momentum. For $h = 0$ we have compact fibers where the body is bounded in the range $r \in [r_-, r_+]$, i.e. represent bodies with compact orbits around the origin, such as planets in the Solar System. Conversely, for $h > 0$, the body state is no more bounded, and represent bodies which has enough energy to leave the attraction given by the effective potential, such as bodies which go through the Solar System without being bounded in orbits around the Sun because of their high kinetic energy.}
+			\label{fig:Kepler_c2_neq_0}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.55\textwidth]{figures/KeplerCompactFiber.jpg}
+			\caption{Level set given by $p_\theta \neq 0$ and $0 > h > -\frac{mk^2}{2c_2^2}$.}
+			\label{fig:KeplerCompactFiber}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.55\textwidth]{figures/Kepler_Lagrangian_fiber.jpeg}
+			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$. The vertical direction corresponds to $p_r$ values, while the plane is parametrized by variables $r$ and $\theta$. We'll see that starting from some special points one can find elliptic trajectories wrapped-up around the torus.}
+			\label{fig:KeplerLagrangianFiber}
+		\end{figure}	
 	\end{enumerate}
+
 	Therefore
 	\begin{eqalign}
 		H^{-1}(c_1, c_2) \begin{dcases}
@@ -603,12 +833,12 @@ We start with some vocabulary:
 			= \varnothing & \text{when $c_2 \neq 0,\ c_1 < -\frac{mk^2}{2c_2^2}$}
 		\end{dcases}
 	\end{eqalign}
-	Notice that the third case happens when $r= c_2^2/mk$, which we excluded previously for reasons of linear independence. Indeed, it represent a separatrix between compact and non-compact trajectories more or less like in the example of the pendulum. We can represent the fibration on the plane as such:
+	Notice that the third case happens when $r= c_2^2/mk$, which we excluded previously for reasons of linear independence (this corresponds to the fiber in Figure~\ref{fig:KeplerLagrangianFiber} shrunk to a circle, this has to be excluded since this fiber haas dimension 1). Indeed, it represent a separatrix between compact and non-compact trajectories more or less like in the example of the pendulum. We can represent the fibration on the plane as such:
 
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-			\node (image) at (0,0) {\includegraphics[width=.85\textwidth]{figures/mar28_fibers.jpg}};
+			\node (image) at (0,0) {\includegraphics[width=.7\textwidth]{figures/Kepler_fibers.jpg}};
 		\end{tikzpicture}
 	\end{figure}
 
@@ -616,7 +846,7 @@ We start with some vocabulary:
 	\begin{eqalign}
 		B = \left\{ (h, p_\theta) \in \R^2 \suchthat h < 0,\ 0 < |p_\theta| < k \sqrt{-m/2h} \right\}
 	\end{eqalign}
-	We can now move on to find the action-angle variables of the system: we start choosing $\gamma_1, \gamma_2$ basis for $H_1(H^{-1}(c_1, c_2))$. As the first one, we choose the circle in the $\theta$ direction parametrized by
+	We can now move on to find the action-angle variables of the system: we start choosing $\gamma_1, \gamma_2$ basis for $H_1(H^{-1}(c_1, c_2))$, i.e. two independent loops in Figure~\ref{fig:KeplerLagrangianFiber}. As the first one, we choose the circle in the $\theta$ direction parametrized by
 	\begin{eqalign}
 		\gamma_1 : S^1 &\longto H^{-1}(c_1, c_2)\\
 		t &\overset{\theta}\longmapsto \begin{dcases}
@@ -628,60 +858,57 @@ We start with some vocabulary:
 	\end{eqalign}
 	The expression for $r$ is computed by imposing the circle to stay inside the fiber $H^{-1}(c_1, c_2)$, once we fixed $p_r=0$ (which is an arbitrary choice).
 
-	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$
-	of the fibers: as seen in Figure~\ref{fig:KeplerCompactFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.7\textwidth]{figures/KeplerCompactFiber.jpeg}
-		\caption{}
-		\label{fig:KeplerCompactFiber}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=.85\textwidth]{figures/MultivaluedFunctionDef.jpeg}
-		\caption{}
-		\label{fig:MultivaluedFunctionDef}
-	\end{figure}
-
-	Although harder to visualize, this should make clear why $\gamma_2$ can be chosen to be formed by two branches $\gamma^\pm_2$ stitched together at the ends:
+	The other loop $\gamma_2$, independent from $\gamma_1$, is naturally sought in the complementary part $(r,p_r)$ of the fibers: as seen in Figure~\ref{fig:KeplerLagrangianFiber}, an $S^1$ is actually present (the disentanglement of the $r$-dynamics from the $\theta$-dynamics is due to the $\theta$-independence of $h$).
+	Figure~\ref{fig:KeplerCompactFiber} shows that the loop $\gamma_2$ can be chosen to be formed by two branches $\gamma^\pm_2$ stitched together:
 	\begin{eqalign}
-		\gamma_2^\pm : (r_+, r_-) &\longto H^{-1}(c_1, c_2)\\
+		\gamma_2^+ : (r_-, r_+) &\longto H^{-1}(c_1, c_2)\\
+		\gamma_2^- : (r_+, r_-) &\longto H^{-1}(c_1, c_2)\\
 		t &\longmapsto \begin{cases}
 			\theta = 0 \comment{(arbitrary choice)} \\
-			r= \pm t\\
-			p_r = \pm \sqrt{2m \left(c_1 - V_{c_2}(\pm t) \right)}\\
+			r= t\\
+			p_r = \pm \sqrt{2m \left(c_1 - V_{c_2}(t) \right)}\\
 			p_\theta = c_2
 		\end{cases}
 	\end{eqalign}
 	The expression for $p_r$ is computed by imposing the circle to stay inside the fiber $H^{-1}(c_1, c_2)$, once we fixed $p_\theta=c_2$.
-	The values $r_+$ and $r_-$ are given by the zeroes of the discriminant of $h_1=c_1$:
+	The values $r_-$ and $r_+$ are given by the zeroes of the discriminant of $h_1=c_1$:
 	\begin{eqalign}
-	 r_\pm = \frac{-k \pm \sqrt{k^2 + \frac{c_1c_2^2}{m}}}{2c_1} \qquad (r_+<r_-).
+	 r_\pm = \frac{-k \pm \sqrt{k^2 + \frac{2c_1c_2^2}{m}}}{2c_1} \qquad (r_-<r_+).
 	\end{eqalign}
 
-	Put together, $\gamma_2$ goes go back and forth between $r_+$ and $r_-$ using the $p_r$ dimension.
+	Put together, $\gamma_2$ goes go back and forth between $r_-$ and $r_+$ using the $p_r$ dimension.
 
-	Then recall $\omega = d(-p_\theta d\theta - p_rdr)$, so, since $p_r=0$ on $\gamma_1$.
+	Then recall $\omega = d(-p_\theta d\theta - p_rdr)$, so, since $p_r=0$ on $\gamma_1$
 	\begin{eqalign}
-		I_1(c_1, c_2) = - \int_{\gamma_1} (p_\theta d\theta + p_r dr) = -2\pi c_2
+		I_1(c_1, c_2) = - \frac{1}{2\pi} \int_{\gamma_1} (p_\theta d\theta + p_r dr) = - \frac{1}{2\pi} \int_0^{2\pi} \gamma_1^*(p_\theta d\theta + p_r dr) = - c_2
 	\end{eqalign}
-	As for computing $I_2$, $\gamma_2$ is obtained by spanning $r$ from $r_+$ to $r_-$ setting $p_r(r)=+g(r)$,
-	and then spanning $r$ from $r_-$ to $r_+$ setting $p_r(r)=-g(r)$, where $g(r)=\sqrt{2m(c_1-V_{c_2}(r))}$, therefore
+	As for computing $I_2$, $\gamma_2$ is obtained by spanning $r$ from $r_-$ to $r_+$ setting $p_r(r)=+g(r)$,
+	and then spanning $r$ from $r_+$ to $r_-$ setting $p_r(r)=-g(r)$, where $g(r)=\sqrt{2m(c_1-V_{c_2}(r))}$, therefore
 	\begin{eqalign}
-		I_2(c_1, c_2) &= - \int_{\gamma_2} p_r dr \\
-			      &= -\left(\int_{r_+}^{r_-} g(t) \,dt + \int_{r_-}^{r_+} (-g(t)) \,dt\right).
+		I_2(c_1, c_2) &= - \frac{1}{2\pi} \int_{\gamma_2} p_r dr = - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} (\gamma_2^+)^*(p_r dr) + \int_{r_+}^{r_-} (\gamma_2^-)^*(p_r dr) \right)\\
+			      &= - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} g(t) \,dt + \int_{r_+}^{r_-} (-g(t)) \,dt\right).
 	\end{eqalign}
-	To compute it, we use residues by interpreting the integral in the complex $t$ plane.
+	To compute it, we use residues by interpreting the integral as a loop integral over the Riemann surface. Consider two spaces $\C_1 \iso \C_2 \iso \C$ as shown in the Figure~\ref{fig:MultivaluedFunctionDef} and glue them together along $a$ and $b$ making these lines coincide as shown in Figure~\ref{fig:Riemann_surface}. 
 
-	In order to do that, we aim to rewrite $I_2$ as a circuit integral and then to deform the integration path using
-	the properties of integrals of holomorphic functions.
-	Let us start by defining the following function
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\textwidth]{figures/MultivaluedFunctionDef.jpeg}
+		\caption{Patches of the Riemann surface.}
+		\label{fig:MultivaluedFunctionDef}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\textwidth]{figures/Riemann_surface.jpg}
+		\caption{Construction of the Riemann surface for $N=6$. We are interested in the case $N=2$.}
+		\label{fig:Riemann_surface}
+	\end{figure}
+
+	In order to do that, we aim to rewrite $I_2$ as a circuit integral and then to deform the integration path using the properties of integrals of holomorphic functions.
+	Let us start by defining the following function, which should be interpreted  the complexification of $g(t)$, with the introduction of a minus sign that gives us the different signs for $\gamma_2^+$ and $\gamma_2^-$ when we perform the loop integration:
 	\begin{eqalign}
-	 \pi_r(t)=\frac{\sqrt{-2mc_1}}{t}\sqrt{(t-r_-)(t-r_+)}.
+	 \pi_r(t) = \frac{1}{t}\sqrt{-2m\left (t^2c_1+tk-\frac{c_2^2}{2m} \right)} = \frac{1}{t}\sqrt{-2mc_1(t-r_+)(t-r_-)}.
 	\end{eqalign}
-	This is clearly a multivalued function on two sheets, I and II, with two branches.
-	It displays only two ramification points in $r_\pm$, therefore we take the cut connecting them as shown in Figure~\ref{fig:MultivaluedFunctionDef}.
+	This is clearly a multivalued function on two sheets, I and II, with two branches. For each value of $t$ the square root in $\pi_r$ gives a value per sheet, with only two ramification points in $r_\pm$. This justify the choice of glueing $\C_1$ and $\C_2$ as previously described. 
 	Finally, it features a simple pole in zero, while being holomorphic elsewhere.
 
 	Next, consider its restrictions to the real axis above and below the cut (respectively b and a sides): one easily gets
@@ -695,7 +922,7 @@ We start with some vocabulary:
 	\end{equation}
 	where $\gamma$ is the path shown in Figure~\ref{fig:IntPath}.
 
-	\begin{figure}
+	\begin{figure}[H]
 	\centering
 	\begin{minipage}{0.45\textwidth}
 	\centering
@@ -715,76 +942,74 @@ We start with some vocabulary:
 	One can continuously deform the integration path $\gamma$ without changing the result
 	(since $\pi_r$ is holomorphic outside zero), so let us shrink $\gamma$ to the segment $[r_+,r_-]$, getting
 	\begin{eqalign}
-		I &=\int_{r_-}^{r_+}ig(x)\,dx+\int_{r_+}^{r_-}(-ig(x))\,dx\\
-		  &=i\,I_2
+		I &=\int_{r_-}^{r_+}ig(x)\,dx+\int_{r_+}^{r_-}(-ig(x))\,dx =2\pi i\,I_2
 	\end{eqalign}
 	so that $I_2$ can actually be rewritten as
 	\begin{equation}
-		I_2(c_1,c_2)= -i\int_\gamma \pi_r(t)\,dt.
+		I_2(c_1,c_2)= \frac{1}{2\pi i}\int_\gamma \pi_r(t)\,dt.
 	\end{equation}
 
 	Now we can use the residue theorem and trade $\gamma$ for the union of the circles $C_0$ and $C_\infty$ around
 	the pole in zero and around $\infty_\C$ as integration path (see Figure~(\ref{fig:ResidueIntPath})).
 	Keeping track of the inherited orientations of the circles, one gets
 	\begin{eqalign}
-	 I_2(c_1,c_2) &= \left(\int_{C_0} \pi_r(t) \,dt + \int_{C_\infty} \pi_r(t) \,dt\right)	\\
-		      &= 2\pi i\left(-\underset{t=0}{\Res}(\pi_r(t))-\underset{t=\infty_\C}{\Res}(\pi_r(t))\right)
+	 I(c_1,c_2) &= \left(\int_{C_0} \pi_r(t) \,dt + \int_{C_\infty} \pi_r(t) \,dt\right)	\\
+		      &=2\pi i\left(-\underset{t=0}{\Res}(\pi_r(t))-\underset{t=\infty_\C}{\Res}(\pi_r(t))\right)
 	\end{eqalign}
 
 	Let us carry out the residue computation:
 	\begin{enumerate}
 	 \item \textbf{In $t=0$.} Let us expand $\pi_r$ in its Laurent series around $t=0$: one finds
-			 \begin{equation}
+			 \begin{eqalign}
 			  \pi_r(t)=\frac{\sqrt{-2mc_1}}{t}\sqrt{r_+r_-}+\mathcal{O}(1),
-			 \end{equation}
+			 \end{eqalign}
 			 so that
 			 \begin{eqalign}
-			  \underset{t=0}{\Res}(\pi_r(t))&=\sqrt{-2mc_1r_+r_-}	\\
-							&=c_2
+			  \underset{t=0}{\Res}(\pi_r(t))&=\sqrt{-2mc_1r_+r_-}	=c_2
 			 \end{eqalign}
 			 where we took $c_2>0$ and we used $r_+r_-=-\frac{c_2^2}{2mc_1}$.
 	 \item \textbf{In $t=\infty_\C$.} Let us expand $\pi_r$ in its Laurent series around $t=\infty_\C$: one finds
-			 \begin{equation}
+			 \begin{eqalign}
 			  \pi_r(t)=\sqrt{-2mc_1}-\frac{\sqrt{-2mc_1}(r_++r_-)}{2t}+\mathcal{O}(t^{-2}),
-			 \end{equation}
+			 \end{eqalign}
 			 therefore
 			 \begin{eqalign}
-			  \underset{t=\infty_\C}{\Res}(\pi_r(t))&=\frac{\sqrt{-2mc_1}}{2}(r_++r_-)	\\
-							&=\frac{mk}{\sqrt{-2mc_1}}.
+			  \underset{t=\infty_\C}{\Res}(\pi_r(t))&=\frac{\sqrt{-2mc_1}}{2}(r_++r_-) =\sqrt{\frac{mk^2}{-2c_1}}.
 			 \end{eqalign}
 	\end{enumerate}
 
 	Finally, one gets
 	\begin{eqalign}
-	 I_2(c_1,c_2)&=-i\left[-2\pi i\Big(c_2+\frac{mk}{\sqrt{-2mc_1}}\Big)\right]	\\
-		     &= -2\pi\left(c_2+\frac{mk}{\sqrt{-2mc_1}}\right).
+	 I_2(c_1,c_2)&=\frac{1}{2\pi i}\left[-2\pi i\Big(c_2+\sqrt{\frac{mk^2}{-2c_1}}\Big)\right]	= -\left(c_2+\sqrt{\frac{mk^2}{-2c_1}}\right).
 	\end{eqalign}
-
 
 	Reinserting back the functions for $c_1$ and $c_2$, one gets the following results:
 	\begin{eqalign}
-		I_1 &= -2\pi p_\theta\\
-		I_2 &= -2\pi p_\theta - 2\pi \sqrt{\frac{mk^2}{-2 \left( \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} - \frac{k}{r} \right)}}
+		I_1 &= -p_\theta\\
+		I_2 &= -p_\theta - \sqrt{\frac{mk^2}{-2 \left( \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} - \frac{k}{r} \right)}} = -p_\theta - \sqrt{\frac{mk^2}{-2h}}
 	\end{eqalign}
 	from which we can obtain the generalized momenta:
 	\begin{eqalign}
-		p_\theta &= -\frac1{2\pi} I_1\\
-		p_r &= \sqrt{2m \left( -2\pi^2\frac{mk^2}{(I_2-I_1)^2} - \frac1{4\pi^2} \frac{I_1^2}{2mr^2} + \frac{k}{r} \right)}
+		p_\theta &= -I_1\\
+		p_r &= \sqrt{2m \left( -\frac{mk^2}{2(I_2-I_1)^2} - \frac{I_1^2}{2mr^2} + \frac{k}{r} \right)}
 	\end{eqalign}
 
 	Call $\phi^\alpha$ the angle variables. Then
 	\begin{eqalign}
-		S(\theta, r, I_1, I_2) = \int_{(\phi_0, r_0)}^{(\theta, r)} (p_\theta d\theta + p_rdr)
+		S(\theta, r, I_1, I_2) = - \int_{(\phi_0, r_0)}^{(\theta, r)} (p_\theta d\theta + p_rdr)
 	\end{eqalign}
 	where the integration path is not relevant as long as it remains inside $H^{-1}(c_1, c_2)$. Then $\phi^\alpha = \partial S / \partial I_\alpha$, but \textbf{it's not possible to compute $S$ analytically}. However, we can still find the canonical transformation to get the action variables. We start by writing $h$ in terms of $I_1$ and $I_2$, an expression not depending on any other variable since $H$ is costant along the fibers. From the relative computation, we get
 	\begin{eqalign}
-		h=h(I_1, I_2) = 2\pi^2 \frac{mk^2}{(I_2 - I_1)^2}
+		h=h(I_1, I_2) = \frac{mk^2}{2(I_2 - I_1)^2}
 	\end{eqalign}
-	We know the equations of motion imply
+	We know the equations of motion imply\footnote{
+	\begin{eqalign}
+		\dot\phi^\alpha = \pder{}{t_1} \phi^\alpha =  \pder{}{t_1} \pder{S}{I_\alpha} = \pder{}{I_\alpha} \pder{S}{t_1} = \pder{h}{I_\alpha}
+	\end{eqalign}}
 	\begin{eqalign}
 		\begin{dcases}
 			\dot I_\alpha = 0 \comment{since it is an integral of motion}\\
-			\dot\phi^\alpha = \pder{h}{I_\alpha} = \pm 4\pi^2 \frac{mk^2}{(I_2-I_1)^3}
+			\dot\phi^\alpha = \pder{h}{I_\alpha} = (-1)^{\alpha+1} \frac{mk^2}{(I_2-I_1)^3}
 		\end{dcases}
 	\end{eqalign}
 	Since $\phi^\alpha$ comes from the linear action on the torus, we can now get the angle coordinates:
@@ -794,15 +1019,21 @@ We start with some vocabulary:
 
 	The information we extracted from the system allows us, for example, to analyze the question of the periodicity of the motion. By computing the slope of the line described by the $\phi^\alpha$ on the toric fiber, we can answer positively that question:
 	\begin{eqalign}
-		\frac{\dot\phi^1}{\dot\phi^2} = -1 \in \Q
+		\frac{\omega^1}{\omega^2} = \frac{\dot\phi^1}{\dot\phi^2} = -1 \in \Q
 	\end{eqalign}
+	where $\omega^\alpha$ is the frequency (recall that we normalized $\phi^\alpha$ with $(2\pi)^{-1}$). This relation tells us that that there is a trajectory wrapped-up around the torus in Figure~\ref{fig:KeplerLagrangianFiber} in such a way that the trajectory is elliptic. This complete our study of the Kepler's problem since the last statement gives us complete information about the possible trajectories.
 \end{example}
 
 \begin{remark}
 	The last part of the previous example shows an approach which works generally -- once we have $I_1, \ldots, I_n$, we can express $h$ in terms of them and then the angle variables as
 	\begin{eqalign}
-		\phi^\alpha = \pder{h(I_1, \ldots, I_n)}{I_\alpha} t + \phi^\alpha_0
+		\phi^\alpha (t) = \pder{h(I_1, \ldots, I_n)}{I_\alpha} t + \phi^\alpha_0.
 	\end{eqalign}
+	Then the motion is periodic if and only if all ratios between frequencies
+	\begin{eqalign}
+		\omega^\alpha := \pder{h(I_1, \ldots, I_n)}{I_\alpha}
+	\end{eqalign}
+	is rational (in general this depends on the value of $I_1, \ldots, I_n$, so on the torus containing the curve in $M$). 
 \end{remark}
 
 \end{document}

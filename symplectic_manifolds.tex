@@ -4,7 +4,7 @@
 \chapter{Symplectic geometry}
 \section{Symplectic vector spaces}
 \begin{definition}
-	A \textbf{symplectic form} is a non-degenerate, skew-symmetric bilinear form. A vector space $V$ equipped with a symplectic form on $V$ is called a \textbf{symplectic vector field}.
+	A \textbf{symplectic form} is a non-degenerate, skew-symmetric bilinear form. A vector space $V$ equipped with a symplectic form on $V$ is called a \textbf{symplectic vector space}.
 \end{definition}
 
 Notice the analogy to an inner-product space, where skew-symmetry of the form is replaced by simple symmetry. Indeed, some results generalize as they depend only on the non-degeneracy of the bilinear form, for instance partial application of the form $\Omega$ fixes a canonical isomorphism of $V$ and its dual:
@@ -74,10 +74,10 @@ Corollary~\ref{cor:can_form} prescribes we can always find a ``nice'' basis for 
 Even if, as noted before, the choice of such a basis is far from unique, we'll refer to it as a \emph{canonical} basis.
 
 \begin{definition}
-	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both, it's named \textbf{Lagrangian}.
+	A subspace $W$ of a symplectic vector space $(V, \Omega)$ is said to be \textbf{symplectic} as well if $(W, \Omega\vert_W)$ is a symplectic vector space. If instead $\Omega\vert_W = 0$, the subspace is called \textbf{isotropic} and its $\Omega$-orthogonal is then called \textbf{coisotropic}. When a subspace is both isotropic and coisotropic, it's named \textbf{Lagrangian}. In particular, in the finite-dimensional case a Lagrangian subspace of a vector space $V$ is an isotropic subspace whose dimension is half that of $V$.
 \end{definition}
 
-Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. 
+Theorem~\ref{th:decomp_th} says that any finite dimensional $\R$-vector space endowed with a skew-symmetric bilinear map $\Omega$ can be decomposed into an isotropic subspace and a symplectic subspace. In particular the decomposition~\eqref{eq:symp_decomp} is a decomposition of $V$ into an isotropic subspace $U$ and $n$ minimal symplectic subspaces of the form $\langle e_i, f_i \rangle$. Moreover if $\Omega$ is non-degenerate (i.e. $U=\{ 0 \}$) both $\langle e_1, \ldots, e_n\rangle$ and $\langle f_1, \ldots, f_n\rangle$ are Lagrangian subspaces.
 
 \begin{definition}
 	A \textbf{symplectomorphism} is a linear map $\phi : (V, \Omega) \to (V', \Omega')$ between symplectic vector spaces $(V, \Omega)$ and $(V', \Omega')$ such that
@@ -161,7 +161,7 @@ Other obstructions are given by topology. For example
 \end{proof}
 
 \begin{remark}
-	Notice \textbf{the proof can be generalized to any compact manifold with vanishing second cohomology}. Moreover, it shows a symplectic form cannot be exact on a compact manifold.
+	Notice the proof can be generalized: \textbf{any compact manifold with vanishing second cohomology does not admit a symplectic structure}. Moreover, it shows a symplectic form cannot be exact on a compact manifold.
 \end{remark}
 
 \begin{definition}
@@ -194,24 +194,28 @@ Other obstructions are given by topology. For example
 \subsection[The canonical symplectic structure on the cotangent bundle]{The canonical symplectic structure\\on the cotangent bundle}
 The chief example of symplectic manifolds are cotangent bundles of smooth manifolds. In fact, there's a natural/canonical way to equip $M= T^*X$ with a symplectic structure. Notice that $\dim T^*X = 2\dim X$ so that, in principle, we can expect to assign a symplectic structure to arbitrary cotangent bundles. Clearly, as we've seen, dimensionality isn't the only obstruction so we need to exhibit a symplectic form.
 
-The construction of the symplectic structure exploits a particular, naturally defined, $1$-form on $T^*X$. The symplectic form will then be it's exterior derivative.
+The construction of the symplectic structure exploits a particular, naturally defined, $1$-form on $T^*X$. The symplectic form will then be its exterior derivative.
 
 \begin{construction}
-	Let $\pi : T^*X \to X$ be the bundle projection. Notice that a differential $1$-form on $T^*X$ is a function $T^*X \to T^*T^*X$ (with the additional condition of being compatible with the fibers, more on this later) which is exactly the type of function $d\pi^*$ is. If we unpack its definition from Construction~\ref{const:global_diff_and_dual}, we get
+	Let $\pi : T^*X \to X$ be the bundle projection. Notice that a differential $1$-form on $T^*X$ is a function $T^*X \to T^*T^*X$ (with the additional condition of being compatible with the fibers, more on this later) which is exactly the type of function $\pi^*$ is, meant as pointwise function as in Construction~\ref{const:dual_diff_at_P}:
 	\begin{eqalign}
-		d\pi^* : T^*X &\longto T^*T^*X\\
+		\pi^* : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto (\pi^{-1}(x),\, \xi \circ d\pi_{\pi^{-1}(x)})
 	\end{eqalign}
-	So the definition fails. We already knew this: we remarked that $dF^*$ is well-defined if and only if $F$ is a diffeomorphism, which is certainly not the case for $\pi$. On the other hand, we can try to fix this pathology by finding another way to choose a ``canonical'' element from $\pi^{-1}(x)$ in the mapping expression of $d\pi^*(x, \xi)$. Indeed, since $\pi$ is surjective, that's the only obstruction! And we clearly see that those $\pi^{-1}(x)$ can be unambiguously resolved by simply using the argument of the sought function. So we define the mapping
+	Notice that the definition fails: we remarked that $F^* : T^*_xN \to T^*_{F^{-1}(x)}M$ is well-defined if and only if $F: M \to N$ is a diffeomorphism, which is certainly not the case for $\pi$. We can try to fix this pathology by taking the pull-back\footnote{Which is defined without requiring the invertibility of $F$.} $\pi^*$ of $\xi$ where $\xi$ is seen as an element of $\Omega^1(X)$ and then evaluating the result on $(x, \xi)\in T^*X$:\footnote{Notice that $\xi\in\Omega^1(X)$ should be defined everywhere to take its pull-back, nevertheless our definition works since evaluating our result only in $(x, \xi)$ we only need to know the value of $\xi$ in $x$. We can equivalently define $\xi$ everywhere by requiring that it's constant.}
+	\begin{eqalign}
+		\alpha(x, \xi) = \pi^*_{(x, \xi)} \xi.
+	\end{eqalign}
+	i.e.
 	\begin{eqalign}
 		\alpha : T^*X &\longto T^*T^*X\\
 		(x, \xi) &\longmapsto ((x, \xi), \xi \circ d\pi_{(x, \xi)})
 	\end{eqalign}
-	or, using the fiberwise duals (Construction~\ref{const:dual_diff_at_P}):
+	The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.\footnote{Since $\mu : X\to T^*X$ then $\mu^* : \Omega^1(T^*X)\to\Omega^1(X)$ and $\mu^*\alpha \in \Omega^1(X)$ hence the statement makes sense. Then:
 	\begin{eqalign}
-		\alpha(x, \xi) = d\pi^*_{(x, \xi)} \xi.
-	\end{eqalign}
-	This is clearly well-defined as the domain of $d\pi^*_{(x,\xi)}$ is precisely $T^*_{(x,\xi)} T^*X$. The $1$-form we just defined is called \textbf{Liouville form} or \textbf{tautological one-form}.
+		\mu^*\alpha : x \to\, &\alpha_{\mu(x)} \circ d\mu_x = \alpha_{x, \mu_x} \circ d\mu_x = \mu_x \circ d\pi_{(x, \mu_x)} \circ d\mu_x =\\
+		&= \mu_x \circ d(\pi \circ \mu)_x = \mu_x \circ d(\id_{X})_x = \mu_x
+	\end{eqalign}}
 \end{construction}
 
 The name \emph{tautological} comes from the following property: for every $\mu \in \Omega^1(X)$,
@@ -259,14 +263,14 @@ whose differential, expressed as its Jacobian matrix, is then
 \end{eqalign}
 Then
 \begin{eqalign}
-	\alpha(x, \xi) &= d\pi^*_{(x, \xi)}\xi = \xi \circ d\pi_{(x, \xi)} = \xi_j \cancelto{\delta^j_k}{\pder{\pi^j}{x^k}} dx^k\vert_{(x,\xi)} + \xi_j \cancelto{0}{\pder{\pi^j}{\xi^k}} d\xi^k\vert_{(x,\xi)} = \xi_k dx^k\vert_{(x,\xi)}
+	\alpha(x, \xi) &= \pi^*_{(x, \xi)}\xi = \xi \circ d\pi_{(x, \xi)} = \xi_j \cancelto{\delta^j_k}{\pder{\pi^j}{x^k}} dx^k\vert_{(x,\xi)} + \xi_j \cancelto{0}{\pder{\pi^j}{\xi^k}} d\xi^k\vert_{(x,\xi)} = \xi_k dx^k\vert_{(x,\xi)}
 \end{eqalign}
 
 The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 
 \begin{theorem}
 \label{th:canonicity_of_taut}
-	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}$ the dual morphism induced by $F^{-1}$. Then $\mathcal F^* \beta = \alpha$.
+	Let $F : X_1 \isoto X_2$ be a diffeomorphism and $\alpha, \beta$ the Liouville forms respectively on $X_1$ and $X_2$. Call $\mathcal{F}=(F^{-1})^* : T^*X_1 \to T^*X_2$ the morphism induced by $F^{-1}$ as in Construction~\ref{const:dual_diff_at_P}. Then $\mathcal F^* \beta = \alpha$, where $\mathcal F^*: \Omega^1(T^*X_2) \to \Omega^1(T^*X_1)$ mean the pullback map.
 	\begin{diagram}
 	\label{diag:liouville}
 		T^*X_1 \arrow{d}{\pi_1} \arrow{r}{\mathcal F} \& T^*X_2 \arrow{d}{\pi_2}\\
@@ -274,18 +278,17 @@ The ``canonicity'' of $\alpha$ is also witnessed by the following fact:
 	\end{diagram}
 \end{theorem}
 \begin{proof}
-	For each $(x, \xi) \in T^*X_2$,
+	For each $(x, \xi) \in T^*X_1$,
 	\begin{eqalign}
-		\mathcal{F}(x, \xi) = (F(x), d(F^{-1})^*_{(x,\xi)}\xi),
+		\mathcal{F}(x, \xi) = (F(x), \xi \circ d(F^{-1})_{F(x)}),
 	\end{eqalign}
 	so that
 	\begin{eqalign}
-		(\mathcal F^* \beta)_{(x, \xi)} &= \beta_{\mathcal{F}(x, \xi)} \circ d{\mathcal F}_{(x, \xi)}\\
-		&=  d(F^{-1})^*_{(x,\xi)} \xi \circ d(\pi_2)_{\mathcal F(x,\xi)} \circ d(d(F^{-1})^*)_{(x, \xi)}\\
-		&= \xi \circ d(F^{-1})_{(x,\xi)} \circ d(\pi_2 \circ d(F^{-1})^*)_{(x, \xi)} \comment{by chain rule}\\
-		&= \xi \circ d(F^{-1})_{(x,\xi)} \circ d(F \circ \pi_1)_{(x, \xi)} \comment{by Diagram~\ref{diag:liouville}}\\
-		&= \xi \circ d(\pi_1)_{(x, \xi)}\\
-		&= d(\pi_1)^*_{(x, \xi)} \xi = \alpha_{(x,\xi)};
+		(\mathcal F^* \beta)_{(x, \xi)} &= \beta_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
+		&= \xi \circ d(F^{-1})_{F(x)} \circ d(\pi_2)_{\mathcal F(x,\xi)} \circ d\mathcal F_{(x, \xi)}\\
+		&= \xi \circ d(F^{-1} \circ \pi_2 \circ \mathcal F)_{(x, \xi)} \comment{by chain rule}\\
+		&= \xi \circ d(\pi_1)_{(x,\xi)} \comment{by Diagram~\ref{diag:liouville}}\\
+		&= (\pi_1)^*_{(x, \xi)} \xi = \alpha_{(x,\xi)};
 	\end{eqalign}
 	which amounts to the thesis.
 \end{proof}
@@ -303,11 +306,12 @@ With the same coordinates we used before, $\omega$ is
 \begin{eqalign}
 	\omega &= -d\alpha\\
 	&= - d(\xi_j dx^j)\\
-	&= - d\xi_j \wedge dx^j - \xi_j \wedge \cancelto{0}{d^2x^j} = \sum_{j=1}^n d\xi^j \wedge dx^j
+	&= - \cancelto{0}{\frac{\partial \xi_j}{\partial x^i}} dx^i \wedge dx^j - \cancelto{\delta^i_j}{\frac{\partial \xi_j}{\partial \xi_i}} d\xi_i \wedge dx^j\\
+	&= dx^i \wedge d\xi_i
 \end{eqalign}
 
-\section{Symplectomorphisms and Lagrangian manifolds}
-Theorem~\ref{th:canonicity_of_taut} says the pullback of $(f^{-1})^* : T^*X_1 \to T^*X_2$ is a symplectomorphism. In particular, when $X=X_1=X_2$, there's a natural morphism of groups,
+\section{Symplectomorphisms and Lagrangian submanifolds}
+Theorem~\ref{th:canonicity_of_taut} says the pullback $(f^{-1})^* : T^*X_1 \to T^*X_2$ is a symplectomorphism. In particular, when $X=X_1=X_2$, there's a natural morphism of groups,
 \begin{diagram}
 	\Diff(X) \arrow[hookrightarrow]{r} \& \Symp(T^*X, \omega),
 \end{diagram}
@@ -332,25 +336,25 @@ These submanifolds are closely related to symplectomorphisms. A first hint comes
 	Let $M = T^*X$ for a smooth manifold $X$, along with its canonical symplectic structure. Prove the graph of $\alpha \in \Omega^1(X)$ defines a Lagrangian submanifold of $M$ if and only if $\alpha$ is closed, that is $d\alpha =0$.
 \end{exercise}
 \begin{proof}
-	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. For the isotropy condition, a quick computation gives
+	Indeed, let $\Gamma$ be the graph of $\alpha$. Then $\Gamma$ is trivally an embedded submanifold of $M$ of dimension $\frac12 \dim M$. Fix now coordinates as in the construction of Liouville's form. If we consider the inclusion $\iota : X \iso \Gamma_\alpha X \into M$ whose differential respect to $X$ and $M$ local coordinates is 
 	\begin{eqalign}
 		d\iota = \begin{pmatrix}
-			\delta^i_j & 0\\
-			\partial_j \alpha_i & 0
+			\delta^i_j \\
+			\partial_j \alpha^i
 		\end{pmatrix}
 	\end{eqalign}
 	from which
 	\begin{eqalign}
-		\iota^* \omega &= \sum_{j=1}^n \iota^* dx^j \wedge \iota^* d\xi^j = \sum_{j=1}^n \delta^i_j dx^j \wedge (\partial_j \alpha_i) dx^j = -d\alpha
+		\iota^* \omega &= (dx^i \wedge d\xi_i) \circ d\iota = dx^i \wedge (\partial_j \alpha_i) dx^j = - (\partial_j \alpha_i) dx^j \wedge dx^i = - d (\alpha_i dx^i) = - d\alpha
 	\end{eqalign}
-	giving the claim.
+	then the claim follows immediately.
 \end{proof}
 
 Consider now two symplectic manifolds $(M_1,\omega_1)$ and $(M_2, \omega_2)$, with the same dimension $\dim M_1 = \dim M_2$. We can endow $M_1 \times M_2$ with two different symplectic structures
 \begin{eqalign}
 	\omega_\pm = \pr_1^*\omega_1 \pm \pr_2^*\omega_2
 \end{eqalign}
-where $\pr_.$ denote a projection map.
+where $\pr_\bullet$ denote a projection map onto $M_\bullet$.
 
 \begin{theorem}
 \label{th:char_of_symplectomorphism}
@@ -365,11 +369,11 @@ where $\pr_.$ denote a projection map.
 	\begin{eqalign}
 		\dim \Gamma_\phi = \dim M_1 = \frac12 \dim (M_1 \times M_2).
 	\end{eqalign}
-	Moreover, We have
+	Moreover, we have
 	\begin{eqalign}
 		\iota^*\omega_- = \iota^*\pr_1^* \omega_1 - \iota^*\pr_2^* \omega_2 = (\pr_1 \circ \iota)^* \omega_1 - (\pr_2 \circ \iota)^* \omega_2
 	\end{eqalign}
-	Since $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
+	Since\footnote{With abuse of notation, we call $\iota$ both the inclusions $\Gamma_\phi \into M_1 \times M_2$ and $M_1 \into M_1 \times M_2$ where in the second case the isomorphism $M_1 \iso \Gamma_\phi$ is used. } $\iota$ sends $p \mapsto (p,\phi(p))$, composing with the projection on the first component yields $\id_{M_1}$, and composing with the other projection yields $\phi$. Thus
 	\begin{eqalign}
 		\iota^*\omega_- = \id^*\omega_1 - \phi^*\omega_2
 	\end{eqalign}
@@ -384,7 +388,8 @@ where $\pr_.$ denote a projection map.
 	The theorem \emph{does not} state any Lagrangian submanifold is the graph of a symplectomorphism: it is assumed, a fortiori, that $\phi$ is a diffeomorphism.
 \end{remark}
 
-This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent_bundles}, gives us a systematic way to produce symplectomorphisms of a cotangent space.
+\subsection{Symplectomorphisms $T^*X_1 \to T^*X_2$ and generating functions}
+Theorem \ref{th:char_of_symplectomorphism}, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent_bundles}, gives us a systematic way to produce symplectomorphisms of a cotangent space starting from an exact form $df$.
 
 \begin{construction}
 	In the case $M_1 = T^*X_1$ and $M_2 = T^*X_2$, along with their canonical symplectic structure, then
@@ -405,6 +410,7 @@ This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent
 		\item Twist the graph to $\tilde\Gamma_{df} = \{(x,y,d_xf,-d_yf) \suchthat (x,y) \in X_1 \times X_2\}$ (because the only difference between $\omega_+$ and $\omega_-$ is exactly this twist on the second factor) to get a Lagrangian submanifold with respect to $\omega_-$.
 		\item For $\tilde\Gamma_{df}$ to be the graph of a diffeomorphism $\phi : T^*X_1 \isoto T^*X_2$, it needs to satisfy a local condition: it must not be ``vertical'' at any point on the $T^*X_1$-$T^*X_2$ plane, that is, the projection $\pr_1 : \tilde\Gamma_{df} \to T^*X_1$ must have no critical points. This means
 		\begin{eqalign}
+		\label{eq:canonical_transf_from_gen_funcs_invertibility}
 			\det \left( \spder{f}{y^j}{x^i} \right) \neq 0
 		\end{eqalign}
 		If this is satisfied, then $\phi$ sends the first and third component of a point in $\tilde\Gamma_{df}$ to the second and fourth components:
@@ -419,6 +425,7 @@ This result, combined with Exercise~\ref{ex:lagrangian_submanifolds_of_cotangent
 				\eta_i = -\bigpder{f}{y^i}(x,y)
 			\end{cases}
 		\end{eqalign}
+		in such a way that $\tilde\Gamma_{df} = \{(x,y,\xi (x,y),\eta (x,y)) \suchthat (x,y) \in X_1 \times X_2\} = \Gamma_\phi$. Condition eq.~\eqref{eq:canonical_transf_from_gen_funcs_invertibility} ensures the invertibility of eq.~\eqref{eq:canonical_transf_from_gen_funcs} and then the well-definiteness of $\phi$. 
 	\end{enumerate}
 \end{construction}
 
@@ -436,9 +443,11 @@ We'll now pursue a local description of symplectic manifolds. For this section, 
 	defined pointwise on $X$.
 \end{definition}
 
+Any section $\sigma: X \to NX$ of $NX$ can be interpreted as a deformation of $X$. Then, the zero section $\sigma_0: x \mapsto 0$ is $X$ itself, i.e. $\iota_0 : X \into NX$ with $\iota_0 (X) = \sigma_0 (X)$.
+
 \begin{definition}
 	A \textbf{tubular neighbourhood} of $X$ is an open neighbourhood $U$ of $\iota(X)$ in $M$ diffeomorphic to a convex\footnotemark\ neighbourhood $U_0 \subseteq NX$ of the zero section of the normal bundle.
-	\footnotetext{In a vector space, a subset is convex if any convex combination of elements of the subset is still in the subset.}
+	\footnotetext{In a vector space, a subset is convex if any convex combination of elements of the subset is still in the subset. In a vector bundle a neighbourhood is convex if its intersection with each fiber is convex.}
 \end{definition}
 
 The convexity condition means that $U_0 \cap N_xX$ has to be convex as a subset of the vector space $N_x X$.
@@ -450,8 +459,9 @@ Hence the situation is the following:
 \end{diagram}
 where $\pi_0$ is the bundle morphism, $\phi$ is the diffeomorphism we ask for in the definition and $\pi$ arises from commutativity of the diagram.
 
-\paragraph{Topological properties of tubular neighbourhoods.} The choice of properties of a tubular neighbourhood is tuned as to make it a very useful tool to probe the de Rham cohomology of $X$. From \ref{par:ind_maps_on_de_rham} we know two spaces have the same cohomology when they are homotopically equivalent. Indeed, notice $\pi\iota = \id_X$ already. On the other hand we clearly don't have $\iota\pi = \id_U$. However, $\iota\pi$ is still homotopic to the identity, thanks to the convexity condition on $U_0$. In fact $U_0$ is just a fattening of $X$ and diffeomorphic to $U$, so that $U$ contracts to $X$ as well. In this way $\id \homtop \iota\pi$. Then $(\iota\pi)^* = \pi^*\iota^* = \id_U^* : H^k_{dR}(U) \to H^k_{dR}(U)$. Hence, \textbf{$\pi^*$ is an isomorphism of de Rham cohomology groups}, which means
+\paragraph{Topological properties of tubular neighbourhoods.} The choice of properties of a tubular neighbourhood is tuned as to make it a very useful tool to probe the de Rham cohomology of $X$. From \ref{par:ind_maps_on_de_rham} we know two spaces have the same cohomology when they are homotopically equivalent. Indeed, notice $\pi \circ \iota = \id_X$ already. On the other hand we clearly don't have $\iota \circ \pi = \id_U$. However, $\iota \circ \pi$ is still homotopic to the identity\footnote{Using the convexity, we can define an interpolating map $f_t : U_0 \to U_0$, $(x,v) \mapsto (x,tv)$, such that $f_0 = \iota_0 \circ \pi_0$ and $f_1 = \id_{U_0}$. Then combining $f_t$ with the diffeomorphism $\phi$ we obtain that $\iota \circ \pi$ is homotopic to $\id_U$.}, thanks to the convexity condition on $U_0$. In fact $U_0$ is just a fattening of $X$ and diffeomorphic to $U$, so that $U$ contracts to $X$ as well. In this way $\id_U \homtop \iota \circ \pi$. Then $(\iota \circ \pi)^* = \pi^* \circ \iota^* = \id_U^* : H^k_{dR}(U) \to H^k_{dR}(U)$ is the identity. Hence, \textbf{$\pi^*$ is an isomorphism of de Rham cohomology groups}, which means
 \begin{eqalign}
+\label{eq:tub_nbh_inherit_cohom}
 	H^k_{dR}(U) \iso H^k_{dR}(X).
 \end{eqalign}
 
@@ -461,45 +471,68 @@ where $\pi_0$ is the bundle morphism, $\phi$ is the diffeomorphism we ask for in
 	Let $(M, \omega_t = (1-t)\omega_0+t\omega_1)$ be a symplectic \textbf{compact} manifold for each $t \in [0,1]$, and $\overline{\omega_0} = \overline{\omega_1} \in H^2_{dR}(M)$. Then there exists $\rho: M \times \R \to M$ such that $\rho_t : (M, \omega_t) \isoto (M,\omega_0)$ is a symplectomorphism for all $t \in [0,1]$.
 \end{theorem}
 
-The idea is that if you have a ``flowing'' symplectic structure, you can compensate by a ``flowing'' change of coordinates. This is given by a one-parameter group of diffeomorphisms, hence by the flow of a vector field on $M$. In this vein, the theorem is basically equivalent to the following:
+In other words this theorem states that we cannot deform the symplectic structure of a compact manifold without changing its cohomology class. The idea is that if you have a ``flowing'' symplectic structure, you can compensate by a ``flowing'' change of coordinates. This is given by a one-parameter group of diffeomorphisms, hence by the flow of a vector field on $M$. In this vein, the theorem is basically equivalent to the following:
 
 \begin{lemma}[Moser's trick]
 	Under the assumptions of Moser's First Theorem, there exists $V_t \in \fields(M)$ depending smoothly on $t$ and such that
 	\begin{eqalign}
+	\label{eq:Moser_trick}
 		\Lie{V_t}\omega_t+\der{\omega_t}{t}=0.
 	\end{eqalign}
 \end{lemma}
 \begin{proof}
-	Notice that $\der{}{t} \omega_t = \omega_1-\omega_0$, and since $\omega_1$ and $\omega_0$ are cohomologous, their difference is cohomologous to $\overline 0 \in H^2_{dR}(M)$. This means that $\omega_1 -\omega_0 = d\mu$ for some $\mu \in \Omega^1(M)$. Moreover, by Cartan's magic formula
+	Notice that $\der{}{t} \omega_t = \omega_1-\omega_0$, and since $\omega_1$ and $\omega_0$ are cohomologous, their difference is cohomologous to $\overline 0 \in H^2_{dR}(M)$. This means that $\omega_1 -\omega_0 = d\mu$ for some $\mu \in \Omega^1(M)$. Moreover, by Cartan's magic formula\footnotemark
 	\begin{eqalign}
 		\Lie{V_t}\omega_t = d \ipr{V_t}\omega_t + \cancel{\ipr{V_t}d\omega_t}.
 	\end{eqalign}
-	Hence the equation we want to prove has been reduced to
+	since $\omega_t$ is closed. Hence the equation we want to prove has been reduced to
 	\begin{eqalign}
 		d(\ipr{V_t}\omega_t + \mu) = 0
 	\end{eqalign}
-	which of course holds in particular if $\ipr{V_t}\omega_t = -\mu$ (\textbf{Moser's equation}), i.e. when
+	which of course holds in particular if $\ipr{V_t}\omega_t = -\mu$ (\textbf{Moser's equation}). Since form $\omega_t$ is non-degenerate, it induces an isomorphism $\omega_t^\# : TM \to T^*M$, $V \mapsto \iota_V\omega_t$, and the Moser's equation can be rewritten as $\omega_t^\#(V_t) = - \mu$. Then its unique solution is given by
 	\begin{eqalign}
-		V_t = -\omega_t^{-1}(\mu).
+		V_t = (\omega_t^\#)^{-1}(-\mu).
 	\end{eqalign}
 \end{proof}
+\footnotetext{We have to be careful about the meaning of the parameter $t$. Given a $t$-dependent vector field $V_t$, we define its $t$-dependent flow $\rho_{t_1,t_2} : M \to M$ by
+\begin{eqalign}
+	\der{}{\epsilon} \rho_{t, t+\epsilon}(p)\vert_{\epsilon=0} = V_t (p)
+\end{eqalign}
+We have $\rho_{t_1, t_2} \circ \rho_{t_0, t_1} = \rho_{t_0, t_2}$ and $\rho_{t,t} = \id$. If $\rho_t := \rho_{0,t}$ then $\rho_{t_1, t_2} = \rho_{t_2} \circ \rho_{t_1}^{-1}$ and 
+\begin{eqalign}
+\label{eq:ODE_flow_non_autonomous}
+	V_t(p) = \der{}{\epsilon} \rho_{t+\epsilon} \circ \rho_t^{-1}(p)\vert_{\epsilon=0}.
+\end{eqalign} 
+It's like an usual flow in which vectors, however, change with time (\emph{non-autonomous flow}), so at time $t$ the curve has tangent vector $V_t$. For comparison, this is the equation in the \emph{autonomous} (i.e. the field doesn't vary with time) case:
+\begin{eqalign}
+\label{eq:ODE_flow_autonomous}
+	V(p) = \der{}{\epsilon} \rho_\epsilon (p) \vert_{\epsilon=0} .
+\end{eqalign}
+Notice that in our case $\rho_t : M \to M$ satisfies the ODE eq.~\eqref{eq:ODE_flow_non_autonomous}, which is slightly more complicated than the usual eq.~\eqref{eq:ODE_flow_autonomous} because in the first case there is no group flow: $\rho_{t+s} \neq \rho_t \circ \rho_s$. Nevertheless eq.~\eqref{eq:ODE_flow_non_autonomous} is an ODE with local solution (and two local solutions coincide in the intersection of their domains). Compactness of $M$ is used to have existence over $t \in [0, 1]$. In the non-compact case the flow might run off the edge of $M$ before reaching $t=1$. 
+
+We define Lie derivative along the $t$-dependent vector field $V_t$ as
+\begin{eqalign}
+	\Lie{V_t}\alpha = \der{}{\epsilon}\rho_{t,t+\epsilon}^*\alpha\vert_{\epsilon=0} = (\rho_t^*)^{-1} \der{}{\epsilon}(\rho_{t+\epsilon}^*\alpha)\vert_{\epsilon=0}
+\end{eqalign}
+i.e.
+\begin{eqalign}
+\label{eq:t_depend_Lie_derivative}
+	\rho_t^*(\Lie{V_t}\alpha) = \der{}{\epsilon}(\rho_{t+\epsilon}^*\alpha)\vert_{\epsilon=0} = \der{}{t}\rho_t^*\alpha
+\end{eqalign}
+One can prove that Cartan's magic formula holds also in this case.} 
 
 \begin{proof}[Proof of Moser's Theorem (\ref{th:first_moser_th})]
-	Let $\rho_t$ be a flow as claimed. Then if $V_t$ is the vector field associated to it (i.e. its derivative\footnotemark), we can write
+	Let $V_t$ be a vector field satisfying eq.~\eqref{eq:Moser_trick}. Using compactness of $M$ we can obtain the flow $\rho_t$ associated to $V_t$, i.e. the solution of eq.~\eqref{eq:ODE_flow_non_autonomous}. We can write, introducing a $t$-dependence in eq.~\eqref{eq:t_depend_Lie_derivative}, 
 	\begin{eqalign}
 	\label{eq:der_of_flowing_symp}
 		\der{}{t}(\rho_t^*\omega_t) = \rho_t^*\left(\Lie{V_t}\omega_t + \der{\omega_t}{t}\right).
 	\end{eqalign}
-	Then we see that, as $M$ is compact, we could reverse the argument and get all of $\rho_t$ by integration of $V_t$, which is given to us by Moser's trick.
+	and using eq.~\eqref{eq:Moser_trick} we obtain
+	\begin{eqalign}
+		\der{}{t}(\rho_t^*\omega_t)=0
+	\end{eqalign}
+	i.e. $\rho_t^*\omega_t = \rho_0^*\omega_0 = \omega_0$. 
 \end{proof}
-\footnotetext{We have to be careful about the meaning of the parameter $t$! There are two different ``times'' to consider in a similar flow, indeed, $\rho_t$ satisfies the following ODE:
-\begin{eqalign}
-	V_t = \der{}{s} (\rho_s\rho_t^{-1})\vert_{s=t}
-\end{eqalign}
-It's like an usual flow in which vectors, however, change with time (\emph{non-autonomous flow}), so at time $t$ the curve has tangent vector $V_t$. For comparison, this is the equation in the \emph{autonomous} (i.e. the field doesn't vary with time) case:
-\begin{eqalign}
-	V = \der{}{s} \rho_s \vert_{s=0}.
-\end{eqalign}}
 
 \begin{remark}
 	Moser's Theorem can be proved also in the more general case where $\omega_t$ is a continuous curve inside a single cohomology class, that is
@@ -514,7 +547,7 @@ It's like an usual flow in which vectors, however, change with time (\emph{non-a
 	\begin{eqalign}
 		\omega_0\vert_p = \omega_1\vert_p, \quad \forall p \in X
 	\end{eqalign}
-	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: U_0 \isoto U_1$, which on $X$ restricts to the identity, such that
+	Then there are neighbourhoods $U_0$ and $U_1$ of $\iota(X)$ and a symplectomorphism $\phi: (U_0, \omega_0) \isoto (U_1, \omega_1)$, which on $X$ restricts to the identity, such that the following diagram commutes:
 	\begin{diagram}
 		(U_0, \omega_0) \arrow{rr}{\phi} \& \& (U_1, \omega_1)\\
 		\& X \arrow[hookrightarrow]{ul}{\iota_0} \arrow[hookrightarrow, swap]{ur}{\iota_1}
@@ -549,5 +582,16 @@ It's like an usual flow in which vectors, however, change with time (\emph{non-a
 \begin{remark}
 	What can we say about the different symplectic structures a manifold admits? Are they all symplectomorphic? A different yet related question is: \textbf{are there some invariants which can discern between non-equivalent symplectic structures?} Gromov proved a result stating that $\Symp(M, \omega)$ (the group of symplectomorphisms of $(M, \omega)$) is either dense or closed in $\Diff(M)$ (\emph{Gromov's alternative}). In the first case, it would have meant that symplectic topology is undistinguishable from differential topology, yet it was later proved that the second case holds, so that there is interest in studying the symplectic structures of a manifold. However, this no easy task. In fact, Darboux's theorem tells us \textbf{symplectic structures have no local invariants}: to distinguish them you have to look at global data, which is harder to work with. For example, we'll immediately see in the next chapter that a very intuitive cohomology theory fails to classify symplectic structures (while its later extension to Poisson structures partially succeed to do this). An algebraic invariant which accomplish this is called \textbf{Floer cohomology}, and requires more machinery than what we'll see here.
 \end{remark}
+
+\begin{theorem}[Weinstein]
+	Let $(M, \omega)$ be a symplectic manifold, $X$ a compact Lagrangian submanifold, $\omega_0$ the canonical symplectic form on $T^*X$, $\iota_0 : X \into T^*X$ the zero section and $\iota : X \into M$ the closed embedding of $X$ as a submanifold. Then exists $U_0 \supseteq \iota_0(X)$, $U \supseteq \iota(x)$ and a diffeomorphism $\phi : U_0 \isoto U$ such that the folowing diagram commutes:
+	\begin{diagram}
+		(U_0, \omega_0) \arrow{rr}{\phi} \& \& (U, \omega)\\
+		\& X \arrow[hookrightarrow]{ul}{\iota_0} \arrow[hookrightarrow, swap]{ur}{\iota}
+	\end{diagram}
+\end{theorem}
+\begin{proof}
+	The form $\omega$ induces a nondegenerate pairing $T_xM/T_xX\times T_xX \to \R$, $(\overline v, u) \mapsto \omega\vert_x(v,u)$ which gives an identification $NX \iso T^*X$ when $X$ is Lagrangian. Then the claim is proved by applying Moser's Relative Theorem to a tubular neighbourhood of $\iota (X)$ identified with a tubular neighbourhood of $X$ in $NX \iso T^*X$, indeed $\omega\vert_{\iota(X)} = \omega_0\vert_{\iota_0(x)}=0$.
+\end{proof}
 
 \end{document}
