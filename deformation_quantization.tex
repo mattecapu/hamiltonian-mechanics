@@ -31,7 +31,7 @@ This is summarized by the equation
 \end{eqalign}
 In this sense, the mathematical setup is remindful of the mechanics we've seen so far: given an observable, we produce dynamics, even tough now everything is linear.
 
-Analogously to what happened to the Hamiltonian, observables become operators too. However, \textbf{in QM the value of an observable $\obs \in \lin(\hilbert)$ on a state $v \in \hilbert$ is generally not uniquely defined}, as each measurement can give a different outcome, altough you can still speak of its \textbf{statistical expectation value} given by
+Analogously to what happened to the Hamiltonian, observables become operators too. However, \textbf{in QM the value of an observable $\obs \in \lin(\hilbert)$ on a state $v \in \hilbert$ is generally not uniquely defined}, as each measurement can give a different outcome, although you can still speak of its \textbf{statistical expectation value} given by
 \begin{eqalign}
 	\expect{\obs}{v} := \braket{v}{\obs v},
 \end{eqalign}
@@ -62,13 +62,14 @@ The action on $\obs$ by $U$ looks like the adjoint action ($\Ad$) of the group $
 \label{eq:qm_evolution}
 	\der{\obs(t)}{t} = - \frac{i}\planck [\obs(t), H].
 \end{eqalign}
-This equation is suspectingly similar to the classical evolution equation \eqref{eq:classical_evolution_eq} (indeed, the brackets $[-,-]$ can be interpreted as linear Poisson brackets, but since we are in the infinite-dimensional context it is difficult to work with them).
+
+This equation is suspiciously similar to the classical evolution equation \eqref{eq:classical_evolution_eq} (indeed, the brackets $[-,-]$ can be interpreted as linear Poisson brackets, but since we are in the infinite-dimensional context it is difficult to work with them).
 
 \textbf{Is this similarity just an accident, or can we actually find classical mechanics inside quantum mechanics (as a sort of ``limit case'')?} The answer is known to be \emph{yes} (essentially, taking the limit $\planck \to 0$). The reverse procedure is called \textbf{quantization}, and recovers a quantum description from a classical one. It can be made in various ways, through analysis and geometry, but here we'll explore a purely algebraic way to deal with this problem, called, indeed, \textbf{deformation quantization}.
 
 The idea of deformation quantization is to do without the explicit \emph{representation} (in the technical sense) of the ``algebra of observables'' as self-adjoint operators on an Hilbert space and just describe evolution of elements of an abstract non-commutative associative algebra through Equation~\eqref{eq:qm_evolution} (which doesn't involve the Hilbert structure). Hence: start with an Hilbert space description of the system, build the algebra of observables and represent it on another non-commutative (but still associative) algebra.
 
-In fact, the non-commutativity relations among the observables (i.e. Heisenberg uncertainity) can be seen as to arise from a non-commutativity of the product of the observables:
+In fact, the non-commutativity relations among the observables (i.e. Heisenberg uncertainty) can be seen as to arise from a non-commutativity of the product of the observables:
 \begin{eqalign}
 	[f,g] = fg - gf = 0 \iff \text{the product is commutative}
 \end{eqalign}
@@ -105,7 +106,7 @@ The map $\mu_\planck$ is defined from $\mu$ by imposing the following:
 \end{eqalign}
 
 \begin{definition}
-	Let $A$ be an associative $R$-algebra with unit over a commutative ring. A \textbf{formal deformation} of $A$ is an associative algebra\footnote{We are not assuming unitariety.} $(A[[\planck]], \star)$ over $R[[\planck]]$, having the following form
+	Let $A$ be an associative $R$-algebra with unit over a commutative ring. A \textbf{formal deformation} of $A$ is an associative algebra\footnote{We are not assuming unitarity.} $(A[[\planck]], \star)$ over $R[[\planck]]$, having the following form
 	\begin{eqalign}
 		a \star b = ab + \sum_{n=1}^\infty \mu_n(a,b)\,\planck^n, \quad \forall a,b \in A[[\planck]]
 	\end{eqalign}
@@ -163,7 +164,7 @@ Let $M$ be a finite-dimensional smooth manifold, $\dim M = n$. From now on, $\Ci
 
 \begin{remark}
 \label{rmk:no_zeroth_order}
-	Compared to the general case, the requirement of on the coefficients of the product is there to impose local dependence of the product on the factors, as phyiscs should depend only locally on observales. The additional condition $1 \star f=f$ implies the deformation does not even involve the values of the factors, but just their derivatives. Indeed, it could be restated as $B_n(1,f) = B_n(f,1) =0$ for $n>0$, hence \textbf{each $B_n$ in a $\star$-product has no zeroth order term for $n > 0$}.
+	Compared to the general case, the requirement of on the coefficients of the product is there to impose local dependence of the product on the factors, as physics should depend only locally on observables. The additional condition $1 \star f=f$ implies the deformation does not even involve the values of the factors, but just their derivatives. Indeed, it could be restated as $B_n(1,f) = B_n(f,1) =0$ for $n>0$, hence \textbf{each $B_n$ in a $\star$-product has no zeroth order term for $n > 0$}.
 \end{remark}
 
 There are three most prominent examples of $\star$-products, related to what are called \textbf{ordering operators}, which are, intuitively, formal symbolic operations which reorder products of operators in a suitable way.
@@ -310,7 +311,7 @@ There are three most prominent examples of $\star$-products, related to what are
 	\begin{eqalign}
 		-a\{b,c\}_\star +\{ab,c\}_\star -\{a,bc\}_\star +\{a,b\}_\star c = 0.
 	\end{eqalign}
-	Now add to this the same equation the one with $b$ exchanged with $c$ and substract the one with $a$ exchanged with $b$.
+	Now add to this the same equation the one with $b$ exchanged with $c$ and subtract the one with $a$ exchanged with $b$.
 \end{proof}
 \begin{corollary}
 	Given a $\star$-product $f \star g = \sum_{n=0}^\infty B_n(f,g)\planck^n$ on a smooth manifold $M$, the bracket $\{f,g\} = B_1(f,g) - B_1(g,f)$ gives $M$ the structure of a Poisson manifold.
@@ -443,7 +444,7 @@ We'll explore these two problems in the context of $\star$-products (i.e. ``diff
 	\end{enumerate}
 \end{proof}
 
-This result established that equivalent $\star$-products induce the same Poisson brackets (answering problem (1) abovementioned), but we can't say nothing about the converse (problem (2)). Infact the second point of the lemma isn't strong enough to allow us to appeal to transitivity and say
+This result established that equivalent $\star$-products induce the same Poisson brackets (answering problem (1) abovementioned), but we can't say nothing about the converse (problem (2)). In fact the second point of the lemma isn't strong enough to allow us to appeal to transitivity and say
 \begin{eqalign}
 	\star \underset{\text(2)}\equi \star^- = \star'^- \underset{\text(2)}\equi \star'.
 \end{eqalign}
@@ -517,7 +518,7 @@ The seminal result for the theory, solving our classification problem, is the fo
 
 Kontsevich's Theorem is a very beautiful and deep result. The proof is not straightforward and requires some advanced techniques so we'll skip over it, but the formula for the bijection ---however convoluted--- can be given nonetheless. The rest of the chapter will be devoted to this goal.
 
-We will construct the operators $B_n$ in $\star$ in local coordinates\footnote{To get an intrisic formulation, we'd have to work a little more. Kontsevich himself proved its theorem in $\R^n$, hence in local coordinates, hinted at an intrisic formulation, but left the problem to be solved by others. Cattaneo provides such a formulation.} $(x^1, \ldots, x^d)$ as a sum of contributions involving $\Pi^{ij}_\planck$ over a certain set (finite at every order) of special graphs (related to Feynman diagrams, although in an unusual way).
+We will construct the operators $B_n$ in $\star$ in local coordinates\footnote{To get an intrinsic formulation, we'd have to work a little more. Kontsevich himself proved its theorem in $\R^n$, hence in local coordinates, hinted at an intrisic formulation, but left the problem to be solved by others. Cattaneo provides such a formulation.} $(x^1, \ldots, x^d)$ as a sum of contributions involving $\Pi^{ij}_\planck$ over a certain set (finite at every order) of special graphs (related to Feynman diagrams, although in an unusual way).
 
 \subsubsection{Admissible graphs}
 \begin{definition}
@@ -638,7 +639,7 @@ The coefficients $B_n$ of the $\star$-product associated to $\Pi_\planck$ come f
 
 \subsubsection{The weights}
 \begin{definition}
-	The \textbf{Poincarè half-plane} is the manifold supported on the upper part of the Gauss' plane
+	The \textbf{Poincaré half-plane} is the manifold supported on the upper part of the Gauss' plane
 	\begin{eqalign}
 		\mathbb H = \{ p \in \C \suchthat \Im{p} > 0 \}
 	\end{eqalign}
@@ -648,7 +649,7 @@ The coefficients $B_n$ of the $\star$-product associated to $\Pi_\planck$ come f
 	\end{eqalign}
 \end{definition}
 
-The Poincarè half-plane is a model of hyperbolic geometry. The given metric has half-circles with center on real line $\Im{p} = 0$ as geodesics, including those with infinite radius which degenerate to vertical lines.
+The Poincaré half-plane is a model of hyperbolic geometry. The given metric has half-circles with center on real line $\Im{p} = 0$ as geodesics, including those with infinite radius which degenerate to vertical lines.
 
 \begin{figure}[H]
 	\centering
@@ -657,7 +658,7 @@ The Poincarè half-plane is a model of hyperbolic geometry. The given metric has
 	\end{tikzpicture}
 \end{figure}
 
-We define a function $\phi : \mathbb H^2 \to \R / 2\pi\Z$ which to each pair $(p,q)$ of points in the Poincarè half-plane associates the angle between the vector $\vec{q\conj p}$ and the vector $\vec{q p}$ (in this order) or, equivalently, to the angle between the vertical line at $p$ and the geodesic between $p$ and $q$ (in this order):
+We define a function $\phi : \mathbb H^2 \to \R / 2\pi\Z$ which to each pair $(p,q)$ of points in the Poincaré half-plane associates the angle between the vector $\vec{q\conj p}$ and the vector $\vec{q p}$ (in this order) or, equivalently, to the angle between the vertical line at $p$ and the geodesic between $p$ and $q$ (in this order):
 
 \begin{figure}[H]
 	\centering
@@ -730,7 +731,7 @@ Finally, we can write down the sought formula.
 	\begin{eqalign}
 		w_\Gamma = \frac1{(2\pi)^{2n}} \int_\hilbert d\phi_{a_1} \wedge d\phi_{b_1} \wedge \ldots \wedge d\phi_{a_n} \wedge d\phi_{b_b} = \frac1{(2\pi)^{2n}} \left( \int_\hilbert d\phi_{a_1} \wedge d\phi_{b_1} \right)^n.
 	\end{eqalign}
-	Then by fiddling around in the Poincarè upper half-plane, we see that (1) $\phi_a \leq \phi_b$ for any position and (2) all angles are achievable by a suitable configuration of the vertices. Therefore:
+	Then by fiddling around in the Poincaré upper half-plane, we see that (1) $\phi_a \leq \phi_b$ for any position and (2) all angles are achievable by a suitable configuration of the vertices. Therefore:
 	\begin{eqalign}
 	\frac1{(2\pi)^{2n}} \left( \int_\hilbert d\phi_{a_1} \wedge d\phi_{b_1} \right)^n = \left( \int_0^{2\pi} \int_0^{\phi_b} d\phi_a d\phi_b \right)^n = \frac1{(2\pi)^{2n}} \left(\frac{2\pi \times 2 \pi}2\right)^n = \frac1{2^n}.
 	\end{eqalign}
