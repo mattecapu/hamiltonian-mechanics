@@ -53,7 +53,7 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 		B^1(M) \arrow{d}{\omega^{-1}} \arrow[relation=\subseteq]{r} \&[-3ex] Z^1(M) \arrow{d}{\omega^{-1}} \arrow[relation=\subseteq]{r} \&[-3ex] \Omega^1(M) \arrow{d}{\omega^{-1}}\\
 		\hamfields(M) \arrow[relation=\subseteq]{r} \& \sympfields(M) \arrow[relation=\subseteq]{r} \& \fields(M)
 	\end{diagram}
-	Moreover, $\omega^{-1}$ carries the $\R$-module structure downstairs: indeed, the linear combination of Hamiltonian (resp. symplectic) fields is still Hamiltonian (resp. symplectic). \textbf{This means the obstructions for a symplectic vector field to be an Hamiltonian one are encoded by the same cohomology data for differential forms}, i.e. the module $H^1_{dR}(M)$. If one wonders wheter this could be extended to a whole cohomology theory, the answer is \emph{yes}, although we'll need to wait the more general context of Poisson manifolds. The ``symplectic cohomology'' we'll get, however, will be canonically isomorphic to de Rham cohomology, as the first cohomology witnesses. As remarked in the previous chapter, this means that this flavor of cohomology is not enough to discern symplectic structures on $M$.
+	Moreover, $\omega^{-1}$ carries the $\R$-module structure downstairs: indeed, the linear combination of Hamiltonian (resp. symplectic) fields is still Hamiltonian (resp. symplectic). \textbf{This means the obstructions for a symplectic vector field to be an Hamiltonian one are encoded by the same cohomology data for differential forms}, i.e. the module $H^1_{dR}(M)$. If one wonders whether this could be extended to a whole cohomology theory, the answer is \emph{yes}, although we'll need to wait the more general context of Poisson manifolds. The ``symplectic cohomology'' we'll get, however, will be canonically isomorphic to de Rham cohomology, as the first cohomology witnesses. As remarked in the previous chapter, this means that this flavor of cohomology is not enough to discern symplectic structures on $M$.
 \end{remark}
 
 \begin{remark}
@@ -117,7 +117,7 @@ Notice \textbf{the Hamiltonian condition is equivalent to require $\ipr{X}\omega
 	\begin{eqalign}
 		\omega(\partial_\theta, \partial_\theta) = \omega(\partial_h, \partial_h) = 0
 	\end{eqalign}
-	by antisimmetry, so we just go for the mixed one:
+	by antisymmetry, so we just go for the mixed one:
 	\begin{eqalign}
 		\omega(\partial_\theta, \partial_h)(x, y, z) &= \langle (x,y,z), \iota_* (\partial_\theta) \times \iota_*(\partial_h) \rangle\\
 		&= \langle (x,y,z), \frac{y^2z}{1-z^2}\partial_z + y \partial_y + \frac{x^2z}{1-z^2}\partial_z + x\partial_x \rangle\\
@@ -290,7 +290,7 @@ Direct computation.
 		\begin{eqalign}
 			(\partial_\mu V^\alpha) \omega_{\alpha\beta} = \partial_\mu (V^\alpha \omega_\alpha \beta) - V^\alpha (\partial_\mu \omega_{\alpha\beta})
 		\end{eqalign}
-		\item In the third line, we add and substract the identical terms marked in blue.
+		\item In the third line, we add and subtract the identical terms marked in blue.
 	\end{enumerate}
 
 	The computation goes like this:
@@ -662,7 +662,7 @@ We start with a construction and some vocabulary:
 	\end{eqalign}
 	which is singular iff $\eta=\xi=0$, $\phi=0,\pi$. Since $\dim S^2 = 2$, we need another integral of motion to apply Arnold--Liouville. Indeed, notice $h$ doesn't really depend on $\theta$! So we put $h_2=\xi$ ``$(=\dot \theta)$'' (check this commutes!).
 
-	Let's check the points where $dh_1$ is not linearly indipendent from $dh_2$ (as with the singular points check for $dh$, this is in order to satisfy the hypothesis of Arnold--Liouville). As $dh_2 = d\xi$, this happens only when $dh_1$ has just the $d\xi$ term, i.e. the other two vanish:
+	Let's check the points where $dh_1$ is not linearly independent from $dh_2$ (as with the singular points check for $dh$, this is in order to satisfy the hypothesis of Arnold--Liouville). As $dh_2 = d\xi$, this happens only when $dh_1$ has just the $d\xi$ term, i.e. the other two vanish:
 	\begin{eqalign}
 		\eta = 0, \quad \xi = \pm \sqrt{-\frac{\sin^4 \phi}{\cos \phi}}.
 	\end{eqalign}
@@ -773,7 +773,7 @@ We start with a construction and some vocabulary:
 		dh_1 &= \frac{p_r}m dp_r + \frac{p_\theta}{mr^2}dp_\theta + \left( \frac{k}{r^2} - \frac{p_\theta^2}{mr^3} \right)dr\\
 		dh_2 &= dp_\theta
 	\end{eqalign}
-	thus they're indipendent unless
+	thus they're independent unless
 	\begin{eqalign}
 		p_r = 0, \quad r = \frac{p_\theta^2}{mk}
 	\end{eqalign}
@@ -998,7 +998,7 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		S(\theta, r, I_1, I_2) = - \int_{(\phi_0, r_0)}^{(\theta, r)} (p_\theta d\theta + p_rdr)
 	\end{eqalign}
-	where the integration path is not relevant as long as it remains inside $H^{-1}(c_1, c_2)$. Then $\phi^\alpha = \partial S / \partial I_\alpha$, but \textbf{it's not possible to compute $S$ analytically}. However, we can still find the canonical transformation to get the action variables. We start by writing $h$ in terms of $I_1$ and $I_2$, an expression not depending on any other variable since $H$ is costant along the fibers. From the relative computation, we get
+	where the integration path is not relevant as long as it remains inside $H^{-1}(c_1, c_2)$. Then $\phi^\alpha = \partial S / \partial I_\alpha$, but \textbf{it's not possible to compute $S$ analytically}. However, we can still find the canonical transformation to get the action variables. We start by writing $h$ in terms of $I_1$ and $I_2$, an expression not depending on any other variable since $H$ is constant along the fibers. From the relative computation, we get
 	\begin{eqalign}
 		h=h(I_1, I_2) = \frac{mk^2}{2(I_2 - I_1)^2}
 	\end{eqalign}

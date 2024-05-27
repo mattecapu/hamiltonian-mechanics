@@ -29,10 +29,10 @@ Finally, notice that when two charts $(U_1, \phi_1)$ and $(U_2, \phi_2)$ overlap
 \end{definition}
 
 \begin{remark}
-	We stress the last word of the definition: as any two overlapping charts are ``topologically comaptible'', the smoothness of the manifold is ensued by the differentiability of the transition maps.
+	We stress the last word of the definition: as any two overlapping charts are ``topologically compatible'', the smoothness of the manifold is ensued by the differentiability of the transition maps.
 \end{remark}
 
-We conclude this brief introduction by noting that we rarely give an explicti atlas along with our manifolds. The reason is twofold:
+We conclude this brief introduction by noting that we rarely give an explicit atlas along with our manifolds. The reason is twofold:
 \begin{enumerate}
 	\item for most spaces (e.g. spheres, tori, projective spaces), geometers worked out their construction in terms of an atlas once, and then it is understood we are using that;
 	\item we always assume the atlas to be \textbf{maximal}, that is, to contain every possible compatible chart (with a given starting set): as such a collection is clearly very large, it is impossible to give one explicitly.
@@ -135,7 +135,7 @@ We usually use vectors and covectors in the form of vector fields and differenti
 
 \begin{construction}
 \label{const:pullback}
-	Conversely, the analogous map for differential forms, called the \textbf{pullback} is now well defined everytime:
+	Conversely, the analogous map for differential forms, called the \textbf{pullback} is now well defined every time:
 	\begin{eqalign}
 		F^* : \Omega^1(N) &\longto \Omega^1(M)\\
 		\omega &\longmapsto F^*\omega
@@ -181,7 +181,7 @@ Evidently, a smooth distribution is again a vector bundle on $M$. Hence we can c
 	A distribution is called \textbf{involutive} if $\fields_D(M)$ is a Lie subalgebra of $\fields(M)$, i.e. if the Lie bracket of two sections of $D$ is again a section of $D$.
 \end{definition}
 
-The most useful kind of distributions are those giving or coming from \textbf{foliations}, i.e. partitions of $M$ into smooth submanifolds\footnote{In a \textbf{regular} folations, leaves have all the same dimension, otherwise the foliation is called \textbf{singular}.} called \textbf{leaves}. Then any foliation clearly induce a distribution given by the tangent spaces of the leaves. It's then natural to ask when the converse is true.
+The most useful kind of distributions are those giving or coming from \textbf{foliations}, i.e. partitions of $M$ into smooth submanifolds\footnote{In a \textbf{regular} foliations, leaves have all the same dimension, otherwise the foliation is called \textbf{singular}.} called \textbf{leaves}. Then any foliation clearly induce a distribution given by the tangent spaces of the leaves. It's then natural to ask when the converse is true.
 
 \begin{definition}
 	An \textbf{integral submanifold} of a smooth distribution $D$ is a submanifold $S \subseteq M$ such that $TS = D$ on $S$.
@@ -285,11 +285,11 @@ So as we noted above, any exact form is closed, meaning the $d$s form the coboun
 \begin{diagram}
 	\ldots \arrow{r}{d} \& \Omega^p(M) \arrow{r}{d} \& \Omega^{p+1}(M) \arrow{r}{d} \& \ldots
 \end{diagram}
-This is called the \textbf{de Rham complex} of $M$, and we can naturally associate a cohomology theory to it by taking homologies: let $\ker d_p = Z^p(M)$ be the susbpace of closed $p$-forms ($p$-\textbf{cocycles}) and $\im d_{p-1} = B^p(M)$ the subspace of exact $p$-forms ($p$-\textbf{coboundaries}). Then the \textbf{$p$-th de Rham cohomology} is defined as
+This is called the \textbf{de Rham complex} of $M$, and we can naturally associate a cohomology theory to it by taking homologies: let $\ker d_p = Z^p(M)$ be the subspace of closed $p$-forms ($p$-\textbf{cocycles}) and $\im d_{p-1} = B^p(M)$ the subspace of exact $p$-forms ($p$-\textbf{coboundaries}). Then the \textbf{$p$-th de Rham cohomology} is defined as
 \begin{eqalign}
 	H^p_{dR}(M) = Z^p(M) / B^p(M).
 \end{eqalign}
-So de Rham cohomology encodes the failure of closed $p$ forms to be exact. Surprisingly, although its definition is intrinsecally dependent on the smooth structure of $M$, \textbf{de Rham cohomology is a topological invariant}, meaning
+So de Rham cohomology encodes the failure of closed $p$ forms to be exact. Surprisingly, although its definition is intrinsically dependent on the smooth structure of $M$, \textbf{de Rham cohomology is a topological invariant}, meaning
 \begin{eqalign}
 	M \underset{\cat{Top}}\iso N \implies H^\bullet_{dR}(M) \underset{\cat{Vec}} H^\bullet_{dR}(N)
 \end{eqalign}
@@ -421,7 +421,7 @@ A classical result links homological properties of differential forms to those o
 	\end{eqalign}
 \end{theorem}
 
-\begin{theorem}[Poincarè's duality]
+\begin{theorem}[Poincaré's duality]
 	Let $M$ be a \emph{compact} orientable manifold of dimension $m$. The map
 	\begin{eqalign}
 		\langle -, - \rangle : H_{dR}^r(M) \times H_{dR}^{m-r}(M) &\longto \R\\
@@ -430,7 +430,7 @@ A classical result links homological properties of differential forms to those o
 	is a well-defined, non-degenerate bilinear form, implying $H_{dR}^r(M) \isoin\Vec H_{dR}^{m-r}(M)$.
 \end{theorem}
 \begin{proof}[Proof sketch]
-	For a compact orientable manifold we can produce a triangulation of $M$, that is, an $m$-chain homeomorphic to $M$ itself. By compactness of $M$, the chain must be a cycle since $\partial M = 0$. However it can't be the boundary of anyhting bigger since it is of maximal dimension. Then by de Rham's again,
+	For a compact orientable manifold we can produce a triangulation of $M$, that is, an $m$-chain homeomorphic to $M$ itself. By compactness of $M$, the chain must be a cycle since $\partial M = 0$. However it can't be the boundary of anything bigger since it is of maximal dimension. Then by de Rham's again,
 	\begin{eqalign}
 		\int_{\Delta_m} \omega \wedge \eta \neq 0
 	\end{eqalign}
@@ -448,7 +448,7 @@ A classical result links homological properties of differential forms to those o
 	Any odd-dimensional compact orientable smooth manifold has $\chi_M = 0$.
 \end{corollary}
 \begin{proof}
-	By de Rham's Theorem and Poincarè's duality.
+	By de Rham's Theorem and Poincaré's duality.
 \end{proof}
 
 \paragraph{Induced maps.} \label{par:ind_maps_on_de_rham} Singular homology and de Rham cohomology are actually a family of functors, in the sense that maps between manifolds induce also maps between their cohomology groups in a way that is well-behaved with respect to composition. Indeed, if $f:X \to Y$ is a smooth map, it also brings singular simplices on $X$ to singular simplices on $Y$:
