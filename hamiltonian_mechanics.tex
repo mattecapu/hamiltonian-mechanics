@@ -173,7 +173,9 @@ We'd like now to justify our mathematical definitions in terms of the properties
 	\end{eqalign}
 	The dependence of $X_h$ on $dh$ is then \emph{linear}, meaning it can be given at each point $p \in M$ by a linear map $\eta^\# : T^*_pM \to T_pM$, so that $X_h = \eta^\# (dh)$. Geometrically, such a smooth choice of linear maps is encoded by the tensor field $\eta \in \Gamma(TM \tens TM)$ associated to $\eta^\#$. In this sense, \textbf{$\eta$ is the mathematical incarnation of the laws of physics, because it associates evolution to energy}. If we \emph{assume}\footnote{This is not always true! We'll see some instances of this and we'll introduce a formalism to treat those cases as well, the one of \emph{Poisson manifolds}.} all energy gradients produce a non-zero dynamics then $\eta$ is non-degenerate\footnote{Which is equivalent to assume the injectivity of $\eta^\#$. In this case we can define $(\eta^\#)^{-1} =: \omega^\# : TM \to T^*M$ and its associated tensor $\omega \in \Gamma(T^*M \tens T^*M)$.}; hence we can work with its ``inverse'' (pointwise as a map) instead, call it $\omega \in \Gamma(T^*M \tens T^*M)$:
 	\begin{eqalign}
-		\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh} = \underbrace{\begin{pmatrix} 0 & -1\\1 & 0\end{pmatrix}}_{\omega^\#}\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h}
+		\underbrace{\begin{pmatrix} 0 & -1\\1 & 0\end{pmatrix}}_{\omega^\#}\underbrace{\der{}{t} \begin{pmatrix} x \\ m\dot x \end{pmatrix}}_{X_h}
+		=
+		\underbrace{\begin{pmatrix}\partial_x h \\ \partial_{m\dot x} h\end{pmatrix}}_{dh}
 	\end{eqalign}
 	Now properties of $\omega$, which is our ``wannabe'' symplectic form, will come from two additional modelling assumption. \textbf{The first is conservation of energy}, which is the condition $X_h(h) = 0$. Expressed in terms of $\omega$, it becomes\footnote{We can rewrite $X_h(h) = \langle X_h, dh \rangle = \langle X_h, \omega^\#(\eta^\#(dh)) \rangle = \langle X_h, \omega^\#(X_h) \rangle = \omega(X_h, X_h)$.} $\omega(X_h, X_h) = 0$. Since this has to be satisfied by \emph{all} choices $h \in \Cinfty(M)$, including --- locally --- the coordinate functions $x^i$ (thus on a local frame for $TM$), hence, locally, $\omega(X,X) = 0$ for any vector field $X$, which means $\omega$ is skew-symmetric ($\omega \in \Omega^2(M)$).
 
@@ -389,7 +391,7 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 
 \begin{construction}
 \label{const:compl_integr_Ham_system}
-	If we introduce $n$ independent functions $f_1, \dots, f_n$ in involution, then the associated vector fields $X_{h_1}, \dots, X_{h_n}$ are independent and the distribution $\mathcal D := \langle X_{h_1}, \dots, X_{h_n} \rangle$ is smooth. Equation eq.~\eqref{eq:Lie_alg_struct_Ham_fields} tells us that 
+	If we introduce $n$ independent functions $f_1, \dots, f_n$ in involution, then the associated vector fields $X_{h_1}, \dots, X_{h_n}$ are independent and the distribution $\mathcal D := \langle X_{h_1}, \dots, X_{h_n} \rangle$ is smooth. Equation eq.~\eqref{eq:Lie_alg_struct_Ham_fields} tells us that
 	\begin{eqalign}
 		[X_{h_i}, X_{h_j}] = 0, \quad \forall i,j \leq k.
 	\end{eqalign}
@@ -401,7 +403,7 @@ The great insight of Hamiltonian formalism is that \textbf{integrals of motion a
 \end{definition}
 
 \begin{remark}
-	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds, i.e. the previous definition is consistent with the definition of completely integrable distribution. 
+	From Construction \ref{const:compl_integr_Ham_system} we see that each completely integrable Hamiltonian system can be foliated into Lagrangian submanifolds, i.e. the previous definition is consistent with the definition of completely integrable distribution.
 \end{remark}
 
 \begin{remark}
@@ -468,7 +470,7 @@ We start with a construction and some vocabulary:
 \footnotetext{A submersion $H : M \to N$ is a smooth function such that $dH$ is pointwise surjective.}
 
 \begin{remark}
-\label{rem:submersion_to_Lag_fibration} 
+\label{rem:submersion_to_Lag_fibration}
 	Let $H : M \to N$ be a submersion, $M$ symplectic, then the set $\operatorname{crit} H$ of critical points of $H$ is given by the vanishing of $\det dH$, hence it is closed. Then if all fibres of regular points of $H$ are Lagrangian submanifolds of $M$, we can promote $H$ to a Lagrangian fibration by restricting $M$ to the open set $M \setminus \operatorname{crit} H$.
 \end{remark}
 
@@ -578,7 +580,7 @@ We start with a construction and some vocabulary:
 
 		\item Since ${H: M_C \to \R^n}$ is locally trivial, we can identify a neighbourhood of each fiber with $U_0 \times \T^n$ and $U_0 \subseteq \R^n$ is open ($H$ is a fibration in tori). By point (2), $\omega = d(t^i dh_i) = -d(h_i dt^i)$ where $h_1, \ldots, h_n$ are linear coordinates on $\R^n$ and $t^1, \ldots, t^n$ are linear functions on $\T^n$. What we want to do now is a change of coordinates to get angle coordinates on the torus. Since we'd like this change to be structure-preserving, we'll try to get it as a canonical transformation, thus a symplectomorphism found through a generating function.
 
-		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define\footnote{Notice that these functions do not depend on the representatives $\gamma_\alpha$ of the homology classes we chosen, indeed for any equivalent loop $\gamma'_\alpha$ we have 
+		Start by choosing a basis $\gamma_1, \ldots, \gamma_n \in H_1(\T^n)$, hence smooth circles around each factor of $\T^n$. Now define\footnote{Notice that these functions do not depend on the representatives $\gamma_\alpha$ of the homology classes we chosen, indeed for any equivalent loop $\gamma'_\alpha$ we have
 		\begin{eqalign}
 			-\int_{\gamma_\alpha} h_i \, dt^i + \int_{\gamma'_\alpha} h_i \, dt^i = -\int_{M_\alpha} d(h_i \, dt^i) =  \int_{M_\alpha} \omega = 0
 		\end{eqalign}
@@ -618,13 +620,13 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		I_\alpha (h_1, \ldots, h_n) = \int_{\gamma_\alpha}\iota^*\eta
 	\end{eqalign}
-	where $\iota : \{h_\alpha(p) = h_\alpha\} \into M$ is the embedding of the level set into $M$. 
-	
+	where $\iota : \{h_\alpha(p) = h_\alpha\} \into M$ is the embedding of the level set into $M$.
+
 	Moreover, given any local system of Darboux coordinates $x^1, \ldots, x^n, \xi_1, \ldots, \xi_n$ with $\omega = d(x^i \, d\xi_i)$ where the manifolds $\{x^i = \text{const.}\}$ are transversal to the fibers $\{h_i = \text{const.}\}$, the equation
 	\begin{eqalign}
 		I_\alpha (x^1, \ldots, x^n, \xi_1, \ldots, \xi_n) = I_\alpha
 	\end{eqalign}
-	can be inverted to 
+	can be inverted to
 	\begin{eqalign}
 		\xi_\alpha = \xi_\alpha(x^1, \ldots, x^n, I_1, \ldots, I_n).
 	\end{eqalign}
@@ -682,16 +684,16 @@ We start with a construction and some vocabulary:
 
 \begin{example}[$2$-species ``predator--prey'' Lotka--Volterra'' system]
 \label{ex:Lotka_Volterra_2spec_ham}
-	The \textbf{Lotka--Volterra model} describe predator-prey (or herbivore-plant, or parasitoid-host) dynamics in their simplest case (one predator population, one prey population). It was developed independently by Alfred Lotka and Vito Volterra in the 1920's, and is characterized by oscillations in the population size of both predator and prey, with the peak of the predator's oscillation lagging slightly behind the peak of the prey's oscillation. 
-	
-	The model makes several simplifying assumptions: 
+	The \textbf{Lotka--Volterra model} describe predator-prey (or herbivore-plant, or parasitoid-host) dynamics in their simplest case (one predator population, one prey population). It was developed independently by Alfred Lotka and Vito Volterra in the 1920's, and is characterized by oscillations in the population size of both predator and prey, with the peak of the predator's oscillation lagging slightly behind the peak of the prey's oscillation.
+
+	The model makes several simplifying assumptions:
 	\begin{enumerate}
-		\item the prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation.; 
-		\item the growth of predators population depend on the availability of food, the predator population will starve in the absence of the prey population (as opposed to switching to another type of prey) and in this case decreases exponentially; 
-		\item predators can consume infinite quantities of prey; 
+		\item the prey are assumed to have an unlimited food supply and to reproduce exponentially, unless subject to predation.;
+		\item the growth of predators population depend on the availability of food, the predator population will starve in the absence of the prey population (as opposed to switching to another type of prey) and in this case decreases exponentially;
+		\item predators can consume infinite quantities of prey;
 		\item there is no environmental complexity (in other words, both populations are moving randomly through a homogeneous environment).
 	\end{enumerate}
-	
+
 	Given the following parameters describing the two populations and the interaction of the two species:
 	\begin{enumerate}
 		\item $P$ = number of predators or consumers;
@@ -714,15 +716,15 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		M = \R^2_{>0} \qquad \omega^{-1} = Pp \pder{}{P} \wedge \pder{}{p} \qquad h(P,p) = - ap + m\log p - cP + r\log P
 	\end{eqalign}
-	with coordinates $P$, $p$ on $M$. The differential of the Hamiltonian is 
+	with coordinates $P$, $p$ on $M$. The differential of the Hamiltonian is
 	\begin{equation}
 		dh = (- cP + r) \frac {dP}{P} + (- ap + m) \frac {dp}{p}
 	\end{equation}
 	We see that using\footnote{Recall Remark \ref{eq:inv_sym_form_Ham_fields}. For $P$ we have $\dot P = \{P, h\} = \omega(X_P, X_h) = \omega^{-1}(dP, dh)$ which gives the first equation in eq.~\eqref{eq:Lotka_Volterra_system}. Same procedure for $p$ leads to the second equation in eq.~\eqref{eq:Lotka_Volterra_system}.} Equation eq.~\eqref{eq:evolution_f_flow_Xh} the flow of $X_h$ gives the Lotka-Volterra eq.~\eqref{eq:Lotka_Volterra_system}.
-	The only singular point of $dh$ is $\left ( \frac {r}{c}, \frac{m}{a} \right)$, where $X_h$ vanish. 
-	
+	The only singular point of $dh$ is $\left ( \frac {r}{c}, \frac{m}{a} \right)$, where $X_h$ vanish.
+
 	We plot the level sets of $h$\footnote{In the following link one can find the Mathematica code for plot these level set, with the possibility of change the parameters of the model: \url{https://it.wikitolearn.org/File:Lotka-Volterra.svg}.}:
-	
+
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
@@ -731,9 +733,9 @@ We start with a construction and some vocabulary:
 		\caption{The manifold $\R^2_{>0}$, with compact fibers as solid blue lines, the blue point in the middle of the fibers is the equilibrium point. An extra equilibrium point outside the phase space is given by the origin of $\R^2$. Axis describe no prey (exponential decay of $P$) and no predator (exponential growth of $p$) cases.}
 		\label{fig:Lotka_Volterra_diagram}
 	\end{figure}
-	
+
 	There are some interesting special cases for this model. The first one is given by the case $m=0$, for instance if the predator can sustain its population even if there is no prey (e.g. it eats also vegetables). In such case the level sets of $h$ are:
-	
+
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
@@ -742,11 +744,11 @@ We start with a construction and some vocabulary:
 		\caption{Special case $m=0$. In order to obtain the level sets shown in the picture one has to move slightly from the $P$-axis, in order to have a non-zero number of prey. The whole $P$-axis is corresponds to the case $\dot P = \dot p = p =0$, i.e. to the absence of prey and a constant number of predators. The blue point in the $P$-axis corresponds to the value $\frac{r}{c}$.}
 		\label{fig:SIR_diagram}
 	\end{figure}
-	
+
 	\noindent
 	It's clear that in this case we have compact fibers provided that $a < 0$, otherwise the number of predators increases monotonically.
-	
-	Moreover, if we set $m=0$ and $a = c$  then Lotka--Volterra system eq.~\eqref{eq:Lotka_Volterra_system} becomes 
+
+	Moreover, if we set $m=0$ and $a = c$  then Lotka--Volterra system eq.~\eqref{eq:Lotka_Volterra_system} becomes
 	\begin{eqalign}
 	\label{eq:SIR_model_system}
 		\begin{dcases}
@@ -754,7 +756,7 @@ We start with a construction and some vocabulary:
 			\der{p}{t} = aPp-rp
 		\end{dcases}
 	\end{eqalign}
-	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} for some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model. In this case the $P$-axis corresponds to the case where there are no infected and then the number of susceptible individuals is kept constant. 
+	where we changed the signs of parameters for convenience. When an individual of $P$ meets an individual of $p$ it becomes an individual of $p$ too with some \emph{contact rate} $a$, moreover the population $p$ decreases monotonically as $r$ is chosen positive. We can then interpret $P=S$ to be the population susceptible to some infection and $p=I$ to be the infected population. Then $a$ corresponds to the new infections per infected individual per day and $r$ is the fraction of infected that recover per day, i.e. $r^{-1}$ is the average duration of disease if we consider a uniform distribution, indeed if there are no new infected, the number of infected is described by $I(t) = \exp(-rt)$, and the average duration of the disease is then $\int_0^\infty I(t) dt = r^{-1}$. This leads to the \textbf{SIR model} (susceptible - infected - recovered) for the propagation of an infection in a population.\footnote{See \url{https://demonstrations.wolfram.com/SIREpidemicDynamics/} for some simulations of SIR model using Mathematica.} Figure fig.~\ref{fig:SIR_diagram} shows also the dynamic of this model. In this case the $P$-axis corresponds to the case where there are no infected and then the number of susceptible individuals is kept constant.
 \end{example}
 
 \begin{example}[Kepler's problem on the plane]
@@ -795,7 +797,7 @@ We start with a construction and some vocabulary:
 		\end{eqalign}
 		We observe that previous equation describes a non-compact curve in the $(r, p_r)$ plane, hence fibers of the form $H^{-1}(c_1, 0)$ correspond to unbounded orbits of the system and, geometrically, to non-compact fibers.\footnote{Notice that $\theta$ lives in $S^1$, so it never gives problems of compactness.}
 		\item $c_2 \neq 0$, then inspecting the first equation we see that $c_1 < 0$ implies $V_{c_2}$ negative, thus when we draw its graph we notice in this case we have compact level sets (given by $r \in [r_-, r_+]$). Clearly, the level set is empty whenever $c_1 < \min V_{c_2}(r) = V_{c_2} \left(\frac{c_2^2}{mk} \right) =  - \frac{mk^2}{2 c_2^2}$.
-		
+
 		\vspace{-0.5cm}
 		\begin{figure}[H]
 			\centering
@@ -821,7 +823,7 @@ We start with a construction and some vocabulary:
 			\includegraphics[width=.55\textwidth]{figures/Kepler_Lagrangian_fiber.jpeg}
 			\caption{Once we fixed $c_1$ and $c_2$ in such a way to obtain a compact fiber as in Figure~\ref{fig:KeplerCompactFiber}, we can introduce the $\theta$ variable in our phase space obtaining the whole Lagrangian fiber through rotation of the second part of  Figure~\ref{fig:KeplerCompactFiber} for all $\theta \in [0, 2\pi)$. The vertical direction corresponds to $p_r$ values, while the plane is parametrized by variables $r$ and $\theta$. We'll see that starting from some special points one can find elliptic trajectories wrapped-up around the torus.}
 			\label{fig:KeplerLagrangianFiber}
-		\end{figure}	
+		\end{figure}
 	\end{enumerate}
 
 	Therefore
@@ -888,7 +890,7 @@ We start with a construction and some vocabulary:
 		I_2(c_1, c_2) &= - \frac{1}{2\pi} \int_{\gamma_2} p_r dr = - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} (\gamma_2^+)^*(p_r dr) + \int_{r_+}^{r_-} (\gamma_2^-)^*(p_r dr) \right)\\
 			      &= - \frac{1}{2\pi} \left(\int_{r_-}^{r_+} g(t) \,dt + \int_{r_+}^{r_-} (-g(t)) \,dt\right).
 	\end{eqalign}
-	To compute it, we use residues by interpreting the integral as a loop integral over the Riemann surface. Consider two spaces $\C_1 \iso \C_2 \iso \C$ as shown in the Figure~\ref{fig:MultivaluedFunctionDef} and glue them together along $a$ and $b$ making these lines coincide as shown in Figure~\ref{fig:Riemann_surface}. 
+	To compute it, we use residues by interpreting the integral as a loop integral over the Riemann surface. Consider two spaces $\C_1 \iso \C_2 \iso \C$ as shown in the Figure~\ref{fig:MultivaluedFunctionDef} and glue them together along $a$ and $b$ making these lines coincide as shown in Figure~\ref{fig:Riemann_surface}.
 
 	\begin{figure}[H]
 		\centering
@@ -908,7 +910,7 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 	 \pi_r(t) = \frac{1}{t}\sqrt{-2m\left (t^2c_1+tk-\frac{c_2^2}{2m} \right)} = \frac{1}{t}\sqrt{-2mc_1(t-r_+)(t-r_-)}.
 	\end{eqalign}
-	This is clearly a multivalued function on two sheets, I and II, with two branches. For each value of $t$ the square root in $\pi_r$ gives a value per sheet, with only two ramification points in $r_\pm$. This justify the choice of glueing $\C_1$ and $\C_2$ as previously described. 
+	This is clearly a multivalued function on two sheets, I and II, with two branches. For each value of $t$ the square root in $\pi_r$ gives a value per sheet, with only two ramification points in $r_\pm$. This justify the choice of glueing $\C_1$ and $\C_2$ as previously described.
 	Finally, it features a simple pole in zero, while being holomorphic elsewhere.
 
 	Next, consider its restrictions to the real axis above and below the cut (respectively b and a sides): one easily gets
@@ -1033,7 +1035,7 @@ We start with a construction and some vocabulary:
 	\begin{eqalign}
 		\omega^\alpha := \pder{h(I_1, \ldots, I_n)}{I_\alpha}
 	\end{eqalign}
-	is rational (in general this depends on the value of $I_1, \ldots, I_n$, so on the torus containing the curve in $M$). 
+	is rational (in general this depends on the value of $I_1, \ldots, I_n$, so on the torus containing the curve in $M$).
 \end{remark}
 
 \end{document}
